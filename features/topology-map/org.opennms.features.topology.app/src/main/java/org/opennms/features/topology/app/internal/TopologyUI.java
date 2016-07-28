@@ -373,7 +373,7 @@ public class TopologyUI extends UI implements MenuUpdateListener, ContextMenuHan
 
                             @Override
                             public int getOrder() {
-                                return 1;
+                                return 2;
                             }
                         })
                    : Collections.emptySet();
