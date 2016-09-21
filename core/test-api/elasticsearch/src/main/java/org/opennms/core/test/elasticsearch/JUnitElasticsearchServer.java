@@ -35,7 +35,7 @@ import java.nio.file.Path;
 
 import org.apache.commons.io.FileUtils;
 import org.elasticsearch.client.Client;
-import org.elasticsearch.common.settings.ImmutableSettings;
+import org.elasticsearch.common.settings.Settings;
 import org.elasticsearch.node.Node;
 import org.elasticsearch.node.NodeBuilder;
 import org.junit.rules.ExternalResource;
@@ -55,11 +55,12 @@ public class JUnitElasticsearchServer extends ExternalResource {
     public void before() throws Exception {
         m_temporaryDirectory = Files.createTempDirectory("elasticsearch-data");
 
-        ImmutableSettings.Builder elasticsearchSettings = ImmutableSettings.settingsBuilder()
+        Settings.Builder elasticsearchSettings = Settings.settingsBuilder()
             // By default, the service will listen on a free port from 9200 to 9300
             //.put("http.enabled", "false")
             //network.publish_host: 192.168.0.1
             .put("cluster.name", "opennms")
+            .put("path.home", m_temporaryDirectory)
             .put("path.data", m_temporaryDirectory);
 
         m_node = NodeBuilder.nodeBuilder()

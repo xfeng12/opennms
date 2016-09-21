@@ -136,8 +136,6 @@
     <dependency>
         <groupId>com.google.guava</groupId>
         <artifactId>guava</artifactId>
-        <version>17.0</version>
-        <!-- 17.0 is the same version used by camel-elasticsearch -->
     </dependency>
     <dependency>
       <groupId>junit</groupId>
