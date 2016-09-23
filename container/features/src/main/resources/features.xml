@@ -40,6 +40,13 @@
       <feature>activemq</feature>
     </feature>
 
+    <feature name="opennms-activemq-camel" description="OpenNMS :: Features :: ActiveMQ :: Camel" version="${project.version}">
+      <feature version="${activemqVersion}">activemq-client</feature>
+      <bundle>mvn:org.opennms.features.activemq/org.opennms.features.activemq.camel/${project.version}</bundle>
+      <feature>camel-jms</feature>
+      <feature>camel</feature>
+    </feature>
+
     <feature name="opennms-activemq-component" description="OpenNMS :: Features :: ActiveMQ :: Component" version="${project.version}">
       <bundle>mvn:org.opennms.features.activemq/org.opennms.features.activemq.component/${project.version}</bundle>
     </feature>
@@ -609,7 +616,7 @@
       <feature version="${guavaVersion}">guava</feature>
       <feature>camel-core</feature>
       <feature>camel-blueprint</feature>
-      <feature>activemq-camel</feature>
+      <feature>opennms-activemq-camel</feature>
 
       <feature>opennms-core-camel</feature>
       <feature>opennms-core-daemon</feature>
@@ -793,6 +800,7 @@
       <feature>camel-kafka</feature>
       <feature>camel-netty</feature>
       <feature version="${guavaVersion}">guava</feature>
+      <feature>opennms-activemq-camel</feature>
 
       <feature>dropwizard-metrics</feature>
       <feature>lmax-disruptor</feature>
@@ -833,7 +841,7 @@
 
     <!-- TODO: Rename this. It's more of an Dominion-side syslog connection handler... -->
     <feature name="opennms-syslogd-handler-default" description="OpenNMS :: Syslogd :: Handler :: Default" version="${project.version}">
-      <feature>activemq-camel</feature>
+      <feature>opennms-activemq-camel</feature>
       <feature>camel-blueprint</feature>
       <feature>camel-http</feature>
       <feature>opennms-activemq-component</feature>
@@ -869,6 +877,7 @@
       <feature>camel-kafka</feature>
       <feature>camel-netty</feature>
       <feature version="${guavaVersion}">guava</feature>
+      <feature>opennms-activemq-camel</feature>
 
       <feature>opennms-core</feature>
       <feature>opennms-core-camel</feature>
@@ -890,7 +899,7 @@
 
     <!-- TODO: Rename this. It's more of an Dominion-side trap message handler... -->
     <feature name="opennms-trapd-handler-default" description="OpenNMS :: Trapd :: Handler :: Default" version="${project.version}">
-      <feature>activemq-camel</feature>
+      <feature>opennms-activemq-camel</feature>
       <feature>camel-blueprint</feature>
       <feature>camel-http</feature>
       <feature>opennms-activemq-component</feature>
