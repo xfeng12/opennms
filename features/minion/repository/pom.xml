@@ -49,10 +49,11 @@
                                 <feature>opennms-trapd-handler-minion</feature>
                                 <feature>opennms-trapd-handler-kafka</feature>
                                 <feature>minion-shell</feature>
-                                <feature>minion-heartbeat</feature>
+                                <feature>minion-heartbeat-producer</feature>
                                 <feature>minion-snmp-proxy</feature>
                                 <feature>minion-provisiond-detectors</feature>
                                 <feature>minion-icmp-proxy</feature>
+                                <feature>minion-poller</feature>
                             </features>
                             <repository>target/maven-repo</repository>
                         </configuration>
@@ -116,7 +117,17 @@
         </dependency>
         <dependency>
             <groupId>org.opennms.features.minion.shell</groupId>
+            <artifactId>org.opennms.features.minion.shell.poller</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.opennms.features.minion.shell</groupId>
             <artifactId>org.opennms.features.minion.shell.provision</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.opennms.features.minion.heartbeat</groupId>
+            <artifactId>org.opennms.features.minion.heartbeat.producer</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
@@ -176,8 +187,27 @@
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.opennms.core.rpc</groupId>
-            <artifactId>org.opennms.core.rpc.camel-impl</artifactId>
+            <groupId>org.opennms.features</groupId>
+            <artifactId>org.opennms.features.wsman</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.opennms.core.ipc.rpc</groupId>
+            <artifactId>org.opennms.core.ipc.rpc.camel-impl</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.opennms.core.ipc.sink</groupId>
+            <artifactId>org.opennms.core.ipc.sink.camel-impl</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.opennms.features.poller</groupId>
+            <artifactId>org.opennms.features.poller.client-rpc</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.opennms.features.poller.monitors</groupId>
+            <artifactId>org.opennms.features.poller.monitors.core</artifactId>
             <version>${project.version}</version>
         </dependency>
     </dependencies>
@@ -209,12 +239,8 @@
 
     <repositories>
         <repository>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
+            <snapshots><enabled>false</enabled></snapshots>
+            <releases><enabled>true</enabled></releases>
             <id>opennms-repo</id>
             <name>OpenNMS Repository</name>
             <url>http://maven.opennms.org/content/groups/opennms.org-release</url>
@@ -253,6 +279,17 @@
             <id>coova</id>
             <name>Coova Repository</name>
             <url>http://maven.opennms.org/content/repositories/coova/</url>
+        </repository>
+        <repository>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <id>jboss-repo</id>
+            <name>JBoss Repository</name>
+            <url>http://maven.opennms.org/content/repositories/jboss-repo/</url>
         </repository>
     </repositories>
 </project>

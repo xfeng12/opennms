@@ -39,7 +39,7 @@
           <span class="glyphicon glyphicon-plus-sign"/> Add Node
         </button>
         <button type="button" class="btn btn-success" id="go-back" ng-click="goBack()">
-          <span class="glyphicon glyphicon-remove"/> Return
+          <i class="fa fa-reply" aria-hidden="true"></i> Return
         </button>
       </div>
     </form>
@@ -109,9 +109,9 @@
 
       <br ng-hide="filteredRequisitions.length > pageSize" />
 
-      <uib-pagination total-items="totalItems" num-pages="numPages" ng-model="currentPage" max-size="maxSize" boundary-links="true"
+      <ul uib-pagination total-items="totalItems" num-pages="numPages" ng-model="currentPage" max-size="maxSize" boundary-links="true"
         class="pagination-sm" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"
-        ng-show="filteredNodes.length > pageSize"></uib-pagination>
+        ng-show="filteredNodes.length > pageSize"></ul>
 
     </div> <!-- table-with-navigation -->
 

@@ -54,10 +54,10 @@ import org.opennms.smoketest.NullTestEnvironment;
 import org.opennms.smoketest.OpenNMSSeleniumTestCase;
 import org.opennms.smoketest.utils.DaoUtils;
 import org.opennms.smoketest.utils.HibernateDaoFactory;
-import org.opennms.smoketest.utils.SshClient;
 import org.opennms.test.system.api.NewTestEnvironment.ContainerAlias;
 import org.opennms.test.system.api.TestEnvironment;
 import org.opennms.test.system.api.TestEnvironmentBuilder;
+import org.opennms.test.system.api.utils.SshClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -107,14 +107,6 @@ public class TrapTest {
             final SshClient sshClient = new SshClient(sshAddr, "admin", "admin");
         ) {
             PrintStream pipe = sshClient.openShell();
-            // Point the syslog handler at the local ActiveMQ broker
-            pipe.println("config:edit org.opennms.netmgt.syslog.handler.default");
-            pipe.println("config:propset brokerUri tcp://127.0.0.1:61616");
-            pipe.println("config:update");
-            // Point the trap handler at the local ActiveMQ broker
-            pipe.println("config:edit org.opennms.netmgt.trapd.handler.default");
-            pipe.println("config:propset brokerUri tcp://127.0.0.1:61616");
-            pipe.println("config:update");
             // Install the syslog and trap handler features
             pipe.println("features:install opennms-syslogd-handler-default opennms-trapd-handler-default");
             pipe.println("features:list -i");
@@ -141,7 +133,7 @@ public class TrapTest {
                 .toCriteria();
 
         // Send traps to the Minion listener until one makes it through
-        await().atMost(5, MINUTES).pollInterval(30, SECONDS).until(new Callable<Boolean>() {
+        await().atMost(5, MINUTES).pollInterval(30, SECONDS).pollDelay(0, SECONDS).until(new Callable<Boolean>() {
             @Override public Boolean call() throws Exception {
                 sendTrap(trapAddr);
                 try {

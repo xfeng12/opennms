@@ -39,6 +39,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Callable;
 
+import com.google.common.collect.Iterables;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.http.client.ClientProtocolException;
 import org.junit.Assume;
@@ -112,7 +113,7 @@ public class DetectorsOnMinionTest {
         client.addOrReplaceRequisition(requisition);
         client.importRequisition("foreignSource");
 
-        await().atMost(5, MINUTES).pollDelay(2, MINUTES).pollInterval(30, SECONDS)
+        await().atMost(5, MINUTES).pollDelay(0, SECONDS).pollInterval(30, SECONDS)
                 .until(getnumberOfServicesDetected(client), greaterThan(0));
     }
 
@@ -121,7 +122,7 @@ public class DetectorsOnMinionTest {
             public Integer call() throws Exception {
                 List<OnmsNode> nodes = client.getNodes();
                 Integer number = null;
-                if (!CollectionUtils.isEmpty(nodes)) {
+                if (Iterables.any(nodes, (node) -> "foreignSource".equals(node.getForeignSource()))) {
                     List<OnmsMonitoredService> services = client.getServicesForANode("foreignSource:foreignId",
                             LOCALHOST);
                     if (!CollectionUtils.isEmpty(services)) {

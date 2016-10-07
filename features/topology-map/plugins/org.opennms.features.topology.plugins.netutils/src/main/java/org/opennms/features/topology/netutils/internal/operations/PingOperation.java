@@ -44,22 +44,31 @@ import org.opennms.netmgt.dao.api.MonitoringLocationDao;
 import org.opennms.netmgt.dao.api.NodeDao;
 import org.opennms.netmgt.icmp.proxy.LocationAwarePingClient;
 import org.opennms.netmgt.model.OnmsNode;
+import org.opennms.netmgt.icmp.PingerFactory;
+
 
 import com.google.common.base.Strings;
 import com.google.common.collect.Lists;
 
 public class PingOperation extends AbstractOperation {
 
+
     private LocationAwarePingClient pingClient;
 
     private MonitoringLocationDao monitoringLocationDao;
 
     private NodeDao nodeDao;
+    
+    private PingerFactory pingerFactory;
 
     public PingOperation(LocationAwarePingClient pingClient, MonitoringLocationDao monitoringLocationDao, NodeDao nodeDao) {
         this.pingClient = Objects.requireNonNull(pingClient);
         this.monitoringLocationDao = Objects.requireNonNull(monitoringLocationDao);
         this.nodeDao = Objects.requireNonNull(nodeDao);
+    }
+
+    public PingOperation(PingerFactory pingerFactory) {
+        this.pingerFactory = Objects.requireNonNull(pingerFactory);
     }
 
     @Override

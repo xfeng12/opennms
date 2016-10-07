@@ -15,37 +15,58 @@
 
 	<cm:property-placeholder id="trapdHandlerKafkaProperties" persistent-id="org.opennms.netmgt.trapd.handler.kafka" placeholder-prefix="$[" placeholder-suffix="]" update-strategy="none">
 		<cm:default-properties>
-			<cm:property name="kafkahost" value="127.0.0.1" />
-			<cm:property name="kafkaport" value="9092" />
+			<cm:property name="kafkaAddress" value="127.0.0.1:9092" />
 			<cm:property name="kafkatopic" value="trapd" />
+			<cm:property name="includeRawMessage" value="false" />
 		</cm:default-properties>
 	</cm:property-placeholder>
 
-	<bean id="trapNotificationHandlerCamel" class="org.opennms.netmgt.trapd.TrapNotificationHandlerCamelImpl">
+	<bean id="partitionKeyGenerator" class="org.opennms.core.camel.RandomPartitionKeyGenerator"/>
+
+	<bean id="trapdNotificationHandlerCamel" class="org.opennms.netmgt.trapd.TrapNotificationHandlerCamelImpl">
 		<argument value="seda:handleMessage"/>
 	</bean>
 
-	<service interface="org.opennms.netmgt.trapd.TrapNotificationHandler" ref="trapNotificationHandlerCamel"/>
+	<service interface="org.opennms.netmgt.trapd.TrapNotificationHandler" ref="trapdNotificationHandlerCamel"/>
 
-	<camelContext id="trapNotificationHandler" xmlns="http://camel.apache.org/schema/blueprint">
+	<!-- Camel Event marshalling processor -->
+	<bean id="marshaller" class="org.opennms.core.camel.JaxbUtilsMarshalProcessor">
+		<argument value="org.opennms.netmgt.trapd.TrapDTO" />
+	</bean>
+
+	<reference id="distPollerDao" interface="org.opennms.netmgt.dao.api.DistPollerDao"/>
+
+	<bean id="mapper" class="org.opennms.netmgt.trapd.TrapObjectToDTOProcessor">
+		<property name="distPollerDao" ref="distPollerDao"/>
+	</bean>
+
+	<!-- @see http://www.davsclaus.com/2012/06/locking-down-jmx-naming-now-easier-with.html -->
+	<camelContext id="trapdHandlerKafkaContext" managementNamePattern="#name#" xmlns="http://camel.apache.org/schema/blueprint">
 		<propertyPlaceholder id="properties" location="blueprint:trapdHandlerKafkaProperties" />
-		<route id="handleTrap">
-			<from uri="seda:handleMessage" />
-			<convertBodyTo type="org.opennms.netmgt.snmp.TrapNotification"/>
-			<setHeader headerName="kafka.PARTITION_KEY">
-				<!-- TODO: Partition by remote address -->
-				<!-- <simple>${body.remoteAddress}</simple> -->
-				<simple>trap</simple>
+
+		<route id="trapMarshal">
+			<from uri="seda:handleMessage?concurrentConsumers=4"/>
+
+			<setHeader headerName="includeRawMessage">
+				<simple resultType="java.lang.Boolean">properties:includeRawMessage</simple>
 			</setHeader>
- 			<log message="address:       ${body.sourceAddress}"/>
-			<log message="port:          ${body.port}"/>
- 			<transform>
-				<simple>${body.byteBuffer}</simple>
-			</transform>
-			<convertBodyTo type="java.lang.String"/>
-			<log message="bytes:         ${body}"/>
+
+			<!-- Marshal the message to XML -->
+			<process ref="mapper"/>
+			<process ref="marshaller"/>
+			<to uri="seda:sendMessage"/>
+		</route>
+
+		<route id="trapSendKafka">
+			<from uri="seda:sendMessage?concurrentConsumers=4"/>
+
+			<!-- HZN-862: Use ByteArrayPartitioner instead of this key generator -->
+			<setHeader headerName="kafka.PARTITION_KEY">
+				<simple>${bean:partitionKeyGenerator.getPartitionKey()}</simple>
+			</setHeader>
+
 			<!-- Have to use StringEncoder because of camel bug CAMEL-8790 -->
-			<to uri="kafka:{{kafkahost}}:{{kafkaport}}?topic={{kafkatopic}}&amp;serializerClass=kafka.serializer.StringEncoder"/>
+			<to uri="kafka:{{kafkaAddress}}?topic={{kafkatopic}}&amp;serializerClass=kafka.serializer.StringEncoder"/>
 		</route>
 	</camelContext>
 </blueprint>

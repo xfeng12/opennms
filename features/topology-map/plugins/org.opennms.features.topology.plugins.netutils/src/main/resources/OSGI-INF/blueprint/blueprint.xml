@@ -9,6 +9,8 @@ http://www.osgi.org/xmlns/blueprint-ext/v1.1.0 http://aries.apache.org/schemas/b
     <reference id="pingClient" interface="org.opennms.netmgt.icmp.proxy.LocationAwarePingClient" availability="mandatory" />
     <reference id="nodeDao" interface="org.opennms.netmgt.dao.api.NodeDao" availability="mandatory" />
     <reference id="monitoringLocationDao" interface="org.opennms.netmgt.dao.api.MonitoringLocationDao" availability="mandatory" />
+    <reference id="pingerFactory" interface="org.opennms.netmgt.icmp.PingerFactory" availability="mandatory" />
+
 
     <cm:property-placeholder persistent-id="org.opennms.features.topology.netutils" update-strategy="reload">
         <cm:default-properties>
@@ -17,7 +19,7 @@ http://www.osgi.org/xmlns/blueprint-ext/v1.1.0 http://aries.apache.org/schemas/b
         	<cm:property name="nodeListURL" value="element/nodeList.htm"/>
         	<cm:property name="nodePageURL" value="element/node.jsp?node="/>
         	<cm:property name="resourceGraphListURL" value="graph/index.jsp"/>
-        	<cm:property name="resourceGraphNodeURL" value="graph/chooseresource.htm?reports=all&amp;parentResourceId=node"/> 
+        	<cm:property name="resourceGraphNodeURL" value="graph/chooseresource.jsp?reports=all&amp;parentResourceId=node"/> 
         </cm:default-properties>
     </cm:property-placeholder>
     
@@ -25,6 +27,7 @@ http://www.osgi.org/xmlns/blueprint-ext/v1.1.0 http://aries.apache.org/schemas/b
         <argument ref="pingClient" />
         <argument ref="monitoringLocationDao"/>
         <argument ref="nodeDao" />
+        <argument ref="pingerFactory" />
     </bean>
     <bean id="eventsAlarmsOperation" class="org.opennms.features.topology.netutils.internal.operations.EventsAlarmsOperation" >
         <property name="eventsURL" value="${eventsURL}"/>
