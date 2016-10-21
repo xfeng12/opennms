@@ -56,6 +56,15 @@ public class PingCommand extends OsgiCommandSupport {
 
     @Option (name="-c", aliases = "--count", description="number of requests")
     int m_count = 1;
+    
+    @Option (name="-r", aliases = "--retries", description="number of retries")
+    int m_retries;
+    
+    @Option (name="-t", aliases = "--timeout", description="timeout in msec")
+    int m_timeout;
+    
+    @Option (name="-p", aliases = "--packetsize", description="packet size")
+    int m_packetsize;
 
     @Argument(index = 0, name = "host", description = "Hostname or IP Address of the system to walk", required = true, multiValued = false)
     String m_host;

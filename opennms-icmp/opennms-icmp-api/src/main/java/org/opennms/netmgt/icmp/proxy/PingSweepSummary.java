@@ -29,36 +29,24 @@
 package org.opennms.netmgt.icmp.proxy;
 
 import java.net.InetAddress;
+import java.util.Map;
 
-import javax.annotation.PostConstruct;
+import com.google.common.collect.Maps;
 
-import org.opennms.core.rpc.api.RpcClient;
-import org.opennms.core.rpc.api.RpcClientFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+public class PingSweepSummary {
+    
+    private Map<InetAddress, Double> m_responses = Maps.newConcurrentMap();
 
-@Component(value = "locationAwarePingClient")
-public class LocationAwarePingClientImpl implements LocationAwarePingClient {
-
-    @Autowired
-    private RpcClientFactory rpcClientFactory;
-
-    @Autowired
-    private PingProxyRpcModule pingProxyRpcModule;
-
-    private RpcClient<PingRequestDTO, PingResponseDTO> delegate;
-
-    @PostConstruct
-    public void init() {
-        delegate = rpcClientFactory.getClient(pingProxyRpcModule);
+    public Map<InetAddress, Double> getResponses() {
+        return m_responses;
     }
 
-    public RpcClient<PingRequestDTO, PingResponseDTO> getDelegate() {
-        return delegate;
+    public void setResponses(Map<InetAddress, Double> m_responses) {
+        this.m_responses = m_responses;
     }
-
-    @Override
-    public PingRequestBuilder ping(InetAddress inetAddress) {
-        return new PingRequestBuilderImpl(delegate).withInetAddress(inetAddress);
+    
+    public void addResponse(Map<InetAddress, Double> response) {
+        this.m_responses.putAll(response);
     }
+    
 }

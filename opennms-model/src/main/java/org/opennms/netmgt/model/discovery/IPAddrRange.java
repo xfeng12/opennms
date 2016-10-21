@@ -257,7 +257,7 @@ public final class IPAddrRange implements Iterable<InetAddress>, Serializable {
      *            The ending address.
      * 
      */
-    IPAddrRange(InetAddress start, InetAddress end) {
+    public IPAddrRange(InetAddress start, InetAddress end) {
         byte[] from = start.getAddress();
         byte[] to = end.getAddress();
 

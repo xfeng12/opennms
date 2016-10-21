@@ -29,36 +29,24 @@
 package org.opennms.netmgt.icmp.proxy;
 
 import java.net.InetAddress;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.TimeUnit;
 
-import javax.annotation.PostConstruct;
+public interface PingSweepRequestBuilder {
+    
 
-import org.opennms.core.rpc.api.RpcClient;
-import org.opennms.core.rpc.api.RpcClientFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+    PingSweepRequestBuilder withTimeout(long timeout, TimeUnit unit);
 
-@Component(value = "locationAwarePingClient")
-public class LocationAwarePingClientImpl implements LocationAwarePingClient {
+    PingSweepRequestBuilder withPacketSize(int packetSize);
 
-    @Autowired
-    private RpcClientFactory rpcClientFactory;
+    PingSweepRequestBuilder withRetries(int retries);
 
-    @Autowired
-    private PingProxyRpcModule pingProxyRpcModule;
+    PingSweepRequestBuilder withRange(InetAddress begin, InetAddress end);
 
-    private RpcClient<PingRequestDTO, PingResponseDTO> delegate;
+    PingSweepRequestBuilder withLocation(String location);
 
-    @PostConstruct
-    public void init() {
-        delegate = rpcClientFactory.getClient(pingProxyRpcModule);
-    }
+    PingSweepRequestBuilder withNumberOfRequests(int numberOfRequests);
 
-    public RpcClient<PingRequestDTO, PingResponseDTO> getDelegate() {
-        return delegate;
-    }
+    CompletableFuture<PingSweepSummary> execute();
 
-    @Override
-    public PingRequestBuilder ping(InetAddress inetAddress) {
-        return new PingRequestBuilderImpl(delegate).withInetAddress(inetAddress);
-    }
 }
