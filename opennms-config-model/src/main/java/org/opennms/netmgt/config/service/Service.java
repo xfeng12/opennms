@@ -593,4 +593,8 @@ public class Service implements Serializable {
         this._enabled = enabled;
     }
 
+    public String toString() {
+        return String.format("Service[name=%s, enabled=%s, className=%s]",
+                _name, _enabled, _className);
+    }
 }

@@ -34,10 +34,11 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 import org.apache.commons.lang.builder.ToStringBuilder;
 import org.opennms.core.camel.MinionDTO;
+import org.opennms.core.ipc.sink.api.Message;
 
 @XmlRootElement(name = "syslog-dto")
 @XmlAccessorType(XmlAccessType.NONE)
-public class SyslogDTO extends MinionDTO {
+public class SyslogDTO extends MinionDTO implements Message {
 
 	public SyslogDTO() {
 		// No-arg constructor for JAXB

@@ -93,4 +93,8 @@ class InvokerService {
     public boolean isBadService() {
         return (m_badThrowable != null);
     }
+
+    public String toString() {
+        return String.format("InvokerService[service=%s]", m_service);
+    }
 }

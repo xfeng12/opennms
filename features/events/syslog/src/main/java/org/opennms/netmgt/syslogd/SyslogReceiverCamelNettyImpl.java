@@ -53,8 +53,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.codahale.metrics.Histogram;
+import com.codahale.metrics.JmxReporter;
 import com.codahale.metrics.Meter;
 import com.codahale.metrics.MetricRegistry;
+import com.codahale.metrics.Timer;
+import com.codahale.metrics.Timer.Context;
 
 /**
  * @author Seth
@@ -141,8 +144,12 @@ public class SyslogReceiverCamelNettyImpl implements SyslogReceiver {
 
         // Create some metrics
         Meter packetMeter = METRICS.meter(MetricRegistry.name(getClass(), "packets"));
+        Timer processTimer = METRICS.timer(MetricRegistry.name(getClass(), "process"));
         Meter connectionMeter = METRICS.meter(MetricRegistry.name(getClass(), "connections"));
         Histogram packetSizeHistogram = METRICS.histogram(MetricRegistry.name(getClass(), "packetSize"));
+
+        final JmxReporter reporter = JmxReporter.forRegistry(METRICS).build();
+        reporter.start();
 
         SimpleRegistry registry = new SimpleRegistry();
         registry.put("syslogDispatcher", syslogDispatcher);
@@ -165,7 +172,7 @@ public class SyslogReceiverCamelNettyImpl implements SyslogReceiver {
             m_camel.addRoutes(new RouteBuilder() {
                 @Override
                 public void configure() throws Exception {
-                    String from = String.format("netty:udp://%s:%s?sync=false&allowDefaultCodec=false&receiveBufferSize=%d&connectTimeout=%d",
+                    String from = String.format("netty:udp://%s:%s?sync=false&allowDefaultCodec=false&receiveBufferSize=%d&connectTimeout=%d&synchronous=true",
                         InetAddressUtils.str(m_host),
                         m_port,
                         Integer.MAX_VALUE,
@@ -179,33 +186,35 @@ public class SyslogReceiverCamelNettyImpl implements SyslogReceiver {
                     .process(new Processor() {
                         @Override
                         public void process(Exchange exchange) throws Exception {
-                            ChannelBuffer buffer = exchange.getIn().getBody(ChannelBuffer.class);
-                            // NettyConstants.NETTY_REMOTE_ADDRESS is a SocketAddress type but because 
-                            // we are listening on an InetAddress, it will always be of type InetAddressSocket
-                            InetSocketAddress source = (InetSocketAddress)exchange.getIn().getHeader(NettyConstants.NETTY_REMOTE_ADDRESS); 
-                            // Syslog Handler Implementation to receive message from syslog port and pass it on to handler
-                            
-                            ByteBuffer byteBuffer = buffer.toByteBuffer();
-                            
-                            // Increment the packet counter
-                            packetMeter.mark();
-                            
-                            // Create a metric for the syslog packet size
-                            packetSizeHistogram.update(byteBuffer.remaining());
-                            
-                            SyslogConnection connection = new SyslogConnection(source.getAddress(), source.getPort(), byteBuffer, m_config, m_distPollerDao.whoami().getId(), m_distPollerDao.whoami().getLocation());
-                            exchange.getIn().setBody(connection, SyslogConnection.class);
+                            try (Context ctx = processTimer.time()) {
+                                ChannelBuffer buffer = exchange.getIn().getBody(ChannelBuffer.class);
+                                // NettyConstants.NETTY_REMOTE_ADDRESS is a SocketAddress type but because 
+                                // we are listening on an InetAddress, it will always be of type InetAddressSocket
+                                InetSocketAddress source = (InetSocketAddress)exchange.getIn().getHeader(NettyConstants.NETTY_REMOTE_ADDRESS); 
+                                // Syslog Handler Implementation to receive message from syslog port and pass it on to handler
+                                
+                                ByteBuffer byteBuffer = buffer.toByteBuffer();
+                                
+                                // Increment the packet counter
+                                packetMeter.mark();
+                                
+                                // Create a metric for the syslog packet size
+                                packetSizeHistogram.update(byteBuffer.remaining());
+                                
+                                SyslogConnection connection = new SyslogConnection(source.getAddress(), source.getPort(), byteBuffer, m_config, m_distPollerDao.whoami().getId(), m_distPollerDao.whoami().getLocation());
+                                exchange.getIn().setBody(connection, SyslogConnection.class);
 
-                            /*
-                            try {
-                                for (SyslogConnectionHandler handler : m_syslogConnectionHandlers) {
-                                    connectionMeter.mark();
-                                    handler.handleSyslogConnection(connection);
+                                /*
+                                try {
+                                    for (SyslogConnectionHandler handler : m_syslogConnectionHandlers) {
+                                        connectionMeter.mark();
+                                        handler.handleSyslogConnection(connection);
+                                    }
+                                } catch (Throwable e) {
+                                    LOG.error("Handler execution failed in {}", this.getClass().getSimpleName(), e);
                                 }
-                            } catch (Throwable e) {
-                                LOG.error("Handler execution failed in {}", this.getClass().getSimpleName(), e);
+                                */
                             }
-                            */
                         }
                     }).to("bean:syslogDispatcher?method=dispatch");
                 }
