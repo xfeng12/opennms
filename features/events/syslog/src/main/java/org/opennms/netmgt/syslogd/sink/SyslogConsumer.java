@@ -2,12 +2,10 @@ package org.opennms.netmgt.syslogd.sink;
 
 import org.opennms.core.ipc.sink.api.MessageConsumer;
 import org.opennms.core.ipc.sink.api.MessageConsumerManager;
-import org.opennms.core.ipc.sink.api.SinkModule;
-import org.opennms.netmgt.config.SyslogdConfig;
-import org.opennms.netmgt.syslogd.SyslogConnection;
-import org.opennms.netmgt.syslogd.SyslogDTO;
-import org.opennms.netmgt.syslogd.SyslogDTOToObjectProcessor;
-import org.opennms.netmgt.syslogd.SyslogProcessor;
+import org.opennms.netmgt.events.api.EventForwarder;
+import org.opennms.netmgt.syslogd.UDPMessageLogDTO;
+import org.opennms.netmgt.syslogd.UDPProcessor;
+import org.opennms.netmgt.xml.event.Log;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -15,7 +13,7 @@ import com.codahale.metrics.MetricRegistry;
 import com.codahale.metrics.Timer;
 import com.codahale.metrics.Timer.Context;
 
-public class SyslogConsumer implements MessageConsumer<SyslogDTO>, InitializingBean {
+public class SyslogConsumer implements MessageConsumer<UDPMessageLogDTO>, InitializingBean {
 
     private static final SyslogModule syslogModule = new SyslogModule();
 
@@ -27,7 +25,10 @@ public class SyslogConsumer implements MessageConsumer<SyslogDTO>, InitializingB
     private MessageConsumerManager messageConsumerManager;
 
     @Autowired
-    private SyslogdConfig syslogdConfig;
+    private UDPProcessor udpProcessor;
+    
+    @Autowired
+    private EventForwarder eventForwarder;
 
     public SyslogConsumer(MetricRegistry registry) {
         handleTimer = registry.timer("handle");
@@ -36,24 +37,21 @@ public class SyslogConsumer implements MessageConsumer<SyslogDTO>, InitializingB
     }
 
     @Override
-    public SinkModule<SyslogDTO> getModule() {
+    public SyslogModule getModule() {
         return syslogModule;
     }
 
     @Override
-    public void handleMessage(SyslogDTO message) {
+    public void handleMessage(UDPMessageLogDTO messageLog) {
         try (Context handleCtx = handleTimer.time()) {
-            final SyslogConnection connection = SyslogDTOToObjectProcessor.dto2object(message);
-            connection.setConfig(syslogdConfig);
-
-            SyslogProcessor processor = null;
+            Log eventLog = null;
             try (Context toEventCtx = toEventTimer.time()) {
-                processor = connection.call();
+                eventLog = udpProcessor.toEventLog(messageLog);
             }
 
-            if (processor != null) {
+            if (eventLog != null) {
                 try (Context broadCastCtx = broadcastTimer.time()) {
-                    processor.call();
+                    eventForwarder.sendNowSync(eventLog);
                 }
             }
         }

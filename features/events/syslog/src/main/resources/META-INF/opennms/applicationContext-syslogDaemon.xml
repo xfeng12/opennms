@@ -37,6 +37,10 @@
     </property>
   </bean>
 
+  <bean id="udpProcessor" class="org.opennms.netmgt.syslogd.UDPProcessor">
+    <constructor-arg ref="syslogdConfigFactory"/>
+  </bean>
+
   <bean id="syslogConsumer" class="org.opennms.netmgt.syslogd.sink.SyslogConsumer">
     <constructor-arg ref="syslogdMetricRegistry"/>
   </bean>
