@@ -39,6 +39,7 @@ import java.util.Objects;
 import org.opennms.netmgt.collection.api.AttributeType;
 import org.opennms.netmgt.collection.api.CollectionAgent;
 import org.opennms.netmgt.collection.api.CollectionSet;
+import org.opennms.netmgt.collection.api.CollectionStatus;
 import org.opennms.netmgt.collection.api.TimeKeeper;
 import org.opennms.netmgt.collection.dto.CollectionSetDTO;
 import org.opennms.netmgt.collection.support.AbstractCollectionResource;
@@ -156,7 +157,7 @@ public class CollectionSetBuilder {
 
             @Override
             public String toString() {
-                return String.format("Resource[%s]/Node[%d]", resource, m_agent.getNodeId());
+                return resource.toString();
             }
         };
     }

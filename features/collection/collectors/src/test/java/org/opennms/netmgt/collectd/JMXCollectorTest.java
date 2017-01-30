@@ -35,6 +35,7 @@ import java.io.File;
 import java.lang.management.ManagementFactory;
 import java.net.InetAddress;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -52,9 +53,10 @@ import org.opennms.netmgt.collectd.jmxhelper.JmxTestMBean;
 import org.opennms.netmgt.collection.api.CollectionAgent;
 import org.opennms.netmgt.collection.api.CollectionAttribute;
 import org.opennms.netmgt.collection.api.CollectionSet;
+import org.opennms.netmgt.collection.api.CollectionStatus;
+import org.opennms.netmgt.collection.api.ServiceParameters.ParameterName;
 import org.opennms.netmgt.config.BeanInfo;
 import org.opennms.netmgt.config.JMXDataCollectionConfigDao;
-import org.opennms.netmgt.config.collectd.jmx.Attrib;
 import org.opennms.netmgt.dao.jmx.JmxConfigDaoJaxb;
 import org.opennms.netmgt.jmx.connection.JmxConnectors;
 
@@ -89,13 +91,11 @@ public class JMXCollectorTest {
         platformMBeanServer.registerMBean(testMBean, objectName);
 
         collectionAgent = new MockCollectionAgent(1, "node", "fs", "fid", InetAddress.getLoopbackAddress());
-        collectionAgent.setAttribute("org.opennms.netmgt.collectd.JMXCollector.nodeInfo", jmxNodeInfo);
     }
 
     @After
     public void tearDown() throws Exception {
         jmxNodeInfo = null;
-        jmxCollector.release();
         jmxCollector = null;
         platformMBeanServer.unregisterMBean(new ObjectName("org.opennms.netmgt.collectd.jmxhelper:type=JmxTest"));
         platformMBeanServer = null;
@@ -169,23 +169,19 @@ public class JMXCollectorTest {
         dataSourceMap.put(mBeansObjectName + "|LastGcInfo", new JMXDataSource());
 
         jmxNodeInfo.setDsMap(dataSourceMap);
-        CollectionSet collectionSet = jmxCollector.collect(collectionAgent, null, new HashMap<String, Object>());
-        assertEquals("Collection of one Jvm default value failed", 1, collectionSet.getStatus());
-    }
-
-    private Map<String, JMXDataSource> generateDataSourceMap(final String collectionName, final Map<String, List<Attrib>> attributeMap) {
-        return JMXCollector.buildDataSourceList(jmxDataCollectionConfigDao, collectionName, attributeMap);
+        CollectionSet collectionSet = jmxCollector.collect(collectionAgent, Collections.emptyMap());
+        assertEquals("Collection of one Jvm default value failed", CollectionStatus.SUCCEEDED, collectionSet.getStatus());
     }
 
     private Map<String, Map<String, CollectionAttribute>> collect(String collectionName) {
-        jmxNodeInfo.setMBeans(jmxDataCollectionConfigDao.getMBeanInfo(collectionName));
-        jmxNodeInfo.setDsMap(generateDataSourceMap(collectionName, jmxDataCollectionConfigDao.getAttributeMap(collectionName, "", "")));
-        collectionAgent.setAttribute("collectionName", collectionName);
+        final Map<String, Object> parms = new HashMap<String, Object>();
+        parms.put(ParameterName.COLLECTION.toString(), collectionName);
+        parms.putAll(jmxCollector.getRuntimeAttributes(collectionAgent, parms));
 
         //start collection
-        final CollectionSet collectionSet = jmxCollector.collect(collectionAgent, null, new HashMap<String, Object>());
+        final CollectionSet collectionSet = jmxCollector.collect(collectionAgent, parms);
 
-        assertEquals("Collection: " + collectionName + " failed", 1, collectionSet.getStatus());
+        assertEquals("Collection: " + collectionName + " failed", CollectionStatus.SUCCEEDED, collectionSet.getStatus());
 
         return CollectionSetUtils.getAttributesByNameByGroup(collectionSet);
     }
@@ -194,6 +190,11 @@ public class JMXCollectorTest {
         @Override
         protected JmxConnectors getConnectionName() {
             return JmxConnectors.platform;
+        }
+
+        @Override
+        public String serviceName() {
+            return "platform";
         }
     }
 }

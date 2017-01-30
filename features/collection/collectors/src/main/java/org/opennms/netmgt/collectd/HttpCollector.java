@@ -38,15 +38,20 @@ import java.nio.charset.Charset;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.text.ParseException;
+import java.util.AbstractMap.SimpleEntry;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.http.Header;
@@ -67,21 +72,20 @@ import org.opennms.core.utils.EmptyKeyRelaxedTrustProvider;
 import org.opennms.core.utils.InetAddressUtils;
 import org.opennms.core.utils.ParameterMap;
 import org.opennms.core.web.HttpClientWrapper;
+import org.opennms.netmgt.collection.api.AbstractRemoteServiceCollector;
 import org.opennms.netmgt.collection.api.AttributeType;
 import org.opennms.netmgt.collection.api.CollectionAgent;
 import org.opennms.netmgt.collection.api.CollectionInitializationException;
 import org.opennms.netmgt.collection.api.CollectionSet;
-import org.opennms.netmgt.collection.api.ServiceCollector;
+import org.opennms.netmgt.collection.api.CollectionStatus;
 import org.opennms.netmgt.collection.api.ServiceParameters.ParameterName;
 import org.opennms.netmgt.collection.support.builder.CollectionSetBuilder;
-import org.opennms.netmgt.collection.support.builder.CollectionStatus;
 import org.opennms.netmgt.collection.support.builder.NodeLevelResource;
 import org.opennms.netmgt.config.HttpCollectionConfigFactory;
 import org.opennms.netmgt.config.httpdatacollection.Attrib;
 import org.opennms.netmgt.config.httpdatacollection.HttpCollection;
 import org.opennms.netmgt.config.httpdatacollection.Parameter;
 import org.opennms.netmgt.config.httpdatacollection.Uri;
-import org.opennms.netmgt.events.api.EventProxy;
 import org.opennms.netmgt.rrd.RrdRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -92,9 +96,15 @@ import org.slf4j.LoggerFactory;
  * @author <a href="mailto:david@opennms.org">David Hustace</a>
  * @version $Id: $
  */
-public class HttpCollector implements ServiceCollector {
+public class HttpCollector extends AbstractRemoteServiceCollector {
 
     private static final Logger LOG = LoggerFactory.getLogger(HttpCollector.class);
+
+    private static final String HTTP_COLLECTION_KEY = "httpCollection";
+
+    private static final Map<String, Class<?>> TYPE_MAP = Collections.unmodifiableMap(Stream.of(
+            new SimpleEntry<>(HTTP_COLLECTION_KEY, HttpCollection.class))
+            .collect(Collectors.toMap((e) -> e.getKey(), (e) -> e.getValue())));
 
     private static final int DEFAULT_RETRY_COUNT = 2;
     private static final int DEFAULT_SO_TIMEOUT = 3000;
@@ -110,11 +120,25 @@ public class HttpCollector implements ServiceCollector {
         java.security.Security.addProvider(new EmptyKeyRelaxedTrustProvider());
     }
 
+    public HttpCollector() {
+        super(TYPE_MAP);
+    }
+
+    @Override
+    public Map<String, Object> getRuntimeAttributes(CollectionAgent agent, Map<String, Object> parameters) {
+        final Map<String, Object> runtimeAttributes = new HashMap<>();
+        final String collectionName = ParameterMap.getKeyedString(parameters, "collection", ParameterMap.getKeyedString(parameters, "http-collection", null));
+        final HttpCollection collection = HttpCollectionConfigFactory.getInstance().getHttpCollection(collectionName);
+        runtimeAttributes.put(HTTP_COLLECTION_KEY, collection);
+        return runtimeAttributes;
+    }
+ 
     /** {@inheritDoc} */
     @Override
-    public CollectionSet collect(CollectionAgent agent, EventProxy eproxy, Map<String, Object> parameters) {
+    public CollectionSet collect(CollectionAgent agent, Map<String, Object> parameters) {
+        final HttpCollection collection = (HttpCollection)parameters.get(HTTP_COLLECTION_KEY);
         final CollectionSetBuilder collectionSetBuilder = new CollectionSetBuilder(agent);
-        final HttpCollectorAgent httpCollectorAgent = new HttpCollectorAgent(agent, parameters, collectionSetBuilder);
+        final HttpCollectorAgent httpCollectorAgent = new HttpCollectorAgent(agent, parameters, collection, collectionSetBuilder);
         httpCollectorAgent.collect();
         return collectionSetBuilder.build();
     }
@@ -122,6 +146,7 @@ public class HttpCollector implements ServiceCollector {
     private static class HttpCollectorAgent {
         private final CollectionAgent m_agent;
         private final Map<String, Object> m_parameters;
+        private final HttpCollection m_httpCollection;
         private final CollectionSetBuilder m_collectionSetBuilder;
         private Uri m_uriDef;
 
@@ -129,26 +154,15 @@ public class HttpCollector implements ServiceCollector {
             return m_uriDef;
         }
 
-        public HttpCollectorAgent(CollectionAgent agent, Map<String, Object> parameters, CollectionSetBuilder collectionSetBuilder) {
-            m_agent = agent;
-            m_parameters = parameters;
-            m_collectionSetBuilder = collectionSetBuilder;
+        public HttpCollectorAgent(CollectionAgent agent, Map<String, Object> parameters, HttpCollection httpCollection, CollectionSetBuilder collectionSetBuilder) {
+            m_agent = Objects.requireNonNull(agent);
+            m_parameters = Objects.requireNonNull(parameters);
+            m_httpCollection = Objects.requireNonNull(httpCollection);
+            m_collectionSetBuilder = Objects.requireNonNull(collectionSetBuilder);
         }
 
-        @SuppressWarnings("deprecation")
         public void collect() {
-            String collectionName=ParameterMap.getKeyedString(m_parameters, ParameterName.COLLECTION.toString(), null);
-            if(collectionName==null) {
-                //Look for the old configuration style:
-                collectionName=ParameterMap.getKeyedString(m_parameters, ParameterName.HTTP_COLLECTION.toString(), null);
-            }
-            if (collectionName==null) {
-                LOG.debug("no collection name found in parameters");
-                m_collectionSetBuilder.withStatus(CollectionStatus.FAILED);
-                return;
-            }
-            HttpCollection collection = HttpCollectionConfigFactory.getInstance().getHttpCollection(collectionName);
-            List<Uri> uriDefs = collection.getUris().getUri();
+            List<Uri> uriDefs = m_httpCollection.getUris().getUri();
             for (Uri uriDef : uriDefs) {
                 m_uriDef = uriDef;
                 try {
@@ -520,10 +534,8 @@ public class HttpCollector implements ServiceCollector {
     /** {@inheritDoc} 
      * @throws CollectionInitializationException */
     @Override
-    public void initialize(Map<String, String> parameters) throws CollectionInitializationException {
-
+    public void initialize() throws CollectionInitializationException {
         LOG.debug("initialize: Initializing HttpCollector.");
-
         initHttpCollectionConfig();
     }
 
@@ -538,22 +550,6 @@ public class HttpCollector implements ServiceCollector {
             LOG.error("initialize: Error reading configuration", e);
             throw new UndeclaredThrowableException(e);
         }
-    }
-
-    /** {@inheritDoc} */
-    @Override
-    public void initialize(CollectionAgent agent, Map<String, Object> parameters) {
-        LOG.debug("initialize: Initializing HTTP collection for agent: {}", agent);
-    }
-
-    @Override
-    public void release() {
-        // pass
-    }
-
-    @Override
-    public void release(CollectionAgent agent) {
-        // pass
     }
 
     /** {@inheritDoc} */

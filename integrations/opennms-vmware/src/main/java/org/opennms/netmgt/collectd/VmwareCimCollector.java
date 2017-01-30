@@ -38,7 +38,6 @@
 
 package org.opennms.netmgt.collectd;
 
-import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.rmi.RemoteException;
@@ -52,14 +51,14 @@ import org.exolab.castor.xml.ValidationException;
 import org.opennms.core.spring.BeanUtils;
 import org.opennms.core.utils.InetAddressUtils;
 import org.opennms.core.utils.ParameterMap;
+import org.opennms.netmgt.collection.api.AbstractServiceCollector;
 import org.opennms.netmgt.collection.api.AttributeType;
 import org.opennms.netmgt.collection.api.CollectionAgent;
 import org.opennms.netmgt.collection.api.CollectionException;
 import org.opennms.netmgt.collection.api.CollectionInitializationException;
 import org.opennms.netmgt.collection.api.CollectionSet;
-import org.opennms.netmgt.collection.api.ServiceCollector;
+import org.opennms.netmgt.collection.api.CollectionStatus;
 import org.opennms.netmgt.collection.support.builder.CollectionSetBuilder;
-import org.opennms.netmgt.collection.support.builder.CollectionStatus;
 import org.opennms.netmgt.collection.support.builder.GenericTypeResource;
 import org.opennms.netmgt.collection.support.builder.NodeLevelResource;
 import org.opennms.netmgt.collection.support.builder.Resource;
@@ -70,7 +69,6 @@ import org.opennms.netmgt.config.vmware.cim.VmwareCimCollection;
 import org.opennms.netmgt.config.vmware.cim.VmwareCimGroup;
 import org.opennms.netmgt.dao.VmwareCimDatacollectionConfigDao;
 import org.opennms.netmgt.dao.api.NodeDao;
-import org.opennms.netmgt.events.api.EventProxy;
 import org.opennms.netmgt.model.OnmsNode;
 import org.opennms.netmgt.rrd.RrdRepository;
 import org.opennms.protocols.vmware.VmwareViJavaAccess;
@@ -82,7 +80,7 @@ import com.vmware.vim25.HostRuntimeInfo;
 import com.vmware.vim25.HostSystemPowerState;
 import com.vmware.vim25.mo.HostSystem;
 
-public class VmwareCimCollector implements ServiceCollector {
+public class VmwareCimCollector extends AbstractServiceCollector {
 
     /**
      * logging for VMware CIM data collection
@@ -114,7 +112,7 @@ public class VmwareCimCollector implements ServiceCollector {
      *
      */
     @Override
-    public void initialize(Map<String, String> parameters) throws CollectionInitializationException {
+    public void initialize() throws CollectionInitializationException {
         if (m_nodeDao == null) {
             m_nodeDao = BeanUtils.getBean("daoContext", "nodeDao", NodeDao.class);
         }
@@ -134,26 +132,6 @@ public class VmwareCimCollector implements ServiceCollector {
         if (m_resourceTypesDao == null) {
             m_resourceTypesDao = BeanUtils.getBean("daoContext", "resourceTypesDao", ResourceTypesDao.class);
         }
-
-        initializeRrdRepository();
-    }
-
-    /**
-     * Initializes the Rrd repository.
-     */
-    private void initializeRrdRepository() {
-        logger.debug("initializeRrdRepository: Initializing RRD repo from VmwareCimCollector...");
-        initializeRrdDirs();
-    }
-
-    /**
-     * Initializes the Rrd directories.
-     */
-    private void initializeRrdDirs() {
-        final File f = new File(m_vmwareCimDatacollectionConfigDao.getRrdPath());
-        if (!f.isDirectory() && !f.mkdirs()) {
-            throw new RuntimeException("Unable to create RRD file repository.  Path doesn't already exist and could not make directory: " + m_vmwareCimDatacollectionConfigDao.getRrdPath());
-        }
     }
 
     /**
@@ -171,55 +149,33 @@ public class VmwareCimCollector implements ServiceCollector {
         }
     }
 
-    /**
-     * Initializes this instance for a given collection agent and a parameter map.
-     *
-     * @param agent      the collection agent
-     * @param parameters the parameter map
-     * @throws CollectionInitializationException
-     *
-     */
     @Override
-    public void initialize(CollectionAgent agent, Map<String, Object> parameters) throws CollectionInitializationException {
-        OnmsNode onmsNode = m_nodeDao.get(agent.getNodeId());
+    public Map<String, Object> getRuntimeAttributes(CollectionAgent agent, Map<String, Object> parameters) {
+        final Map<String, Object> runtimeAttributes = new HashMap<>();
+        final OnmsNode onmsNode = m_nodeDao.get(agent.getNodeId());
 
         // retrieve the assets and
         String vmwareManagementServer = onmsNode.getAssetRecord().getVmwareManagementServer();
         String vmwareManagedEntityType = onmsNode.getAssetRecord().getVmwareManagedEntityType();
         String vmwareManagedObjectId = onmsNode.getForeignId();
 
-        parameters.put("vmwareManagementServer", vmwareManagementServer);
-        parameters.put("vmwareManagedEntityType", vmwareManagedEntityType);
-        parameters.put("vmwareManagedObjectId", vmwareManagedObjectId);
-    }
+        runtimeAttributes.put("vmwareManagementServer", vmwareManagementServer);
+        runtimeAttributes.put("vmwareManagedEntityType", vmwareManagedEntityType);
+        runtimeAttributes.put("vmwareManagedObjectId", vmwareManagedObjectId);
 
-    /**
-     * This method is used for cleanup.
-     */
-    @Override
-    public void release() {
-    }
-
-    /**
-     * This method is used for cleanup for a given collection agent.
-     *
-     * @param agent the collection agent
-     */
-    @Override
-    public void release(CollectionAgent agent) {
+        return runtimeAttributes;
     }
 
     /**
      * This method collect the data for a given collection agent.
      *
      * @param agent      the collection agent
-     * @param eproxy     the event proxy
      * @param parameters the parameters map
      * @return the generated collection set
      * @throws CollectionException
      */
     @Override
-    public CollectionSet collect(CollectionAgent agent, EventProxy eproxy, Map<String, Object> parameters) throws CollectionException {
+    public CollectionSet collect(CollectionAgent agent, Map<String, Object> parameters) throws CollectionException {
         String collectionName = ParameterMap.getKeyedString(parameters, "collection", ParameterMap.getKeyedString(parameters, "vmware-collection", null));
 
         final VmwareCimCollection collection = m_vmwareCimDatacollectionConfigDao.getVmwareCimCollection(collectionName);

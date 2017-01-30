@@ -61,11 +61,8 @@
 
 package org.opennms.netmgt.protocols.xmp.collector;
 
-import java.io.File;
 import java.lang.reflect.UndeclaredThrowableException;
-import java.util.HashSet;
 import java.util.Map;
-import java.util.Set;
 
 import org.krupczak.xmp.SocketOpts;
 import org.krupczak.xmp.Xmp;
@@ -74,14 +71,14 @@ import org.krupczak.xmp.XmpSession;
 import org.krupczak.xmp.XmpVar;
 import org.opennms.core.spring.BeanUtils;
 import org.opennms.core.utils.ParameterMap;
+import org.opennms.netmgt.collection.api.AbstractServiceCollector;
 import org.opennms.netmgt.collection.api.AttributeType;
 import org.opennms.netmgt.collection.api.CollectionAgent;
 import org.opennms.netmgt.collection.api.CollectionException;
 import org.opennms.netmgt.collection.api.CollectionResource;
 import org.opennms.netmgt.collection.api.CollectionSet;
-import org.opennms.netmgt.collection.api.ServiceCollector;
+import org.opennms.netmgt.collection.api.CollectionStatus;
 import org.opennms.netmgt.collection.support.builder.CollectionSetBuilder;
-import org.opennms.netmgt.collection.support.builder.CollectionStatus;
 import org.opennms.netmgt.collection.support.builder.GenericTypeResource;
 import org.opennms.netmgt.collection.support.builder.InterfaceLevelResource;
 import org.opennms.netmgt.collection.support.builder.NodeLevelResource;
@@ -92,14 +89,14 @@ import org.opennms.netmgt.config.xmpConfig.XmpConfig;
 import org.opennms.netmgt.config.xmpDataCollection.Group;
 import org.opennms.netmgt.config.xmpDataCollection.MibObj;
 import org.opennms.netmgt.config.xmpDataCollection.XmpCollection;
-import org.opennms.netmgt.events.api.EventProxy;
 import org.opennms.netmgt.protocols.xmp.config.XmpAgentConfig;
 import org.opennms.netmgt.protocols.xmp.config.XmpConfigFactory;
 import org.opennms.netmgt.protocols.xmp.config.XmpPeerFactory;
 import org.opennms.netmgt.rrd.RrdRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-public class XmpCollector implements ServiceCollector {
+
+public class XmpCollector extends AbstractServiceCollector {
 	
 	private static final Logger LOG = LoggerFactory.getLogger(XmpCollector.class);
 
@@ -111,7 +108,6 @@ public class XmpCollector implements ServiceCollector {
     int xmpPort;
     int timeout;  /* millseconds */
     int retries;
-    Set<CollectionAgent> setOfNodes;
     SocketOpts sockopts;
     String authenUser;
 
@@ -124,10 +120,6 @@ public class XmpCollector implements ServiceCollector {
     public XmpCollector() 
     {
         LOG.debug("XmpCollector created");
-
-        // initialize collections and containers for storing
-        // list of systems to query 
-        setOfNodes = new HashSet<CollectionAgent>();
 
         // defaults
         xmpPort = Xmp.XMP_PORT;
@@ -308,13 +300,8 @@ public class XmpCollector implements ServiceCollector {
      * initialize our XmpCollector with global parameters *
      */
     @Override
-    public void initialize(Map<String, String> parameters)
+    public void initialize()
     {
-        // parameters come from collectd-configuration.xml 
-        // and they are the service parameters specified in xml
-        // with keyname and value
-        // parameter key=collection value=default
-
         // initialize our data collection factory
 
         LOG.debug("initialize(params) called");
@@ -347,17 +334,6 @@ public class XmpCollector implements ServiceCollector {
             m_resourceTypesDao = BeanUtils.getBean("daoContext", "resourceTypesDao", ResourceTypesDao.class);
         }
 
-        // initialize an RRD repository with various parameters 
-        // /opt/opennms/share/rrd/snmp/
-
-        File f = new File(XmpCollectionFactory.getInstance().getRrdPath());
-        if (!f.isDirectory()) {
-            if (!f.mkdirs()) {
-                throw new RuntimeException("Unable to create RRD file " + "repository.  Path doesn't already exist and could not make directory: " + 
-                                           XmpCollectionFactory.getInstance().getRrdPath());
-            }
-        }
-
         // get our top-level object for our protocol config file,
         // xmp-config.xml, already parsed and ready to examine
         XmpConfig protoConfig = XmpConfigFactory.getInstance().getXmpConfig();
@@ -380,63 +356,6 @@ public class XmpCollector implements ServiceCollector {
     } /* initialize() */
 
     /**
-     * {@inheritDoc}
-     *
-     * initialize the querying of a particular agent/interface with
-     * parameters specific to this agent/interface *
-     */
-    @Override
-    public void initialize(CollectionAgent agent, Map<String, Object> parameters)
-    {
-        LOG.debug("initialize agent/params called for {}", agent);
-
-        // add an agent to our set to query
-        setOfNodes.add(agent);
-
-        // we are using whichever CollectionAgent instantiation
-        // is passed into us.
-
-        // parameters include SERVICE/service-name 
-        // superset of parameters passed in main initialize
-        // ignore for now; other parameters like collection name
-
-
-        return;
-    }
-
-    /**
-     * Release/stop all querying of agents/interfaces and release
-     *       state associated with them *
-     */
-    @Override
-    public void release() 
-    {
-        LOG.info("release()");
-
-        // orphan existing set thus making them available
-        // for garbage collection 
-        setOfNodes = new HashSet<CollectionAgent>();
-
-        return;
-    }
-
-    /**
-     * {@inheritDoc}
-     *
-     * Release/stop querying a particular agent *
-     */
-    @Override
-    public void release(CollectionAgent agent)
-    {
-        LOG.info("release agent called for {}",agent);
-
-        // remove agent from set; ignore return value
-        setOfNodes.remove(agent);
-
-        return;
-    }
-
-    /**
      * who am I and what am I ? *
      *
      * @return a {@link java.lang.String} object.
@@ -456,7 +375,7 @@ public class XmpCollector implements ServiceCollector {
      * @throws CollectionException
      */
     @Override
-    public CollectionSet collect(CollectionAgent agent, EventProxy eproxy, 
+    public CollectionSet collect(CollectionAgent agent, 
             Map<String, Object> parameters) throws CollectionException
     {
         CollectionSetBuilder collectionSetBuilder;

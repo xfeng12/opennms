@@ -259,8 +259,6 @@ public class TcaCollectorIT implements InitializingBean {
 		collector.setConfigDao(m_configDao);
 		collector.setResourceStorageDao(m_resourceStorageDao);
 		collector.setResourceTypesDao(m_resourceTypesDao);
-		collector.initialize(new HashMap<String,String>());
-		collector.initialize(m_collectionAgent, parameters);
 
 		CollectionSetVisitor persister = m_persisterFactory.createOneToOnePersister(new ServiceParameters(parameters), collector.getRrdRepository("default"), false, false);
 
@@ -270,7 +268,7 @@ public class TcaCollectorIT implements InitializingBean {
 		SnmpObjId peer2 = SnmpObjId.get(".1.3.6.1.4.1.27091.3.1.6.1.2.171.19.38.70");
 
 		// Collect and Persist Data - Step 1
-		CollectionSet collectionSet = collector.collect(m_collectionAgent, null, parameters);
+		CollectionSet collectionSet = collector.collect(m_collectionAgent, parameters);
 		validateCollectionSet(collectionSet);
 		collectionSet.visit(persister);
 
@@ -297,7 +295,7 @@ public class TcaCollectorIT implements InitializingBean {
 		Assert.assertFalse(v2a.toDisplayString().equals(v2b.toDisplayString()));
 
 		// Collect and Persist Data - Step 2
-		collectionSet = collector.collect(m_collectionAgent, null, parameters);
+		collectionSet = collector.collect(m_collectionAgent, parameters);
 		validateCollectionSet(collectionSet);
 		collectionSet.visit(persister);
 

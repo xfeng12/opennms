@@ -34,9 +34,7 @@ import static org.easymock.EasyMock.eq;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Date;
 import java.util.List;
-import java.util.Map;
 
 import org.easymock.EasyMock;
 import org.junit.Assert;
@@ -46,12 +44,7 @@ import org.opennms.core.test.LoggingEvent;
 import org.opennms.core.test.MockLogAppender;
 import org.opennms.core.utils.InetAddressUtils;
 import org.opennms.core.utils.InsufficientInformationException;
-import org.opennms.netmgt.collection.api.CollectionAgent;
-import org.opennms.netmgt.collection.api.CollectionSet;
-import org.opennms.netmgt.collection.api.CollectionSetVisitor;
-import org.opennms.netmgt.collection.api.ServiceCollector;
-import org.opennms.netmgt.collection.support.AbstractCollectionSet;
-import org.opennms.netmgt.collection.support.builder.CollectionSetBuilder;
+import org.opennms.netmgt.collection.support.DefaultServiceCollectorRegistry;
 import org.opennms.netmgt.config.CollectdConfigFactory;
 import org.opennms.netmgt.config.PollOutagesConfigFactory;
 import org.opennms.netmgt.config.collectd.CollectdConfiguration;
@@ -66,7 +59,6 @@ import org.opennms.netmgt.dao.mock.MockTransactionTemplate;
 import org.opennms.netmgt.events.api.EventConstants;
 import org.opennms.netmgt.events.api.EventIpcManager;
 import org.opennms.netmgt.events.api.EventIpcManagerFactory;
-import org.opennms.netmgt.events.api.EventProxy;
 import org.opennms.netmgt.filter.FilterDaoFactory;
 import org.opennms.netmgt.filter.api.FilterDao;
 import org.opennms.netmgt.mock.MockPersisterFactory;
@@ -75,7 +67,6 @@ import org.opennms.netmgt.model.OnmsIpInterface;
 import org.opennms.netmgt.model.OnmsNode;
 import org.opennms.netmgt.model.OnmsServiceType;
 import org.opennms.netmgt.model.events.EventBuilder;
-import org.opennms.netmgt.rrd.RrdRepository;
 import org.opennms.test.mock.EasyMockUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -166,6 +157,7 @@ public class DuplicatePrimaryAddressIT {
      * @throws Exception the exception
      */
     private void initialize(boolean scheduleExistingNodes) throws Exception {
+        MockServiceCollector.setDelegate(null);
         MockLogAppender.setupLogging();
 
         m_eventIpcManager = new MockEventIpcManager();
@@ -247,6 +239,8 @@ public class DuplicatePrimaryAddressIT {
         m_collectd.setNodeDao(m_nodeDao);
         m_collectd.setFilterDao(m_filterDao);
         m_collectd.setPersisterFactory(new MockPersisterFactory());
+        m_collectd.setServiceCollectorRegistry(new DefaultServiceCollectorRegistry());
+        m_collectd.setLocationAwareCollectorClient(CollectorTestUtils.createLocationAwareCollectorClient());
 
         m_collectd.afterPropertiesSet();
         m_collectd.start();
@@ -301,75 +295,6 @@ public class DuplicatePrimaryAddressIT {
 
         EasyMock.expect(m_collectdConfiguration.getPackages()).andReturn(Collections.singletonList(pkg)).anyTimes();
         EasyMock.expect(m_collectdConfigFactory.interfaceInPackage(anyObject(OnmsIpInterface.class), eq(pkg))).andReturn(true).anyTimes();
-    }
-
-    /**
-     * The Class MockServiceCollector.
-     */
-    public static class MockServiceCollector implements ServiceCollector {
-        private static final Logger LOG = LoggerFactory.getLogger(MockServiceCollector.class);
-
-        /** The collection count. */
-        int m_collectCount = 0;
-
-        /* (non-Javadoc)
-         * @see org.opennms.netmgt.collection.api.ServiceCollector#collect(org.opennms.netmgt.collection.api.CollectionAgent, org.opennms.netmgt.model.events.EventProxy, java.util.Map)
-         */
-        @Override
-        public CollectionSet collect(CollectionAgent agent, EventProxy eproxy, Map<String, Object> parameters) {
-            m_collectCount++;
-            return new CollectionSetBuilder(agent).build();
-        }
-
-        /**
-         * Gets the collection count.
-         *
-         * @return the collection count
-         */
-        public Object getCollectCount() {
-            return m_collectCount;
-        }
-
-        /* (non-Javadoc)
-         * @see org.opennms.netmgt.collection.api.ServiceCollector#initialize(java.util.Map)
-         */
-        @Override
-        public void initialize(Map<String, String> parameters) {}
-
-        /* (non-Javadoc)
-         * @see org.opennms.netmgt.collection.api.ServiceCollector#initialize(org.opennms.netmgt.collection.api.CollectionAgent, java.util.Map)
-         */
-        @Override
-        public void initialize(CollectionAgent agent, Map<String, Object> parameters) {}
-
-        /* (non-Javadoc)
-         * @see org.opennms.netmgt.collection.api.ServiceCollector#release()
-         */
-        @Override
-        public void release() {
-            LOG.info("MockServiceCollector.release() - {} collections executed.", m_collectCount);
-        }
-
-        /* (non-Javadoc)
-         * @see org.opennms.netmgt.collection.api.ServiceCollector#release(org.opennms.netmgt.collection.api.CollectionAgent)
-         */
-        @Override
-        public void release(CollectionAgent agent) {
-            LOG.info("MockServiceCollector.release() - {} collections executed.", m_collectCount);
-        }
-
-        /* (non-Javadoc)
-         * @see org.opennms.netmgt.collection.api.ServiceCollector#getRrdRepository(java.lang.String)
-         */
-        @Override
-        public RrdRepository getRrdRepository(String collectionName) {
-            RrdRepository repo = new RrdRepository();
-            repo.setRrdBaseDir(new File("target"));
-            repo.setRraList(Collections.singletonList("RRA:AVERAGE:0.5:1:8928"));
-            repo.setStep(300);
-            repo.setHeartBeat(2 * repo.getStep());
-            return repo;
-        }
     }
 
 }

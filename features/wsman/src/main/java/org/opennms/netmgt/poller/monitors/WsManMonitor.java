@@ -101,7 +101,7 @@ public class WsManMonitor extends AbstractServiceMonitor {
             m_wsManConfigDao = BeanUtils.getBean("daoContext", "wsManConfigDao", WSManConfigDao.class);
         }
         final WsmanAgentConfig config = m_wsManConfigDao.getConfig(svc.getAddress());
-        final WSManEndpoint endpoint = m_wsManConfigDao.getEndpoint(config, svc.getAddress());
+        final WSManEndpoint endpoint = WSManConfigDao.getEndpoint(config, svc.getAddress());
         final WSManClient client = m_factory.getClient(endpoint);
         final RetryNTimesLoop retryLoop = new RetryNTimesLoop(config.getRetry() != null ? config.getRetry() : 0);
 

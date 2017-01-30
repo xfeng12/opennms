@@ -48,7 +48,7 @@ import org.opennms.core.test.MockLogAppender;
 import org.opennms.netmgt.collection.api.CollectionAgent;
 import org.opennms.netmgt.collection.api.CollectionSet;
 import org.opennms.netmgt.collection.api.CollectionSetVisitor;
-import org.opennms.netmgt.collection.api.ServiceCollector;
+import org.opennms.netmgt.collection.api.CollectionStatus;
 import org.opennms.netmgt.collection.api.ServiceParameters;
 import org.opennms.netmgt.collection.persistence.rrd.RrdPersisterFactory;
 import org.opennms.netmgt.dao.support.FilesystemResourceStorageDao;
@@ -206,12 +206,10 @@ public class NodeLevelDataOnMultipleNodesTest {
 
         CollectionAgent collectionAgent = new MockCollectionAgent(nodeId, "mynode", InetAddrUtils.addr(ipAddress));
 
-        m_collector.initialize(collectionAgent, parameters);
-        CollectionSet collectionSet = m_collector.collect(collectionAgent, m_eventProxy, parameters);
-        m_collector.release(collectionAgent);
-        collectionSet = m_collector.collect(collectionAgent, m_eventProxy, parameters);
-        m_collector.release(collectionAgent);
-        Assert.assertEquals(ServiceCollector.COLLECTION_SUCCEEDED, collectionSet.getStatus());
+
+        CollectionSet collectionSet = m_collector.collect(collectionAgent, parameters);
+        collectionSet = m_collector.collect(collectionAgent, parameters);
+        Assert.assertEquals(CollectionStatus.SUCCEEDED, collectionSet.getStatus());
 
         ServiceParameters serviceParams = new ServiceParameters(new HashMap<String,Object>());
 

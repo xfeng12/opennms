@@ -50,7 +50,7 @@ import org.opennms.netmgt.collection.api.CollectionAttribute;
 import org.opennms.netmgt.collection.api.CollectionException;
 import org.opennms.netmgt.collection.api.CollectionInitializationException;
 import org.opennms.netmgt.collection.api.CollectionSet;
-import org.opennms.netmgt.collection.api.ServiceCollector;
+import org.opennms.netmgt.collection.api.CollectionStatus;
 import org.opennms.netmgt.collection.support.PersistAllSelectorStrategy;
 import org.opennms.netmgt.collection.support.builder.CollectionSetBuilder;
 import org.opennms.netmgt.collection.support.builder.GenericTypeResource;
@@ -69,6 +69,7 @@ import org.opennms.netmgt.dao.WSManDataCollectionConfigDao;
 import org.opennms.netmgt.dao.api.NodeDao;
 import org.opennms.netmgt.dao.support.SiblingColumnStorageStrategy;
 import org.opennms.netmgt.model.OnmsNode;
+import org.opennms.netmgt.snmp.InetAddrUtils;
 import org.w3c.dom.Node;
 
 import com.google.common.collect.Maps;
@@ -240,18 +241,18 @@ public class WSManCollectorTest {
         collector.setNodeDao(nodeDao);
 
         CollectionAgent agent = mock(CollectionAgent.class);
+        when(agent.getAddress()).thenReturn(InetAddrUtils.addr("127.0.0.1"));
         when(agent.getStorageDir()).thenReturn(new java.io.File(""));
-        collector.initialize(agent, Maps.newHashMap());
 
         Map<String, Object> collectionParams = Maps.newHashMap();
         collectionParams.put("collection", "default");
 
-        CollectionSet collectionSet = collector.collect(agent, null, collectionParams);
+        collectionParams.putAll(collector.getRuntimeAttributes(agent, collectionParams));
+        CollectionSet collectionSet = collector.collect(agent, collectionParams);
 
-        assertEquals(ServiceCollector.COLLECTION_SUCCEEDED, collectionSet.getStatus());
+        assertEquals(CollectionStatus.SUCCEEDED, collectionSet.getStatus());
         assertEquals(0, CollectionSetUtils.getAttributesByName(collectionSet).size());
     }
-
 
     /**
      * NMS-8924: Verifies that the generated collection set includes a resource

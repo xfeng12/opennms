@@ -34,10 +34,11 @@ import static org.mockito.Matchers.anyObject;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
+import java.net.InetAddress;
 import java.nio.file.Paths;
 import java.sql.ResultSet;
 import java.util.Arrays;
-import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -50,7 +51,7 @@ import org.opennms.netmgt.collectd.jdbc.JdbcAgentState;
 import org.opennms.netmgt.collection.api.AttributeType;
 import org.opennms.netmgt.collection.api.CollectionAgent;
 import org.opennms.netmgt.collection.api.CollectionSet;
-import org.opennms.netmgt.collection.api.ServiceCollector;
+import org.opennms.netmgt.collection.api.CollectionStatus;
 import org.opennms.netmgt.collection.support.IndexStorageStrategy;
 import org.opennms.netmgt.collection.support.PersistAllSelectorStrategy;
 import org.opennms.netmgt.config.api.ResourceTypesDao;
@@ -72,7 +73,7 @@ public class JdbcCollectorTest {
     public void canCollectEmptyCollection() throws Exception {
         JdbcDataCollection collection = new JdbcDataCollection();
         CollectionSet collectionSet = collect(collection);
-        assertEquals(ServiceCollector.COLLECTION_SUCCEEDED, collectionSet.getStatus());
+        assertEquals(CollectionStatus.SUCCEEDED, collectionSet.getStatus());
         assertEquals(0, CollectionSetUtils.getAttributesByName(collectionSet).size());
     }
 
@@ -100,7 +101,7 @@ public class JdbcCollectorTest {
 
         // Collect and verify
         CollectionSet collectionSet = collect(collection, resultSet);
-        assertEquals(ServiceCollector.COLLECTION_SUCCEEDED, collectionSet.getStatus());
+        assertEquals(CollectionStatus.SUCCEEDED, collectionSet.getStatus());
         List<String> collectionSetKeys = CollectionSetUtils.flatten(collectionSet);
         assertEquals(Arrays.asList("snmp/1/someJdbcQuery/someAlias[null,99.0]"),
                 collectionSetKeys);
@@ -151,7 +152,7 @@ public class JdbcCollectorTest {
 
         // Collect and verify
         CollectionSet collectionSet = collect(collection, resultSet, resourceType);
-        assertEquals(ServiceCollector.COLLECTION_SUCCEEDED, collectionSet.getStatus());
+        assertEquals(CollectionStatus.SUCCEEDED, collectionSet.getStatus());
         List<String> collectionSetKeys = CollectionSetUtils.flatten(collectionSet);
 
         assertEquals(Arrays.asList("snmp/1/pgTableSpace/some__name/pg_tablespace_size/spcname[some: name,null]",
@@ -180,29 +181,41 @@ public class JdbcCollectorTest {
             when(resourceTypesDao.getResourceTypeByName(resourceType.getName())).thenReturn(resourceType);
         }
 
-        JdbcCollector jdbcCollector = new JdbcCollector();
+        MyJdbcCollector jdbcCollector = new MyJdbcCollector();
         jdbcCollector.setJdbcCollectionDao(jdbcCollectionDao);
         jdbcCollector.setResourceTypesDao(resourceTypesDao);
-        jdbcCollector.initialize(Collections.emptyMap());
+        jdbcCollector.initialize();
 
         CollectionAgent agent = mock(CollectionAgent.class);
         when(agent.getNodeId()).thenReturn(nodeId);
         when(agent.getAddress()).thenReturn(InetAddressUtils.ONE_TWENTY_SEVEN);
         when(agent.getStorageDir()).thenReturn(Paths.get("snmp/" + nodeId).toFile());
-        jdbcCollector.initialize(agent, Collections.emptyMap());
 
         JdbcAgentState jdbcAgentState = mock(JdbcAgentState.class);
         when(jdbcAgentState.groupIsAvailable(any(String.class))).thenReturn(true);
         when(jdbcAgentState.executeJdbcQuery(anyObject(), anyObject())).thenReturn(resultSet);
+        jdbcCollector.setJdbcAgentState(jdbcAgentState);
 
-        Map<Integer, JdbcAgentState> scheduledNodes = jdbcCollector.getScheduledNodes();
-        scheduledNodes.put(nodeId, jdbcAgentState);
-
-        CollectionSet collectionSet = jdbcCollector.collect(agent, null, Collections.emptyMap());
-
-        jdbcCollector.release(agent);
-        jdbcCollector.release();
+        Map<String, Object> params = new HashMap<>();
+        params.putAll(jdbcCollector.getRuntimeAttributes(agent, params));
+        CollectionSet collectionSet = jdbcCollector.collect(agent, params);
 
         return collectionSet;
     }
+
+    public static class MyJdbcCollector extends JdbcCollector {
+
+        private JdbcAgentState s_agentState;
+
+        public void setJdbcAgentState(JdbcAgentState agentState) {
+            s_agentState = agentState;
+        }
+
+        @Override
+        protected JdbcAgentState createAgentState(InetAddress address, Map<String, Object> parameters) {
+            if (s_agentState != null) return s_agentState;
+            return super.createAgentState(address, parameters);
+        }
+    }
+
 }

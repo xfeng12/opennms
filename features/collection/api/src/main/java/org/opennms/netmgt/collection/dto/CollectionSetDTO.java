@@ -50,6 +50,7 @@ import org.opennms.netmgt.collection.api.CollectionAttribute;
 import org.opennms.netmgt.collection.api.CollectionResource;
 import org.opennms.netmgt.collection.api.CollectionSet;
 import org.opennms.netmgt.collection.api.CollectionSetVisitor;
+import org.opennms.netmgt.collection.api.CollectionStatus;
 import org.opennms.netmgt.collection.api.Persister;
 import org.opennms.netmgt.collection.api.ServiceParameters;
 import org.opennms.netmgt.collection.support.AbstractCollectionAttribute;
@@ -57,7 +58,6 @@ import org.opennms.netmgt.collection.support.AbstractCollectionAttributeType;
 import org.opennms.netmgt.collection.support.AbstractCollectionResource;
 import org.opennms.netmgt.collection.support.builder.Attribute;
 import org.opennms.netmgt.collection.support.builder.CollectionSetBuilder;
-import org.opennms.netmgt.collection.support.builder.CollectionStatus;
 import org.opennms.netmgt.collection.support.builder.Resource;
 
 @XmlRootElement(name = "collection-set")
@@ -68,13 +68,13 @@ public class CollectionSetDTO implements CollectionSet {
     private CollectionAgentDTO agent;
 
     @XmlAttribute(name="status")
-    private CollectionStatus status;
+    private CollectionStatus status = CollectionStatus.SUCCEEDED;
 
     @XmlAttribute(name="timestamp")
     private Date timestamp;
 
     @XmlElement(name="collection-resource")
-    private List<CollectionResourceDTO> collectionResources;
+    private List<CollectionResourceDTO> collectionResources = new ArrayList<>(0);
 
     @XmlAttribute(name="disable-counter-persistence")
     private Boolean disableCounterPersistence;
@@ -125,8 +125,8 @@ public class CollectionSetDTO implements CollectionSet {
     }
 
     @Override
-    public int getStatus() {
-        return status.getCode();
+    public CollectionStatus getStatus() {
+        return status;
     }
 
     @Override
@@ -168,7 +168,7 @@ public class CollectionSetDTO implements CollectionSet {
 
                     @Override
                     public String toString() {
-                        return String.format("AttributeType[%s]/type[%s]", getName(), getType());
+                        return attribute.toString();
                     }
                 };
 

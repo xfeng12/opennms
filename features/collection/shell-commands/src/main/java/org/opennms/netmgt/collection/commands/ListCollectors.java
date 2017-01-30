@@ -1,8 +1,8 @@
 /*******************************************************************************
  * This file is part of OpenNMS(R).
  *
- * Copyright (C) 2010-2016 The OpenNMS Group, Inc.
- * OpenNMS(R) is Copyright (C) 1999-2016 The OpenNMS Group, Inc.
+ * Copyright (C) 2017-2017 The OpenNMS Group, Inc.
+ * OpenNMS(R) is Copyright (C) 1999-2017 The OpenNMS Group, Inc.
  *
  * OpenNMS(R) is a registered trademark of The OpenNMS Group, Inc.
  *
@@ -26,27 +26,27 @@
  *     http://www.opennms.com/
  *******************************************************************************/
 
-package org.opennms.netmgt.collection.support.builder;
+package org.opennms.netmgt.collection.commands;
 
-import org.opennms.netmgt.collection.api.ServiceCollector;
+import org.apache.felix.gogo.commands.Command;
+import org.apache.karaf.shell.console.OsgiCommandSupport;
+import org.opennms.netmgt.collection.api.ServiceCollectorRegistry;
 
-/**
- * Supported collection statuses.
- *
- * @author jwhite
- */
-public enum CollectionStatus {
-    UNKNOWN(ServiceCollector.COLLECTION_UNKNOWN),
-    SUCCEEDED(ServiceCollector.COLLECTION_SUCCEEDED),
-    FAILED(ServiceCollector.COLLECTION_FAILED);
-    
-    private final int m_code;
+@Command(scope = "collection", name = "list-collectors", description = "Lists all of the available collectors.")
+public class ListCollectors extends OsgiCommandSupport{
 
-    private CollectionStatus(int code) {
-        m_code = code;
+    private ServiceCollectorRegistry registry;
+
+    @Override
+    protected Object doExecute() throws Exception {
+        registry.getCollectorClassNames().stream().forEachOrdered(e -> {
+            System.out.printf("%s\n", e);
+        });
+        return null;
     }
 
-    public int getCode() {
-        return m_code;
+    public void setRegistry(ServiceCollectorRegistry registry) {
+        this.registry = registry;
     }
+
 }

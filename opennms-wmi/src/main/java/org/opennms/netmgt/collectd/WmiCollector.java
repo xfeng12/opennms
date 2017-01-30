@@ -32,17 +32,21 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.lang.reflect.UndeclaredThrowableException;
+import java.util.AbstractMap.SimpleEntry;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import org.exolab.castor.xml.MarshalException;
 import org.exolab.castor.xml.ValidationException;
 import org.opennms.core.utils.ParameterMap;
 import org.opennms.netmgt.collectd.wmi.WmiAgentState;
+import org.opennms.netmgt.collection.api.AbstractRemoteServiceCollector;
 import org.opennms.netmgt.collection.api.AttributeType;
 import org.opennms.netmgt.collection.api.CollectionAgent;
 import org.opennms.netmgt.collection.api.CollectionSet;
-import org.opennms.netmgt.collection.api.ServiceCollector;
 import org.opennms.netmgt.collection.support.IndexStorageStrategy;
 import org.opennms.netmgt.collection.support.PersistAllSelectorStrategy;
 import org.opennms.netmgt.collection.support.builder.CollectionSetBuilder;
@@ -56,9 +60,9 @@ import org.opennms.netmgt.config.datacollection.PersistenceSelectorStrategy;
 import org.opennms.netmgt.config.datacollection.ResourceType;
 import org.opennms.netmgt.config.datacollection.StorageStrategy;
 import org.opennms.netmgt.config.wmi.Attrib;
+import org.opennms.netmgt.config.wmi.WmiAgentConfig;
 import org.opennms.netmgt.config.wmi.WmiCollection;
 import org.opennms.netmgt.config.wmi.Wpm;
-import org.opennms.netmgt.events.api.EventProxy;
 import org.opennms.netmgt.rrd.RrdRepository;
 import org.opennms.protocols.wmi.WmiClient;
 import org.opennms.protocols.wmi.WmiException;
@@ -80,23 +84,42 @@ import org.slf4j.LoggerFactory;
  * @author <a href="mailto:matt.raykowski@gmail.com">Matt Raykowski</a>
  * @author <a href="http://www.opennms.org">OpenNMS</a>
  */
-public class WmiCollector implements ServiceCollector {
-	
+public class WmiCollector extends AbstractRemoteServiceCollector {
+
 	private static final Logger LOG = LoggerFactory.getLogger(WmiCollector.class);
 
-    // Don't make this static because each service will have its own
-    // copy and the key won't require the service name as part of the key.
-    private final Map<Integer, WmiAgentState> m_scheduledNodes = new HashMap<Integer, WmiAgentState>();
+	private static final String WMI_COLLECTION_KEY = "wmiCollection";
+
+	private static final String WMI_AGENT_CONFIG_KEY = "wmiAgentConfig";
+
+	private static final Map<String, Class<?>> TYPE_MAP = Collections.unmodifiableMap(Stream.of(
+            new SimpleEntry<>(WMI_COLLECTION_KEY, WmiCollection.class),
+            new SimpleEntry<>(WMI_AGENT_CONFIG_KEY, WmiAgentConfig.class))
+            .collect(Collectors.toMap((e) -> e.getKey(), (e) -> e.getValue())));
+
+    public WmiCollector() {
+        super(TYPE_MAP);
+    }
+
+    @Override
+    public Map<String, Object> getRuntimeAttributes(CollectionAgent agent, Map<String, Object> parameters) {
+        final Map<String, Object> runtimeAttributes = new HashMap<>();
+        final String collectionName = ParameterMap.getKeyedString(parameters, "collection", ParameterMap.getKeyedString(parameters, "wmi-collection", null));
+        final WmiCollection collection = WmiDataCollectionConfigFactory.getInstance().getWmiCollection(collectionName);
+        runtimeAttributes.put(WMI_COLLECTION_KEY, collection);
+        final WmiAgentConfig agentConfig = WmiPeerFactory.getInstance().getAgentConfig(agent.getAddress());
+        runtimeAttributes.put(WMI_AGENT_CONFIG_KEY, agentConfig);
+        return runtimeAttributes;
+    }
 
     /** {@inheritDoc} */
     @Override
-    public CollectionSet collect(final CollectionAgent agent, final EventProxy eproxy, final Map<String, Object> parameters) {
-
-        String collectionName = ParameterMap.getKeyedString(parameters, "collection", ParameterMap.getKeyedString(parameters, "wmi-collection", null));
+    public CollectionSet collect(final CollectionAgent agent, final Map<String, Object> parameters) {
         // Find attributes to collect - check groups in configuration. For each,
         // check scheduled nodes to see if that group should be collected
-        final WmiCollection collection = WmiDataCollectionConfigFactory.getInstance().getWmiCollection(collectionName);
-        final WmiAgentState agentState = m_scheduledNodes.get(agent.getNodeId());
+        final WmiCollection collection = (WmiCollection)parameters.get(WMI_COLLECTION_KEY);
+        final WmiAgentConfig agentConfig = (WmiAgentConfig)parameters.get(WMI_AGENT_CONFIG_KEY);
+        final WmiAgentState agentState = new WmiAgentState(agent.getAddress(), agentConfig, parameters);
 
         // Create a new collection set.
         CollectionSetBuilder builder = new CollectionSetBuilder(agent);
@@ -246,9 +269,8 @@ public class WmiCollector implements ServiceCollector {
 
     /** {@inheritDoc} */
     @Override
-    public void initialize(final Map<String, String> parameters) {
+    public void initialize() {
         LOG.debug("initialize: Initializing WmiCollector.");
-        m_scheduledNodes.clear();
         initWMIPeerFactory();
         initWMICollectionConfig();
         initializeRrdRepository();
@@ -298,47 +320,6 @@ public class WmiCollector implements ServiceCollector {
             if (!f.mkdirs()) {
                 throw new RuntimeException("Unable to create RRD file repository.  Path doesn't already exist and could not make directory: " + WmiDataCollectionConfigFactory.getInstance().getRrdPath());
             }
-        }
-    }
-
-    /** {@inheritDoc} */
-    @Override
-    public void initialize(final CollectionAgent agent, final Map<String, Object> parameters) {
-        LOG.debug("initialize: Initializing WMI collection for agent: {}", agent);
-        final Integer scheduledNodeKey = Integer.valueOf(agent.getNodeId());
-        WmiAgentState nodeState = m_scheduledNodes.get(scheduledNodeKey);
-
-        if (nodeState != null) {
-            LOG.info("initialize: Not scheduling interface for WMI collection: {}", nodeState.getAddress());
-            final StringBuffer sb = new StringBuffer();
-            sb.append("initialize service: ");
-            sb.append(" for address: ");
-            sb.append(nodeState.getAddress());
-            sb.append(" already scheduled for collection on node: ");
-            sb.append(agent);
-            LOG.debug(sb.toString());
-            throw new IllegalStateException(sb.toString());
-        } else {
-            nodeState = new WmiAgentState(agent.getAddress(), parameters);
-            LOG.info("initialize: Scheduling interface for collection: {}", nodeState.getAddress());
-            m_scheduledNodes.put(scheduledNodeKey, nodeState);
-        }
-    }
-
-    /**
-     * <p>release</p>
-     */
-    @Override
-    public void release() {
-        m_scheduledNodes.clear();
-    }
-
-    /** {@inheritDoc} */
-    @Override
-    public void release(final CollectionAgent agent) {
-        final WmiAgentState nodeState = m_scheduledNodes.get((Integer) agent.getNodeId());
-        if (nodeState != null) {
-            m_scheduledNodes.remove((Integer) agent.getNodeId());
         }
     }
 

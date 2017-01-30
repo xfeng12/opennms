@@ -28,7 +28,7 @@
 
 package org.opennms.netmgt.collectd;
 
-import java.io.File;
+import java.net.InetAddress;
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
 import java.sql.ResultSet;
@@ -41,14 +41,14 @@ import org.opennms.core.db.DataSourceFactory;
 import org.opennms.core.spring.BeanUtils;
 import org.opennms.core.utils.ParameterMap;
 import org.opennms.netmgt.collectd.jdbc.JdbcAgentState;
+import org.opennms.netmgt.collection.api.AbstractRemoteServiceCollector;
 import org.opennms.netmgt.collection.api.AttributeType;
 import org.opennms.netmgt.collection.api.CollectionAgent;
 import org.opennms.netmgt.collection.api.CollectionException;
 import org.opennms.netmgt.collection.api.CollectionSet;
+import org.opennms.netmgt.collection.api.CollectionStatus;
 import org.opennms.netmgt.collection.api.ResourceType;
-import org.opennms.netmgt.collection.api.ServiceCollector;
 import org.opennms.netmgt.collection.support.builder.CollectionSetBuilder;
-import org.opennms.netmgt.collection.support.builder.CollectionStatus;
 import org.opennms.netmgt.collection.support.builder.GenericTypeResource;
 import org.opennms.netmgt.collection.support.builder.NodeLevelResource;
 import org.opennms.netmgt.collection.support.builder.Resource;
@@ -57,20 +57,20 @@ import org.opennms.netmgt.config.jdbc.JdbcColumn;
 import org.opennms.netmgt.config.jdbc.JdbcDataCollection;
 import org.opennms.netmgt.config.jdbc.JdbcQuery;
 import org.opennms.netmgt.dao.JdbcDataCollectionConfigDao;
-import org.opennms.netmgt.events.api.EventProxy;
 import org.opennms.netmgt.rrd.RrdRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class JdbcCollector implements ServiceCollector {
+public class JdbcCollector extends AbstractRemoteServiceCollector {
     private static final Logger LOG = LoggerFactory.getLogger(JdbcCollector.class);
 
-    private final Map<Integer, JdbcAgentState> m_scheduledNodes = new HashMap<>();
+    private static final String JDBC_COLLECTION_KEY = "jdbcCollection";
+
     private JdbcDataCollectionConfigDao m_jdbcCollectionDao;
     private ResourceTypesDao m_resourceTypesDao;
 
     @Override
-    public void initialize(Map<String, String> parameters) {
+    public void initialize() {
         LOG.debug("initialize: Initializing JdbcCollector.");
         if (m_jdbcCollectionDao == null) {
             // Retrieve the DAO for our configuration file.
@@ -79,25 +79,6 @@ public class JdbcCollector implements ServiceCollector {
         if (m_resourceTypesDao == null) {
             m_resourceTypesDao = BeanUtils.getBean("daoContext", "resourceTypesDao", ResourceTypesDao.class);
         }
-
-        // Clear out the node list.
-        m_scheduledNodes.clear();
-        
-        initializeRrdDirs();
-    }
-    
-    private void initializeRrdDirs() {
-        /*
-         * If the RRD file repository directory does NOT already exist, create
-         * it.
-         */
-        LOG.debug("initializeRrdRepository: Initializing RRD repo from JdbcCollector...");
-        File f = new File(m_jdbcCollectionDao.getConfig().getRrdRepository());
-        if (!f.isDirectory()) {
-            if (!f.mkdirs()) {
-                throw new RuntimeException("Unable to create RRD file " + "repository.  Path doesn't already exist and could not make directory: " + m_jdbcCollectionDao.getConfig().getRrdRepository());
-            }
-        }
     }
 
     private static void initDatabaseConnectionFactory(String dataSourceName) {
@@ -105,65 +86,28 @@ public class JdbcCollector implements ServiceCollector {
     }
 
     @Override
-    public void release() {
-        m_scheduledNodes.clear();
+    public Map<String, Object> getRuntimeAttributes(CollectionAgent agent, Map<String, Object> parameters) {
+        final Map<String, Object> runtimeAttributes = new HashMap<>();
+        final String collectionName = ParameterMap.getKeyedString(parameters, "collection", ParameterMap.getKeyedString(parameters, "jdbc-collection", null));
+        final JdbcDataCollection collection = m_jdbcCollectionDao.getDataCollectionByName(collectionName);
+        runtimeAttributes.put(JDBC_COLLECTION_KEY, collection);
+        return runtimeAttributes;
+    }
+
+    protected JdbcAgentState createAgentState(InetAddress address, Map<String, Object> parameters) {
+        return new JdbcAgentState(address, parameters);
     }
 
     @Override
-    public void initialize(CollectionAgent agent, Map<String, Object> parameters) {        
-        LOG.debug("initialize: Initializing JDBC collection for agent: {}", agent);
+    public CollectionSet collect(CollectionAgent agent, Map<String, Object> parameters) throws CollectionException {
+        final JdbcDataCollection collection = (JdbcDataCollection)parameters.get(JDBC_COLLECTION_KEY);
         
-        Integer scheduledNodeKey = Integer.valueOf(agent.getNodeId());
-        JdbcAgentState nodeState = m_scheduledNodes.get(scheduledNodeKey);
-
-        if (nodeState != null) {
-            LOG.info("initialize: Not scheduling interface for JDBC collection: {}", nodeState.getAddress());
-            final StringBuffer sb = new StringBuffer();
-            sb.append("initialize service: ");
-
-            sb.append(" for address: ");
-            sb.append(nodeState.getAddress());
-            sb.append(" already scheduled for collection on node: ");
-            sb.append(agent);
-            LOG.debug(sb.toString());
-            throw new IllegalStateException(sb.toString());
-        } else {
-            nodeState = new JdbcAgentState(agent.getAddress(), parameters);
-            LOG.info("initialize: Scheduling interface for collection: {}", nodeState.getAddress());
-            m_scheduledNodes.put(scheduledNodeKey, nodeState);
-        }
-    }
-
-    @Override
-    public void release(CollectionAgent agent) {
-        Integer scheduledNodeKey = Integer.valueOf(agent.getNodeId());
-        JdbcAgentState nodeState = m_scheduledNodes.get(scheduledNodeKey);
-        if (nodeState != null) {
-            m_scheduledNodes.remove(scheduledNodeKey);
-        }
-    }
-
-    @Override
-    public CollectionSet collect(CollectionAgent agent, EventProxy eproxy, Map<String, Object> parameters) throws CollectionException {
         JdbcAgentState agentState = null;
-        if(parameters == null) {
-            LOG.error("Null parameters is now allowed in JdbcCollector!!");
-        }
-        
         Connection con = null;
         ResultSet results = null;
         Statement stmt = null;
-        
         try {
-            String collectionName = ParameterMap.getKeyedString(parameters, "collection", null);
-            if (collectionName == null) {
-                //Look for the old configuration style:
-                collectionName = ParameterMap.getKeyedString(parameters, "jdbc-collection", null);
-            }
-        
-            JdbcDataCollection collection = m_jdbcCollectionDao.getDataCollectionByName(collectionName);
-        
-            agentState = m_scheduledNodes.get(agent.getNodeId());
+            agentState = createAgentState(agent.getAddress(), parameters);
             agentState.setupDatabaseConnections(parameters);
 
             // Create a new collection set.
@@ -338,7 +282,4 @@ public class JdbcCollector implements ServiceCollector {
         m_resourceTypesDao = resourceTypesDao;
     }
 
-    protected Map<Integer, JdbcAgentState> getScheduledNodes() {
-        return m_scheduledNodes;
-    }
 }

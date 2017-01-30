@@ -28,7 +28,6 @@
 
 package org.opennms.netmgt.collectd.tca;
 
-import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.UndeclaredThrowableException;
 import java.util.Map;
@@ -37,15 +36,14 @@ import org.opennms.core.spring.BeanUtils;
 import org.opennms.core.utils.ParameterMap;
 import org.opennms.netmgt.collectd.SnmpCollectionAgent;
 import org.opennms.netmgt.collectd.tca.dao.TcaDataCollectionConfigDao;
+import org.opennms.netmgt.collection.api.AbstractServiceCollector;
 import org.opennms.netmgt.collection.api.CollectionAgent;
 import org.opennms.netmgt.collection.api.CollectionException;
 import org.opennms.netmgt.collection.api.CollectionInitializationException;
 import org.opennms.netmgt.collection.api.CollectionSet;
-import org.opennms.netmgt.collection.api.ServiceCollector;
 import org.opennms.netmgt.config.SnmpPeerFactory;
 import org.opennms.netmgt.config.api.ResourceTypesDao;
 import org.opennms.netmgt.dao.api.ResourceStorageDao;
-import org.opennms.netmgt.events.api.EventProxy;
 import org.opennms.netmgt.rrd.RrdRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -57,7 +55,7 @@ import org.slf4j.LoggerFactory;
  * 
  * @author Alejandro Galue <agalue@opennms.org>
  */
-public class TcaCollector implements ServiceCollector {
+public class TcaCollector extends AbstractServiceCollector {
 	private static final Logger LOG = LoggerFactory.getLogger(TcaCollector.class);
 
 	/** The TCA Data Collection Configuration DAO. */
@@ -71,7 +69,7 @@ public class TcaCollector implements ServiceCollector {
 	 * @see org.opennms.netmgt.collectd.ServiceCollector#initialize(java.util.Map)
 	 */
 	@Override
-	public void initialize(Map<String, String> parameters) throws CollectionInitializationException {
+	public void initialize() throws CollectionInitializationException {
 		LOG.debug("initialize: initializing TCA collector");
 
 		// Initialize SNMP Factory
@@ -94,46 +92,10 @@ public class TcaCollector implements ServiceCollector {
 		if (m_resourceTypesDao == null) {
 		    m_resourceTypesDao = BeanUtils.getBean("daoContext", "resourceTypesDao", ResourceTypesDao.class);
 		}
-
-		// If the RRD file repository directory does NOT already exist, create it.
-		LOG.debug("initialize: Initializing RRD repo from XmlCollector...");
-		File f = new File(m_configDao.getConfig().getRrdRepository());
-		if (!f.isDirectory()) {
-			if (!f.mkdirs()) {
-				throw new CollectionInitializationException("Unable to create RRD file repository.  Path doesn't already exist and could not make directory: " + m_configDao.getConfig().getRrdRepository());
-			}
-		}
 	}
 
-	/* (non-Javadoc)
-	 * @see org.opennms.netmgt.collectd.ServiceCollector#initialize(org.opennms.netmgt.collectd.CollectionAgent, java.util.Map)
-	 */
 	@Override
-	public void initialize(CollectionAgent agent, Map<String, Object> parameters) throws CollectionInitializationException {
-		LOG.debug("initialize: initializing TCA collection handling using {} for collection agent {}", parameters, agent);
-	}
-
-	/* (non-Javadoc)
-	 * @see org.opennms.netmgt.collectd.ServiceCollector#release()
-	 */
-	@Override
-	public void release() {
-		LOG.debug("release: realeasing TCA collection");
-	}
-
-	/* (non-Javadoc)
-	 * @see org.opennms.netmgt.collectd.ServiceCollector#release(org.opennms.netmgt.collectd.CollectionAgent)
-	 */
-	@Override
-	public void release(CollectionAgent agent) {
-		LOG.debug("release: releasing TCA collection for agent {}", agent);
-	}
-
-	/* (non-Javadoc)
-	 * @see org.opennms.netmgt.collectd.ServiceCollector#collect(org.opennms.netmgt.collectd.CollectionAgent, org.opennms.netmgt.model.events.EventProxy, java.util.Map)
-	 */
-	@Override
-	public CollectionSet collect(CollectionAgent agent, EventProxy eproxy, Map<String, Object> parameters) throws CollectionException {
+	public CollectionSet collect(CollectionAgent agent, Map<String, Object> parameters) throws CollectionException {
 		try {
 			String collectionName = ParameterMap.getKeyedString(parameters, "collection", null);
 			if (collectionName == null) {

@@ -28,7 +28,6 @@
 
 package org.opennms.netmgt.collectd;
 
-import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.rmi.RemoteException;
@@ -43,14 +42,14 @@ import org.exolab.castor.xml.ValidationException;
 import org.opennms.core.spring.BeanUtils;
 import org.opennms.core.utils.ParameterMap;
 import org.opennms.netmgt.collectd.vmware.vijava.VmwarePerformanceValues;
+import org.opennms.netmgt.collection.api.AbstractServiceCollector;
 import org.opennms.netmgt.collection.api.AttributeType;
 import org.opennms.netmgt.collection.api.CollectionAgent;
 import org.opennms.netmgt.collection.api.CollectionException;
 import org.opennms.netmgt.collection.api.CollectionInitializationException;
 import org.opennms.netmgt.collection.api.CollectionSet;
-import org.opennms.netmgt.collection.api.ServiceCollector;
+import org.opennms.netmgt.collection.api.CollectionStatus;
 import org.opennms.netmgt.collection.support.builder.CollectionSetBuilder;
-import org.opennms.netmgt.collection.support.builder.CollectionStatus;
 import org.opennms.netmgt.collection.support.builder.GenericTypeResource;
 import org.opennms.netmgt.collection.support.builder.NodeLevelResource;
 import org.opennms.netmgt.collection.support.builder.Resource;
@@ -61,7 +60,6 @@ import org.opennms.netmgt.config.vmware.vijava.VmwareCollection;
 import org.opennms.netmgt.config.vmware.vijava.VmwareGroup;
 import org.opennms.netmgt.dao.VmwareDatacollectionConfigDao;
 import org.opennms.netmgt.dao.api.NodeDao;
-import org.opennms.netmgt.events.api.EventProxy;
 import org.opennms.netmgt.model.OnmsNode;
 import org.opennms.netmgt.rrd.RrdRepository;
 import org.opennms.protocols.vmware.VmwareViJavaAccess;
@@ -77,7 +75,7 @@ import com.vmware.vim25.mo.ManagedEntity;
  *
  * @author Christian Pape <Christian.Pape@informatik.hs-fulda.de>
  */
-public class VmwareCollector implements ServiceCollector {
+public class VmwareCollector extends AbstractServiceCollector {
 
     /**
      * logging for VMware data collection
@@ -104,7 +102,7 @@ public class VmwareCollector implements ServiceCollector {
      *
      */
     @Override
-    public void initialize(Map<String, String> parameters) throws CollectionInitializationException {
+    public void initialize() throws CollectionInitializationException {
 
         if (m_nodeDao == null) {
             m_nodeDao = BeanUtils.getBean("daoContext", "nodeDao", NodeDao.class);
@@ -125,77 +123,35 @@ public class VmwareCollector implements ServiceCollector {
         if (m_resourceTypesDao == null) {
             m_resourceTypesDao = BeanUtils.getBean("daoContext", "resourceTypesDao", ResourceTypesDao.class);
         }
-
-        initializeRrdRepository();
     }
 
-    /**
-     * Initializes the Rrd repository.
-     */
-    private void initializeRrdRepository() {
-        logger.debug("initializeRrdRepository: Initializing RRD repo from VmwareCollector...");
-        initializeRrdDirs();
-    }
-
-    /**
-     * Initializes the Rrd directories.
-     */
-    private void initializeRrdDirs() {
-        final File f = new File(m_vmwareDatacollectionConfigDao.getRrdPath());
-        if (!f.isDirectory() && !f.mkdirs()) {
-            throw new RuntimeException("Unable to create RRD file repository.  Path doesn't already exist and could not make directory: " + m_vmwareDatacollectionConfigDao.getRrdPath());
-        }
-    }
-
-    /**
-     * Initializes this instance for a given collection agent and a parameter map.
-     *
-     * @param agent      the collection agent
-     * @param parameters the parameter map
-     * @throws CollectionInitializationException
-     *
-     */
     @Override
-    public void initialize(CollectionAgent agent, Map<String, Object> parameters) throws CollectionInitializationException {
-        OnmsNode onmsNode = m_nodeDao.get(agent.getNodeId());
+    public Map<String, Object> getRuntimeAttributes(CollectionAgent agent, Map<String, Object> parameters) {
+        final Map<String, Object> runtimeAttributes = new HashMap<>();
+        final OnmsNode onmsNode = m_nodeDao.get(agent.getNodeId());
 
         // retrieve the assets and
         String vmwareManagementServer = onmsNode.getAssetRecord().getVmwareManagementServer();
         String vmwareManagedEntityType = onmsNode.getAssetRecord().getVmwareManagedEntityType();
         String vmwareManagedObjectId = onmsNode.getForeignId();
 
-        parameters.put("vmwareManagementServer", vmwareManagementServer);
-        parameters.put("vmwareManagedEntityType", vmwareManagedEntityType);
-        parameters.put("vmwareManagedObjectId", vmwareManagedObjectId);
-    }
+        runtimeAttributes.put("vmwareManagementServer", vmwareManagementServer);
+        runtimeAttributes.put("vmwareManagedEntityType", vmwareManagedEntityType);
+        runtimeAttributes.put("vmwareManagedObjectId", vmwareManagedObjectId);
 
-    /**
-     * This method is used for cleanup.
-     */
-    @Override
-    public void release() {
-    }
-
-    /**
-     * This method is used for cleanup for a given collection agent.
-     *
-     * @param agent the collection agent
-     */
-    @Override
-    public void release(CollectionAgent agent) {
+        return runtimeAttributes;
     }
 
     /**
      * This method collect the data for a given collection agent.
      *
      * @param agent      the collection agent
-     * @param eproxy     the event proxy
      * @param parameters the parameters map
      * @return the generated collection set
      * @throws CollectionException
      */
     @Override
-    public CollectionSet collect(CollectionAgent agent, EventProxy eproxy, Map<String, Object> parameters) throws CollectionException {
+    public CollectionSet collect(CollectionAgent agent, Map<String, Object> parameters) throws CollectionException {
 
         String collectionName = ParameterMap.getKeyedString(parameters, "collection", ParameterMap.getKeyedString(parameters, "vmware-collection", null));
 
