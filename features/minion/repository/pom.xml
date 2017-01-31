@@ -55,6 +55,7 @@
                                 <feature>minion-snmp-proxy</feature>
                                 <feature>minion-provisiond-detectors</feature>
                                 <feature>minion-poller</feature>
+                                <feature>minion-collector</feature>
                                 <feature>minion-icmp-proxy</feature>
                                 <feature>hawtio-offline</feature>
                             </features>
@@ -126,6 +127,11 @@
         <dependency>
             <groupId>org.opennms.features.minion.shell</groupId>
             <artifactId>org.opennms.features.minion.shell.provision</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.opennms.features.minion.shell</groupId>
+            <artifactId>org.opennms.features.minion.shell.collection</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
@@ -217,6 +223,14 @@
             <groupId>org.opennms.features.poller.monitors</groupId>
             <artifactId>org.opennms.features.poller.monitors.core</artifactId>
             <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.opennms.features.collection</groupId>
+            <artifactId>org.opennms.features.collection.client-rpc</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.opennms.features.collection</groupId>
+            <artifactId>org.opennms.features.collection.collectors</artifactId>
         </dependency>
     </dependencies>
 

@@ -68,6 +68,7 @@
     <feature name="minion-shell" description="Minion :: Shell" version="${project.version}">
       <feature>minion-shell-provision</feature>
       <feature>minion-shell-poller</feature>
+      <feature>minion-shell-collection</feature>
     </feature>
 
     <feature name="minion-shell-provision" description="Minion :: Shell :: Provision" version="${project.version}">
@@ -92,5 +93,18 @@
       <bundle>mvn:org.opennms.features.poller/org.opennms.features.poller.client-rpc/${project.version}</bundle>
       <feature>opennms-poller-monitors-core</feature>
     </feature>
-    
+
+    <feature name="minion-collector" description="Minion :: Collector" version="${project.version}">
+      <feature>minion-rpc-server</feature>
+      <feature>opennms-config-jaxb</feature>
+      <bundle>mvn:org.opennms.features.collection/org.opennms.features.collection.api/${project.version}</bundle>
+      <bundle>mvn:org.opennms.features.collection/org.opennms.features.collection.client-rpc/${project.version}</bundle>
+      <bundle>mvn:org.opennms.features.collection/org.opennms.features.collection.collectors/${project.version}</bundle>
+    </feature>
+
+    <feature name="minion-shell-collection" description="Minion :: Shell :: Collection" version="${project.version}">
+      <feature>minion-collector</feature>
+      <bundle>mvn:org.opennms.features.minion.shell/org.opennms.features.minion.shell.collection/${project.version}</bundle>
+    </feature>
+
 </features>

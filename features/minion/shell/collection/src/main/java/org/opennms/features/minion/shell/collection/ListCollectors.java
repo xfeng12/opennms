@@ -1,8 +1,8 @@
 /*******************************************************************************
  * This file is part of OpenNMS(R).
  *
- * Copyright (C) 2017-2017 The OpenNMS Group, Inc.
- * OpenNMS(R) is Copyright (C) 1999-2017 The OpenNMS Group, Inc.
+ * Copyright (C) 2016 The OpenNMS Group, Inc.
+ * OpenNMS(R) is Copyright (C) 1999-2016 The OpenNMS Group, Inc.
  *
  * OpenNMS(R) is a registered trademark of The OpenNMS Group, Inc.
  *
@@ -26,27 +26,27 @@
  *     http://www.opennms.com/
  *******************************************************************************/
 
-package org.opennms.netmgt.collection.commands;
+package org.opennms.features.minion.shell.collection;
 
-import org.apache.felix.gogo.commands.Command;
-import org.apache.karaf.shell.console.OsgiCommandSupport;
+import org.apache.karaf.shell.api.action.Action;
+import org.apache.karaf.shell.api.action.Command;
+import org.apache.karaf.shell.api.action.lifecycle.Reference;
+import org.apache.karaf.shell.api.action.lifecycle.Service;
 import org.opennms.netmgt.collection.api.ServiceCollectorRegistry;
 
 @Command(scope = "collection", name = "list-collectors", description = "Lists all of the available collectors.")
-public class ListCollectors extends OsgiCommandSupport{
+@Service
+public class ListCollectors implements Action {
 
-    private ServiceCollectorRegistry registry;
+    @Reference
+    ServiceCollectorRegistry registry;
 
     @Override
-    protected Object doExecute() throws Exception {
+    public Object execute() throws Exception {
         registry.getCollectorClassNames().stream().sorted().forEachOrdered(e -> {
             System.out.printf("%s\n", e);
         });
         return null;
-    }
-
-    public void setRegistry(ServiceCollectorRegistry registry) {
-        this.registry = registry;
     }
 
 }
