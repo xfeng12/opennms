@@ -53,7 +53,6 @@ import org.opennms.netmgt.collection.support.builder.NodeLevelResource;
 import org.opennms.netmgt.config.JMXDataCollectionConfigDao;
 import org.opennms.netmgt.config.collectd.jmx.Attrib;
 import org.opennms.netmgt.config.collectd.jmx.JmxCollection;
-import org.opennms.netmgt.config.jmx.JmxConfig;
 import org.opennms.netmgt.config.jmx.MBeanServer;
 import org.opennms.netmgt.dao.jmx.JmxConfigDao;
 import org.opennms.netmgt.jmx.JmxCollectorConfig;
@@ -120,11 +119,11 @@ public abstract class JMXCollector extends AbstractRemoteServiceCollector {
 
     private static final String JMX_COLLECTION_KEY = "jmxCollection";
 
-    private static final String JMX_CONFIG_KEY = "jmxConfig";
+    private static final String JMX_MBEAN_SERVER_KEY = "jmxMBeanServer";
 
     private static final Map<String, Class<?>> TYPE_MAP = Collections.unmodifiableMap(Stream.of(
             new SimpleEntry<>(JMX_COLLECTION_KEY, JmxCollection.class),
-            new SimpleEntry<>(JMX_CONFIG_KEY, JmxConfig.class))
+            new SimpleEntry<>(JMX_MBEAN_SERVER_KEY, MBeanServer.class))
             .collect(Collectors.toMap((e) -> e.getKey(), (e) -> e.getValue())));
 
     private JmxConfigDao m_jmxConfigDao;
@@ -185,7 +184,7 @@ public abstract class JMXCollector extends AbstractRemoteServiceCollector {
         if (port != null) {
             final MBeanServer mBeanServer = m_jmxConfigDao.getConfig().lookupMBeanServer(agent.getHostAddress(), port);
             if (mBeanServer != null) {
-                runtimeAttributes.put(JMX_CONFIG_KEY, jmxCollection);
+                runtimeAttributes.put(JMX_MBEAN_SERVER_KEY, mBeanServer);
             }
         }
 
@@ -200,7 +199,7 @@ public abstract class JMXCollector extends AbstractRemoteServiceCollector {
         final Map<String, String> stringMap = JmxUtils.convertToUnmodifiableStringMap(map);
         final InetAddress ipaddr = agent.getAddress();
         final JmxCollection jmxCollection = (JmxCollection)map.get(JMX_COLLECTION_KEY);
-        final MBeanServer mBeanServer = (MBeanServer)map.get(JMX_CONFIG_KEY);
+        final MBeanServer mBeanServer = (MBeanServer)map.get(JMX_MBEAN_SERVER_KEY);
         final String collectionName = ParameterMap.getKeyedString(map, ParameterName.COLLECTION.toString(), serviceName);
         final String port = ParameterMap.getKeyedString(map, ParameterName.PORT.toString(), null);
         final String friendlyName = ParameterMap.getKeyedString(map, ParameterName.FRIENDLY_NAME.toString(), port);

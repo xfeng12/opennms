@@ -30,12 +30,17 @@ package org.opennms.netmgt.collectd;
 
 import static org.mockito.Mockito.RETURNS_DEEP_STUBS;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 import java.util.Map;
 
 import org.opennms.netmgt.collection.test.api.CollectorComplianceTest;
 import org.opennms.netmgt.config.JMXDataCollectionConfigDao;
+import org.opennms.netmgt.config.collectd.jmx.JmxCollection;
+import org.opennms.netmgt.config.jmx.MBeanServer;
 import org.opennms.netmgt.dao.jmx.JmxConfigDao;
+import org.opennms.netmgt.jmx.connection.JmxServerConnector;
+import org.opennms.netmgt.snmp.InetAddrUtils;
 
 import com.google.common.collect.ImmutableMap;
 
@@ -56,13 +61,20 @@ public class JMXCollectorComplianceTest extends CollectorComplianceTest {
     public Map<String, Object> getRequiredParameters() {
         return new ImmutableMap.Builder<String, Object>()
             .put("collection", COLLECTION)
+            .put("port", JmxServerConnector.DEFAULT_OPENNMS_JMX_PORT)
             .build();
     }
 
     @Override
     public Map<String, Object> getRequiredBeans() {
-        JmxConfigDao jmxConfigDao = mock(JmxConfigDao.class);
+        MBeanServer mbeanServer = new MBeanServer();
+        JmxConfigDao jmxConfigDao = mock(JmxConfigDao.class, RETURNS_DEEP_STUBS);
+        final String host = InetAddrUtils.str(InetAddrUtils.getLocalHostAddress());
+        when(jmxConfigDao.getConfig().lookupMBeanServer(host, JmxServerConnector.DEFAULT_OPENNMS_JMX_PORT)).thenReturn(mbeanServer);
+
+        JmxCollection collection = new JmxCollection();
         JMXDataCollectionConfigDao jmxCollectionDao = mock(JMXDataCollectionConfigDao.class, RETURNS_DEEP_STUBS);
+        when(jmxCollectionDao.getJmxCollection(COLLECTION)).thenReturn(collection);
         return new ImmutableMap.Builder<String, Object>()
                 .put("jmxConfigDao", jmxConfigDao)
                 .put("jmxDataCollectionConfigDao", jmxCollectionDao)
