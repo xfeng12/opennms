@@ -25,6 +25,7 @@
             <action class="org.opennms.netmgt.collection.commands.CollectCommand">
                 <property name="locationAwareCollectorClient" ref="locationAwareCollectorClient"/>
                 <property name="collectionAgentFactory" ref="collectionAgentFactory"/>
+                <property name="serviceCollectorRegistry" ref="serviceCollectorRegistry"/>
             </action>
             <completers>
                 <ref component-id="collectorNameCompleter"/>

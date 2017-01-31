@@ -189,6 +189,10 @@ public class CollectCommand extends OsgiCommandSupport {
         this.collectionAgentFactory = collectionAgentFactory;
     }
 
+    public void setServiceCollectorRegistry(ServiceCollectorRegistry serviceCollectorRegistry) {
+        this.serviceCollectorRegistry = serviceCollectorRegistry;
+    }
+
     private Map<String, Object> parse(List<String> attributeList) {
         final Map<String, Object> properties = new HashMap<>();
         if (attributeList != null) {
