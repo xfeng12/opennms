@@ -78,12 +78,13 @@ public class CollectorClientRpcModule extends AbstractXmlRpcModule<CollectorRequ
                 Logging.putPrefix("collectd");
                 final CollectionAgent agent = request.getAgent();
                 final Map<String, Object> parameters = request.getParameters(collector);
+                CollectionSet collectionSet;
                 try {
-                    final CollectionSet collectionSet = collector.collect(agent, parameters);
-                    return new CollectorResponseDTO(collectionSet);
+                    collectionSet = collector.collect(agent, parameters);
                 } catch (CollectionException e) {
-                    return new CollectorResponseDTO(e);
+                    throw new RuntimeException(e);
                 }
+                return new CollectorResponseDTO(collectionSet);
             }
         }, executor);
     }
