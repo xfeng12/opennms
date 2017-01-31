@@ -53,6 +53,8 @@ import org.opennms.netmgt.collection.support.builder.NodeLevelResource;
 import org.opennms.netmgt.config.JMXDataCollectionConfigDao;
 import org.opennms.netmgt.config.collectd.jmx.Attrib;
 import org.opennms.netmgt.config.collectd.jmx.JmxCollection;
+import org.opennms.netmgt.config.jmx.JmxConfig;
+import org.opennms.netmgt.config.jmx.MBeanServer;
 import org.opennms.netmgt.dao.jmx.JmxConfigDao;
 import org.opennms.netmgt.jmx.JmxCollectorConfig;
 import org.opennms.netmgt.jmx.JmxSampleProcessor;
@@ -118,14 +120,14 @@ public abstract class JMXCollector extends AbstractRemoteServiceCollector {
 
     private static final String JMX_COLLECTION_KEY = "jmxCollection";
 
+    private static final String JMX_CONFIG_KEY = "jmxConfig";
+
     private static final Map<String, Class<?>> TYPE_MAP = Collections.unmodifiableMap(Stream.of(
-            new SimpleEntry<>(JMX_COLLECTION_KEY, JmxCollection.class))
+            new SimpleEntry<>(JMX_COLLECTION_KEY, JmxCollection.class),
+            new SimpleEntry<>(JMX_CONFIG_KEY, JmxConfig.class))
             .collect(Collectors.toMap((e) -> e.getKey(), (e) -> e.getValue())));
 
-    /**
-     * the config dao to be used
-     */
-    protected JmxConfigDao m_jmxConfigDao = null;
+    private JmxConfigDao m_jmxConfigDao;
 
     private JMXDataCollectionConfigDao m_jmxDataCollectionConfigDao;
 
@@ -164,21 +166,29 @@ public abstract class JMXCollector extends AbstractRemoteServiceCollector {
         if (m_jmxDataCollectionConfigDao == null) {
             m_jmxDataCollectionConfigDao = BeanUtils.getBean("daoContext", "jmxDataCollectionConfigDao", JMXDataCollectionConfigDao.class);
         }
+        if (m_jmxConfigDao == null) {
+            m_jmxConfigDao = BeanUtils.getBean("daoContext", "jmxConfigDao", JmxConfigDao.class);
+        }
     }
 
     @Override
     public Map<String, Object> getRuntimeAttributes(CollectionAgent agent, Map<String, Object> parameters) {
-        if (m_jmxDataCollectionConfigDao == null) {
-            m_jmxDataCollectionConfigDao = BeanUtils.getBean("daoContext", "jmxDataCollectionConfigDao", JMXDataCollectionConfigDao.class);
-        }
-
         final Map<String, Object> runtimeAttributes = new HashMap<>();
 
         // Retrieve the name of the JMX data collector
-        String collectionName = ParameterMap.getKeyedString(parameters, ParameterName.COLLECTION.toString(), serviceName);
-        JmxCollection jmxCollection = m_jmxDataCollectionConfigDao.getJmxCollection(collectionName);
+        final String collectionName = ParameterMap.getKeyedString(parameters, ParameterName.COLLECTION.toString(), serviceName);
+        final JmxCollection jmxCollection = m_jmxDataCollectionConfigDao.getJmxCollection(collectionName);
+        runtimeAttributes.put(JMX_COLLECTION_KEY, jmxCollection);
 
-        runtimeAttributes.put("jmxCollection", jmxCollection);
+        // Retrieve the agent config.
+        final String port = ParameterMap.getKeyedString(parameters, ParameterName.PORT.toString(), null);
+        if (port != null) {
+            final MBeanServer mBeanServer = m_jmxConfigDao.getConfig().lookupMBeanServer(agent.getHostAddress(), port);
+            if (mBeanServer != null) {
+                runtimeAttributes.put(JMX_CONFIG_KEY, jmxCollection);
+            }
+        }
+
         return runtimeAttributes;
     }
 
@@ -189,7 +199,8 @@ public abstract class JMXCollector extends AbstractRemoteServiceCollector {
     public CollectionSet collect(CollectionAgent agent, Map<String, Object> map) {
         final Map<String, String> stringMap = JmxUtils.convertToUnmodifiableStringMap(map);
         final InetAddress ipaddr = agent.getAddress();
-        final JmxCollection jmxCollection = (JmxCollection)map.get("jmxCollection");
+        final JmxCollection jmxCollection = (JmxCollection)map.get(JMX_COLLECTION_KEY);
+        final MBeanServer mBeanServer = (MBeanServer)map.get(JMX_CONFIG_KEY);
         final String collectionName = ParameterMap.getKeyedString(map, ParameterName.COLLECTION.toString(), serviceName);
         final String port = ParameterMap.getKeyedString(map, ParameterName.PORT.toString(), null);
         final String friendlyName = ParameterMap.getKeyedString(map, ParameterName.FRIENDLY_NAME.toString(), port);
@@ -240,8 +251,7 @@ public abstract class JMXCollector extends AbstractRemoteServiceCollector {
             config.setJmxCollection(jmxCollection);
 
             final DefaultJmxCollector jmxCollector = new DefaultJmxCollector();
-            jmxCollector.setJmxConfigDao(m_jmxConfigDao);
-            jmxCollector.collect(config, new JmxSampleProcessor() {
+            jmxCollector.collect(config, mBeanServer, new JmxSampleProcessor() {
                 @Override
                 public void process(JmxAttributeSample attributeSample) {
                     final String objectName = attributeSample.getMbean().getObjectname();
