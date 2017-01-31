@@ -26,4 +26,6 @@
     <bean id="collectionAgentFactory" class="org.opennms.netmgt.collectd.DefaultCollectionAgentFactory" />
     <onmsgi:service interface="org.opennms.netmgt.collection.api.CollectionAgentFactory" ref="collectionAgentFactory" />
 
+    <bean id="defaultResourceTypeMapper" class="org.opennms.netmgt.collectd.DefaultResourceTypeMapper" />
+
 </beans>

@@ -1,7 +1,7 @@
 /*******************************************************************************
  * This file is part of OpenNMS(R).
  *
- * Copyright (C) 2016-2017 The OpenNMS Group, Inc.
+ * Copyright (C) 2017-2017 The OpenNMS Group, Inc.
  * OpenNMS(R) is Copyright (C) 1999-2017 The OpenNMS Group, Inc.
  *
  * OpenNMS(R) is a registered trademark of The OpenNMS Group, Inc.
@@ -26,25 +26,22 @@
  *     http://www.opennms.com/
  *******************************************************************************/
 
-package org.opennms.netmgt.collection.support.builder;
+package org.opennms.netmgt.collectd;
 
-import java.util.Date;
+import javax.annotation.PostConstruct;
 
-public abstract class AbstractResource implements Resource {
+import org.opennms.netmgt.collection.adapters.ResourceTypeMapper;
+import org.opennms.netmgt.config.api.ResourceTypesDao;
+import org.springframework.beans.factory.annotation.Autowired;
 
-    private Date timestamp;
+public class DefaultResourceTypeMapper {
 
-    public void setTimestamp(Date timestamp) {
-        this.timestamp = timestamp;
-    }
+    @Autowired
+    private ResourceTypesDao resourceTypesDao;
 
-    @Override
-    public Date getTimestamp() {
-        return timestamp;
-    }
-
-    @Override
-    public Resource resolve() {
-        return this;
+    @PostConstruct
+    public void registerWithTypeMapper() {
+        ResourceTypeMapper.getInstance().setResourceTypeMapper(
+                (type) -> resourceTypesDao.getResourceTypeByName(type));
     }
 }

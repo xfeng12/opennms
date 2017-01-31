@@ -1,7 +1,7 @@
 /*******************************************************************************
  * This file is part of OpenNMS(R).
  *
- * Copyright (C) 2016-2017 The OpenNMS Group, Inc.
+ * Copyright (C) 2017-2017 The OpenNMS Group, Inc.
  * OpenNMS(R) is Copyright (C) 1999-2017 The OpenNMS Group, Inc.
  *
  * OpenNMS(R) is a registered trademark of The OpenNMS Group, Inc.
@@ -26,25 +26,24 @@
  *     http://www.opennms.com/
  *******************************************************************************/
 
-package org.opennms.netmgt.collection.support.builder;
+package org.opennms.netmgt.collection.adapters;
 
-import java.util.Date;
+import javax.xml.bind.annotation.adapters.XmlAdapter;
 
-public abstract class AbstractResource implements Resource {
+import org.opennms.netmgt.collection.dto.GenericTypeResourceDTO;
+import org.opennms.netmgt.collection.support.builder.DeferredGenericTypeResource;
+import org.opennms.netmgt.collection.support.builder.GenericTypeResource;
 
-    private Date timestamp;
-
-    public void setTimestamp(Date timestamp) {
-        this.timestamp = timestamp;
-    }
-
+public class DeferredGenericTypeResourceAdapter extends XmlAdapter<GenericTypeResourceDTO, DeferredGenericTypeResource> {
+ 
     @Override
-    public Date getTimestamp() {
-        return timestamp;
+    public GenericTypeResource unmarshal(GenericTypeResourceDTO dto) throws Exception {
+        return dto.toResource();
+    }
+ 
+    @Override
+    public GenericTypeResourceDTO marshal(DeferredGenericTypeResource resource) throws Exception {
+        return new GenericTypeResourceDTO(resource);
     }
 
-    @Override
-    public Resource resolve() {
-        return this;
-    }
 }

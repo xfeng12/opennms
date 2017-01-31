@@ -48,13 +48,13 @@ import org.junit.rules.TemporaryFolder;
 import org.opennms.core.collection.test.CollectionSetUtils;
 import org.opennms.core.utils.InetAddressUtils;
 import org.opennms.netmgt.collectd.jdbc.JdbcAgentState;
+import org.opennms.netmgt.collection.adapters.ResourceTypeMapper;
 import org.opennms.netmgt.collection.api.AttributeType;
 import org.opennms.netmgt.collection.api.CollectionAgent;
 import org.opennms.netmgt.collection.api.CollectionSet;
 import org.opennms.netmgt.collection.api.CollectionStatus;
 import org.opennms.netmgt.collection.support.IndexStorageStrategy;
 import org.opennms.netmgt.collection.support.PersistAllSelectorStrategy;
-import org.opennms.netmgt.config.api.ResourceTypesDao;
 import org.opennms.netmgt.config.datacollection.PersistenceSelectorStrategy;
 import org.opennms.netmgt.config.datacollection.ResourceType;
 import org.opennms.netmgt.config.datacollection.StorageStrategy;
@@ -176,14 +176,17 @@ public class JdbcCollectorTest {
         when(jdbcCollectionDao.getConfig()).thenReturn(config);
         when(jdbcCollectionDao.getDataCollectionByName(null)).thenReturn(collection);
 
-        ResourceTypesDao resourceTypesDao = mock(ResourceTypesDao.class);
-        for (ResourceType resourceType : resourceTypes) {
-            when(resourceTypesDao.getResourceTypeByName(resourceType.getName())).thenReturn(resourceType);
-        }
+        ResourceTypeMapper.getInstance().setResourceTypeMapper((name) -> {
+            for (ResourceType resourceType : resourceTypes) {
+                if (resourceType.getName().equals(name)) {
+                    return resourceType;
+                }
+            }
+            return null;
+        });
 
         MyJdbcCollector jdbcCollector = new MyJdbcCollector();
         jdbcCollector.setJdbcCollectionDao(jdbcCollectionDao);
-        jdbcCollector.setResourceTypesDao(resourceTypesDao);
         jdbcCollector.initialize();
 
         CollectionAgent agent = mock(CollectionAgent.class);

@@ -49,6 +49,7 @@ import org.opennms.netmgt.collection.api.CollectionSet;
 import org.opennms.netmgt.collection.api.ResourceType;
 import org.opennms.netmgt.collection.dto.CollectionSetDTO;
 import org.opennms.netmgt.collection.support.builder.CollectionSetBuilder;
+import org.opennms.netmgt.collection.support.builder.DeferredGenericTypeResource;
 import org.opennms.netmgt.collection.support.builder.GenericTypeResource;
 import org.opennms.netmgt.collection.support.builder.InterfaceLevelResource;
 import org.opennms.netmgt.collection.support.builder.NodeLevelResource;
@@ -70,6 +71,8 @@ public class CollectionSetDTOTest extends XmlTestNoCastor<CollectionSetDTO> {
         when(rt.getStorageStrategy().getClazz()).thenReturn(MockStorageStrategy.class.getCanonicalName());
         when(rt.getPersistenceSelectorStrategy().getClazz()).thenReturn(MockPersistenceSelectorStrategy.class.getCanonicalName());
 
+        DeferredGenericTypeResource deferredGenericTypeResource = new DeferredGenericTypeResource(nodeLevelResource, "Charles", "id");
+
         GenericTypeResource genericTypeResource = new GenericTypeResource(nodeLevelResource, rt, "idx");
         genericTypeResource.setTimestamp(new Date(0));
         ResourceTypeMapper.getInstance().setResourceTypeMapper((name) -> rt);
@@ -82,6 +85,7 @@ public class CollectionSetDTOTest extends XmlTestNoCastor<CollectionSetDTO> {
                 .withNumericAttribute(nodeLevelResource, "ucd-sysstat", "CpuRawIdle", 99, AttributeType.GAUGE)
                 .withNumericAttribute(interfaceLevelResource, "mib2-X-interfaces", "ifHCInOctets", 1001, AttributeType.COUNTER)
                 .withStringAttribute(interfaceLevelResource, "mib2-X-interfaces", "ifDescr", "LAN")
+                .withIdentifiedNumericAttribute(deferredGenericTypeResource, "net-snmp-disk", "ns-dsk1", 1024, AttributeType.GAUGE, "some-oid")
                 .withIdentifiedNumericAttribute(genericTypeResource, "net-snmp-disk", "ns-dskTotal", 1024, AttributeType.GAUGE, "some-oid")
                 .build();
 
@@ -100,6 +104,12 @@ public class CollectionSetDTOTest extends XmlTestNoCastor<CollectionSetDTO> {
                 "      </interface-level-resource>\n" +
                 "      <numeric-attribute group=\"mib2-X-interfaces\" name=\"ifHCInOctets\" type=\"counter\" value=\"1001\"/>\n" +
                 "      <string-attribute group=\"mib2-X-interfaces\" name=\"ifDescr\" type=\"string\" value=\"LAN\"/>\n" +
+                "   </collection-resource>\n" +
+                "   <collection-resource>\n" +
+                "      <generic-type-resource name=\"Charles\" instance=\"id\">\n" +
+                "         <node-level-resource node-id=\"1\"/>\n" +
+                "      </generic-type-resource>\n" +
+                "      <numeric-attribute group=\"net-snmp-disk\" name=\"ns-dsk1\" type=\"gauge\" identifier=\"some-oid\" value=\"1024\"/>\n" +
                 "   </collection-resource>\n" +
                 "   <collection-resource>\n" +
                 "      <generic-type-resource name=\"Charles\" instance=\"idx\" timestamp=\"" + StringUtils.iso8601OffsetString(new Date(0), ZoneId.systemDefault(), ChronoUnit.SECONDS) + "\">\n" +

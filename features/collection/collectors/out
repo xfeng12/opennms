@@ -1,0 +1,274 @@
+[INFO] Scanning for projects...
+[WARNING] The POM for com.sun.tools.jxc.maven2:maven-jaxb-schemagen-plugin:jar:[1.2,2.0) is missing, no dependency information available
+[WARNING] Failed to retrieve plugin descriptor for com.sun.tools.jxc.maven2:maven-jaxb-schemagen-plugin:[1.2,2.0): Plugin com.sun.tools.jxc.maven2:maven-jaxb-schemagen-plugin:[1.2,2.0) or one of its dependencies could not be resolved: Failure to find com.sun.tools.jxc.maven2:maven-jaxb-schemagen-plugin:jar:[1.2,2.0) in http://maven.opennms.org/content/groups/opennms.org-release/ was cached in the local repository, resolution will not be reattempted until the update interval of opennms-repo has elapsed or updates are forced
+[WARNING] The POM for org.dstovall:onejar-maven-plugin:jar:1.4.4 is missing, no dependency information available
+[WARNING] Failed to retrieve plugin descriptor for org.dstovall:onejar-maven-plugin:1.4.4: Plugin org.dstovall:onejar-maven-plugin:1.4.4 or one of its dependencies could not be resolved: Failure to find org.dstovall:onejar-maven-plugin:jar:1.4.4 in http://maven.opennms.org/content/groups/opennms.org-release/ was cached in the local repository, resolution will not be reattempted until the update interval of opennms-repo has elapsed or updates are forced
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building OpenNMS :: Features :: Collection :: Collectors 20.0.0-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[WARNING] The POM for com.sun.tools.jxc.maven2:maven-jaxb-schemagen-plugin:jar:[1.2,2.0) is missing, no dependency information available
+[WARNING] Failed to retrieve plugin descriptor for com.sun.tools.jxc.maven2:maven-jaxb-schemagen-plugin:[1.2,2.0): Plugin com.sun.tools.jxc.maven2:maven-jaxb-schemagen-plugin:[1.2,2.0) or one of its dependencies could not be resolved: Failure to find com.sun.tools.jxc.maven2:maven-jaxb-schemagen-plugin:jar:[1.2,2.0) in http://maven.opennms.org/content/groups/opennms.org-release/ was cached in the local repository, resolution will not be reattempted until the update interval of opennms-repo has elapsed or updates are forced
+[WARNING] The POM for org.dstovall:onejar-maven-plugin:jar:1.4.4 is missing, no dependency information available
+[WARNING] Failed to retrieve plugin descriptor for org.dstovall:onejar-maven-plugin:1.4.4: Plugin org.dstovall:onejar-maven-plugin:1.4.4 or one of its dependencies could not be resolved: Failure to find org.dstovall:onejar-maven-plugin:jar:1.4.4 in http://maven.opennms.org/content/groups/opennms.org-release/ was cached in the local repository, resolution will not be reattempted until the update interval of opennms-repo has elapsed or updates are forced
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.10:tree (default-cli) @ org.opennms.features.collection.collectors ---
+[INFO] org.opennms.features.collection:org.opennms.features.collection.collectors:bundle:20.0.0-SNAPSHOT
+[INFO] +- org.opennms.features.collection:org.opennms.features.collection.api:jar:20.0.0-SNAPSHOT:compile
+[INFO] |  +- org.opennms:opennms-model:jar:20.0.0-SNAPSHOT:compile
+[INFO] |  |  +- org.opennms.dependencies:jaxb-dependencies:pom:20.0.0-SNAPSHOT:compile
+[INFO] |  |  |  \- org.eclipse.persistence:org.eclipse.persistence.moxy:jar:2.5.1:compile
+[INFO] |  |  |     +- org.eclipse.persistence:org.eclipse.persistence.core:jar:2.5.1:compile
+[INFO] |  |  |     |  \- org.eclipse.persistence:org.eclipse.persistence.asm:jar:2.5.1:compile
+[INFO] |  |  |     \- org.eclipse.persistence:org.eclipse.persistence.antlr:jar:2.5.1:compile
+[INFO] |  |  \- org.opennms.core:org.opennms.core.xml:jar:20.0.0-SNAPSHOT:compile
+[INFO] |  +- org.opennms:opennms-rrd-api:jar:20.0.0-SNAPSHOT:compile
+[INFO] |  |  \- org.opennms.core:org.opennms.core.logging:jar:20.0.0-SNAPSHOT:compile
+[INFO] |  +- org.opennms.core:org.opennms.core.lib:jar:20.0.0-SNAPSHOT:compile
+[INFO] |  |  \- org.opennms.dependencies:owasp-encoder-dependencies:pom:20.0.0-SNAPSHOT:compile
+[INFO] |  |     \- org.owasp.encoder:encoder:jar:1.2:compile
+[INFO] |  \- org.opennms.dependencies:spring-dependencies:pom:20.0.0-SNAPSHOT:compile
+[INFO] |     +- org.apache.servicemix.bundles:org.apache.servicemix.bundles.spring-aop:jar:4.0.7.RELEASE_1:compile
+[INFO] |     +- org.apache.servicemix.bundles:org.apache.servicemix.bundles.spring-aspects:jar:4.0.7.RELEASE_1:compile
+[INFO] |     +- org.apache.servicemix.bundles:org.apache.servicemix.bundles.spring-beans:jar:4.0.7.RELEASE_1:compile
+[INFO] |     +- org.apache.servicemix.bundles:org.apache.servicemix.bundles.spring-context:jar:4.0.7.RELEASE_1:compile
+[INFO] |     +- org.apache.servicemix.bundles:org.apache.servicemix.bundles.spring-context-support:jar:4.0.7.RELEASE_1:compile
+[INFO] |     +- org.apache.servicemix.bundles:org.apache.servicemix.bundles.spring-core:jar:4.0.7.RELEASE_1:compile
+[INFO] |     +- org.apache.servicemix.bundles:org.apache.servicemix.bundles.spring-expression:jar:4.0.7.RELEASE_1:compile
+[INFO] |     +- org.apache.servicemix.bundles:org.apache.servicemix.bundles.spring-instrument:jar:4.0.7.RELEASE_1:compile
+[INFO] |     +- org.apache.servicemix.bundles:org.apache.servicemix.bundles.spring-oxm:jar:4.0.7.RELEASE_1:compile
+[INFO] |     +- org.apache.servicemix.bundles:org.apache.servicemix.bundles.spring-jdbc:jar:4.0.7.RELEASE_1:compile
+[INFO] |     +- org.apache.servicemix.bundles:org.apache.servicemix.bundles.spring-jms:jar:4.0.7.RELEASE_1:compile
+[INFO] |     +- org.apache.servicemix.bundles:org.apache.servicemix.bundles.spring-orm:jar:4.0.7.RELEASE_1:compile
+[INFO] |     +- org.apache.servicemix.bundles:org.apache.servicemix.bundles.spring-tx:jar:4.0.7.RELEASE_1:compile
+[INFO] |     +- org.apache.servicemix.bundles:org.apache.servicemix.bundles.aopalliance:jar:1.0_6:compile
+[INFO] |     +- org.apache.servicemix.bundles:org.apache.servicemix.bundles.aspectj:jar:1.7.4_1:compile
+[INFO] |     +- javax.annotation:jsr250-api:jar:1.0:compile
+[INFO] |     +- commons-collections:commons-collections:jar:3.2.2:compile
+[INFO] |     +- org.slf4j:jcl-over-slf4j:jar:1.7.21:runtime
+[INFO] |     +- org.codehaus.jackson:jackson-core-asl:jar:1.9.13:compile
+[INFO] |     +- org.codehaus.jackson:jackson-mapper-asl:jar:1.9.13:compile
+[INFO] |     +- org.codehaus.jackson:jackson-jaxrs:jar:1.9.13:compile
+[INFO] |     +- org.codehaus.jackson:jackson-xc:jar:1.9.13:compile
+[INFO] |     +- org.apache.geronimo.specs:geronimo-jms_1.1_spec:jar:1.1.1:compile
+[INFO] |     \- org.javassist:javassist:jar:3.18.2-GA:compile
+[INFO] +- org.opennms:opennms-config:jar:20.0.0-SNAPSHOT:compile
+[INFO] |  +- org.opennms.dependencies:hibernate-dependencies:pom:20.0.0-SNAPSHOT:compile
+[INFO] |  |  \- org.hibernate:hibernate-core:jar:3.6.10.Final:compile
+[INFO] |  |     +- antlr:antlr:jar:2.7.7:compile
+[INFO] |  |     +- dom4j:dom4j:jar:1.6.1:compile
+[INFO] |  |     \- org.hibernate:hibernate-commons-annotations:jar:3.2.0.Final:compile
+[INFO] |  +- org.opennms.dependencies:jasypt-dependencies:pom:20.0.0-SNAPSHOT:compile
+[INFO] |  |  \- org.jasypt:jasypt:jar:1.9.0:compile
+[INFO] |  +- org.opennms.core:org.opennms.core.config:jar:20.0.0-SNAPSHOT:compile
+[INFO] |  +- org.opennms.core:org.opennms.core.db:jar:20.0.0-SNAPSHOT:compile
+[INFO] |  |  +- com.mchange:c3p0:jar:0.9.5.2:compile
+[INFO] |  |  |  \- com.mchange:mchange-commons-java:jar:0.2.11:compile
+[INFO] |  |  \- com.zaxxer:HikariCP:jar:2.5.1:compile
+[INFO] |  +- org.opennms:opennms-config-api:jar:20.0.0-SNAPSHOT:compile
+[INFO] |  +- org.opennms:opennms-config-model:jar:20.0.0-SNAPSHOT:compile
+[INFO] |  +- org.opennms.features.events:org.opennms.features.events.api:jar:20.0.0-SNAPSHOT:compile
+[INFO] |  +- org.opennms.features.poller:org.opennms.features.poller.api:jar:20.0.0-SNAPSHOT:compile
+[INFO] |  +- commons-codec:commons-codec:jar:1.10:compile
+[INFO] |  \- com.googlecode.concurrent-locks:concurrent-locks:jar:1.0.0:compile
+[INFO] +- org.opennms.core:org.opennms.core.web:jar:20.0.0-SNAPSHOT:compile
+[INFO] |  +- org.apache.httpcomponents:httpcore-osgi:jar:4.3.3:compile
+[INFO] |  |  +- org.apache.httpcomponents:httpcore:jar:4.3.3:compile
+[INFO] |  |  \- org.apache.httpcomponents:httpcore-nio:jar:4.3.3:compile
+[INFO] |  +- org.apache.httpcomponents:httpclient-osgi:jar:4.3.6:compile
+[INFO] |  |  +- org.apache.httpcomponents:httpclient:jar:4.3.6:compile
+[INFO] |  |  +- org.apache.httpcomponents:httpmime:jar:4.3.6:compile
+[INFO] |  |  +- org.apache.httpcomponents:httpclient-cache:jar:4.3.6:compile
+[INFO] |  |  \- org.apache.httpcomponents:fluent-hc:jar:4.3.6:compile
+[INFO] |  +- commons-io:commons-io:jar:2.4:compile
+[INFO] |  \- org.slf4j:slf4j-api:jar:1.7.21:compile
+[INFO] +- org.opennms.dependencies:jmx-dependencies:pom:20.0.0-SNAPSHOT:compile
+[INFO] |  +- org.opennms.core.jmx:org.opennms.core.jmx.api:jar:20.0.0-SNAPSHOT:compile
+[INFO] |  \- org.opennms.core.jmx:org.opennms.core.jmx.impl:jar:20.0.0-SNAPSHOT:compile
+[INFO] +- org.opennms:opennms-services:jar:20.0.0-SNAPSHOT:test
+[INFO] |  +- org.opennms.dependencies:castor-dependencies:pom:20.0.0-SNAPSHOT:compile
+[INFO] |  |  +- org.codehaus.castor:castor:jar:1.1.2.1:compile
+[INFO] |  |  \- org.opennms.core:org.opennms.core.castor-properties:jar:20.0.0-SNAPSHOT:compile
+[INFO] |  +- org.opennms:opennms-bootstrap:jar:20.0.0-SNAPSHOT:test
+[INFO] |  +- org.opennms:opennms-dao:jar:20.0.0-SNAPSHOT:test
+[INFO] |  |  +- org.opennms.core:org.opennms.core.soa:jar:20.0.0-SNAPSHOT:test
+[INFO] |  |  +- org.opennms.core:org.opennms.core.criteria:jar:20.0.0-SNAPSHOT:test
+[INFO] |  |  +- org.opennms.features.measurements:org.opennms.features.measurements.api:jar:20.0.0-SNAPSHOT:test
+[INFO] |  |  \- org.hibernate.javax.persistence:hibernate-jpa-2.0-api:jar:1.0.1.Final:compile
+[INFO] |  +- org.opennms.core:org.opennms.core.daemon:jar:20.0.0-SNAPSHOT:test
+[INFO] |  |  +- com.sun:tools:jar:1.8:system
+[INFO] |  |  +- org.opennms.dependencies:activemq-dependencies:pom:20.0.0-SNAPSHOT:test
+[INFO] |  |  |  +- org.apache.activemq:activemq-karaf:jar:5.10.0:test
+[INFO] |  |  |  |  +- org.apache.activemq:activemq-http:jar:5.10.0:test
+[INFO] |  |  |  |  |  +- org.apache.activemq:activemq-stomp:jar:5.10.0:test
+[INFO] |  |  |  |  |  +- org.apache.activemq:activemq-mqtt:jar:5.10.0:test
+[INFO] |  |  |  |  |  |  +- org.apache.activemq.protobuf:activemq-protobuf:jar:1.1:test
+[INFO] |  |  |  |  |  |  +- org.fusesource.mqtt-client:mqtt-client:jar:1.10:test
+[INFO] |  |  |  |  |  |  \- org.fusesource.hawtdispatch:hawtdispatch-transport:jar:1.21:test
+[INFO] |  |  |  |  |  |     \- org.fusesource.hawtdispatch:hawtdispatch:jar:1.21:test
+[INFO] |  |  |  |  |  \- com.thoughtworks.xstream:xstream:jar:1.4.7:test
+[INFO] |  |  |  |  |     +- xmlpull:xmlpull:jar:1.1.3.1:test
+[INFO] |  |  |  |  |     \- xpp3:xpp3_min:jar:1.1.4c:test
+[INFO] |  |  |  |  +- org.apache.activemq:activemq-log4j-appender:jar:5.10.0:test
+[INFO] |  |  |  |  \- org.apache.activemq:activemq-console:jar:5.10.0:test
+[INFO] |  |  |  |     +- org.apache.activemq:activemq-kahadb-store:jar:5.10.0:test
+[INFO] |  |  |  |     +- org.apache.activemq:activeio-core:jar:3.1.4:test
+[INFO] |  |  |  |     +- org.fusesource.hawtbuf:hawtbuf-proto:jar:1.10:test
+[INFO] |  |  |  |     +- org.apache.velocity:velocity:jar:1.7:test
+[INFO] |  |  |  |     +- org.apache.servicemix.bundles:org.apache.servicemix.bundles.josql:jar:1.5_5:test
+[INFO] |  |  |  |     \- commons-daemon:commons-daemon:jar:1.0.15:test
+[INFO] |  |  |  +- org.apache.activemq:activemq-jaas:jar:5.10.0:test
+[INFO] |  |  |  \- org.slf4j:log4j-over-slf4j:jar:1.7.21:runtime
+[INFO] |  |  +- org.opennms.features.activemq:org.opennms.features.activemq.component:jar:20.0.0-SNAPSHOT:test
+[INFO] |  |  |  \- org.opennms.features.activemq:org.opennms.features.activemq.pool:jar:20.0.0-SNAPSHOT:test
+[INFO] |  |  \- org.apache.activemq:activemq-camel:jar:5.10.0:test
+[INFO] |  |     +- org.apache.camel:camel-jms:jar:2.13.1:test
+[INFO] |  |     |  \- org.apache.camel:camel-spring:jar:2.13.1:test
+[INFO] |  |     +- org.apache.activemq:activemq-spring:jar:5.10.0:test
+[INFO] |  |     |  +- org.apache.xbean:xbean-spring:jar:3.16:test
+[INFO] |  |     |  +- org.apache.activemq:activemq-broker:jar:5.10.0:test
+[INFO] |  |     |  |  \- org.apache.activemq:activemq-openwire-legacy:jar:5.10.0:test
+[INFO] |  |     |  \- org.apache.geronimo.specs:geronimo-jta_1.0.1B_spec:jar:1.0.1:test
+[INFO] |  |     \- org.apache.activemq:activemq-pool:jar:5.10.0:test
+[INFO] |  |        +- org.apache.activemq:activemq-jms-pool:jar:5.10.0:test
+[INFO] |  |        \- org.apache.activemq:activemq-client:jar:5.10.0:test
+[INFO] |  |           +- org.fusesource.hawtbuf:hawtbuf:jar:1.10:test
+[INFO] |  |           \- org.apache.geronimo.specs:geronimo-j2ee-management_1.1_spec:jar:1.0.1:test
+[INFO] |  +- org.opennms:opennms-icmp-api:jar:20.0.0-SNAPSHOT:test
+[INFO] |  |  \- org.opennms.dependencies:tracker-dependencies:pom:20.0.0-SNAPSHOT:test
+[INFO] |  |     \- org.opennms.lib:org.opennms.lib.tracker:jar:0.7:test
+[INFO] |  +- org.opennms:opennms-javamail-api:jar:20.0.0-SNAPSHOT:test
+[INFO] |  +- org.opennms.dependencies:spring-web-dependencies:pom:20.0.0-SNAPSHOT:test
+[INFO] |  |  +- org.apache.servicemix.bundles:org.apache.servicemix.bundles.spring-web:jar:4.0.7.RELEASE_1:test
+[INFO] |  |  +- org.apache.servicemix.bundles:org.apache.servicemix.bundles.spring-webmvc:jar:4.0.7.RELEASE_1:test
+[INFO] |  |  +- org.springframework.webflow:spring-binding:jar:2.3.4.RELEASE:test
+[INFO] |  |  |  \- opensymphony:ognl:jar:2.6.11:test
+[INFO] |  |  +- org.springframework.webflow:spring-js:jar:2.3.4.RELEASE:test
+[INFO] |  |  |  \- org.springframework.webflow:spring-js-resources:jar:2.3.4.RELEASE:test
+[INFO] |  |  +- org.springframework.webflow:spring-webflow:jar:2.3.4.RELEASE:test
+[INFO] |  |  +- org.hibernate:hibernate-validator-annotation-processor:jar:4.1.0.Final:test
+[INFO] |  |  |  \- org.hibernate:hibernate-validator:jar:4.3.2.Final:test
+[INFO] |  |  |     +- javax.validation:validation-api:jar:1.0.0.GA:test
+[INFO] |  |  |     \- org.jboss.logging:jboss-logging:jar:3.1.0.CR2:test
+[INFO] |  |  +- commons-beanutils:commons-beanutils:jar:1.8.3:test
+[INFO] |  |  +- commons-validator:commons-validator:jar:1.3.1:test
+[INFO] |  |  |  \- commons-digester:commons-digester:jar:2.1:test
+[INFO] |  |  \- xalan:xalan:jar:2.7.2:test
+[INFO] |  +- org.opennms.dependencies:spring-security-core-dependencies:pom:20.0.0-SNAPSHOT:test
+[INFO] |  |  +- org.springframework.security:spring-security-core:jar:3.2.7.RELEASE:test
+[INFO] |  |  |  \- aopalliance:aopalliance:jar:1.0:test
+[INFO] |  |  \- org.springframework.security:spring-security-remoting:jar:3.2.7.RELEASE:test
+[INFO] |  +- org.opennms.dependencies:snmp-dependencies:pom:20.0.0-SNAPSHOT:compile
+[INFO] |  |  +- org.opennms.core.snmp:org.opennms.core.snmp.implementations.joesnmp:jar:20.0.0-SNAPSHOT:compile
+[INFO] |  |  |  \- org.opennms.core.snmp:org.opennms.core.snmp.joesnmp:jar:20.0.0-SNAPSHOT:compile
+[INFO] |  |  \- org.opennms.core.snmp:org.opennms.core.snmp.implementations.snmp4j:jar:20.0.0-SNAPSHOT:compile
+[INFO] |  |     \- org.opennms.dependencies:snmp4j-dependencies:pom:20.0.0-SNAPSHOT:compile
+[INFO] |  |        \- org.snmp4j:snmp4j:jar:2.4.3:compile
+[INFO] |  +- org.opennms:opennms-util:jar:20.0.0-SNAPSHOT:compile
+[INFO] |  |  \- xalan:serializer:jar:2.7.2:compile
+[INFO] |  +- org.opennms.features.collection:org.opennms.features.collection.persistence.rrd:jar:20.0.0-SNAPSHOT:test
+[INFO] |  +- org.opennms.core.ipc.rpc:org.opennms.core.ipc.rpc.api:jar:20.0.0-SNAPSHOT:test
+[INFO] |  +- org.opennms.features.poller.monitors:org.opennms.features.poller.monitors.core:jar:20.0.0-SNAPSHOT:test
+[INFO] |  |  \- commons-net:commons-net:jar:3.3:test
+[INFO] |  +- org.opennms.dependencies:camel-dependencies:pom:20.0.0-SNAPSHOT:test
+[INFO] |  |  +- org.apache.camel:camel-core:jar:2.14.1:test
+[INFO] |  |  +- org.apache.camel:camel-http:jar:2.14.1:test
+[INFO] |  |  |  +- org.apache.geronimo.specs:geronimo-servlet_3.0_spec:jar:1.0:test
+[INFO] |  |  |  \- commons-httpclient:commons-httpclient:jar:3.1:test
+[INFO] |  |  +- org.apache.camel:camel-netty:jar:2.14.1:test
+[INFO] |  |  |  +- io.netty:netty:jar:3.9.4.Final:test
+[INFO] |  |  |  \- commons-pool:commons-pool:jar:1.6:test
+[INFO] |  |  \- org.apache.camel:camel-blueprint:jar:2.14.1:test
+[INFO] |  |     +- org.apache.camel:camel-core-xml:jar:2.14.1:test
+[INFO] |  |     \- org.apache.camel:camel-core-osgi:jar:2.14.1:test
+[INFO] |  +- org.jolokia:jolokia-client-java:jar:1.1.5:test
+[INFO] |  |  \- com.googlecode.json-simple:json-simple:jar:1.1:test
+[INFO] |  +- commons-lang:commons-lang:jar:2.6:compile
+[INFO] |  +- commons-cli:commons-cli:jar:1.2:test
+[INFO] |  +- oro:oro:jar:2.0.8:runtime
+[INFO] |  +- xerces:xercesImpl:jar:2.9.1:test
+[INFO] |  +- xml-apis:xml-apis:jar:1.4.01:compile
+[INFO] |  +- bsf:bsf:jar:2.4.0:test
+[INFO] |  +- bsh:bsh:jar:1.3.0:test
+[INFO] |  +- javax.mail:mail:jar:1.4.5:compile
+[INFO] |  |  \- javax.activation:activation:jar:1.1.1:compile
+[INFO] |  +- com.novell.ldap:jldap:jar:4.3:test
+[INFO] |  +- org.opennms.dependencies:jcifs-dependencies:pom:20.0.0-SNAPSHOT:test
+[INFO] |  |  \- org.samba.jcifs:jcifs:jar:1.3.14:test
+[INFO] |  +- org.apache.commons:commons-jexl:jar:2.1.1:test
+[INFO] |  +- org.opennms.dependencies:quartz-dependencies:pom:20.0.0-SNAPSHOT:test
+[INFO] |  |  \- org.opensymphony.quartz:quartz:jar:1.6.5:test
+[INFO] |  +- org.opennms.dependencies:smack-dependencies:pom:20.0.0-SNAPSHOT:test
+[INFO] |  |  +- org.igniterealtime.smack:smack-core:jar:4.0.6:test
+[INFO] |  |  |  \- xpp3:xpp3:jar:1.1.4c:test
+[INFO] |  |  +- org.igniterealtime.smack:smack-resolver-javax:jar:4.0.6:test
+[INFO] |  |  +- org.igniterealtime.smack:smack-tcp:jar:4.0.6:test
+[INFO] |  |  \- org.igniterealtime.smack:smack-extensions:jar:4.0.6:test
+[INFO] |  +- org.opennms.dependencies:rancid-dependencies:pom:20.0.0-SNAPSHOT:test
+[INFO] |  |  \- org.opennms:rancid-api:jar:1.0.4:test
+[INFO] |  |     +- org.restlet:org.restlet:jar:1.1.10:test
+[INFO] |  |     +- com.noelios.restlet:com.noelios.restlet:jar:1.1.10:test
+[INFO] |  |     \- com.noelios.restlet:com.noelios.restlet.ext.simple:jar:1.1.10:test
+[INFO] |  |        \- org.simpleframework:org.simpleframework:jar:3.1.3:test
+[INFO] |  +- org.opennms.dependencies:twitter4j-dependencies:pom:20.0.0-SNAPSHOT:test
+[INFO] |  |  \- org.twitter4j:twitter4j-core:jar:3.0.6:test
+[INFO] |  +- org.opennms.dependencies:dnsjava-dependencies:pom:20.0.0-SNAPSHOT:test
+[INFO] |  |  \- org.dnsjava:dnsjava:jar:2.1.3:test
+[INFO] |  \- org.opennms.features.events:org.opennms.features.events.daemon:jar:20.0.0-SNAPSHOT:test
+[INFO] |     +- org.opennms:opennms-dao-mock:jar:20.0.0-SNAPSHOT:test
+[INFO] |     \- io.dropwizard.metrics:metrics-core:jar:3.1.2:test
+[INFO] +- org.opennms.features.collection:org.opennms.features.collection.test-api:jar:20.0.0-SNAPSHOT:test
+[INFO] |  +- junit:junit:jar:4.12:test
+[INFO] |  |  \- org.hamcrest:hamcrest-core:jar:1.3:test
+[INFO] |  \- org.mockito:mockito-all:jar:1.10.19:test
+[INFO] +- org.opennms.core.test-api:org.opennms.core.test-api.collection:jar:20.0.0-SNAPSHOT:test
+[INFO] |  +- com.google.guava:guava:jar:18.0:test
+[INFO] |  +- org.opennms.core.test-api:org.opennms.core.test-api.lib:jar:20.0.0-SNAPSHOT:test
+[INFO] |  |  +- org.opennms.core:org.opennms.core.spring:jar:20.0.0-SNAPSHOT:compile
+[INFO] |  |  \- org.easymock:easymock:jar:3.4:test
+[INFO] |  |     \- org.objenesis:objenesis:jar:2.2:test
+[INFO] |  \- org.opennms.dependencies:spring-test-dependencies:pom:20.0.0-SNAPSHOT:test
+[INFO] |     \- org.apache.servicemix.bundles:org.apache.servicemix.bundles.spring-test:jar:4.0.7.RELEASE_1:test
+[INFO] +- org.opennms.core.test-api:org.opennms.core.test-api.db:jar:20.0.0-SNAPSHOT:test
+[INFO] |  +- org.opennms.core:org.opennms.core.db.install:jar:20.0.0-SNAPSHOT:test
+[INFO] |  +- org.opennms.core:org.opennms.core.schema:jar:20.0.0-SNAPSHOT:test
+[INFO] |  |  \- org.opennms.dependencies:liquibase-dependencies:pom:20.0.0-SNAPSHOT:test
+[INFO] |  |     \- org.liquibase:liquibase-core:jar:2.0.5-ONMS20160524b:test
+[INFO] |  +- org.opennms.tests:org.opennms.tests.mock-elements:jar:20.0.0-SNAPSHOT:test
+[INFO] |  +- org.opennms.dependencies:atomikos-dependencies:pom:20.0.0-SNAPSHOT:compile
+[INFO] |  |  +- com.atomikos:transactions-jta:jar:3.9.2:compile
+[INFO] |  |  |  \- com.atomikos:transactions:jar:3.9.2:compile
+[INFO] |  |  |     \- com.atomikos:transactions-api:jar:3.9.2:compile
+[INFO] |  |  |        \- com.atomikos:atomikos-util:jar:3.9.2:compile
+[INFO] |  |  +- com.atomikos:transactions-jdbc:jar:3.9.2:compile
+[INFO] |  |  \- javax.transaction:jta:jar:1.1:compile
+[INFO] |  \- org.postgresql:postgresql:jar:9.4.1211:compile
+[INFO] +- org.opennms.core.test-api:org.opennms.core.test-api.http:jar:20.0.0-SNAPSHOT:test
+[INFO] |  +- org.eclipse.jetty:jetty-server:jar:9.4.0.v20161208:test
+[INFO] |  |  +- javax.servlet:javax.servlet-api:jar:3.1.0:test
+[INFO] |  |  +- org.eclipse.jetty:jetty-http:jar:9.4.0.v20161208:test
+[INFO] |  |  |  \- org.eclipse.jetty:jetty-util:jar:9.4.0.v20161208:test
+[INFO] |  |  \- org.eclipse.jetty:jetty-io:jar:9.4.0.v20161208:test
+[INFO] |  \- org.eclipse.jetty:jetty-webapp:jar:9.4.0.v20161208:test
+[INFO] |     +- org.eclipse.jetty:jetty-xml:jar:9.4.0.v20161208:test
+[INFO] |     \- org.eclipse.jetty:jetty-servlet:jar:9.4.0.v20161208:test
+[INFO] |        \- org.eclipse.jetty:jetty-security:jar:9.4.0.v20161208:test
+[INFO] +- org.opennms.core.test-api:org.opennms.core.test-api.services:jar:20.0.0-SNAPSHOT:test
+[INFO] +- org.opennms:opennms-rrd-jrobin:jar:20.0.0-SNAPSHOT:test
+[INFO] |  \- org.opennms.dependencies:jrobin-dependencies:pom:20.0.0-SNAPSHOT:test
+[INFO] |     \- org.jrobin:jrobin:jar:1.6.0:test
+[INFO] +- org.opennms.features.collection:org.opennms.features.collection.client-rpc:jar:20.0.0-SNAPSHOT:test
+[INFO] |  +- org.opennms.core:org.opennms.core.api:jar:20.0.0-SNAPSHOT:compile
+[INFO] |  +- org.opennms.core.ipc.rpc:org.opennms.core.ipc.rpc.xml:jar:20.0.0-SNAPSHOT:test
+[INFO] |  +- org.opennms.core.snmp:org.opennms.core.snmp.api:jar:20.0.0-SNAPSHOT:compile
+[INFO] |  |  \- org.json:json:jar:20140107:compile
+[INFO] |  +- org.opennms:opennms-config-jaxb:jar:20.0.0-SNAPSHOT:compile
+[INFO] |  \- org.opennms:opennms-dao-api:jar:20.0.0-SNAPSHOT:test
+[INFO] \- org.opennms.core.ipc.rpc:org.opennms.core.ipc.rpc.mock-impl:jar:20.0.0-SNAPSHOT:test
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 1.952 s
+[INFO] Finished at: 2017-01-31T13:13:45-05:00
+[INFO] Final Memory: 54M/859M
+[INFO] ------------------------------------------------------------------------

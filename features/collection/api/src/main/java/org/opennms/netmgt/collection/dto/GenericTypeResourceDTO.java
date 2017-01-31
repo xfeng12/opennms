@@ -39,6 +39,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 import org.opennms.netmgt.collection.adapters.ResourceTypeMapper;
 import org.opennms.netmgt.collection.api.ResourceType;
+import org.opennms.netmgt.collection.support.builder.DeferredGenericTypeResource;
 import org.opennms.netmgt.collection.support.builder.GenericTypeResource;
 
 @XmlRootElement(name = "generic-type-resource")
@@ -59,9 +60,9 @@ public class GenericTypeResourceDTO {
 
     public GenericTypeResourceDTO() { }
 
-    public GenericTypeResourceDTO(GenericTypeResource resource) {
+    public GenericTypeResourceDTO(DeferredGenericTypeResource resource) {
         parent = new NodeLevelResourceDTO(resource.getParent());
-        name = resource.getResourceType().getName();
+        name = resource.getResourceTypeName();
         instance = resource.getInstance();
         timestamp = resource.getTimestamp();
     }

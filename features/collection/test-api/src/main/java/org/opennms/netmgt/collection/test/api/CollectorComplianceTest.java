@@ -58,6 +58,15 @@ import org.opennms.netmgt.snmp.InetAddrUtils;
 import org.springframework.context.ApplicationContext;
 import org.springframework.transaction.PlatformTransactionManager;
 
+/**
+ * Used to verify that a {@link ServiceCollector} behaves
+ * correctly when used in different workflows i.e.:
+ *  1) Ad-hoc collection via the console
+ *  2) Collection from OpenNMS via Collectd
+ *  3) Collection from Minion via an RPC triggered by Collectd
+ *
+ * @author jwhite
+ */
 public abstract class CollectorComplianceTest {
 
     private final Class<? extends ServiceCollector> collectorClass;
@@ -73,6 +82,10 @@ public abstract class CollectorComplianceTest {
     public abstract String getCollectionName();
 
     public abstract Map<String, Object> getRequiredParameters();
+
+    public void beforeMinion() { }
+
+    public void afterMinion() { }
 
     public Map<String, Object> getRequiredBeans() {
         return Collections.emptyMap();
@@ -161,6 +174,8 @@ public abstract class CollectorComplianceTest {
         allParms.putAll(runtimeAttrs);
         final Map<String, String> marshaledParms = opennmsCollector.marshalParameters(Collections.unmodifiableMap(allParms));
 
+        beforeMinion();
+
         // create a separate instance of the collector
         final ServiceCollector minionCollector = getNewCollector();
 
@@ -171,6 +186,8 @@ public abstract class CollectorComplianceTest {
         final CollectionAgentDTO agentDTO = new CollectionAgentDTO(agent);
         final CollectionSet collectionSet = minionCollector.collect(agentDTO, Collections.unmodifiableMap(unmarshaledParms));
         assertEquals(CollectionStatus.SUCCEEDED, collectionSet.getStatus());
+
+        afterMinion();
 
         // the collection set should be marshalable
         JaxbUtils.marshal(collectionSet);

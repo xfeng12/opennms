@@ -60,4 +60,6 @@ public interface Resource {
      */
     public Date getTimestamp();
 
+    public Resource resolve();
+
 }

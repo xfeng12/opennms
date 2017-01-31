@@ -51,12 +51,10 @@ import org.opennms.netmgt.collection.api.CollectionAgent;
 import org.opennms.netmgt.collection.api.CollectionException;
 import org.opennms.netmgt.collection.api.CollectionSet;
 import org.opennms.netmgt.collection.api.CollectionStatus;
-import org.opennms.netmgt.collection.api.ResourceType;
 import org.opennms.netmgt.collection.support.builder.CollectionSetBuilder;
-import org.opennms.netmgt.collection.support.builder.GenericTypeResource;
+import org.opennms.netmgt.collection.support.builder.DeferredGenericTypeResource;
 import org.opennms.netmgt.collection.support.builder.NodeLevelResource;
 import org.opennms.netmgt.collection.support.builder.Resource;
-import org.opennms.netmgt.config.api.ResourceTypesDao;
 import org.opennms.netmgt.config.jdbc.JdbcColumn;
 import org.opennms.netmgt.config.jdbc.JdbcDataCollection;
 import org.opennms.netmgt.config.jdbc.JdbcQuery;
@@ -75,7 +73,6 @@ public class JdbcCollector extends AbstractRemoteServiceCollector {
             .collect(Collectors.toMap((e) -> e.getKey(), (e) -> e.getValue())));
 
     private JdbcDataCollectionConfigDao m_jdbcCollectionDao;
-    private ResourceTypesDao m_resourceTypesDao;
 
     public JdbcCollector() {
         super(TYPE_MAP);
@@ -87,9 +84,6 @@ public class JdbcCollector extends AbstractRemoteServiceCollector {
         if (m_jdbcCollectionDao == null) {
             // Retrieve the DAO for our configuration file.
             m_jdbcCollectionDao = BeanUtils.getBean("daoContext", "jdbcDataCollectionConfigDao", JdbcDataCollectionConfigDao.class);
-        }
-        if (m_resourceTypesDao == null) {
-            m_resourceTypesDao = BeanUtils.getBean("daoContext", "resourceTypesDao", ResourceTypesDao.class);
         }
     }
 
@@ -178,13 +172,7 @@ public class JdbcCollector extends AbstractRemoteServiceCollector {
                             } else {
                                 // Retrieve the name of the column to use as the instance key for multi-row queries.
                                 String instance = results.getString(query.getInstanceColumn());
-
-                                // Load the resource type
-                                final ResourceType resourceType = m_resourceTypesDao.getResourceTypeByName(query.getResourceType());
-                                if (resourceType == null) {
-                                    throw new CollectionException("No resource type found with name '" + query.getResourceType() + "'.");
-                                }
-                                resource = new GenericTypeResource(nodeResource, resourceType, instance);
+                                resource = new DeferredGenericTypeResource(nodeResource, query.getResourceType(), instance);
                             }
 
                             for(JdbcColumn curColumn : query.getJdbcColumns()) {
@@ -290,10 +278,6 @@ public class JdbcCollector extends AbstractRemoteServiceCollector {
 
     public void setJdbcCollectionDao(JdbcDataCollectionConfigDao jdbcCollectionDao) {
         m_jdbcCollectionDao = jdbcCollectionDao;
-    }
-
-    public void setResourceTypesDao(ResourceTypesDao resourceTypesDao) {
-        m_resourceTypesDao = resourceTypesDao;
     }
 
 }

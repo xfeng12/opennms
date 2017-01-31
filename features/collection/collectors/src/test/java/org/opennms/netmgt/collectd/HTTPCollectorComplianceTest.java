@@ -28,38 +28,35 @@
 
 package org.opennms.netmgt.collectd;
 
-import static org.mockito.Mockito.RETURNS_DEEP_STUBS;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 import java.util.Map;
 
-import org.junit.runner.RunWith;
-import org.opennms.core.test.OpenNMSJUnit4ClassRunner;
-import org.opennms.core.test.db.MockDatabase;
-import org.opennms.core.test.db.annotations.JUnitTemporaryDatabase;
 import org.opennms.netmgt.collection.test.api.CollectorComplianceTest;
-import org.opennms.netmgt.config.api.ResourceTypesDao;
-import org.opennms.netmgt.config.jdbc.JdbcDataCollection;
-import org.opennms.netmgt.dao.JdbcDataCollectionConfigDao;
+import org.opennms.netmgt.config.HttpCollectionConfigFactory;
+import org.opennms.netmgt.config.httpdatacollection.HttpCollection;
+import org.opennms.netmgt.config.httpdatacollection.Uris;
 import org.opennms.netmgt.rrd.RrdRepository;
-import org.opennms.test.JUnitConfigurationEnvironment;
-import org.springframework.test.context.ContextConfiguration;
 
 import com.google.common.collect.ImmutableMap;
 
-@RunWith(OpenNMSJUnit4ClassRunner.class)
-@ContextConfiguration(locations={
-        "classpath:/META-INF/opennms/applicationContext-soa.xml"
-})
-@JUnitConfigurationEnvironment
-@JUnitTemporaryDatabase(tempDbClass=MockDatabase.class,reuseDatabase=true)
-public class JdbcCollectorComplianceTest extends CollectorComplianceTest {
+public class HTTPCollectorComplianceTest extends CollectorComplianceTest {
 
     private static final String COLLECTION = "default";
 
-    public JdbcCollectorComplianceTest() {
-        super(JdbcCollector.class, true);
+    private HttpCollectionConfigFactory configFactory;
+    
+    public HTTPCollectorComplianceTest() {
+        super(HttpCollector.class, true);
+
+        HttpCollection collection = new HttpCollection();
+        // Use an empty list of uris
+        collection.setUris(new Uris());
+        configFactory = mock(HttpCollectionConfigFactory.class);
+        when(configFactory.getHttpCollection(COLLECTION)).thenReturn(collection);
+        when(configFactory.getRrdRepository(COLLECTION)).thenReturn(new RrdRepository());
+        HttpCollectionConfigFactory.setInstance(configFactory);
     }
 
     @Override
@@ -71,22 +68,16 @@ public class JdbcCollectorComplianceTest extends CollectorComplianceTest {
     public Map<String, Object> getRequiredParameters() {
         return new ImmutableMap.Builder<String, Object>()
             .put("collection", COLLECTION)
-            .put("data-source", "opennms")
             .build();
     }
 
     @Override
-    public Map<String, Object> getRequiredBeans() {
-        JdbcDataCollection collection = new JdbcDataCollection();
-        JdbcDataCollectionConfigDao jdbcCollectionDao = mock(JdbcDataCollectionConfigDao.class, RETURNS_DEEP_STUBS);
-        when(jdbcCollectionDao.getDataCollectionByName(COLLECTION)).thenReturn(collection);
-        when(jdbcCollectionDao.getConfig().buildRrdRepository(COLLECTION)).thenReturn(new RrdRepository());
-
-        ResourceTypesDao resourceTypesDao = mock(ResourceTypesDao.class);
-        return new ImmutableMap.Builder<String, Object>()
-                .put("jdbcDataCollectionConfigDao", jdbcCollectionDao)
-                .put("resourceTypesDao", resourceTypesDao)
-                .build();
+    public void beforeMinion() {
+        HttpCollectionConfigFactory.setInstance(null);
     }
 
+    @Override
+    public void afterMinion() {
+        HttpCollectionConfigFactory.setInstance(configFactory);
+    }
 }

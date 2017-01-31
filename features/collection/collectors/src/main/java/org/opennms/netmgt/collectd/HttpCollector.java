@@ -129,6 +129,9 @@ public class HttpCollector extends AbstractRemoteServiceCollector {
         final Map<String, Object> runtimeAttributes = new HashMap<>();
         final String collectionName = ParameterMap.getKeyedString(parameters, "collection", ParameterMap.getKeyedString(parameters, "http-collection", null));
         final HttpCollection collection = HttpCollectionConfigFactory.getInstance().getHttpCollection(collectionName);
+        if (collection == null) {
+            throw new IllegalArgumentException(String.format("HttpCollector: No collection found with name '%s'.",  collectionName));
+        }
         runtimeAttributes.put(HTTP_COLLECTION_KEY, collection);
         return runtimeAttributes;
     }

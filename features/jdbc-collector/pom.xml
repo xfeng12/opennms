@@ -23,6 +23,9 @@
             <Bundle-Version>${project.version}</Bundle-Version>
             <Import-Package>
               org.postgresql;resolution:=optional,
+              org.eclipse.persistence.internal.jaxb;resolution:=optional,
+              org.eclipse.persistence.internal.jaxb.many;resolution:=optional,
+              org.opennms.netmgt.collection.adapters,
               *
             </Import-Package>
           </instructions>

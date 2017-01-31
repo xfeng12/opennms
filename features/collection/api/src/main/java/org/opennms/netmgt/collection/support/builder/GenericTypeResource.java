@@ -41,17 +41,14 @@ import org.opennms.netmgt.collection.api.StorageStrategy;
 import org.springframework.orm.ObjectRetrievalFailureException;
 
 @XmlJavaTypeAdapter(GenericTypeResourceAdapter.class)
-public class GenericTypeResource extends AbstractResource {
+public class GenericTypeResource extends DeferredGenericTypeResource {
 
-    private final NodeLevelResource m_node;
-    private final String m_instance;
     private final ResourceType m_resourceType;
     private final StorageStrategy m_storageStrategy;
     private final PersistenceSelectorStrategy m_persistenceSelectorStrategy;
 
     public GenericTypeResource(NodeLevelResource node, ResourceType resourceType, String instance) {
-        m_node = Objects.requireNonNull(node, "node argument");
-        m_instance = sanitizeInstance(Objects.requireNonNull(instance, "instance argument"));
+        super(node, Objects.requireNonNull(resourceType, "resourceType argument").getName(), instance);
         m_resourceType = Objects.requireNonNull(resourceType, "resourceType argument");
         m_storageStrategy = instantiateStorageStrategy(resourceType.getStorageStrategy().getClazz(), resourceType.getName());
         m_storageStrategy.setParameters(resourceType.getStorageStrategy().getParameters());
@@ -61,16 +58,6 @@ public class GenericTypeResource extends AbstractResource {
 
     protected static String sanitizeInstance(String instance) {
         return instance.replaceAll("\\s+", "_").replaceAll(":", "_").replaceAll("\\\\", "_").replaceAll("[\\[\\]]", "_");
-    }
-
-    @Override
-    public NodeLevelResource getParent() {
-        return m_node;
-    }
-
-    @Override
-    public String getInstance() {
-        return m_instance;
     }
 
     public ResourceType getResourceType() {
@@ -127,13 +114,13 @@ public class GenericTypeResource extends AbstractResource {
     @Override
     public String toString() {
         return String.format("GenericTypeResource[node=%s, instance=%s, resourceType=%s,"
-                + "storageStrategy=%s, persistenceSelectorStrategy=%s",
-                m_node, m_instance, m_resourceType, m_storageStrategy, m_persistenceSelectorStrategy);
+                + "storageStrategy=%s, persistenceSelectorStrategy=%s]",
+                getParent(), getInstance(), m_resourceType, m_storageStrategy, m_persistenceSelectorStrategy);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(m_node, m_instance, m_resourceType, getTimestamp());
+        return Objects.hash(getParent(), getInstance(), m_resourceType, getTimestamp());
     }
 
     @Override
@@ -146,9 +133,7 @@ public class GenericTypeResource extends AbstractResource {
             return false;
         }
         GenericTypeResource other = (GenericTypeResource) obj;
-        return Objects.equals(this.m_node, other.m_node)
-                && Objects.equals(this.m_instance, other.m_instance)
-                && Objects.equals(this.m_resourceType, other.m_resourceType)
-                && Objects.equals(this.getTimestamp(), other.getTimestamp());
+        return super.equals(other)
+                && Objects.equals(this.m_resourceType, other.m_resourceType);
     }
 }
