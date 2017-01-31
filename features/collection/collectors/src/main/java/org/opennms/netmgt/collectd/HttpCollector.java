@@ -373,7 +373,7 @@ public class HttpCollector extends AbstractRemoteServiceCollector {
         }
 
         HttpCollectorException(String message, Throwable e) {
-            super(message);
+            super(message, e);
         }
 
         @Override

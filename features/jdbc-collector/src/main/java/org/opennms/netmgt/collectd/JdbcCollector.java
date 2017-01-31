@@ -34,8 +34,12 @@ import java.sql.DatabaseMetaData;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.AbstractMap.SimpleEntry;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import org.opennms.core.db.DataSourceFactory;
 import org.opennms.core.spring.BeanUtils;
@@ -66,8 +70,16 @@ public class JdbcCollector extends AbstractRemoteServiceCollector {
 
     private static final String JDBC_COLLECTION_KEY = "jdbcCollection";
 
+    private static final Map<String, Class<?>> TYPE_MAP = Collections.unmodifiableMap(Stream.of(
+            new SimpleEntry<>(JDBC_COLLECTION_KEY, JdbcDataCollection.class))
+            .collect(Collectors.toMap((e) -> e.getKey(), (e) -> e.getValue())));
+
     private JdbcDataCollectionConfigDao m_jdbcCollectionDao;
     private ResourceTypesDao m_resourceTypesDao;
+
+    public JdbcCollector() {
+        super(TYPE_MAP);
+    }
 
     @Override
     public void initialize() {
@@ -90,6 +102,9 @@ public class JdbcCollector extends AbstractRemoteServiceCollector {
         final Map<String, Object> runtimeAttributes = new HashMap<>();
         final String collectionName = ParameterMap.getKeyedString(parameters, "collection", ParameterMap.getKeyedString(parameters, "jdbc-collection", null));
         final JdbcDataCollection collection = m_jdbcCollectionDao.getDataCollectionByName(collectionName);
+        if (collection == null) {
+            throw new IllegalArgumentException(String.format("JdbcCollector: No collection found with name '%s'.",  collectionName));
+        }
         runtimeAttributes.put(JDBC_COLLECTION_KEY, collection);
         return runtimeAttributes;
     }
@@ -126,7 +141,7 @@ public class JdbcCollector extends AbstractRemoteServiceCollector {
                         continue;
                     }
                 }
-                
+
                 try {
                     // If the query is available, lets collect it.
                     if (agentState.groupIsAvailable(query.getQueryName())) {
@@ -216,12 +231,11 @@ public class JdbcCollector extends AbstractRemoteServiceCollector {
             builder.withStatus(CollectionStatus.SUCCEEDED);
             return builder.build();
         } finally {
-            // Make sure that when we're done we close all results, statements and connections.
-            agentState.closeResultSet(results);
-            agentState.closeStmt(stmt);
-            agentState.closeConnection(con);
-            
             if(agentState != null) {
+                // Make sure that when we're done we close all results, statements and connections.
+                agentState.closeResultSet(results);
+                agentState.closeStmt(stmt);
+                agentState.closeConnection(con);
                 //agentState.closeAgentConnection();
             }
         }
