@@ -236,6 +236,11 @@
             <groupId>org.opennms.features</groupId>
             <artifactId>org.opennms.features.jdbc-collector</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.opennms.protocols</groupId>
+            <artifactId>org.opennms.protocols.nsclient</artifactId>
+            <version>${project.version}</version>
+        </dependency>
     </dependencies>
 
     <pluginRepositories>

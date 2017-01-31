@@ -99,6 +99,9 @@ public class NSClientCollector extends AbstractRemoteServiceCollector {
         final ServiceParameters serviceParams = new ServiceParameters(parameters);
         final String collectionName = serviceParams.getCollectionName();
         final NsclientCollection collection = NSClientDataCollectionConfigFactory.getInstance().getNSClientCollection(collectionName);
+        if (collection == null) {
+            throw new IllegalArgumentException(String.format("NSClientCollector: No collection found with name '%s'.",  collectionName));
+        }
         runtimeAttributes.put(NSCLIENT_COLLECTION_KEY, collection);
         final NSClientAgentConfig agentConfig = NSClientPeerFactory.getInstance().getAgentConfig(agent.getAddress());
         runtimeAttributes.put(NSCLIENT_AGENT_CONFIG_KEY, agentConfig);
@@ -109,7 +112,7 @@ public class NSClientCollector extends AbstractRemoteServiceCollector {
     @Override
     public CollectionSet collect(CollectionAgent agent, Map<String, Object> parameters) {
         CollectionSetBuilder builder = new CollectionSetBuilder(agent);
-        builder.withStatus(CollectionStatus.SUCCEEDED);
+        builder.withStatus(CollectionStatus.FAILED);
 
         // Find attributes to collect - check groups in configuration. For each,
         // check scheduled nodes to see if that group should be collected
