@@ -241,6 +241,10 @@
             <artifactId>org.opennms.protocols.nsclient</artifactId>
             <version>${project.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.opennms</groupId>
+            <artifactId>opennms-vmware</artifactId>
+        </dependency>
     </dependencies>
 
     <pluginRepositories>

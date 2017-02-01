@@ -74,6 +74,8 @@ public class CollectorListTest {
             "org.opennms.netmgt.collectd.Jsr160Collector",
             "org.opennms.netmgt.collectd.JMXSecureCollector",
             "org.opennms.netmgt.collectd.MX4JCollector",
+            "org.opennms.netmgt.collectd.VmwareCimCollector",
+            "org.opennms.netmgt.collectd.VmwareCollector",
             "org.opennms.netmgt.collectd.WmiCollector",
             "org.opennms.netmgt.collectd.WsManCollector")
             .build();

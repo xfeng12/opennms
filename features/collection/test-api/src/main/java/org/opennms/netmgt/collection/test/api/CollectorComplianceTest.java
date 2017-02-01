@@ -147,6 +147,7 @@ public abstract class CollectorComplianceTest {
 
         // create the agent
         OnmsNode node = mock(OnmsNode.class);
+        when(node.getId()).thenReturn(1);
         OnmsIpInterface iface = mock(OnmsIpInterface.class);
         when(iface.getNode()).thenReturn(node);
         when(iface.getIpAddress()).thenReturn(InetAddrUtils.getLocalHostAddress());
