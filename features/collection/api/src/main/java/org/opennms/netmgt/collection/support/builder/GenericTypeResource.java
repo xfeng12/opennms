@@ -69,6 +69,11 @@ public class GenericTypeResource extends DeferredGenericTypeResource {
         return getStorageStrategy().getRelativePathForAttribute("", getStorageStrategy().getResourceNameFromIndex(resource));
     }
 
+    @Override
+    public Resource resolve() {
+        return this;
+    }
+
     public StorageStrategy getStorageStrategy() {
         return m_storageStrategy;
     }
