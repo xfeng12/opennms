@@ -31,6 +31,7 @@ package org.opennms.protocols.nsclient.collector;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
+import java.net.UnknownHostException;
 import java.util.Map;
 
 import org.opennms.netmgt.collection.test.api.CollectorComplianceTest;
@@ -52,9 +53,9 @@ public class NsclientCollectorComplianceTest extends CollectorComplianceTest {
 
     private NSClientDataCollectionConfigFactory dataCollectionConfigFactory;
 
-    public NsclientCollectorComplianceTest() {
+    public NsclientCollectorComplianceTest() throws UnknownHostException {
         super(NSClientCollector.class, true);
-        
+
         NSClientAgentConfig agentConfig = new NSClientAgentConfig();
         peerFactory = mock(NSClientPeerFactory.class);
         when(peerFactory.getAgentConfig(InetAddrUtils.getLocalHostAddress())).thenReturn(agentConfig);
@@ -91,22 +92,4 @@ public class NsclientCollectorComplianceTest extends CollectorComplianceTest {
         NSClientPeerFactory.setInstance(peerFactory);
         NSClientDataCollectionConfigFactory.setInstance(dataCollectionConfigFactory);
     }
-    
-    
-    /*
-    @Override
-    public Map<String, Object> getRequiredBeans() {
-        JdbcDataCollection collection = new JdbcDataCollection();
-        collection.setJdbcRrd(new JdbcRrd());
-        JdbcDataCollectionConfigDao jdbcCollectionDao = mock(JdbcDataCollectionConfigDao.class, RETURNS_DEEP_STUBS);
-        when(jdbcCollectionDao.getDataCollectionByName(COLLECTION)).thenReturn(collection);
-        when(jdbcCollectionDao.getConfig().buildRrdRepository(COLLECTION)).thenReturn(new RrdRepository());
-
-        ResourceTypesDao resourceTypesDao = mock(ResourceTypesDao.class);
-        return new ImmutableMap.Builder<String, Object>()
-                .put("jdbcDataCollectionConfigDao", jdbcCollectionDao)
-                .put("resourceTypesDao", resourceTypesDao)
-                .build();
-    }
-    */
 }

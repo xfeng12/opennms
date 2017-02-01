@@ -120,6 +120,12 @@ public class NSClientCollector extends AbstractRemoteServiceCollector {
         NSClientAgentConfig agentConfig = (NSClientAgentConfig)parameters.get(NSCLIENT_AGENT_CONFIG_KEY);
         NSClientAgentState agentState = new NSClientAgentState(agent.getAddress(), parameters, agentConfig);
 
+        if (collection.getWpms().getWpm().size() < 1) {
+            LOG.info("No groups to collect.");
+            builder.withStatus(CollectionStatus.SUCCEEDED);
+            return builder.build();
+        }
+
         // All node resources for NSClient; nothing of interface or "indexed resource" type
         NodeLevelResource nodeResource = new NodeLevelResource(agent.getNodeId());
         for (Wpm wpm : collection.getWpms().getWpm()) {
