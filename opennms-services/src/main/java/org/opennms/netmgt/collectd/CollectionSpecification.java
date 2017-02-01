@@ -269,7 +269,7 @@ public class CollectionSpecification {
             } else if (cause != null && cause instanceof CollectionException) {
                 ce = (CollectionException)cause;
             } else {
-                ce = new CollectionException("Unknown exception.", e);
+                ce = new CollectionException("Collection failed.", e);
             }
             m_instrumentation.reportCollectionException(m_package.getName(), agent.getNodeId(), agent.getHostAddress(), m_svcName, ce);
             throw ce;

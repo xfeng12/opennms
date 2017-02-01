@@ -28,7 +28,6 @@
 
 package org.opennms.netmgt.collectd;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.lang.reflect.UndeclaredThrowableException;
@@ -47,6 +46,7 @@ import org.opennms.netmgt.collection.api.AbstractRemoteServiceCollector;
 import org.opennms.netmgt.collection.api.AttributeType;
 import org.opennms.netmgt.collection.api.CollectionAgent;
 import org.opennms.netmgt.collection.api.CollectionSet;
+import org.opennms.netmgt.collection.api.CollectionStatus;
 import org.opennms.netmgt.collection.support.IndexStorageStrategy;
 import org.opennms.netmgt.collection.support.PersistAllSelectorStrategy;
 import org.opennms.netmgt.collection.support.builder.CollectionSetBuilder;
@@ -102,6 +102,13 @@ public class WmiCollector extends AbstractRemoteServiceCollector {
     }
 
     @Override
+    public void initialize() {
+        LOG.debug("initialize: Initializing WmiCollector.");
+        initWMIPeerFactory();
+        initWMICollectionConfig();
+    }
+
+    @Override
     public Map<String, Object> getRuntimeAttributes(CollectionAgent agent, Map<String, Object> parameters) {
         final Map<String, Object> runtimeAttributes = new HashMap<>();
         final String collectionName = ParameterMap.getKeyedString(parameters, "collection", ParameterMap.getKeyedString(parameters, "wmi-collection", null));
@@ -122,7 +129,13 @@ public class WmiCollector extends AbstractRemoteServiceCollector {
         final WmiAgentState agentState = new WmiAgentState(agent.getAddress(), agentConfig, parameters);
 
         // Create a new collection set.
-        CollectionSetBuilder builder = new CollectionSetBuilder(agent);
+        CollectionSetBuilder builder = new CollectionSetBuilder(agent)
+                .withStatus(CollectionStatus.FAILED);
+
+        if (collection.getWpms().getWpm().size() < 1) {
+            LOG.info("No groups to collect.");
+            return builder.withStatus(CollectionStatus.SUCCEEDED).build();
+        }
 
         final NodeLevelResource nodeResource = new NodeLevelResource(agent.getNodeId());
 
@@ -194,6 +207,7 @@ public class WmiCollector extends AbstractRemoteServiceCollector {
                             }
                         }
                     }
+                    builder.withStatus(CollectionStatus.SUCCEEDED);
                 } catch (final WmiException e) {
                     LOG.info("unable to collect params for wpm '{}'", wpm.getName(), e);
                 } finally {
@@ -267,15 +281,6 @@ public class WmiCollector extends AbstractRemoteServiceCollector {
         return new GenericTypeResource(nodeResource, rt, instance);
     }
 
-    /** {@inheritDoc} */
-    @Override
-    public void initialize() {
-        LOG.debug("initialize: Initializing WmiCollector.");
-        initWMIPeerFactory();
-        initWMICollectionConfig();
-        initializeRrdRepository();
-    }
-
     private void initWMIPeerFactory() {
         LOG.debug("initialize: Initializing WmiPeerFactory");
         try {
@@ -302,24 +307,6 @@ public class WmiCollector extends AbstractRemoteServiceCollector {
         } catch (IOException e) {
             LOG.error("initialize: Error reading configuration.", e);
             throw new UndeclaredThrowableException(e);
-        }
-    }
-
-    private void initializeRrdRepository() {
-        LOG.debug("initializeRrdRepository: Initializing RRD repo from WmiCollector...");
-        initializeRrdDirs();
-    }
-
-    private void initializeRrdDirs() {
-        /*
-         * If the RRD file repository directory does NOT already exist, create
-         * it.
-         */
-        final File f = new File(WmiDataCollectionConfigFactory.getInstance().getRrdPath());
-        if (!f.isDirectory()) {
-            if (!f.mkdirs()) {
-                throw new RuntimeException("Unable to create RRD file repository.  Path doesn't already exist and could not make directory: " + WmiDataCollectionConfigFactory.getInstance().getRrdPath());
-            }
         }
     }
 

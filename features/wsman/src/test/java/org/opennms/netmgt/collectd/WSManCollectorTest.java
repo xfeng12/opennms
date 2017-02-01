@@ -62,8 +62,8 @@ import org.opennms.netmgt.config.datacollection.ResourceType;
 import org.opennms.netmgt.config.datacollection.StorageStrategy;
 import org.opennms.netmgt.config.wsman.Attrib;
 import org.opennms.netmgt.config.wsman.Collection;
+import org.opennms.netmgt.config.wsman.Definition;
 import org.opennms.netmgt.config.wsman.Group;
-import org.opennms.netmgt.config.wsman.WsmanConfig;
 import org.opennms.netmgt.dao.WSManConfigDao;
 import org.opennms.netmgt.dao.WSManDataCollectionConfigDao;
 import org.opennms.netmgt.dao.api.NodeDao;
@@ -226,9 +226,9 @@ public class WSManCollectorTest {
         NodeDao nodeDao = mock(NodeDao.class);
         when(nodeDao.get(0)).thenReturn(node);
 
-        WsmanConfig config = new WsmanConfig();
+        Definition agentConfig = new Definition();
         WSManConfigDao configDao = mock(WSManConfigDao.class);
-        when(configDao.getConfig(anyObject())).thenReturn(config);
+        when(configDao.getAgentConfig(anyObject())).thenReturn(agentConfig);
 
         Collection collection = new Collection();
         WSManDataCollectionConfigDao dataCollectionConfigDao = mock(WSManDataCollectionConfigDao.class);

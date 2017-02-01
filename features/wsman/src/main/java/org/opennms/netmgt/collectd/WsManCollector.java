@@ -64,6 +64,7 @@ import org.opennms.netmgt.config.api.ResourceTypesDao;
 import org.opennms.netmgt.config.datacollection.ResourceType;
 import org.opennms.netmgt.config.wsman.Attrib;
 import org.opennms.netmgt.config.wsman.Collection;
+import org.opennms.netmgt.config.wsman.Definition;
 import org.opennms.netmgt.config.wsman.Group;
 import org.opennms.netmgt.config.wsman.WsmanAgentConfig;
 import org.opennms.netmgt.config.wsman.WsmanDatacollectionConfig;
@@ -93,7 +94,7 @@ public class WsManCollector extends AbstractRemoteServiceCollector {
     private static final String WSMAN_GROUPS_KEY = "wsmanGroups";
 
     private static final Map<String, Class<?>> TYPE_MAP = Collections.unmodifiableMap(Stream.of(
-            new SimpleEntry<>(WSMAN_AGENT_CONFIG_KEY, WsmanAgentConfig.class),
+            new SimpleEntry<>(WSMAN_AGENT_CONFIG_KEY, Definition.class),
             new SimpleEntry<>(WSMAN_GROUPS_KEY, WsManGroups.class))
             .collect(Collectors.toMap((e) -> e.getKey(), (e) -> e.getValue())));
 
@@ -117,7 +118,6 @@ public class WsManCollector extends AbstractRemoteServiceCollector {
         // Retrieve the configuration DAOs
         m_wsManConfigDao = BeanUtils.getBean("daoContext", "wsManConfigDao", WSManConfigDao.class);
         m_wsManDataCollectionConfigDao = BeanUtils.getBean("daoContext", "wsManDataCollectionConfigDao", WSManDataCollectionConfigDao.class);
-        m_resourceTypesDao = BeanUtils.getBean("daoContext", "resourceTypesDao", ResourceTypesDao.class);
         m_nodeDao = BeanUtils.getBean("daoContext", "nodeDao", NodeDao.class);
     }
 
@@ -140,10 +140,10 @@ public class WsManCollector extends AbstractRemoteServiceCollector {
             throw new IllegalArgumentException("Could not find node with id: " + agent.getNodeId());
         }
 
-        final WsmanAgentConfig config = m_wsManConfigDao.getConfig(agent.getAddress());
-        final WsManGroups groups = new WsManGroups(m_wsManDataCollectionConfigDao.getGroupsForAgent(collection, agent, config, node));
+        final Definition agentConfig = m_wsManConfigDao.getAgentConfig(agent.getAddress());
+        final WsManGroups groups = new WsManGroups(m_wsManDataCollectionConfigDao.getGroupsForAgent(collection, agent, agentConfig, node));
 
-        runtimeAttributes.put(WSMAN_AGENT_CONFIG_KEY, config);
+        runtimeAttributes.put(WSMAN_AGENT_CONFIG_KEY, agentConfig);
         runtimeAttributes.put(WSMAN_GROUPS_KEY, groups);
         return runtimeAttributes;
     }

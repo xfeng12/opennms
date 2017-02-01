@@ -1,8 +1,8 @@
 /*******************************************************************************
  * This file is part of OpenNMS(R).
  *
- * Copyright (C) 2010-2016 The OpenNMS Group, Inc.
- * OpenNMS(R) is Copyright (C) 1999-2016 The OpenNMS Group, Inc.
+ * Copyright (C) 2010-2017 The OpenNMS Group, Inc.
+ * OpenNMS(R) is Copyright (C) 1999-2017 The OpenNMS Group, Inc.
  *
  * OpenNMS(R) is a registered trademark of The OpenNMS Group, Inc.
  *
@@ -29,24 +29,18 @@
 package org.opennms.netmgt.dao.jaxb;
 
 import java.net.InetAddress;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.Objects;
 
 import org.opennms.core.utils.IPLike;
 import org.opennms.core.utils.InetAddressUtils;
 import org.opennms.core.wsman.WSManEndpoint;
-import org.opennms.core.wsman.WSManVersion;
 import org.opennms.core.xml.AbstractJaxbConfigDao;
 import org.opennms.netmgt.config.wsman.Definition;
 import org.opennms.netmgt.config.wsman.Range;
-import org.opennms.netmgt.config.wsman.WsmanAgentConfig;
 import org.opennms.netmgt.config.wsman.WsmanConfig;
 import org.opennms.netmgt.dao.WSManConfigDao;
 
 public class WSManConfigDaoJaxb extends AbstractJaxbConfigDao<WsmanConfig, WsmanConfig> implements WSManConfigDao {
-    private static final String DEFAULT_PROTOCOL = "http";
-    private static final String DEFAULT_PATH = "/wsman";
 
     public WSManConfigDaoJaxb() {
         super(WsmanConfig.class, "WS-Man Configuration");
@@ -58,7 +52,7 @@ public class WSManConfigDaoJaxb extends AbstractJaxbConfigDao<WsmanConfig, Wsman
     }
 
     @Override
-    public WsmanAgentConfig getConfig(InetAddress agentInetAddress) {
+    public Definition getAgentConfig(InetAddress agentInetAddress) {
         Objects.requireNonNull(agentInetAddress);
 
         for (Definition def : getConfig().getDefinition()) {
@@ -86,12 +80,12 @@ public class WSManConfigDaoJaxb extends AbstractJaxbConfigDao<WsmanConfig, Wsman
         }
 
         // No definition references the given agent address, use the defaults
-        return getConfig();
+        return new Definition(getConfig());
     }
 
     @Override
     public WSManEndpoint getEndpoint(InetAddress agentInetAddress) {
-        return WSManConfigDao.getEndpoint(getConfig(agentInetAddress), agentInetAddress);
+        return WSManConfigDao.getEndpoint(getAgentConfig(agentInetAddress), agentInetAddress);
     }
 
     @Override

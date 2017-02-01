@@ -63,6 +63,11 @@
       <groupId>org.opennms</groupId>
       <artifactId>opennms-provision-api</artifactId>
     </dependency>
+    <dependency>
+      <groupId>org.opennms.features.collection</groupId>
+      <artifactId>org.opennms.features.collection.test-api</artifactId>
+      <scope>test</scope>
+    </dependency>
   </dependencies>
 
   <repositories>

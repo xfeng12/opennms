@@ -36,6 +36,7 @@ import java.util.Objects;
 import org.opennms.netmgt.config.wsman.WsmanConfig;
 import org.opennms.core.wsman.WSManEndpoint;
 import org.opennms.core.wsman.WSManVersion;
+import org.opennms.netmgt.config.wsman.Definition;
 import org.opennms.netmgt.config.wsman.WsmanAgentConfig;
 
 public interface WSManConfigDao {
@@ -43,7 +44,7 @@ public interface WSManConfigDao {
     static final String DEFAULT_PATH = "/wsman";
 
     WsmanConfig getConfig();
-    WsmanAgentConfig getConfig(InetAddress agentInetAddress);
+    Definition getAgentConfig(InetAddress agentInetAddress);
     WSManEndpoint getEndpoint(InetAddress agentInetAddress);
 
     static WSManEndpoint getEndpoint(WsmanAgentConfig agentConfig, InetAddress agentInetAddress) {
