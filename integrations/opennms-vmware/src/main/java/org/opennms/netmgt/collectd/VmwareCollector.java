@@ -280,6 +280,7 @@ public class VmwareCollector extends AbstractRemoteServiceCollector {
                         for (String instance : newInstances) {
                             if (!instanceSet.contains(instance)) {
                                 resources.put(instance, new DeferredGenericTypeResource(nodeResource, vmwareGroup.getResourceType(), instance));
+                                instanceSet.add(instance);
                             }
 
                             final AttributeType type = attrib.getType();

@@ -34,6 +34,8 @@ import org.opennms.netmgt.model.OnmsIpInterface;
 
 public interface CollectionAgentFactory {
 
+    CollectionAgent createCollectionAgentAndOverrideLocation(String nodeCriteria, InetAddress ipAddr, String location);
+
     CollectionAgent createCollectionAgent(String nodeCriteria, InetAddress ipAddr);
 
     CollectionAgent createCollectionAgent(OnmsIpInterface ipIf);

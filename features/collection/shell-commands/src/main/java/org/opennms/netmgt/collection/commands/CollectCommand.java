@@ -33,7 +33,6 @@ import java.net.InetAddress;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
@@ -140,12 +139,7 @@ public class CollectCommand extends OsgiCommandSupport {
     private CollectionAgent getCollectionAgent() {
         final InetAddress hostAddr = InetAddrUtils.addr(host);
         if (nodeCriteria != null) {
-            final CollectionAgent agent = collectionAgentFactory.createCollectionAgent(nodeCriteria, hostAddr);
-            if (!Objects.equals(location, agent.getLocationName())) {
-                System.out.printf("WARN: Using the agent location '%s' instead of the specified location '%s'.\n\n",
-                        agent.getLocationName(), location);
-            }
-            return agent;
+            return collectionAgentFactory.createCollectionAgentAndOverrideLocation(nodeCriteria, hostAddr, location);
         } else {
             System.out.println("NOTE: Some collectors require a database node and IP interface.\n");
             final CollectionAgentDTO agent = new CollectionAgentDTO();

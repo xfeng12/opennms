@@ -98,7 +98,7 @@ public class DeferredGenericTypeResource extends AbstractResource {
             return true;
         } else if (obj == null) {
             return false;
-        } else if (!(obj instanceof GenericTypeResource)) {
+        } else if (!(obj instanceof DeferredGenericTypeResource)) {
             return false;
         }
         DeferredGenericTypeResource other = (DeferredGenericTypeResource) obj;

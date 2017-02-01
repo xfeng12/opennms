@@ -52,7 +52,8 @@ public class DefaultCollectionAgentFactory implements CollectionAgentFactory {
     private PlatformTransactionManager transMgr;
 
     @Override
-    public CollectionAgent createCollectionAgent(String nodeCriteria, InetAddress ipAddr) {
+    public CollectionAgent createCollectionAgentAndOverrideLocation(String nodeCriteria, InetAddress ipAddr,
+            String location) {
         final OnmsNode node = nodeDao.get(nodeCriteria);
         if (node == null) {
             throw new IllegalArgumentException(String.format("No node found with lookup criteria: %s",
@@ -64,7 +65,12 @@ public class DefaultCollectionAgentFactory implements CollectionAgentFactory {
             throw new IllegalArgumentException(String.format("No interface found with IP %s on node %s",
                     InetAddrUtils.str(ipAddr), nodeCriteria));
         }
-        return createCollectionAgent(ipInterface);
+        return DefaultCollectionAgent.create(ipInterface.getId(), ipInterfaceDao, transMgr, location);
+    }
+
+    @Override
+    public CollectionAgent createCollectionAgent(String nodeCriteria, InetAddress ipAddr) {
+        return createCollectionAgentAndOverrideLocation(nodeCriteria, ipAddr, null);
     }
 
     @Override
