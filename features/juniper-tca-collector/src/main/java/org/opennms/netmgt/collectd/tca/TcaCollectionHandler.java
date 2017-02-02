@@ -30,9 +30,12 @@ package org.opennms.netmgt.collectd.tca;
 
 import java.util.Date;
 import java.util.Objects;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
 
-import org.opennms.netmgt.collectd.CollectionTimedOut;
-import org.opennms.netmgt.collectd.CollectionWarning;
+import org.opennms.core.rpc.api.RequestRejectedException;
+import org.opennms.core.rpc.api.RequestTimedOutException;
+import org.opennms.netmgt.collectd.CollectionUnknown;
 import org.opennms.netmgt.collectd.SnmpCollectionAgent;
 import org.opennms.netmgt.collection.api.AttributeType;
 import org.opennms.netmgt.collection.api.CollectionException;
@@ -48,8 +51,7 @@ import org.opennms.netmgt.model.ResourcePath;
 import org.opennms.netmgt.model.ResourceTypeUtils;
 import org.opennms.netmgt.rrd.RrdRepository;
 import org.opennms.netmgt.snmp.SnmpObjId;
-import org.opennms.netmgt.snmp.SnmpUtils;
-import org.opennms.netmgt.snmp.SnmpWalker;
+import org.opennms.netmgt.snmp.proxy.LocationAwareSnmpClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -104,13 +106,16 @@ public class TcaCollectionHandler {
 
     private final ResourceType m_resourceType;
 
+    private final LocationAwareSnmpClient m_locationAwareSnmpClient;
+
 	/**
 	 * Instantiates a new TCA collection set.
 	 *
 	 * @param agent the agent
 	 * @param repository the repository
 	 */
-	public TcaCollectionHandler(SnmpCollectionAgent agent, RrdRepository repository, ResourceStorageDao resourceStorageDao, ResourceTypesDao resourceTypesDao) {
+	public TcaCollectionHandler(SnmpCollectionAgent agent, RrdRepository repository, ResourceStorageDao resourceStorageDao,
+	        ResourceTypesDao resourceTypesDao, LocationAwareSnmpClient locationAwareSnmpClient) {
 		m_agent = Objects.requireNonNull(agent);
 		m_repository = Objects.requireNonNull(repository);
 		m_resourceStorageDao = Objects.requireNonNull(resourceStorageDao);
@@ -118,6 +123,7 @@ public class TcaCollectionHandler {
 		if (m_resourceType == null) {
 		    throw new IllegalArgumentException("No resource of type juniperTcaEntry is defined.");
 		}
+		m_locationAwareSnmpClient = Objects.requireNonNull(locationAwareSnmpClient);
 	}
 
 	/**
@@ -128,26 +134,33 @@ public class TcaCollectionHandler {
 	protected CollectionSet collect() throws CollectionException {
 		try {
 			CollectionSetBuilder builder = new CollectionSetBuilder(m_agent);
-
 			TcaData tracker = new TcaData(m_agent.getAddress());
-			try(SnmpWalker walker = SnmpUtils.createWalker(m_agent.getAgentConfig(), "TcaCollector for " + m_agent.getHostAddress(), tracker)) {
-    			walker.start();
-    			LOG.debug("collect: successfully instantiated TCA Collector for {}", m_agent.getHostAddress());
-
-    			walker.waitFor();
-    			LOG.info("collect: node TCA query for address {} complete.", m_agent.getHostAddress());
-
-    			verifySuccessfulWalk(walker);
-			}
+            CompletableFuture<TcaData> future = m_locationAwareSnmpClient.walk(m_agent.getAgentConfig(), tracker)
+                    .withDescription("TcaCollector for " + m_agent.getHostAddress())
+                    .withLocation(m_agent.getLocationName())
+                    .execute();
+            LOG.debug("collect: successfully instantiated TCA Collector for {}", m_agent.getHostAddress());
+            future.get();
+            LOG.info("collect: node TCA query for address {} complete.", m_agent.getHostAddress());
 			process(tracker, builder);
-
 			return builder.build();
 		} catch (InterruptedException e) {
 			Thread.currentThread().interrupt();
-			throw new CollectionWarning("Collection of node TCA data for interface " + m_agent.getHostAddress() + " interrupted: " + e, e);
-		} catch (Exception e) {
-			throw new CollectionException("Can't collect TCA data because " + e.getMessage(), e);
-		}
+			throw new CollectionUnknown("Collection of node TCA data for interface " + m_agent.getHostAddress() + " interrupted: " + e, e);
+		} catch (ExecutionException e) {
+            final Throwable cause = e.getCause();
+            if (cause != null && cause instanceof RequestTimedOutException) {
+                throw new CollectionUnknown(String.format("No response received when remotely collecting TCA data"
+                        + " for interface %s at location %s interrupted.",
+                        m_agent.getHostAddress(), m_agent.getLocationName()), e);
+            } else if (cause != null && cause instanceof RequestRejectedException) {
+                throw new CollectionUnknown(String.format("The request to remotely collect TCA data"
+                        + " for interface %s at location %s was rejected.",
+                        m_agent.getHostAddress(), m_agent.getLocationName()), e);
+            }
+            throw new CollectionException(String.format("Unexpected exception when collecting TCA data for interface %s at location %s.",
+                    m_agent.getHostAddress(), m_agent.getLocationName()), e);
+        }
 	}
 
 	/**
@@ -176,7 +189,7 @@ public class TcaCollectionHandler {
 	 * @param tracker the tracker
 	 * @throws Exception the exception
 	 */
-	private void process(TcaData tracker, CollectionSetBuilder builder) throws Exception {
+	private void process(TcaData tracker, CollectionSetBuilder builder) {
 		LOG.debug("process: processing raw TCA data for {} peers.", tracker.size());
 
 		final NodeLevelResource nodeResource = new NodeLevelResource(m_agent.getNodeId());
@@ -213,30 +226,12 @@ public class TcaCollectionHandler {
 	}
 
 	/**
-	 * Log error and return COLLECTION_FAILED is there is a failure.
-	 *
-	 * @param walker the walker
-	 * @throws CollectionException the collection exception
-	 */
-	private void verifySuccessfulWalk(SnmpWalker walker) throws CollectionException {
-		if (!walker.failed()) {
-			return;
-		}
-		if (walker.timedOut()) {
-			throw new CollectionTimedOut(walker.getErrorMessage());
-		}
-		String message = "collection failed for " + m_agent.getHostAddress()  + " due to: " + walker.getErrorMessage();
-		throw new CollectionWarning(message, walker.getErrorThrowable());
-	}
-
-	/**
 	 * Gets the last timestamp.
 	 *
 	 * @param resource the TCA resource
 	 * @return the last timestamp
-	 * @throws Exception the exception
 	 */
-	private long getLastTimestamp(CollectionResource resource) throws Exception {
+	private long getLastTimestamp(CollectionResource resource) {
 		long timestamp = 0;
 		ResourcePath path = ResourceTypeUtils.getResourcePathWithRepository(m_repository, resource.getPath());
 		try {
@@ -256,9 +251,8 @@ public class TcaCollectionHandler {
 	 *
 	 * @param resource the resource
 	 * @param timestamp the timestamp
-	 * @throws Exception the exception
 	 */
-	private void setLastTimestamp(CollectionResource resource, long timestamp) throws Exception {
+	private void setLastTimestamp(CollectionResource resource, long timestamp) {
 		ResourcePath path = ResourceTypeUtils.getResourcePathWithRepository(m_repository, resource.getPath());
 		LOG.debug("Setting timestamp to {} at path {}", timestamp, path);
 		m_resourceStorageDao.setStringAttribute(path, LAST_TIMESTAMP, Long.toString(timestamp));

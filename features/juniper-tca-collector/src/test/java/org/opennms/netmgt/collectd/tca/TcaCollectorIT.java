@@ -81,6 +81,7 @@ import org.opennms.netmgt.snmp.SnmpObjId;
 import org.opennms.netmgt.snmp.SnmpUtils;
 import org.opennms.netmgt.snmp.SnmpValue;
 import org.opennms.netmgt.snmp.SnmpValueFactory;
+import org.opennms.netmgt.snmp.proxy.LocationAwareSnmpClient;
 import org.opennms.test.JUnitConfigurationEnvironment;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -153,6 +154,9 @@ public class TcaCollectorIT implements InitializingBean {
     @Autowired
     private FilesystemResourceStorageDao m_resourceStorageDao;
 
+    @Autowired
+    private LocationAwareSnmpClient m_client;
+
     private ResourceTypesDao m_resourceTypesDao;
 
     @Override
@@ -217,20 +221,24 @@ public class TcaCollectorIT implements InitializingBean {
 		EasyMock.replay(m_configDao);
 
 		// Define the resource type
-		ResourceType resourceType = new ResourceType();
-		resourceType.setName("juniperTcaEntry");
-		resourceType.setLabel("Juniper TCA Entry");
-		resourceType.setResourceLabel("Peer ${index}");
-		StorageStrategy storageStrategy = new StorageStrategy();
-		storageStrategy.setClazz(IndexStorageStrategy.class.getCanonicalName());
-		resourceType.setStorageStrategy(storageStrategy);
-		PersistenceSelectorStrategy persistenceSelectorStrategy = new PersistenceSelectorStrategy();
-		persistenceSelectorStrategy.setClazz(PersistAllSelectorStrategy.class.getCanonicalName());
-		resourceType.setPersistenceSelectorStrategy(persistenceSelectorStrategy);
-
+		ResourceType resourceType = getJuniperTcaEntryResourceType();
 		m_resourceTypesDao = EasyMock.createMock(ResourceTypesDao.class);
 		EasyMock.expect(m_resourceTypesDao.getResourceTypeByName(TcaCollectionHandler.RESOURCE_TYPE_NAME)).andReturn(resourceType).anyTimes();
 		EasyMock.replay(m_resourceTypesDao);
+	}
+
+	public static ResourceType getJuniperTcaEntryResourceType() {
+	    final ResourceType resourceType = new ResourceType();
+        resourceType.setName("juniperTcaEntry");
+        resourceType.setLabel("Juniper TCA Entry");
+        resourceType.setResourceLabel("Peer ${index}");
+        StorageStrategy storageStrategy = new StorageStrategy();
+        storageStrategy.setClazz(IndexStorageStrategy.class.getCanonicalName());
+        resourceType.setStorageStrategy(storageStrategy);
+        PersistenceSelectorStrategy persistenceSelectorStrategy = new PersistenceSelectorStrategy();
+        persistenceSelectorStrategy.setClazz(PersistAllSelectorStrategy.class.getCanonicalName());
+        resourceType.setPersistenceSelectorStrategy(persistenceSelectorStrategy);
+        return resourceType;
 	}
 
 	/**
@@ -259,6 +267,7 @@ public class TcaCollectorIT implements InitializingBean {
 		collector.setConfigDao(m_configDao);
 		collector.setResourceStorageDao(m_resourceStorageDao);
 		collector.setResourceTypesDao(m_resourceTypesDao);
+		collector.setLocationAwareSnmpClient(m_client);
 
 		CollectionSetVisitor persister = m_persisterFactory.createOneToOnePersister(new ServiceParameters(parameters), collector.getRrdRepository("default"), false, false);
 

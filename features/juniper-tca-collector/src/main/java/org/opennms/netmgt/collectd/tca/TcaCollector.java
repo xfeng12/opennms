@@ -28,8 +28,6 @@
 
 package org.opennms.netmgt.collectd.tca;
 
-import java.io.IOException;
-import java.lang.reflect.UndeclaredThrowableException;
 import java.util.Map;
 
 import org.opennms.core.spring.BeanUtils;
@@ -41,10 +39,10 @@ import org.opennms.netmgt.collection.api.CollectionAgent;
 import org.opennms.netmgt.collection.api.CollectionException;
 import org.opennms.netmgt.collection.api.CollectionInitializationException;
 import org.opennms.netmgt.collection.api.CollectionSet;
-import org.opennms.netmgt.config.SnmpPeerFactory;
 import org.opennms.netmgt.config.api.ResourceTypesDao;
 import org.opennms.netmgt.dao.api.ResourceStorageDao;
 import org.opennms.netmgt.rrd.RrdRepository;
+import org.opennms.netmgt.snmp.proxy.LocationAwareSnmpClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -65,20 +63,14 @@ public class TcaCollector extends AbstractServiceCollector {
 
     private ResourceTypesDao m_resourceTypesDao;
 
+    private LocationAwareSnmpClient m_locationAwareSnmpClient;
+
 	/* (non-Javadoc)
 	 * @see org.opennms.netmgt.collectd.ServiceCollector#initialize(java.util.Map)
 	 */
 	@Override
 	public void initialize() throws CollectionInitializationException {
 		LOG.debug("initialize: initializing TCA collector");
-
-		// Initialize SNMP Factory
-		try {
-			SnmpPeerFactory.init();
-		} catch (IOException e) {
-			LOG.error("initSnmpPeerFactory: Failed to load SNMP configuration: {}", e, e);
-			throw new UndeclaredThrowableException(e);
-		}
 
 		// Retrieve the DAO for our configuration file.
 		if (m_configDao == null) {
@@ -92,6 +84,10 @@ public class TcaCollector extends AbstractServiceCollector {
 		if (m_resourceTypesDao == null) {
 		    m_resourceTypesDao = BeanUtils.getBean("daoContext", "resourceTypesDao", ResourceTypesDao.class);
 		}
+
+		if (m_locationAwareSnmpClient == null) {
+		    m_locationAwareSnmpClient = BeanUtils.getBean("daoContext", "locationAwareSnmpClient", LocationAwareSnmpClient.class);
+		}
 	}
 
 	@Override
@@ -104,8 +100,11 @@ public class TcaCollector extends AbstractServiceCollector {
 			if (collectionName == null) {
 				throw new CollectionException("Parameter collection is required for the TCA Collector!");
 			}
-			TcaCollectionHandler collectionHandler = new TcaCollectionHandler((SnmpCollectionAgent)agent, getRrdRepository(collectionName), m_resourceStorageDao, m_resourceTypesDao);
+			TcaCollectionHandler collectionHandler = new TcaCollectionHandler((SnmpCollectionAgent)agent, getRrdRepository(collectionName),
+			        m_resourceStorageDao, m_resourceTypesDao, m_locationAwareSnmpClient);
 			return collectionHandler.collect();
+		} catch (CollectionException e) {
+		    throw e;
 		} catch (Throwable t) {
 		    LOG.error("Unexpected error during node TCA collection for: {}", agent.getHostAddress(), t);
 			throw new CollectionException("Unexpected error during node TCA collection for: " + agent.getHostAddress() + ": " + t, t);
@@ -119,7 +118,6 @@ public class TcaCollector extends AbstractServiceCollector {
 	public RrdRepository getRrdRepository(String collectionName) {
 		return m_configDao.getConfig().buildRrdRepository(collectionName);
 	}
-
 
     /**
      * Gets the TCA Data Collection Configuration DAO.
@@ -149,5 +147,9 @@ public class TcaCollector extends AbstractServiceCollector {
 
     public void setResourceTypesDao(ResourceTypesDao resourceTypesDao) {
         m_resourceTypesDao = resourceTypesDao;
+    }
+
+    public void setLocationAwareSnmpClient(LocationAwareSnmpClient locationAwareSnmpClient) {
+        m_locationAwareSnmpClient = locationAwareSnmpClient;
     }
 }
