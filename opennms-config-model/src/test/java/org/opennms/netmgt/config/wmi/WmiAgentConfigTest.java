@@ -53,7 +53,7 @@ public class WmiAgentConfigTest extends XmlTestNoCastor<WmiAgentConfig> {
         return Arrays.asList(new Object[][] {
             {
                 agentConfig,
-                "<wmi-agent-config address=\"127.0.0.1\" timeout=\"3000\"/>"
+                "<wmi-agent-config address=\"127.0.0.1\" timeout=\"3000\" retries=\"1\"/>"
             }
         });
     }
