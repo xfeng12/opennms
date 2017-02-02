@@ -46,7 +46,7 @@ import org.opennms.netmgt.collection.api.AttributeType;
  */
 @XmlRootElement(name="xml-object")
 @XmlAccessorType(XmlAccessType.FIELD)
-public class XmlObject implements Serializable, Comparable<XmlObject> {
+public class XmlObject implements Serializable, Comparable<XmlObject>, Cloneable {
 
     /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -774378322863486535L;
@@ -66,9 +66,7 @@ public class XmlObject implements Serializable, Comparable<XmlObject> {
     /**
      * Instantiates a new XML object.
      */
-    public XmlObject() {
-        super();
-    }
+    public XmlObject() { }
 
     /**
      * Instantiates a new XML object.
@@ -77,9 +75,14 @@ public class XmlObject implements Serializable, Comparable<XmlObject> {
      * @param dataType the data type
      */
     public XmlObject(String name, AttributeType dataType) {
-        this();
-        this.m_name = name;
-        this.m_dataType = dataType;
+        m_name = name;
+        m_dataType = dataType;
+    }
+
+    public XmlObject(XmlObject copy) {
+        m_name = copy.m_name;
+        m_dataType = copy.m_dataType;
+        m_xpath = copy.m_xpath;
     }
 
     /**
@@ -162,5 +165,10 @@ public class XmlObject implements Serializable, Comparable<XmlObject> {
             .isEquals();
         }
         return false;
+    }
+
+    @Override
+    public XmlObject clone() {
+        return new XmlObject(this);
     }
 }

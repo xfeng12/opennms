@@ -162,11 +162,10 @@ public class NMS7963IT {
         parameters.put("collection", "NMS-7963");
 
         DefaultXmlCollectionHandler collector = new DefaultXmlCollectionHandler();
-        collector.setNodeDao(m_nodeDao);
         collector.setRrdRepository(repository);
         collector.setServiceName("HTTP");
 
-        CollectionSet collectionSet = collector.collect(m_collectionAgent, collection, parameters);
+        CollectionSet collectionSet = XmlCollectorTestUtils.doCollect(m_nodeDao, collector, m_collectionAgent, collection, parameters);
         Assert.assertEquals(CollectionStatus.SUCCEEDED, collectionSet.getStatus());
 
         ServiceParameters serviceParams = new ServiceParameters(new HashMap<String,Object>());

@@ -88,9 +88,9 @@ public class Sftp3gppVTDXmlCollectionHandler extends AbstractVTDXmlCollectionHan
                 if (!source.getUrl().startsWith(Sftp3gppUrlHandler.PROTOCOL)) {
                     throw new CollectionException("The 3GPP SFTP Collection Handler can only use the protocol " + Sftp3gppUrlHandler.PROTOCOL);
                 }
-                String urlStr = parseUrl(source.getUrl(), agent, collection.getXmlRrd().getStep());
-                Request request = parseRequest(source.getRequest(), agent, collection.getXmlRrd().getStep());
-                URL url = UrlFactory.getUrl(urlStr, request);
+                final String urlStr = source.getUrl();
+                final Request request = source.getRequest();
+                URL url = UrlFactory.getUrl(source.getUrl(), source.getRequest());
                 String lastFile = Sftp3gppUtils.getLastFilename(getResourceStorageDao(), getServiceName(), resourcePath, url.getPath());
                 connection = (Sftp3gppUrlConnection) url.openConnection();
                 if (lastFile == null) {

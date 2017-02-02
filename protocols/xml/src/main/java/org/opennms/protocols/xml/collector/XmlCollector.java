@@ -35,6 +35,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
+import java.util.concurrent.ExecutionException;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -45,9 +46,12 @@ import org.opennms.netmgt.collection.api.CollectionAgent;
 import org.opennms.netmgt.collection.api.CollectionException;
 import org.opennms.netmgt.collection.api.CollectionInitializationException;
 import org.opennms.netmgt.collection.api.CollectionSet;
+import org.opennms.netmgt.dao.api.NodeDao;
 import org.opennms.netmgt.rrd.RrdRepository;
+import org.opennms.protocols.xml.config.Request;
 import org.opennms.protocols.xml.config.XmlDataCollection;
 import org.opennms.protocols.xml.config.XmlDataCollectionConfig;
+import org.opennms.protocols.xml.config.XmlSource;
 import org.opennms.protocols.xml.dao.XmlDataCollectionConfigDao;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -76,6 +80,9 @@ public class XmlCollector extends AbstractRemoteServiceCollector {
 
     /** The XML Data Collection DAO. */
     private XmlDataCollectionConfigDao m_xmlCollectionDao;
+
+    /** OpenNMS Node DAO. */
+    private NodeDao m_nodeDao;
 
     private static final class XmlCollectionHandlerKey {
         private final String serviceName;
@@ -178,26 +185,60 @@ public class XmlCollector extends AbstractRemoteServiceCollector {
         if (m_xmlCollectionDao == null) {
             m_xmlCollectionDao = BeanUtils.getBean("daoContext", "xmlDataCollectionConfigDao", XmlDataCollectionConfigDao.class);
         }
+
+        // Retrieve the Node DAO - we use the node for expanding tokens in strings
+        if (m_nodeDao == null) {
+            m_nodeDao = BeanUtils.getBean("daoContext", "nodeDao", NodeDao.class);
+        }
     }
 
     @Override
     public Map<String, Object> getRuntimeAttributes(CollectionAgent agent, Map<String, Object> parameters) {
         final Map<String, Object> runtimeAttributes = new HashMap<>();
 
-        // Getting XML Collection
+        // Construct the handler
+        LOG.debug("getRuntimeAttributes: initializing XML collection handling using {} for collection agent {}", parameters, agent);
+        String serviceName = ParameterMap.getKeyedString(parameters, "SERVICE", "XML");
+        String handlerClass = ParameterMap.getKeyedString(parameters, "handler-class", "org.opennms.protocols.xml.collector.DefaultXmlCollectionHandler");
+        XmlCollectionHandlerKey key = new XmlCollectionHandlerKey(serviceName, handlerClass);
+        XmlCollectionHandler handler;
+        try {
+            handler = m_handlers.get(key);
+        } catch (ExecutionException e) {
+            throw new RuntimeException(e);
+        }
+
+        // Retrieve the XML Collection
         String collectionName = ParameterMap.getKeyedString(parameters, "collection", ParameterMap.getKeyedString(parameters, "xml-collection", null));
         if (collectionName == null) {
             throw new IllegalArgumentException("Parameter collection is required for the XML Collector!");
         }
-        LOG.debug("collect: collecting XML data using collection {} for {}", collectionName, agent);
+        LOG.debug("getRuntimeAttributes: collecting XML data using collection {} for {}", collectionName, agent);
         XmlDataCollection collection = m_xmlCollectionDao.getDataCollectionByName(collectionName);
         if (collection == null) {
             throw new IllegalArgumentException("XML Collection " + collectionName +" does not exist.");
         }
-        runtimeAttributes.put(XML_DATACOLLECTION_KEY, collection);
+        // Parse the collection attributes before adding it in the map
+        runtimeAttributes.put(XML_DATACOLLECTION_KEY, parseCollection(collection, handler, agent));
         runtimeAttributes.put(RRD_REPOSITORY_PATH_KEY, m_xmlCollectionDao.getConfig().getRrdRepository());
-
         return runtimeAttributes;
+    }
+
+    public XmlDataCollection parseCollection(XmlDataCollection collection, XmlCollectionHandler handler, CollectionAgent agent) {
+        // Clone the collection and perform token replacement in the source url and request using the handler
+        XmlDataCollection preparsedCollection = collection.clone();
+        for (XmlSource source : preparsedCollection.getXmlSources()) {
+            final String originalUrlStr = source.getUrl();
+            final String parsedUrlStr = handler.parseUrl(m_nodeDao, originalUrlStr, agent, collection.getXmlRrd().getStep());
+            LOG.debug("parseCollection: original url: '{}', parsed url: '{}' ", originalUrlStr, parsedUrlStr);
+            source.setUrl(parsedUrlStr);
+
+            final Request originalRequest = source.getRequest();
+            final Request parsedRequest = handler.parseRequest(m_nodeDao, originalRequest, agent, collection.getXmlRrd().getStep());
+            LOG.debug("parseCollection: original request: '{}', parsed request: '{}' ", originalRequest, parsedRequest);
+            source.setRequest(parsedRequest);
+        }
+        return preparsedCollection;
     }
 
     /* (non-Javadoc)
@@ -205,21 +246,15 @@ public class XmlCollector extends AbstractRemoteServiceCollector {
      */
     @Override
     public CollectionSet collect(CollectionAgent agent, Map<String, Object> parameters) throws CollectionException {
-        if (parameters == null) {
-            throw new CollectionException("Null parameters is now allowed in XML Collector!");
-        }
-
-        LOG.debug("initialize: initializing XML collection handling using {} for collection agent {}", parameters, agent);
-        String serviceName = ParameterMap.getKeyedString(parameters, "SERVICE", "XML");
-        String handlerClass = ParameterMap.getKeyedString(parameters, "handler-class", "org.opennms.protocols.xml.collector.DefaultXmlCollectionHandler");
+        final String rrdRepositoryPath = ParameterMap.getKeyedString(parameters, RRD_REPOSITORY_PATH_KEY, null);
+        final XmlDataCollection collection = (XmlDataCollection) parameters.get(XML_DATACOLLECTION_KEY);
+        final String serviceName = ParameterMap.getKeyedString(parameters, "SERVICE", "XML");
+        final String handlerClass = ParameterMap.getKeyedString(parameters, "handler-class", "org.opennms.protocols.xml.collector.DefaultXmlCollectionHandler");
+        final XmlCollectionHandlerKey key = new XmlCollectionHandlerKey(serviceName, handlerClass);
 
         try {
-            final String rrdRepositoryPath = ParameterMap.getKeyedString(parameters, RRD_REPOSITORY_PATH_KEY, null);
-            XmlDataCollection collection = (XmlDataCollection) parameters.get(XML_DATACOLLECTION_KEY);
-            RrdRepository rrdRepository = XmlDataCollectionConfig.buildRrdRepository(rrdRepositoryPath, collection);
-
             // Filling XML CollectionSet
-            XmlCollectionHandlerKey key = new XmlCollectionHandlerKey(serviceName, handlerClass);
+            RrdRepository rrdRepository = XmlDataCollectionConfig.buildRrdRepository(rrdRepositoryPath, collection);
             XmlCollectionHandler handler = m_handlers.get(key);
             handler.setRrdRepository(rrdRepository);
             return handler.collect(agent, collection, parameters);
@@ -236,4 +271,7 @@ public class XmlCollector extends AbstractRemoteServiceCollector {
         return m_xmlCollectionDao.getConfig().buildRrdRepository(collectionName);
     }
 
+    public void setNodeDao(NodeDao nodeDao) {
+        m_nodeDao = nodeDao;
+    }
 }

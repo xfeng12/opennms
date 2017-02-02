@@ -52,7 +52,7 @@ import org.opennms.netmgt.rrd.RrdRepository;
  */
 @XmlRootElement(name="xml-datacollection-config")
 @XmlAccessorType(XmlAccessType.FIELD)
-public class XmlDataCollectionConfig implements Serializable, Comparable<XmlDataCollectionConfig> {
+public class XmlDataCollectionConfig implements Serializable, Comparable<XmlDataCollectionConfig>, Cloneable {
 
     /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -7884808717236892997L;
@@ -77,6 +77,11 @@ public class XmlDataCollectionConfig implements Serializable, Comparable<XmlData
      */
     public XmlDataCollectionConfig() {
 
+    }
+
+    public XmlDataCollectionConfig(XmlDataCollectionConfig copy) {
+        m_rrdRepository = copy.m_rrdRepository;
+        copy.m_xmlDataCollections.stream().forEach(x -> m_xmlDataCollections.add(x));
     }
 
     /**
@@ -210,5 +215,10 @@ public class XmlDataCollectionConfig implements Serializable, Comparable<XmlData
             .isEquals();
         }
         return false;
+    }
+ 
+    @Override
+    public XmlDataCollectionConfig clone() {
+        return new XmlDataCollectionConfig(this);
     }
 }

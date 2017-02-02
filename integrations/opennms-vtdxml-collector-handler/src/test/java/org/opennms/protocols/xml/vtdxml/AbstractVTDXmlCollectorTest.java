@@ -57,6 +57,7 @@ import org.opennms.netmgt.rrd.RrdStrategy;
 import org.opennms.netmgt.rrd.jrobin.JRobinRrdStrategy;
 import org.opennms.netmgt.snmp.InetAddrUtils;
 import org.opennms.protocols.xml.collector.XmlCollector;
+import org.opennms.protocols.xml.collector.XmlCollectorTestUtils;
 import org.opennms.protocols.xml.config.XmlRrd;
 import org.opennms.protocols.xml.dao.jaxb.XmlDataCollectionConfigDaoJaxb;
 import org.springframework.core.io.FileSystemResource;
@@ -161,7 +162,7 @@ public abstract class AbstractVTDXmlCollectorTest {
     public void executeCollectorTest(Map<String, Object> parameters, int expectedFiles) throws Exception {
         XmlCollector collector = new XmlCollector();
         collector.setXmlCollectionDao(m_xmlCollectionDao);
-        CollectionSet collectionSet = collector.collect(m_collectionAgent, parameters);
+        CollectionSet collectionSet = XmlCollectorTestUtils.doCollect(collector, m_collectionAgent, parameters);
         Assert.assertEquals(CollectionStatus.SUCCEEDED, collectionSet.getStatus());
 
         ServiceParameters serviceParams = new ServiceParameters(new HashMap<String,Object>());

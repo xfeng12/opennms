@@ -43,6 +43,7 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TemporaryFolder;
 import org.junit.runner.RunWith;
+import org.opennms.core.collection.test.CollectionSetUtils;
 import org.opennms.core.collection.test.MockCollectionAgent;
 import org.opennms.core.test.MockLogAppender;
 import org.opennms.core.test.http.JUnitHttpServerExecutionListener;
@@ -164,11 +165,10 @@ public class HttpDataCollectionIT {
         parameters.put("collection", "Http-Count");
 
         DefaultXmlCollectionHandler collector = new DefaultXmlCollectionHandler();
-        collector.setNodeDao(m_nodeDao);
         collector.setRrdRepository(repository);
         collector.setServiceName("HTTP");
 
-        CollectionSet collectionSet = collector.collect(m_collectionAgent, collection, parameters);
+        CollectionSet collectionSet = XmlCollectorTestUtils.doCollect(m_nodeDao, collector, m_collectionAgent, collection, parameters);
         Assert.assertEquals(CollectionStatus.SUCCEEDED, collectionSet.getStatus());
 
         ServiceParameters serviceParams = new ServiceParameters(new HashMap<String,Object>());
@@ -202,11 +202,10 @@ public class HttpDataCollectionIT {
         parameters.put("collection", "Http-Market");
 
         HttpCollectionHandler collector = new HttpCollectionHandler();
-        collector.setNodeDao(m_nodeDao);
         collector.setRrdRepository(repository);
         collector.setServiceName("HTTP");
 
-        CollectionSet collectionSet = collector.collect(m_collectionAgent, collection, parameters);
+        CollectionSet collectionSet = XmlCollectorTestUtils.doCollect(m_nodeDao, collector, m_collectionAgent, collection, parameters);
         Assert.assertEquals(CollectionStatus.SUCCEEDED, collectionSet.getStatus());
 
         ServiceParameters serviceParams = new ServiceParameters(new HashMap<String,Object>());
@@ -240,11 +239,10 @@ public class HttpDataCollectionIT {
         parameters.put("collection", "Http-Person-Stats");
 
         DefaultXmlCollectionHandler collector = new DefaultXmlCollectionHandler();
-        collector.setNodeDao(m_nodeDao);
         collector.setRrdRepository(repository);
         collector.setServiceName("HTTP");
 
-        CollectionSet collectionSet = collector.collect(m_collectionAgent, collection, parameters);
+        CollectionSet collectionSet = XmlCollectorTestUtils.doCollect(m_nodeDao, collector, m_collectionAgent, collection, parameters);
         Assert.assertEquals(CollectionStatus.SUCCEEDED, collectionSet.getStatus());
 
         ServiceParameters serviceParams = new ServiceParameters(new HashMap<String,Object>());
@@ -278,12 +276,12 @@ public class HttpDataCollectionIT {
         parameters.put("collection", "Solaris");
 
         DefaultJsonCollectionHandler collector = new DefaultJsonCollectionHandler();
-        collector.setNodeDao(m_nodeDao);
         collector.setRrdRepository(repository);
         collector.setServiceName("HTTP");
 
-        CollectionSet collectionSet = collector.collect(m_collectionAgent, collection, parameters);
+        CollectionSet collectionSet = XmlCollectorTestUtils.doCollect(m_nodeDao, collector, m_collectionAgent, collection, parameters);
         Assert.assertEquals(CollectionStatus.SUCCEEDED, collectionSet.getStatus());
+        System.err.println(CollectionSetUtils.flatten(collectionSet));
 
         ServiceParameters serviceParams = new ServiceParameters(new HashMap<String,Object>());
         CollectionSetVisitor persister = m_persisterFactory.createGroupPersister(serviceParams, repository, false, false);

@@ -77,7 +77,8 @@ public class CollectorListTest {
             "org.opennms.netmgt.collectd.VmwareCimCollector",
             "org.opennms.netmgt.collectd.VmwareCollector",
             "org.opennms.netmgt.collectd.WmiCollector",
-            "org.opennms.netmgt.collectd.WsManCollector")
+            "org.opennms.netmgt.collectd.WsManCollector",
+            "org.opennms.protocols.xml.collector.XmlCollector")
             .build();
 
     private ImmutableSet<String> expectedOpenNMSCollectors = ImmutableSet.<String> builder().add(

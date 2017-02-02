@@ -206,9 +206,7 @@ public class NodeLevelDataOnMultipleNodesTest {
 
         CollectionAgent collectionAgent = new MockCollectionAgent(nodeId, "mynode", InetAddrUtils.addr(ipAddress));
 
-
-        CollectionSet collectionSet = m_collector.collect(collectionAgent, parameters);
-        collectionSet = m_collector.collect(collectionAgent, parameters);
+        CollectionSet collectionSet = XmlCollectorTestUtils.doCollect(m_collector, collectionAgent, parameters);
         Assert.assertEquals(CollectionStatus.SUCCEEDED, collectionSet.getStatus());
 
         ServiceParameters serviceParams = new ServiceParameters(new HashMap<String,Object>());

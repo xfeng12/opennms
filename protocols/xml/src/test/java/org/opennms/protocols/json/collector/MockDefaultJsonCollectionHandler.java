@@ -28,12 +28,11 @@
 
 package org.opennms.protocols.json.collector;
 
-import net.sf.json.JSONObject;
-
 import org.opennms.netmgt.collection.api.CollectionAgent;
-import org.opennms.netmgt.config.datacollection.ResourceType;
+import org.opennms.netmgt.dao.api.NodeDao;
 import org.opennms.protocols.xml.config.Request;
-import org.opennms.protocols.xml.config.XmlResourceUtils;
+
+import net.sf.json.JSONObject;
 
 /**
  * The Mock Class for DefaultJSONCollectionHandler.
@@ -56,13 +55,8 @@ public class MockDefaultJsonCollectionHandler extends DefaultJsonCollectionHandl
      * @see org.opennms.protocols.xml.collector.AbstractXmlCollectionHandler#parseUrl(java.lang.String, org.opennms.netmgt.collectd.CollectionAgent, java.lang.Integer)
      */
     @Override
-    protected String parseUrl(String unformattedUrl, CollectionAgent agent, Integer collectionStep) {
+    public String parseUrl(NodeDao nodeDao, String unformattedUrl, CollectionAgent agent, Integer collectionStep) {
         return unformattedUrl.replace("{ipaddr}", "127.0.0.1");
-    }
-
-    @Override
-    protected ResourceType getResourceType(String resourceType) {
-        return XmlResourceUtils.getResourceType(resourceType);
     }
 }
 

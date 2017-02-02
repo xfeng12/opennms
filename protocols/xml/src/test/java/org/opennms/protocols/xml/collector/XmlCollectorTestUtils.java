@@ -1,8 +1,8 @@
 /*******************************************************************************
  * This file is part of OpenNMS(R).
  *
- * Copyright (C) 2011-2014 The OpenNMS Group, Inc.
- * OpenNMS(R) is Copyright (C) 1999-2014 The OpenNMS Group, Inc.
+ * Copyright (C) 2017-2017 The OpenNMS Group, Inc.
+ * OpenNMS(R) is Copyright (C) 1999-2017 The OpenNMS Group, Inc.
  *
  * OpenNMS(R) is a registered trademark of The OpenNMS Group, Inc.
  *
@@ -26,28 +26,43 @@
  *     http://www.opennms.com/
  *******************************************************************************/
 
-package org.opennms.protocols.xml.config;
+package org.opennms.protocols.xml.collector;
 
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
+
+import org.opennms.netmgt.collection.adapters.ResourceTypeMapper;
+import org.opennms.netmgt.collection.api.CollectionAgent;
+import org.opennms.netmgt.collection.api.CollectionException;
+import org.opennms.netmgt.collection.api.CollectionSet;
 import org.opennms.netmgt.collection.support.PersistAllSelectorStrategy;
 import org.opennms.netmgt.config.datacollection.PersistenceSelectorStrategy;
 import org.opennms.netmgt.config.datacollection.ResourceType;
 import org.opennms.netmgt.config.datacollection.StorageStrategy;
-import org.opennms.protocols.xml.collector.XmlStorageStrategy;
+import org.opennms.netmgt.dao.api.NodeDao;
+import org.opennms.protocols.xml.config.XmlDataCollection;
 
-/**
- * The XML Resource Utilities.
- * 
- * @author <a href="mailto:agalue@opennms.org">Alejandro Galue</a>
- */
-public abstract class XmlResourceUtils {
+public class XmlCollectorTestUtils {
 
-    /**
-     * Gets the XML resource type.
-     *
-     * @param agent the collection agent
-     * @param resourceType the resource type
-     * @return the XML resource type
-     */
+    public static CollectionSet doCollect(XmlCollector collector, CollectionAgent agent, Map<String, Object> parameters) throws CollectionException {
+        ResourceTypeMapper.getInstance().setResourceTypeMapper(type -> getResourceType(type));
+        final Map<String, Object> runtimeAttributes = collector.getRuntimeAttributes(agent, parameters);
+        Map<String, Object> allParams = new HashMap<>();
+        allParams.putAll(parameters);
+        allParams.putAll(runtimeAttributes);
+        allParams = Collections.unmodifiableMap(allParams);
+        return collector.collect(agent, allParams);
+    }
+
+    public static CollectionSet doCollect(NodeDao nodeDao, XmlCollectionHandler handler, CollectionAgent agent, XmlDataCollection collection, Map<String, Object> parameters) throws CollectionException {
+        ResourceTypeMapper.getInstance().setResourceTypeMapper(type -> getResourceType(type));
+        XmlCollector collector = new XmlCollector();
+        collector.setNodeDao(nodeDao);
+        XmlDataCollection parsedCollection = collector.parseCollection(collection, handler, agent);
+        return handler.collect(agent, parsedCollection, parameters);
+    }
+
     public static ResourceType getResourceType(String resourceType) {
         ResourceType rt = new ResourceType();
         rt.setName(resourceType);
@@ -58,4 +73,3 @@ public abstract class XmlResourceUtils {
         return rt;
     }
 }
-

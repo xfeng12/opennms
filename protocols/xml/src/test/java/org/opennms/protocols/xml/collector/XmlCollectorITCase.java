@@ -200,7 +200,8 @@ public abstract class XmlCollectorITCase {
     public CollectionSet executeCollectorTest(Map<String, Object> parameters, int expectedFiles) throws Exception {
         XmlCollector collector = new XmlCollector();
         collector.setXmlCollectionDao(m_xmlCollectionDao);
-        CollectionSet collectionSet = collector.collect(m_collectionAgent, parameters);
+
+        CollectionSet collectionSet = XmlCollectorTestUtils.doCollect(collector, m_collectionAgent, parameters);
         Assert.assertEquals(CollectionStatus.SUCCEEDED, collectionSet.getStatus());
 
         ServiceParameters serviceParams = new ServiceParameters(new HashMap<String,Object>());
