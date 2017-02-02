@@ -447,6 +447,11 @@ public class XmpCollector extends AbstractServiceCollector {
             return collectionSetBuilder.build();
         }
 
+        if (collection.getGroups().getGroup().length < 1) {
+            LOG.info("No groups to collect.");
+            return collectionSetBuilder.withStatus(CollectionStatus.SUCCEEDED).build();
+        }
+
         oldUptime = agent.getSavedSysUpTime();
 
         // open/get a session with the target agent
