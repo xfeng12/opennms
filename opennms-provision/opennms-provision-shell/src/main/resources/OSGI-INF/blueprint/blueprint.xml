@@ -46,5 +46,14 @@
 			</action>
 		</command>
 	</command-bundle>
-	
+
+    <reference id="requisitionProviderRegistry" interface="org.opennms.netmgt.provision.persist.RequisitionProviderRegistry" availability="mandatory"/>
+
+    <command-bundle xmlns="http://karaf.apache.org/xmlns/shell/v1.0.0">
+        <command name="provision/show-import">
+            <action class="org.opennms.netmgt.provision.requisition.command.ShowImport">
+              <property name="registry" ref="requisitionProviderRegistry" />
+            </action>
+        </command>
+    </command-bundle>
 </blueprint>
