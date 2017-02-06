@@ -36,9 +36,11 @@ import java.net.URLConnection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ExecutionException;
 
 import org.opennms.core.utils.url.GenericURLConnection;
 import org.opennms.core.xml.XmlHandler;
+import org.opennms.netmgt.provision.persist.LocationAwareRequisitionProviderClient;
 import org.opennms.netmgt.provision.persist.RequisitionProvider;
 import org.opennms.netmgt.provision.persist.RequisitionProviderTypeMapper;
 import org.opennms.netmgt.provision.persist.requisition.Requisition;
@@ -56,6 +58,8 @@ public class RequisitionUrlConnection extends URLConnection {
 
     private static final XmlHandler<Requisition> s_xmlHandler = new XmlHandler<>(Requisition.class);
 
+    private LocationAwareRequisitionProviderClient requisitionProviderClient;
+
     public RequisitionUrlConnection(URL url) {
         super(url);
         // Store the type and defer looking up the provider until we actually need it
@@ -72,21 +76,30 @@ public class RequisitionUrlConnection extends URLConnection {
             throw new IOException(String.format("No provider found for type '%s'", type));
         }
 
-        final Requisition requisition = provider.getRequisition(parameters);
-        if (requisition == null) {
-            throw new IOException(String.format("Invalid (null) requisition was returned by the provider '%s' for type '%s'",
-                    provider, type));
-        }
+        try {
+            final Requisition requisition = requisitionProviderClient.requisition()
+                .withRequisitionProvider(provider)
+                .withParameters(parameters)
+                .execute()
+                .get();
 
-        // The XmlHandler is not thread safe
-        // Marshaling is quick, so we opt to use a single instance of the handler
-        // instead of using thread-local variables
-        final String requisitionXml;
-        synchronized(s_xmlHandler) {
-            requisitionXml = s_xmlHandler.marshal(requisition);
-        }
+            if (requisition == null) {
+                throw new IOException(String.format("Invalid (null) requisition was returned by the provider '%s' for type '%s'",
+                        provider, type));
+            }
 
-        return new ByteArrayInputStream(requisitionXml.getBytes());
+            // The XmlHandler is not thread safe
+            // Marshaling is quick, so we opt to use a single instance of the handler
+            // instead of using thread-local variables
+            final String requisitionXml;
+            synchronized(s_xmlHandler) {
+                requisitionXml = s_xmlHandler.marshal(requisition);
+            }
+
+            return new ByteArrayInputStream(requisitionXml.getBytes());
+        } catch (ExecutionException|InterruptedException e) {
+            throw new IOException(e);
+        }
     }
 
     @Override
