@@ -54,6 +54,7 @@
                                 <feature>minion-heartbeat-producer</feature>
                                 <feature>minion-snmp-proxy</feature>
                                 <feature>minion-provisiond-detectors</feature>
+                                <feature>minion-provisiond-requisitions</feature>
                                 <feature>minion-poller</feature>
                                 <feature>minion-icmp-proxy</feature>
                                 <feature>hawtio-offline</feature>
@@ -131,6 +132,11 @@
         <dependency>
             <groupId>org.opennms.features.minion.heartbeat</groupId>
             <artifactId>org.opennms.features.minion.heartbeat.producer</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.opennms</groupId>
+            <artifactId>opennms-requisition-service</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>

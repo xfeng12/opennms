@@ -30,8 +30,8 @@ package org.opennms.netmgt.provision.service.vmware;
 
 import java.util.Map;
 
+import org.opennms.netmgt.provision.persist.AbstractRequisitionProvider;
 import org.opennms.netmgt.provision.persist.ForeignSourceRepository;
-import org.opennms.netmgt.provision.persist.RequisitionProvider;
 import org.opennms.netmgt.provision.persist.requisition.Requisition;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -45,26 +45,37 @@ import org.springframework.beans.factory.annotation.Qualifier;
  *
  * @author jwhite
  */
-public class VmwareRequisitionProvider implements RequisitionProvider {
+public class VmwareRequisitionProvider extends AbstractRequisitionProvider<VmwareImportRequest> {
 
     private static final Logger LOG = LoggerFactory.getLogger(VmwareRequisitionProvider.class);
+
+    public static final String TYPE_NAME = "vmware";
 
     @Autowired
     @Qualifier("fileDeployed")
     private ForeignSourceRepository foreignSourceRepository;
 
+    public VmwareRequisitionProvider() {
+        super(VmwareImportRequest.class);
+    }
+
     @Override
-    public Requisition getRequisition(Map<String, String> parameters) {
+    public String getType() {
+        return TYPE_NAME;
+    }
+
+    @Override
+    public VmwareImportRequest getRequest(Map<String, String> parameters) {
         // Generate a request using the parameter map
-        final VmwareImportRequest request = new VmwareImportRequest(parameters);
+        final VmwareImportRequest request  = new VmwareImportRequest(parameters);
         // Lookup the existing requisition, and store it in the request
         final Requisition existingRequisition = getExistingRequisition(request.getForeignSource());
         request.setExistingRequisition(existingRequisition);
-        // Execute the request
-        return getRequisition(request);
+        return request;
     }
 
-    public Requisition getRequisition(VmwareImportRequest request) {
+    @Override
+    public Requisition getRequisitionFor(VmwareImportRequest request) {
         final VmwareImporter importer = new VmwareImporter(request);
         return importer.getRequisition();
     }

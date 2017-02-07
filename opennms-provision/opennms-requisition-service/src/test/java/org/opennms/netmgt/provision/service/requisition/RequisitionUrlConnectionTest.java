@@ -31,10 +31,10 @@ package org.opennms.netmgt.provision.service.requisition;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Matchers.any;
+import static org.mockito.Mockito.RETURNS_DEEP_STUBS;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.MalformedURLException;
@@ -46,8 +46,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.opennms.core.utils.url.GenericURLFactory;
 import org.opennms.core.xml.JaxbUtils;
-import org.opennms.netmgt.provision.persist.RequisitionProvider;
-import org.opennms.netmgt.provision.persist.RequisitionProviderTypeMapper;
+import org.opennms.netmgt.provision.persist.LocationAwareRequisitionClient;
 import org.opennms.netmgt.provision.persist.requisition.Requisition;
 
 import com.google.common.collect.ImmutableMap;
@@ -61,15 +60,23 @@ public class RequisitionUrlConnectionTest {
     }
 
     @Test
-    public void canRetrieveRequisition() throws IOException {
+    public void canRetrieveRequisition() throws Exception {
         Requisition expectedRequisition = new Requisition();
-        RequisitionProvider provider = mock(RequisitionProvider.class);
-        when(provider.getRequisition(any())).thenReturn(expectedRequisition);
-        RequisitionProviderTypeMapper.getInstance().setResourceTypeMapper((type) -> provider);
+        LocationAwareRequisitionClient client = mock(LocationAwareRequisitionClient.class, RETURNS_DEEP_STUBS);
+        when(client.requisition()
+                .withRequisitionProviderType("test")
+                .withParameters(any())
+                .execute()
+                .get()).thenReturn(expectedRequisition);
 
-        final String requisitionAsStr = urlToString("requisition://test/");
-        Requisition actualRequisition = JaxbUtils.unmarshal(Requisition.class, requisitionAsStr);
-        assertEquals(expectedRequisition, actualRequisition);
+        try {
+            RequisitionUrlConnection.setClient(client);
+            final String requisitionAsStr = urlToString("requisition://test/");
+            Requisition actualRequisition = JaxbUtils.unmarshal(Requisition.class, requisitionAsStr);
+            assertEquals(expectedRequisition, actualRequisition);
+        } finally {
+            RequisitionUrlConnection.setClient(null);
+        }
     }
 
     @Test

@@ -26,28 +26,15 @@
  *     http://www.opennms.com/
  *******************************************************************************/
 
-package org.opennms.netmgt.provision.service.requisition;
-
-import javax.annotation.PostConstruct;
-
-import org.opennms.netmgt.provision.persist.RequisitionProviderRegistry;
-import org.opennms.netmgt.provision.persist.RequisitionProviderTypeMapper;
-import org.springframework.beans.factory.annotation.Autowired;
+package org.opennms.netmgt.provision.persist;
 
 /**
- * Used to register the primary {@link RequisitionProviderRegistry}
- * with the {@link RequisitionProviderTypeMapper} singleton.
+ * Used to retrieve requisitions from a possibly external source.
  *
  * @author jwhite
  */
-public class DefaultRequisitionProviderTypeMapper {
+public interface LocationAwareRequisitionClient {
 
-    @Autowired
-    private RequisitionProviderRegistry providerRegistry;
+    RequisitionRequestBuilder requisition();
 
-    @PostConstruct
-    public void registerWithTypeMapper() {
-        RequisitionProviderTypeMapper.getInstance().setResourceTypeMapper(
-                (type) -> providerRegistry.getProviderByType(type));
-    }
 }

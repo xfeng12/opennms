@@ -26,23 +26,27 @@
  *     http://www.opennms.com/
  *******************************************************************************/
 
-package org.opennms.netmgt.provision.persist;
+package org.opennms.netmgt.provision.requisition.command;
 
-import java.util.Map;
-import java.util.concurrent.CompletableFuture;
+import java.util.List;
 
-import org.opennms.netmgt.provision.persist.requisition.Requisition;
+import org.apache.karaf.shell.console.Completer;
+import org.apache.karaf.shell.console.completer.StringsCompleter;
+import org.opennms.netmgt.provision.persist.RequisitionProviderRegistry;
 
-public interface RequisitionProviderRequestBuilder {
+public class ProviderTypeNameCompleter implements Completer{
 
-    RequisitionProviderRequestBuilder withLocation(String location);
+    private RequisitionProviderRegistry registry;
 
-    RequisitionProviderRequestBuilder withRequisitionProvider(RequisitionProvider requisitionProvider);
+    @Override
+    public int complete(String buffer, int cursor, List<String> candidates) {
+        StringsCompleter serviceNames = new StringsCompleter();
+        serviceNames.getStrings().addAll(registry.getTypes());
+        return serviceNames.complete(buffer, cursor, candidates);
+    }
 
-    RequisitionProviderRequestBuilder withParameters(Map<String, String> parameters);
-
-    RequisitionProviderRequestBuilder withTimeToLive(Long ttlInMs);
-
-    CompletableFuture<Requisition> execute();
+    public void setRegistry(RequisitionProviderRegistry registry) {
+        this.registry = registry;
+    }
 
 }

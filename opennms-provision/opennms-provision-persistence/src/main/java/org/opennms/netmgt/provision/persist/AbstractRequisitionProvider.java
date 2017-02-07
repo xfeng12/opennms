@@ -28,8 +28,38 @@
 
 package org.opennms.netmgt.provision.persist;
 
-public interface LocationAwareRequisitionProviderClient {
+import java.util.Map;
+import java.util.Objects;
 
-    RequisitionProviderRequestBuilder requisition();
+import org.opennms.core.xml.JaxbUtils;
+import org.opennms.netmgt.provision.persist.requisition.Requisition;
+
+public abstract class AbstractRequisitionProvider<T extends RequisitionRequest> implements RequisitionProvider {
+
+    private final Class<T> clazz;
+
+    public AbstractRequisitionProvider(Class<T> clazz) {
+        this.clazz = Objects.requireNonNull(clazz);
+    }
+
+    public abstract Requisition getRequisitionFor(T request);
+
+    @Override
+    public Requisition getRequisition(RequisitionRequest request) {
+        if (request == null || !(clazz.isAssignableFrom(request.getClass()))) {
+            throw new IllegalArgumentException("Invalid request: " + request);
+        }
+        return getRequisitionFor(clazz.cast(request));
+    }
+
+    @Override
+    public String marshalRequest(RequisitionRequest request) {
+        return JaxbUtils.marshal(request);
+    }
+
+    @Override
+    public RequisitionRequest unmarshalRequest(String marshaledRequest) {
+        return JaxbUtils.unmarshal(clazz, marshaledRequest);
+    }
 
 }

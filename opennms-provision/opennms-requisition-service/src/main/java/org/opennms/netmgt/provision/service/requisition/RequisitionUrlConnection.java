@@ -38,11 +38,10 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
 
+import org.opennms.core.spring.BeanUtils;
 import org.opennms.core.utils.url.GenericURLConnection;
 import org.opennms.core.xml.XmlHandler;
-import org.opennms.netmgt.provision.persist.LocationAwareRequisitionProviderClient;
-import org.opennms.netmgt.provision.persist.RequisitionProvider;
-import org.opennms.netmgt.provision.persist.RequisitionProviderTypeMapper;
+import org.opennms.netmgt.provision.persist.LocationAwareRequisitionClient;
 import org.opennms.netmgt.provision.persist.requisition.Requisition;
 
 /**
@@ -58,7 +57,7 @@ public class RequisitionUrlConnection extends URLConnection {
 
     private static final XmlHandler<Requisition> s_xmlHandler = new XmlHandler<>(Requisition.class);
 
-    private LocationAwareRequisitionProviderClient requisitionProviderClient;
+    private static LocationAwareRequisitionClient s_requisitionProviderClient;
 
     public RequisitionUrlConnection(URL url) {
         super(url);
@@ -70,22 +69,15 @@ public class RequisitionUrlConnection extends URLConnection {
 
     @Override
     public InputStream getInputStream() throws IOException {
-        final RequisitionProvider provider = RequisitionProviderTypeMapper.getInstance()
-                .getProvider(type);
-        if (provider == null) {
-            throw new IOException(String.format("No provider found for type '%s'", type));
-        }
-
         try {
-            final Requisition requisition = requisitionProviderClient.requisition()
-                .withRequisitionProvider(provider)
+            final Requisition requisition = getClient().requisition()
+                .withRequisitionProviderType(type)
                 .withParameters(parameters)
                 .execute()
                 .get();
 
             if (requisition == null) {
-                throw new IOException(String.format("Invalid (null) requisition was returned by the provider '%s' for type '%s'",
-                        provider, type));
+                throw new IOException(String.format("Invalid (null) requisition was returned by the provider for type '%s'", type));
             }
 
             // The XmlHandler is not thread safe
@@ -105,6 +97,17 @@ public class RequisitionUrlConnection extends URLConnection {
     @Override
     public void connect() {
         // pass
+    }
+
+    private LocationAwareRequisitionClient getClient() {
+        if (s_requisitionProviderClient == null) {
+            s_requisitionProviderClient = BeanUtils.getBean("daoContext", "locationAwareRequisitionClient", LocationAwareRequisitionClient.class);
+        }
+        return s_requisitionProviderClient;
+    }
+
+    public static void setClient(LocationAwareRequisitionClient client) {
+        s_requisitionProviderClient = client;
     }
 
     public static Map<String, String> getParameters(URL url) {

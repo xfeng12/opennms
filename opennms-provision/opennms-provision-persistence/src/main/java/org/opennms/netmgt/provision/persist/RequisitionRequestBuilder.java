@@ -29,59 +29,22 @@
 package org.opennms.netmgt.provision.persist;
 
 import java.util.Map;
+import java.util.concurrent.CompletableFuture;
 
 import org.opennms.netmgt.provision.persist.requisition.Requisition;
 
-/**
- * Used to generate {@link Requisition}s from some source.
- *
- * @author jwhite
- */
-public interface RequisitionProvider {
+public interface RequisitionRequestBuilder {
 
-    /**
-     * A string used to identify the provider type.
-     *
-     * This string should be unique for every implementation.
-     *
-     * @return the type string
-     */
-    String getType();
+    RequisitionRequestBuilder withLocation(String location);
 
-    /**
-     * Generate a request.
-     *
-     * @param parameters
-     * @return
-     */
-    RequisitionRequest getRequest(Map<String, String> parameters);
+    RequisitionRequestBuilder withRequisitionProviderType(String type);
 
-    /**
-     * Execute the request.
-     *
-     * @param request
-     * @return
-     */
-    Requisition getRequisition(RequisitionRequest request);
+    RequisitionRequestBuilder withRequisitionProvider(RequisitionProvider provider);
 
-    /**
-     * Marshals the request to a {@link java.lang.String}.
-     *
-     * Used before sending the request to a Minion.
-     *
-     * @param request
-     * @return
-     */
-    String marshalRequest(RequisitionRequest request);
+    RequisitionRequestBuilder withParameters(Map<String, String> parameters);
 
-    /**
-     * Unmarshals the request from a {@link java.lang.String}.
-     *
-     * Used when received the request on a Minion.
-     *
-     * @param marshaledRequest
-     * @return
-     */
-    RequisitionRequest unmarshalRequest(String marshaledRequest);
+    RequisitionRequestBuilder withTimeToLive(Long ttlInMs);
+
+    CompletableFuture<Requisition> execute();
 
 }

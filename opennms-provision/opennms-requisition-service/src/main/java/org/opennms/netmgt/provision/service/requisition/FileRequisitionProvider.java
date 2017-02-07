@@ -26,33 +26,42 @@
  *     http://www.opennms.com/
  *******************************************************************************/
 
-package org.opennms.netmgt.provision.persist;
+package org.opennms.netmgt.provision.service.requisition;
 
-import java.util.function.Function;
+import java.io.File;
+import java.util.Map;
 
-public class RequisitionProviderTypeMapper {
+import org.opennms.core.xml.JaxbUtils;
+import org.opennms.netmgt.provision.persist.AbstractRequisitionProvider;
+import org.opennms.netmgt.provision.persist.requisition.Requisition;
 
-    private static RequisitionProviderTypeMapper instance;
+public class FileRequisitionProvider extends AbstractRequisitionProvider<FileRequisitionRequest> {
 
-    private Function<String, RequisitionProvider> mapper;
+    public static final String TYPE_NAME = "file";
 
-    private RequisitionProviderTypeMapper() { }
+    public FileRequisitionProvider() {
+        super(FileRequisitionRequest.class);
+    }
 
-    public static RequisitionProviderTypeMapper getInstance(){
-        if (instance == null) {
-            instance = new RequisitionProviderTypeMapper();
+    @Override
+    public String getType() {
+        return TYPE_NAME;
+    }
+
+    @Override
+    public FileRequisitionRequest getRequest(Map<String, String> parameters) {
+        final FileRequisitionRequest request = new FileRequisitionRequest();
+        request.setPath(parameters.get("path"));
+        if (request.getPath() == null || request.getPath().isEmpty()) {
+            throw new IllegalArgumentException("Path arguments is required.");
         }
-        return instance;
+        return request;
     }
 
-    public void setResourceTypeMapper(Function<String, RequisitionProvider> mapper) {
-        this.mapper = mapper;
+    @Override
+    public Requisition getRequisitionFor(FileRequisitionRequest request) {
+        final File file = new File(request.getPath());
+        return JaxbUtils.unmarshal(Requisition.class, file);
     }
 
-    public RequisitionProvider getProvider(String tyoe) {
-        if (mapper != null) {
-            return mapper.apply(tyoe);
-        }
-        return null;
-    }
 }

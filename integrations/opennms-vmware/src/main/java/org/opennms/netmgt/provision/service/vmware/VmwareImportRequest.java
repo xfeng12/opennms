@@ -33,6 +33,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
+import org.opennms.netmgt.provision.persist.RequisitionRequest;
 import org.opennms.netmgt.provision.persist.requisition.Requisition;
 
 /**
@@ -41,7 +42,7 @@ import org.opennms.netmgt.provision.persist.requisition.Requisition;
  * @author Christian Pape <Christian.Pape@informatik.hs-fulda.de>
  * @author Alejandro Galue <agalue@opennms.org>
  */
-public class VmwareImportRequest {
+public class VmwareImportRequest implements RequisitionRequest {
 
     private static final String VMWARE_HOSTSYSTEM_SERVICES = "hostSystemServices";
     private static final String VMWARE_VIRTUALMACHINE_SERVICES = "virtualMachineServices";
@@ -368,4 +369,5 @@ public class VmwareImportRequest {
             return ("yes".equals(value) || "true".equals(value) || "on".equals(value) || "1".equals(value));
         }
     }
+
 }
