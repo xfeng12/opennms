@@ -146,7 +146,7 @@ public class TestMenuBarBuilder {
         
         cmdManager.onBind(getTestOperation(), getProps("File|New", "NewOperation", ""));
         
-        MenuBar menuBar = createMenuBar();
+        MenuBar menuBar = cmdManager.getMenuBar(null, null);
         
         List<MenuItem> menuItems = menuBar.getItems();
         assertEquals(1, menuItems.size());
@@ -173,10 +173,9 @@ public class TestMenuBarBuilder {
         cmdManager.onBind(getTestOperation(), getProps("Device", "Operation2?group=additions", ""));
         cmdManager.onBind(getTestOperation(), getProps(null, "Get Info?group=new", ""));
         cmdManager.onBind(getTestOperation(), getProps("Device", "NewOperation?group=additions", ""));
-
-
-        TopologyMenuBar menuBar = createMenuBar();
         
+        
+        MenuBar menuBar = cmdManager.getMenuBar(null, null);
         
         List<MenuItem> menuItems = menuBar.getItems();
         assertEquals(1, menuItems.size());
@@ -189,7 +188,7 @@ public class TestMenuBarBuilder {
         assertEquals("Operation3", subMenuItems.get(3).getText());
         assertEquals("Operation4", subMenuItems.get(4).getText());
     }
-
+    
     @Test
     public void layoutEditMenuGroupingTest() {
         CommandManager cmdManager = new CommandManager();
@@ -203,7 +202,7 @@ public class TestMenuBarBuilder {
         cmdManager.onBind(getTestOperation(), getProps("Edit", "Spring Layout?group=layout", ""));
         
         
-        MenuBar menuBar = createMenuBar();
+        MenuBar menuBar = cmdManager.getMenuBar(null, null);
         
         List<MenuItem> menuItems = menuBar.getItems();
         assertEquals(1, menuItems.size());
@@ -232,7 +231,7 @@ public class TestMenuBarBuilder {
         cmdManager.onBind(getTestOperation(), getProps("Edit", "Spring Layout?group=layout", ""));
         
         
-        MenuBar menuBar = createMenuBar();
+        MenuBar menuBar = cmdManager.getMenuBar(null, null);
         
         List<MenuItem> menuItems = menuBar.getItems();
         assertEquals(1, menuItems.size());
@@ -260,7 +259,7 @@ public class TestMenuBarBuilder {
         
         cmdManager.onBind(getTestOperation(), getProps("File|New", "NewOperation", ""));
         
-        MenuBar menuBar = createMenuBar();
+        MenuBar menuBar = cmdManager.getMenuBar(null, null);
         
         List<MenuItem> menuItems = menuBar.getItems();
         assertEquals(1, menuItems.size());
@@ -282,7 +281,7 @@ public class TestMenuBarBuilder {
         
         cmdManager.onBind(getCheckedTestOperation(), getProps("File", "Operation1", ""));
         
-        MenuBar menuBar = createMenuBar();
+        MenuBar menuBar = cmdManager.getMenuBar(null, null);
         
         List<MenuItem> menuItems = menuBar.getItems();
         assertEquals(1, menuItems.size());
@@ -416,11 +415,5 @@ public class TestMenuBarBuilder {
             
         }
     };
-
-    private static TopologyMenuBar createMenuBar() {
-        TopologyMenuBar menuBar = new TopologyMenuBar();
-        menuBar.buildMenu(null, null, null);
-        return menuBar;
-    }
 
 }
