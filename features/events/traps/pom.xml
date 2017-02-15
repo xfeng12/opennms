@@ -39,12 +39,6 @@
       <artifactId>camel-dependencies</artifactId>
       <type>pom</type>
     </dependency>
-    <!-- TODO: Is this necessary now that we're using RestClient? -->
-    <dependency>
-      <groupId>org.apache.camel</groupId>
-      <artifactId>camel-netty-http</artifactId>
-      <version>${camelVersion}</version>
-    </dependency>
     <dependency>
       <groupId>org.opennms.core</groupId>
       <artifactId>org.opennms.core.camel</artifactId>
