@@ -100,7 +100,7 @@ public class ObjectNameStorageStrategy extends IndexStorageStrategy {
                 resourceName = resourceName.replaceAll("\\s+", "_").replaceAll(":", "_").replaceAll("\\\\", "_").replaceAll("[\\[\\]]", "_").replaceAll("[|/]", "_").replaceAll("=", "").replaceAll("[_]+$", "").replaceAll("___", "_");
             }
         }
-        if (m_cleanOutput) {
+        if (m_cleanOutput && resourceName != null) {
             resourceName = resourceName.replaceAll("\\s+", "_").replaceAll(":", "_").replaceAll("\\\\", "_").replaceAll("[\\[\\]]", "_").replaceAll("[|/]", "_").replaceAll("=", "").replaceAll("[_]+$", "").replaceAll("___", "_");
         }
 
