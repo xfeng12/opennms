@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<events xmlns="http://xmlns.opennms.org/xsd/eventconf">
+
+  <event>
+    <uei>uei.opennms.plugins/assettopology/create</uei>
+    <event-label>GraphLM Asset Topology Plugin Event : Create Asset Topology File</event-label>
+    <descr>
+     &lt;p&gt;Create Topology File '%parm[topologyFilename]%' (if file undefined 'AssetTopologyFile.xml' is default )&lt;p&gt;
+    </descr>
+    <logmsg dest="logndisplay">
+     &lt;p&gt;Create Topology File '%parm[topologyFilename]%' (if file undefined 'AssetTopologyFile.xml' is default )&lt;p&gt;
+    </logmsg>
+    <severity>Normal</severity>
+    <operinstruct></operinstruct>
+  </event>
+  
+  <event>
+    <uei>uei.opennms.plugins/assettopology/uninstall</uei>
+    <event-label>GraphLM Asset Topology Plugin Event : Uninstall Asset Topology</event-label>
+    <descr>
+    &lt;p&gt;Uninstall Topology Name '%parm[topologyName]%' (if name undefined 'assetTopology' is default )&lt;p&gt;
+     </descr>
+    <logmsg dest="logndisplay">
+    &lt;p&gt;Uninstall Topology Name '%parm[topologyName]%' (if name undefined 'assetTopology' is default ) &lt;p&gt;
+    </logmsg>
+    <severity>Normal</severity>
+    <operinstruct></operinstruct>
+  </event>
+  
+  <event>
+    <uei>uei.opennms.plugins/assettopology/install</uei>
+    <event-label>GraphLM Asset Topology Plugin Event : Install Asset Topology</event-label>
+    <descr>
+    &lt;p&gt;Install Topology Name '%parm[topologyName]%' (if name undefined 'assetTopology' is default )&lt;p&gt;
+    &lt;p&gt;Using   Topology File '%parm[topologyFilename]%' (if undefined 'AssetTopologyFile.xml' is default )&lt;p&gt;
+    </descr>
+    <logmsg dest="logndisplay">
+    &lt;p&gt;Install Topology Name '%parm[topologyName]%' (if name undefined 'assetTopology' is default )&lt;p&gt;
+    </logmsg>
+    <severity>Normal</severity>
+    <operinstruct></operinstruct>
+  </event>
+
+</events>

@@ -112,6 +112,9 @@
             <!-- ReST Elasticsearch Integration -->
             <repository>mvn:org.opennms.plugins/opennms-es-rest/${project.version}/xml/features</repository>
             
+            <!-- GraphML Asset Topology Plugin  -->
+            <repository>mvn:org.opennms.plugins/opennms-graphml-asset-plugin/${project.version}/xml/features</repository>
+            
             <!-- Internal Plugins Descriptor -->
             <repository>mvn:org.opennms.plugins/internal-plugins-descriptor/${project.version}/xml/features</repository>
 
@@ -290,6 +293,7 @@
             <feature>vaadin-opennms-pluginmanager</feature>
             <feature>alarm-change-notifier</feature>
             <feature>opennms-es-rest</feature>
+            <feature>opennms-graphml-asset-plugin</feature>
             <feature>internal-plugins-descriptor</feature>
           </features>
         </configuration>
@@ -662,6 +666,13 @@
     <dependency>
       <groupId>org.opennms.plugins</groupId>
       <artifactId>opennms-es-rest</artifactId>
+      <version>${project.version}</version>
+      <type>pom</type>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.opennms.plugins</groupId>
+      <artifactId>opennms-graphml-asset-plugin</artifactId>
       <version>${project.version}</version>
       <type>pom</type>
       <scope>provided</scope>

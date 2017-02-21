@@ -1,0 +1,69 @@
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:cm="http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.1.0"
+  xmlns:ext="http://aries.apache.org/blueprint/xmlns/blueprint-ext/v1.1.0"
+  xsi:schemaLocation="
+		http://www.osgi.org/xmlns/blueprint/v1.0.0
+		http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
+		
+		http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.1.0
+		http://aries.apache.org/schemas/blueprint-cm/blueprint-cm-1.1.0.xsd
+		
+		http://aries.apache.org/blueprint/xmlns/blueprint-ext/v1.1.0
+		http://aries.apache.org/schemas/blueprint-ext/blueprint-ext-1.1.xsd
+">
+
+  <!-- print startup message to karaf consol -->
+  <bean id="sayHello" class="org.opennms.plugins.graphml.asset.SayHello" destroy-method="destroyMethod">
+  </bean>
+
+  <!-- Configuration properties -->
+  <cm:property-placeholder id="assetPluginConfigProperties" persistent-id="org.opennms.plugins.graphml.asset" update-strategy="reload">
+    <cm:default-properties>
+      <cm:property name="baseUrl" value="http://localhost:8980" />
+      <cm:property name="basePath" value="/opennms/rest" />
+      <cm:property name="userName" value="admin" />
+      <cm:property name="password" value="admin" />
+      <cm:property name="assetLayers" value="asset-region,asset-building,asset-rack" />
+      <cm:property name="preferredLayout" value="Grid Layout" />
+      <cm:property name="writeAssetListDebugFile"  value="true" />
+    </cm:default-properties>
+  </cm:property-placeholder>
+
+  <reference id="nodeDao" interface="org.opennms.netmgt.dao.api.NodeDao" availability="mandatory" />
+  <reference id="transactionOperations" interface="org.springframework.transaction.support.TransactionOperations" availability="mandatory" />
+
+  <bean id="nodeInfoRepository" class="org.opennms.plugins.graphml.asset.NodeInfoRepository">
+    <property name="nodeDao" ref="nodeDao" />
+    <property name="transactionOperations" ref="transactionOperations" />
+  </bean>
+
+  <bean id="eventIpcManager" class="org.opennms.netmgt.events.api.EventIpcManagerFactory" factory-method="getIpcManager" />
+
+  <bean id="graphMLRestClient" class="org.opennms.plugins.graphml.client.GraphMLRestJerseyClient">
+    <property name="baseUrl" value="${baseUrl}" />
+    <property name="basePath" value="${basePath}" />
+    <property name="userName" value="${userName}" />
+    <property name="password" value="${password}" />
+  </bean>
+
+  <bean id="assetTopologyMapper" class="org.opennms.plugins.graphml.asset.AssetTopologyMapperImpl">
+    <property name="preferredLayout" value="${preferredLayout}" />
+    <property name="layerHierarchyFromProperty" value="${assetLayers}" />
+    <!-- you can set the hierarchy list directly or use the property which splits layer around comma ',' characters -->
+    <!-- <property name="layerHierarchy"> -->
+    <!-- <list> -->
+    <!-- <value>asset-region</value> -->
+    <!-- <value>asset-building</value> -->
+    <!-- <value>asset-rack</value> -->
+    <!-- </list> -->
+    <!-- </property> -->
+  </bean>
+
+  <bean id="assetPluginController" class="org.opennms.plugins.graphml.asset.AssetPluginController" init-method="init" destroy-method="destroy">
+    <property name="eventIpcManager" ref="eventIpcManager" />
+    <property name="nodeInfoRepository" ref="nodeInfoRepository" />
+    <property name="graphMLRestClient" ref="graphMLRestClient" />
+    <property name="assetTopologyMapper" ref="assetTopologyMapper" />
+    <property name="writeAssetListDebugFile" value="${writeAssetListDebugFile}" />
+  </bean>
+
+</blueprint>

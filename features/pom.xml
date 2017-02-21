@@ -135,6 +135,9 @@
     <!-- ReST Elasticsearch Integration -->
     <module>opennms-es-rest</module>
     
+    <!-- GraphML Asset Topology Plugin  -->
+    <module>opennms-graphml-asset-plugin</module>
+    
     <!-- Alarm Change Notifier -->
     <module>alarm-change-notifier</module>
     

@@ -1,0 +1,1197 @@
+<model-import xmlns="http://xmlns.opennms.org/xsd/config/model-import" date-stamp="2017-02-14T16:41:56.686Z" foreign-source="BTOpenNMSInventory" last-import="2017-02-14T19:21:59.164Z">
+   <node foreign-id="630878819443753" node-label="2101-0301">
+      <interface ip-addr="192.17.21.2" snmp-primary="P"/>
+      <category name="21"/>
+      <category name="Switch"/>
+      <category name="Networking"/>
+      <asset name="description" value="2620-24"/>
+      <asset name="manufacturer" value="HP"/>
+      <asset name="address1" value="21"/>
+   </node>
+   <node foreign-id="630878819443754" node-label="2101-0601">
+      <interface ip-addr="192.17.21.3" snmp-primary="P"/>
+      <category name="21"/>
+      <category name="RMS"/>
+      <category name="Environmental"/>
+      <asset name="manufacturer" value="Emmerson"/>
+      <asset name="description" value="RMS II Compact"/>
+      <asset name="address1" value="21"/>
+   </node>
+   <node foreign-id="630878819443755" node-label="2101-0701">
+      <interface ip-addr="192.17.21.4" snmp-primary="P"/>
+      <category name="21"/>
+      <category name="NVR"/>
+      <category name="Environmental"/>
+      <asset name="description" value="NVR Compact"/>
+      <asset name="manufacturer" value="IndigoVision"/>
+      <asset name="address1" value="21"/>
+   </node>
+   <node foreign-id="630878819443756" node-label="2101-0702">
+      <interface ip-addr="192.17.21.5" snmp-primary="P"/>
+      <category name="Camera"/>
+      <category name="21"/>
+      <category name="Environmental"/>
+      <asset name="description" value="Transmitter"/>
+      <asset name="manufacturer" value="IndigoVision"/>
+      <asset name="address1" value="21"/>
+   </node>
+   <node foreign-id="630878819443757" node-label="2101-0703">
+      <interface ip-addr="192.17.21.6" snmp-primary="P"/>
+      <category name="Camera"/>
+      <category name="21"/>
+      <category name="Environmental"/>
+      <asset name="description" value="Transmitter"/>
+      <asset name="manufacturer" value="IndigoVision"/>
+      <asset name="address1" value="21"/>
+   </node>
+   <node foreign-id="630878819443758" node-label="2101-1601">
+      <interface ip-addr="192.17.21.7" snmp-primary="P"/>
+      <category name="21"/>
+      <category name="Transmission"/>
+      <category name="OCM"/>
+      <asset name="address1" value="21"/>
+   </node>
+   <node foreign-id="630878819443759" node-label="2101-1201">
+      <interface ip-addr="192.17.21.8" snmp-primary="P"/>
+      <category name="21"/>
+      <category name="NTP"/>
+      <category name="ToD"/>
+      <asset name="manufacturer" value="Symetricom"/>
+      <asset name="description" value="SyncServer S350"/>
+      <asset name="address1" value="21"/>
+   </node>
+   <node foreign-id="630878819443760" node-label="2101-1202">
+      <interface ip-addr="192.17.21.9" snmp-primary="P"/>
+      <category name="21"/>
+      <category name="NTP"/>
+      <category name="ToD"/>
+      <asset name="manufacturer" value="Symetricom"/>
+      <asset name="description" value="SyncServer S300"/>
+      <asset name="address1" value="21"/>
+   </node>
+   <node foreign-id="630878819443761" node-label="2101-0901">
+      <interface ip-addr="192.17.21.10" snmp-primary="P"/>
+      <category name="Power"/>
+      <category name="21"/>
+      <category name="ATS"/>
+      <asset name="description" value="ATS 7723"/>
+      <asset name="address1" value="21"/>
+      <asset name="manufacturer" value="APC"/>
+   </node>
+   <node foreign-id="630878819443762" node-label="2101-0902">
+      <interface ip-addr="192.17.21.11" snmp-primary="P"/>
+      <category name="Power"/>
+      <category name="21"/>
+      <category name="PDU"/>
+      <asset name="manufacturer" value="Emmerson"/>
+      <asset name="address1" value="21"/>
+   </node>
+   <node foreign-id="630878819443763" node-label="2101-0903">
+      <interface ip-addr="192.17.21.12" snmp-primary="P"/>
+      <category name="Power"/>
+      <category name="21"/>
+      <category name="PDU"/>
+      <asset name="manufacturer" value="Emmerson"/>
+      <asset name="address1" value="21"/>
+   </node>
+   <node foreign-id="630878819443764" node-label="2101-0904">
+      <interface ip-addr="192.17.21.13" snmp-primary="P"/>
+      <category name="Power"/>
+      <category name="21"/>
+      <category name="PDU"/>
+      <asset name="manufacturer" value="Emmerson"/>
+      <asset name="address1" value="21"/>
+   </node>
+   <node foreign-id="630878819443765" node-label="2101-0801-1">
+      <interface ip-addr="192.31.31.2" snmp-primary="P"/>
+      <category name="21"/>
+      <category name="Transmission"/>
+      <category name="6500"/>
+      <asset name="manufacturer" value="Ciena"/>
+      <asset name="description" value="AF6500 14 Slot"/>
+      <asset name="address1" value="21"/>
+   </node>
+   <node foreign-id="630878819443766" node-label="2102-0301">
+      <interface ip-addr="192.17.21.14" snmp-primary="P"/>
+      <category name="21"/>
+      <category name="Switch"/>
+      <category name="Networking"/>
+      <asset name="description" value="2620-24"/>
+      <asset name="manufacturer" value="HP"/>
+      <asset name="address1" value="21"/>
+   </node>
+   <node foreign-id="630878819443767" node-label="2102-0601">
+      <interface ip-addr="192.17.21.15" snmp-primary="P"/>
+      <category name="21"/>
+      <category name="RMS"/>
+      <category name="Environmental"/>
+      <asset name="manufacturer" value="Emmerson"/>
+      <asset name="description" value="RMS II Compact"/>
+      <asset name="address1" value="21"/>
+   </node>
+   <node foreign-id="630878819443768" node-label="2102-0701">
+      <interface ip-addr="192.17.21.16" snmp-primary="P"/>
+      <category name="21"/>
+      <category name="NVR"/>
+      <category name="Environmental"/>
+      <asset name="description" value="NVR Compact"/>
+      <asset name="manufacturer" value="IndigoVision"/>
+      <asset name="address1" value="21"/>
+   </node>
+   <node foreign-id="630878819443769" node-label="2102-0702">
+      <interface ip-addr="192.17.21.17" snmp-primary="P"/>
+      <category name="Camera"/>
+      <category name="21"/>
+      <category name="Environmental"/>
+      <asset name="description" value="Transmitter"/>
+      <asset name="manufacturer" value="IndigoVision"/>
+      <asset name="address1" value="21"/>
+   </node>
+   <node foreign-id="630878819443770" node-label="2102-0703">
+      <interface ip-addr="192.17.21.18" snmp-primary="P"/>
+      <category name="Camera"/>
+      <category name="21"/>
+      <category name="Environmental"/>
+      <asset name="description" value="Transmitter"/>
+      <asset name="manufacturer" value="IndigoVision"/>
+      <asset name="address1" value="21"/>
+   </node>
+   <node foreign-id="630878819443771" node-label="2102-1601">
+      <interface ip-addr="192.17.21.19" snmp-primary="P"/>
+      <category name="21"/>
+      <category name="Transmission"/>
+      <category name="OCM"/>
+      <asset name="address1" value="21"/>
+   </node>
+   <node foreign-id="630878819443772" node-label="2102-1201">
+      <interface ip-addr="192.17.21.20" snmp-primary="P"/>
+      <category name="21"/>
+      <category name="NTP"/>
+      <category name="ToD"/>
+      <asset name="manufacturer" value="Symetricom"/>
+      <asset name="description" value="SyncServer S300"/>
+      <asset name="address1" value="21"/>
+   </node>
+   <node foreign-id="630878819443773" node-label="2102-0901">
+      <interface ip-addr="192.17.21.21" snmp-primary="P"/>
+      <category name="Power"/>
+      <category name="21"/>
+      <category name="ATS"/>
+      <asset name="description" value="ATS 7723"/>
+      <asset name="address1" value="21"/>
+      <asset name="manufacturer" value="APC"/>
+   </node>
+   <node foreign-id="630878819443774" node-label="2102-0902">
+      <interface ip-addr="192.17.21.22" snmp-primary="P"/>
+      <category name="Power"/>
+      <category name="21"/>
+      <category name="PDU"/>
+      <asset name="manufacturer" value="Emmerson"/>
+      <asset name="address1" value="21"/>
+   </node>
+   <node foreign-id="630878819443775" node-label="2102-0903">
+      <interface ip-addr="192.17.21.23" snmp-primary="P"/>
+      <category name="Power"/>
+      <category name="21"/>
+      <category name="PDU"/>
+      <asset name="manufacturer" value="Emmerson"/>
+      <asset name="address1" value="21"/>
+   </node>
+   <node foreign-id="630878819443776" node-label="2102-0904">
+      <interface ip-addr="192.17.21.24" snmp-primary="P"/>
+      <category name="Power"/>
+      <category name="21"/>
+      <category name="PDU"/>
+      <asset name="manufacturer" value="Emmerson"/>
+      <asset name="address1" value="21"/>
+   </node>
+   <node foreign-id="630878819443777" node-label="2102-0704">
+      <interface ip-addr="192.17.21.25" snmp-primary="P"/>
+      <category name="21"/>
+      <category name="NVR"/>
+      <category name="Environmental"/>
+      <asset name="description" value="NVR Compact"/>
+      <asset name="manufacturer" value="IndigoVision"/>
+      <asset name="address1" value="21"/>
+   </node>
+   <node foreign-id="630878819443778" node-label="2102-0501">
+      <interface ip-addr="192.17.21.26" snmp-primary="P"/>
+      <category name="Computing"/>
+      <category name="21"/>
+      <category name="Server"/>
+      <asset name="manufacturer" value="Dell"/>
+      <asset name="address1" value="21"/>
+   </node>
+   <node foreign-id="630878819443779" node-label="2102-0502">
+      <interface ip-addr="192.17.21.27" snmp-primary="P"/>
+      <category name="Computing"/>
+      <category name="21"/>
+      <category name="Server"/>
+      <asset name="manufacturer" value="OpenNMS"/>
+      <asset name="address1" value="21"/>
+   </node>
+   <node foreign-id="630878819443780" node-label="2102-0503">
+      <interface ip-addr="192.17.21.28" snmp-primary="P"/>
+      <category name="Computing"/>
+      <category name="21"/>
+      <category name="Server"/>
+      <asset name="manufacturer" value="Windows 2012"/>
+      <asset name="address1" value="21"/>
+   </node>
+   <node foreign-id="630878819443781" node-label="2102-0504">
+      <interface ip-addr="192.17.21.29" snmp-primary="P"/>
+      <category name="Computing"/>
+      <category name="21"/>
+      <category name="Server"/>
+      <asset name="manufacturer" value="Windows"/>
+      <asset name="address1" value="21"/>
+   </node>
+   <node foreign-id="630878819443782" node-label="2201-0101">
+      <interface ip-addr="192.17.22.1" snmp-primary="P"/>
+      <category name="22"/>
+      <category name="Networking"/>
+      <category name="Router"/>
+      <asset name="manufacturer" value="Cisco"/>
+      <asset name="address1" value="22"/>
+      <asset name="description" value="1921"/>
+   </node>
+   <node foreign-id="630878819443783" node-label="2201-0301">
+      <interface ip-addr="192.17.22.2" snmp-primary="P"/>
+      <category name="22"/>
+      <category name="Switch"/>
+      <category name="Networking"/>
+      <asset name="description" value="2620-24"/>
+      <asset name="address1" value="22"/>
+      <asset name="manufacturer" value="HP"/>
+   </node>
+   <node foreign-id="630878819443784" node-label="2201-0601">
+      <interface ip-addr="192.17.22.3" snmp-primary="P"/>
+      <category name="22"/>
+      <category name="RMS"/>
+      <category name="Environmental"/>
+      <asset name="manufacturer" value="Emmerson"/>
+      <asset name="description" value="RMS II Compact"/>
+      <asset name="address1" value="22"/>
+   </node>
+   <node foreign-id="630878819443785" node-label="2201-1601">
+      <interface ip-addr="192.17.22.4" snmp-primary="P"/>
+      <category name="22"/>
+      <category name="Transmission"/>
+      <category name="OCM"/>
+      <asset name="address1" value="22"/>
+   </node>
+   <node foreign-id="630878819443786" node-label="2201-1202">
+      <interface ip-addr="192.17.22.5" snmp-primary="P"/>
+      <category name="22"/>
+      <category name="NTP"/>
+      <category name="ToD"/>
+      <asset name="manufacturer" value="Symetricom"/>
+      <asset name="description" value="SyncServer S300"/>
+      <asset name="address1" value="22"/>
+   </node>
+   <node foreign-id="630878819443787" node-label="2201-0701">
+      <interface ip-addr="192.17.22.6" snmp-primary="P"/>
+      <category name="Power"/>
+      <category name="22"/>
+      <category name="Monitoring"/>
+      <asset name="manufacturer" value="Emmerson"/>
+      <asset name="description" value="Candis"/>
+      <asset name="address1" value="22"/>
+   </node>
+   <node foreign-id="630878819443788" node-label="2201-0702">
+      <interface ip-addr="192.17.22.7" snmp-primary="P"/>
+      <category name="Power"/>
+      <category name="ATS"/>
+      <category name="22"/>
+      <asset name="description" value="ATS 7723"/>
+      <asset name="address1" value="22"/>
+      <asset name="manufacturer" value="APC"/>
+   </node>
+   <node foreign-id="630878819443789" node-label="2201-0703">
+      <interface ip-addr="192.17.22.8" snmp-primary="P"/>
+      <category name="Power"/>
+      <category name="22"/>
+      <category name="PDU"/>
+      <asset name="manufacturer" value="Emmerson"/>
+      <asset name="address1" value="22"/>
+   </node>
+   <node foreign-id="630878819443790" node-label="2201-0704">
+      <interface ip-addr="192.17.22.9" snmp-primary="P"/>
+      <category name="Power"/>
+      <category name="22"/>
+      <category name="PDU"/>
+      <asset name="manufacturer" value="Emmerson"/>
+      <asset name="address1" value="22"/>
+   </node>
+   <node foreign-id="630878819443791" node-label="2201-0705">
+      <interface ip-addr="192.17.22.10" snmp-primary="P"/>
+      <category name="Power"/>
+      <category name="22"/>
+      <category name="PDU"/>
+      <asset name="manufacturer" value="Emmerson"/>
+      <asset name="address1" value="22"/>
+   </node>
+   <node foreign-id="630878819443792" node-label="2201-0801-1">
+      <interface ip-addr="192.31.31.17" snmp-primary="P"/>
+      <category name="22"/>
+      <category name="Transmission"/>
+      <category name="6500"/>
+      <asset name="manufacturer" value="Ciena"/>
+      <asset name="address1" value="22"/>
+      <asset name="description" value="AF6500 14 Slot"/>
+   </node>
+   <node foreign-id="630878819443793" node-label="2202-0301">
+      <interface ip-addr="192.17.22.11" snmp-primary="P"/>
+      <category name="22"/>
+      <category name="Switch"/>
+      <category name="Networking"/>
+      <asset name="description" value="2620-24"/>
+      <asset name="address1" value="22"/>
+      <asset name="manufacturer" value="HP"/>
+   </node>
+   <node foreign-id="630878819443794" node-label="2202-0601">
+      <interface ip-addr="192.17.22.12" snmp-primary="P"/>
+      <category name="22"/>
+      <category name="RMS"/>
+      <category name="Environmental"/>
+      <asset name="manufacturer" value="Emmerson"/>
+      <asset name="description" value="RMS II Compact"/>
+      <asset name="address1" value="22"/>
+   </node>
+   <node foreign-id="630878819443795" node-label="2202-0701">
+      <interface ip-addr="192.17.22.13" snmp-primary="P"/>
+      <category name="Power"/>
+      <category name="22"/>
+      <category name="Monitoring"/>
+      <asset name="manufacturer" value="Emmerson"/>
+      <asset name="description" value="Candis"/>
+      <asset name="address1" value="22"/>
+   </node>
+   <node foreign-id="630878819443796" node-label="2202-0702">
+      <interface ip-addr="192.17.22.14" snmp-primary="P"/>
+      <category name="Power"/>
+      <category name="ATS"/>
+      <category name="22"/>
+      <asset name="description" value="ATS 7723"/>
+      <asset name="address1" value="22"/>
+      <asset name="manufacturer" value="APC"/>
+   </node>
+   <node foreign-id="630878819443797" node-label="2202-0703">
+      <interface ip-addr="192.17.22.15" snmp-primary="P"/>
+      <category name="Power"/>
+      <category name="22"/>
+      <category name="PDU"/>
+      <asset name="manufacturer" value="Emmerson"/>
+      <asset name="address1" value="22"/>
+   </node>
+   <node foreign-id="630878819443798" node-label="2202-0704">
+      <interface ip-addr="192.17.22.16" snmp-primary="P"/>
+      <category name="Power"/>
+      <category name="22"/>
+      <category name="PDU"/>
+      <asset name="manufacturer" value="Emmerson"/>
+      <asset name="address1" value="22"/>
+   </node>
+   <node foreign-id="630878819443799" node-label="2202-0705">
+      <interface ip-addr="192.17.22.17" snmp-primary="P"/>
+      <category name="Power"/>
+      <category name="22"/>
+      <category name="PDU"/>
+      <asset name="manufacturer" value="Emmerson"/>
+      <asset name="address1" value="22"/>
+   </node>
+   <node foreign-id="630878819443800" node-label="2202-0801-2">
+      <interface ip-addr="192.31.31.18" snmp-primary="P"/>
+      <category name="22"/>
+      <category name="Transmission"/>
+      <category name="6500"/>
+      <asset name="manufacturer" value="Ciena"/>
+      <asset name="address1" value="22"/>
+      <asset name="description" value="AF6500 14 Slot"/>
+   </node>
+   <node foreign-id="630878819443801" node-label="2801-0101">
+      <interface ip-addr="192.17.28.1" snmp-primary="P"/>
+      <category name="Networking"/>
+      <category name="28"/>
+      <category name="Router"/>
+      <asset name="address1" value="28"/>
+      <asset name="manufacturer" value="Cisco"/>
+      <asset name="description" value="1921"/>
+   </node>
+   <node foreign-id="630878819443802" node-label="2801-0301">
+      <interface ip-addr="192.17.28.2" snmp-primary="P"/>
+      <category name="Switch"/>
+      <category name="Networking"/>
+      <category name="28"/>
+      <asset name="description" value="2620-24"/>
+      <asset name="address1" value="28"/>
+      <asset name="manufacturer" value="HP"/>
+   </node>
+   <node foreign-id="630878819443803" node-label="2801-0601">
+      <interface ip-addr="192.17.28.3" snmp-primary="P"/>
+      <category name="28"/>
+      <category name="RMS"/>
+      <category name="Environmental"/>
+      <asset name="manufacturer" value="Emmerson"/>
+      <asset name="address1" value="28"/>
+      <asset name="description" value="RMS II Compact"/>
+   </node>
+   <node foreign-id="630878819443804" node-label="2801-1601">
+      <interface ip-addr="192.17.28.4" snmp-primary="P"/>
+      <category name="Transmission"/>
+      <category name="28"/>
+      <category name="OCM"/>
+      <asset name="address1" value="28"/>
+   </node>
+   <node foreign-id="630878819443805" node-label="2801-1201">
+      <interface ip-addr="192.17.28.5" snmp-primary="P"/>
+      <category name="28"/>
+      <category name="NTP"/>
+      <category name="ToD"/>
+      <asset name="manufacturer" value="Symetricom"/>
+      <asset name="address1" value="28"/>
+      <asset name="description" value="SyncServer S350"/>
+   </node>
+   <node foreign-id="630878819443806" node-label="2801-1202">
+      <interface ip-addr="192.17.28.6" snmp-primary="P"/>
+      <category name="28"/>
+      <category name="NTP"/>
+      <category name="ToD"/>
+      <asset name="manufacturer" value="Symetricom"/>
+      <asset name="address1" value="28"/>
+      <asset name="description" value="SyncServer S300"/>
+   </node>
+   <node foreign-id="630878819443807" node-label="2801-0904">
+      <interface ip-addr="192.17.28.7" snmp-primary="P"/>
+      <category name="Power"/>
+      <category name="ATS"/>
+      <category name="28"/>
+      <asset name="description" value="ATS 7723"/>
+      <asset name="address1" value="28"/>
+      <asset name="manufacturer" value="APC"/>
+   </node>
+   <node foreign-id="630878819443808" node-label="2801-0905">
+      <interface ip-addr="192.17.28.8" snmp-primary="P"/>
+      <category name="Power"/>
+      <category name="PDU"/>
+      <category name="28"/>
+      <asset name="manufacturer" value="Emmerson"/>
+      <asset name="address1" value="28"/>
+   </node>
+   <node foreign-id="630878819443809" node-label="2801-0906">
+      <interface ip-addr="192.17.28.9" snmp-primary="P"/>
+      <category name="Power"/>
+      <category name="PDU"/>
+      <category name="28"/>
+      <asset name="manufacturer" value="Emmerson"/>
+      <asset name="address1" value="28"/>
+   </node>
+   <node foreign-id="630878819443810" node-label="2801-0907">
+      <interface ip-addr="192.17.28.10" snmp-primary="P"/>
+      <category name="Power"/>
+      <category name="PDU"/>
+      <category name="28"/>
+      <asset name="manufacturer" value="Emmerson"/>
+      <asset name="address1" value="28"/>
+   </node>
+   <node foreign-id="630878819443811" node-label="2801-0801-1">
+      <interface ip-addr="192.31.31.6" snmp-primary="P"/>
+      <category name="Transmission"/>
+      <category name="28"/>
+      <category name="6500"/>
+      <asset name="address1" value="28"/>
+      <asset name="manufacturer" value="Ciena"/>
+      <asset name="description" value="AF6500 14 Slot"/>
+   </node>
+   <node foreign-id="630878819443812" node-label="3101-0101">
+      <interface ip-addr="192.17.31.1" snmp-primary="P"/>
+      <category name="31"/>
+      <category name="Networking"/>
+      <category name="Router"/>
+      <asset name="manufacturer" value="Cisco"/>
+      <asset name="address1" value="31"/>
+      <asset name="description" value="1921"/>
+   </node>
+   <node foreign-id="630878819443813" node-label="3101-0301">
+      <interface ip-addr="192.17.31.2" snmp-primary="P"/>
+      <category name="31"/>
+      <category name="Switch"/>
+      <category name="Networking"/>
+      <asset name="description" value="2620-24"/>
+      <asset name="manufacturer" value="HP"/>
+      <asset name="address1" value="31"/>
+   </node>
+   <node foreign-id="630878819443814" node-label="3101-0601">
+      <interface ip-addr="192.17.31.3" snmp-primary="P"/>
+      <category name="31"/>
+      <category name="RMS"/>
+      <category name="Environmental"/>
+      <asset name="manufacturer" value="Emmerson"/>
+      <asset name="description" value="RMS II Compact"/>
+      <asset name="address1" value="31"/>
+   </node>
+   <node foreign-id="630878819443815" node-label="3101-0701">
+      <interface ip-addr="192.17.31.4" snmp-primary="P"/>
+      <category name="31"/>
+      <category name="NVR"/>
+      <category name="Environmental"/>
+      <asset name="description" value="NVR Compact"/>
+      <asset name="manufacturer" value="IndigoVision"/>
+      <asset name="address1" value="31"/>
+   </node>
+   <node foreign-id="630878819443816" node-label="3101-0702">
+      <interface ip-addr="192.17.31.5" snmp-primary="P"/>
+      <category name="31"/>
+      <category name="Camera"/>
+      <category name="Environmental"/>
+      <asset name="description" value="Transmitter"/>
+      <asset name="manufacturer" value="IndigoVision"/>
+      <asset name="address1" value="31"/>
+   </node>
+   <node foreign-id="630878819443817" node-label="3101-0703">
+      <interface ip-addr="192.17.31.6" snmp-primary="P"/>
+      <category name="31"/>
+      <category name="Camera"/>
+      <category name="Environmental"/>
+      <asset name="description" value="Transmitter"/>
+      <asset name="manufacturer" value="IndigoVision"/>
+      <asset name="address1" value="31"/>
+   </node>
+   <node foreign-id="630878819443818" node-label="3101-1601">
+      <interface ip-addr="192.17.31.7" snmp-primary="P"/>
+      <category name="31"/>
+      <category name="Transmission"/>
+      <category name="OCM"/>
+      <asset name="address1" value="31"/>
+   </node>
+   <node foreign-id="630878819443819" node-label="3101-1201">
+      <interface ip-addr="192.17.31.8" snmp-primary="P"/>
+      <category name="31"/>
+      <category name="NTP"/>
+      <category name="ToD"/>
+      <asset name="manufacturer" value="Symetricom"/>
+      <asset name="description" value="SyncServer S300"/>
+      <asset name="address1" value="31"/>
+   </node>
+   <node foreign-id="630878819443820" node-label="3101-0901">
+      <interface ip-addr="192.17.31.9" snmp-primary="P"/>
+      <category name="Power"/>
+      <category name="31"/>
+      <category name="ATS"/>
+      <asset name="description" value="ATS 7723"/>
+      <asset name="manufacturer" value="APC"/>
+      <asset name="address1" value="31"/>
+   </node>
+   <node foreign-id="630878819443821" node-label="3101-0902">
+      <interface ip-addr="192.17.31.10" snmp-primary="P"/>
+      <category name="Power"/>
+      <category name="31"/>
+      <category name="PDU"/>
+      <asset name="manufacturer" value="Emmerson"/>
+      <asset name="address1" value="31"/>
+   </node>
+   <node foreign-id="630878819443822" node-label="3101-0903">
+      <interface ip-addr="192.17.31.11" snmp-primary="P"/>
+      <category name="Power"/>
+      <category name="31"/>
+      <category name="PDU"/>
+      <asset name="manufacturer" value="Emmerson"/>
+      <asset name="address1" value="31"/>
+   </node>
+   <node foreign-id="630878819443823" node-label="3101-0904">
+      <interface ip-addr="192.17.31.12" snmp-primary="P"/>
+      <category name="Power"/>
+      <category name="31"/>
+      <category name="PDU"/>
+      <asset name="manufacturer" value="Emmerson"/>
+      <asset name="address1" value="31"/>
+   </node>
+   <node foreign-id="630878819443824" node-label="3101-0801-1">
+      <interface ip-addr="192.31.31.24" snmp-primary="P"/>
+      <category name="31"/>
+      <category name="Transmission"/>
+      <category name="6500"/>
+      <asset name="description" value="AF6500 7 Slot"/>
+      <asset name="manufacturer" value="Ciena"/>
+      <asset name="address1" value="31"/>
+   </node>
+   <node foreign-id="630878819443825" node-label="3201-0101">
+      <interface ip-addr="192.17.32.1" snmp-primary="P"/>
+      <category name="32"/>
+      <category name="Networking"/>
+      <category name="Router"/>
+      <asset name="manufacturer" value="Cisco"/>
+      <asset name="address1" value="32"/>
+      <asset name="description" value="1921"/>
+   </node>
+   <node foreign-id="630878819443826" node-label="3201-0301">
+      <interface ip-addr="192.17.32.2" snmp-primary="P"/>
+      <category name="32"/>
+      <category name="Switch"/>
+      <category name="Networking"/>
+      <asset name="description" value="2620-24"/>
+      <asset name="manufacturer" value="HP"/>
+      <asset name="address1" value="32"/>
+   </node>
+   <node foreign-id="630878819443827" node-label="3201-0601">
+      <interface ip-addr="192.17.32.3" snmp-primary="P"/>
+      <category name="32"/>
+      <category name="RMS"/>
+      <category name="Environmental"/>
+      <asset name="manufacturer" value="Emmerson"/>
+      <asset name="description" value="RMS II Compact"/>
+      <asset name="address1" value="32"/>
+   </node>
+   <node foreign-id="630878819443828" node-label="3201-0701">
+      <interface ip-addr="192.17.32.4" snmp-primary="P"/>
+      <category name="32"/>
+      <category name="NVR"/>
+      <category name="Environmental"/>
+      <asset name="description" value="NVR Compact"/>
+      <asset name="manufacturer" value="IndigoVision"/>
+      <asset name="address1" value="32"/>
+   </node>
+   <node foreign-id="630878819443829" node-label="3201-0702">
+      <interface ip-addr="192.17.32.5" snmp-primary="P"/>
+      <category name="Camera"/>
+      <category name="32"/>
+      <category name="Environmental"/>
+      <asset name="description" value="Transmitter"/>
+      <asset name="manufacturer" value="IndigoVision"/>
+      <asset name="address1" value="32"/>
+   </node>
+   <node foreign-id="630878819443830" node-label="3201-0703">
+      <interface ip-addr="192.17.32.6" snmp-primary="P"/>
+      <category name="Camera"/>
+      <category name="32"/>
+      <category name="Environmental"/>
+      <asset name="description" value="Transmitter"/>
+      <asset name="manufacturer" value="IndigoVision"/>
+      <asset name="address1" value="32"/>
+   </node>
+   <node foreign-id="630878819443831" node-label="3201-1601">
+      <interface ip-addr="192.17.32.7" snmp-primary="P"/>
+      <category name="32"/>
+      <category name="Transmission"/>
+      <category name="OCM"/>
+      <asset name="address1" value="32"/>
+   </node>
+   <node foreign-id="630878819443832" node-label="3201-1201">
+      <interface ip-addr="192.17.32.8" snmp-primary="P"/>
+      <category name="32"/>
+      <category name="NTP"/>
+      <category name="ToD"/>
+      <asset name="manufacturer" value="Symetricom"/>
+      <asset name="description" value="SyncServer S300"/>
+      <asset name="address1" value="32"/>
+   </node>
+   <node foreign-id="630878819443833" node-label="3201-0901">
+      <interface ip-addr="192.17.32.9" snmp-primary="P"/>
+      <category name="Power"/>
+      <category name="32"/>
+      <category name="ATS"/>
+      <asset name="description" value="ATS 7723"/>
+      <asset name="address1" value="32"/>
+      <asset name="manufacturer" value="APC"/>
+   </node>
+   <node foreign-id="630878819443834" node-label="3201-0902">
+      <interface ip-addr="192.17.32.10" snmp-primary="P"/>
+      <category name="Power"/>
+      <category name="32"/>
+      <category name="PDU"/>
+      <asset name="manufacturer" value="Emmerson"/>
+      <asset name="address1" value="32"/>
+   </node>
+   <node foreign-id="630878819443835" node-label="3201-0903">
+      <interface ip-addr="192.17.32.11" snmp-primary="P"/>
+      <category name="Power"/>
+      <category name="32"/>
+      <category name="PDU"/>
+      <asset name="manufacturer" value="Emmerson"/>
+      <asset name="address1" value="32"/>
+   </node>
+   <node foreign-id="630878819443836" node-label="3201-0904">
+      <interface ip-addr="192.17.32.12" snmp-primary="P"/>
+      <category name="Power"/>
+      <category name="32"/>
+      <category name="PDU"/>
+      <asset name="manufacturer" value="Emmerson"/>
+      <asset name="address1" value="32"/>
+   </node>
+   <node foreign-id="630878819443837" node-label="3201-0801-1">
+      <interface ip-addr="192.31.31.23" snmp-primary="P"/>
+      <category name="32"/>
+      <category name="Transmission"/>
+      <category name="6500"/>
+      <asset name="description" value="AF6500 7 Slot"/>
+      <asset name="manufacturer" value="Ciena"/>
+      <asset name="address1" value="32"/>
+   </node>
+   <node foreign-id="630878819443838" node-label="3301-0101">
+      <interface ip-addr="192.17.33.1" snmp-primary="P"/>
+      <category name="33"/>
+      <category name="Networking"/>
+      <category name="Router"/>
+      <asset name="manufacturer" value="Cisco"/>
+      <asset name="address1" value="33"/>
+      <asset name="description" value="1921"/>
+   </node>
+   <node foreign-id="630878819443839" node-label="3301-0301">
+      <interface ip-addr="192.17.33.2" snmp-primary="P"/>
+      <category name="33"/>
+      <category name="Switch"/>
+      <category name="Networking"/>
+      <asset name="description" value="2620-24"/>
+      <asset name="address1" value="33"/>
+      <asset name="manufacturer" value="HP"/>
+   </node>
+   <node foreign-id="630878819443840" node-label="3301-0601">
+      <interface ip-addr="192.17.33.3" snmp-primary="P"/>
+      <category name="33"/>
+      <category name="RMS"/>
+      <category name="Environmental"/>
+      <asset name="manufacturer" value="Emmerson"/>
+      <asset name="description" value="RMS II Compact"/>
+      <asset name="address1" value="33"/>
+   </node>
+   <node foreign-id="630878819443841" node-label="3301-0701">
+      <interface ip-addr="192.17.33.4" snmp-primary="P"/>
+      <category name="33"/>
+      <category name="NVR"/>
+      <category name="Environmental"/>
+      <asset name="description" value="NVR Compact"/>
+      <asset name="manufacturer" value="IndigoVision"/>
+      <asset name="address1" value="33"/>
+   </node>
+   <node foreign-id="630878819443842" node-label="3301-0702">
+      <interface ip-addr="192.17.33.5" snmp-primary="P"/>
+      <category name="Camera"/>
+      <category name="33"/>
+      <category name="Environmental"/>
+      <asset name="description" value="Transmitter"/>
+      <asset name="manufacturer" value="IndigoVision"/>
+      <asset name="address1" value="33"/>
+   </node>
+   <node foreign-id="630878819443843" node-label="3201-0703">
+      <interface ip-addr="192.17.33.6" snmp-primary="P"/>
+      <category name="Camera"/>
+      <category name="33"/>
+      <category name="Environmental"/>
+      <asset name="description" value="Transmitter"/>
+      <asset name="manufacturer" value="IndigoVision"/>
+      <asset name="address1" value="33"/>
+   </node>
+   <node foreign-id="630878819443844" node-label="3301-1601">
+      <interface ip-addr="192.17.33.7" snmp-primary="P"/>
+      <category name="33"/>
+      <category name="Transmission"/>
+      <category name="OCM"/>
+      <asset name="address1" value="33"/>
+   </node>
+   <node foreign-id="630878819443845" node-label="3301-1201">
+      <interface ip-addr="192.17.33.8" snmp-primary="P"/>
+      <category name="33"/>
+      <category name="NTP"/>
+      <category name="ToD"/>
+      <asset name="manufacturer" value="Symetricom"/>
+      <asset name="description" value="SyncServer S300"/>
+      <asset name="address1" value="33"/>
+   </node>
+   <node foreign-id="630878819443846" node-label="3301-0901">
+      <interface ip-addr="192.17.33.9" snmp-primary="P"/>
+      <category name="Power"/>
+      <category name="ATS"/>
+      <category name="33"/>
+      <asset name="description" value="ATS 7723"/>
+      <asset name="address1" value="33"/>
+      <asset name="manufacturer" value="APC"/>
+   </node>
+   <node foreign-id="630878819443847" node-label="3301-0902">
+      <interface ip-addr="192.17.33.10" snmp-primary="P"/>
+      <category name="Power"/>
+      <category name="33"/>
+      <category name="PDU"/>
+      <asset name="manufacturer" value="Emmerson"/>
+      <asset name="address1" value="33"/>
+   </node>
+   <node foreign-id="630878819443848" node-label="3301-0903">
+      <interface ip-addr="192.17.33.11" snmp-primary="P"/>
+      <category name="Power"/>
+      <category name="33"/>
+      <category name="PDU"/>
+      <asset name="manufacturer" value="Emmerson"/>
+      <asset name="address1" value="33"/>
+   </node>
+   <node foreign-id="630878819443849" node-label="3301-0904">
+      <interface ip-addr="192.17.33.12" snmp-primary="P"/>
+      <category name="Power"/>
+      <category name="33"/>
+      <category name="PDU"/>
+      <asset name="manufacturer" value="Emmerson"/>
+      <asset name="address1" value="33"/>
+   </node>
+   <node foreign-id="630878819443850" node-label="3301-0801-1">
+      <interface ip-addr="192.31.31.22" snmp-primary="P"/>
+      <category name="33"/>
+      <category name="Transmission"/>
+      <category name="6500"/>
+      <asset name="description" value="AF6500 7 Slot"/>
+      <asset name="manufacturer" value="Ciena"/>
+      <asset name="address1" value="33"/>
+   </node>
+   <node foreign-id="630878819443851" node-label="3401-0101">
+      <interface ip-addr="192.17.34.1" snmp-primary="P"/>
+      <category name="34"/>
+      <category name="Networking"/>
+      <category name="Router"/>
+      <asset name="manufacturer" value="Cisco"/>
+      <asset name="address1" value="34"/>
+      <asset name="description" value="1921"/>
+   </node>
+   <node foreign-id="630878819443852" node-label="3401-0301">
+      <interface ip-addr="192.17.34.2" snmp-primary="P"/>
+      <category name="34"/>
+      <category name="Switch"/>
+      <category name="Networking"/>
+      <asset name="description" value="2620-24"/>
+      <asset name="address1" value="34"/>
+      <asset name="manufacturer" value="HP"/>
+   </node>
+   <node foreign-id="630878819443853" node-label="3401-0601">
+      <interface ip-addr="192.17.34.3" snmp-primary="P"/>
+      <category name="34"/>
+      <category name="RMS"/>
+      <category name="Environmental"/>
+      <asset name="manufacturer" value="Emmerson"/>
+      <asset name="description" value="RMS II Compact"/>
+      <asset name="address1" value="34"/>
+   </node>
+   <node foreign-id="630878819443854" node-label="3401-0701">
+      <interface ip-addr="192.17.34.4" snmp-primary="P"/>
+      <category name="34"/>
+      <category name="NVR"/>
+      <category name="Environmental"/>
+      <asset name="description" value="NVR Compact"/>
+      <asset name="address1" value="34"/>
+      <asset name="manufacturer" value="IndigoVision"/>
+   </node>
+   <node foreign-id="630878819443855" node-label="3401-0702">
+      <interface ip-addr="192.17.34.5" snmp-primary="P"/>
+      <category name="Camera"/>
+      <category name="34"/>
+      <category name="Environmental"/>
+      <asset name="description" value="Transmitter"/>
+      <asset name="address1" value="34"/>
+      <asset name="manufacturer" value="IndigoVision"/>
+   </node>
+   <node foreign-id="630878819443856" node-label="3401-0703">
+      <interface ip-addr="192.17.34.6" snmp-primary="P"/>
+      <category name="Camera"/>
+      <category name="34"/>
+      <category name="Environmental"/>
+      <asset name="description" value="Transmitter"/>
+      <asset name="address1" value="34"/>
+      <asset name="manufacturer" value="IndigoVision"/>
+   </node>
+   <node foreign-id="630878819443857" node-label="3401-1601">
+      <interface ip-addr="192.17.34.7" snmp-primary="P"/>
+      <category name="34"/>
+      <category name="Transmission"/>
+      <category name="OCM"/>
+      <asset name="address1" value="34"/>
+   </node>
+   <node foreign-id="630878819443858" node-label="3401-1201">
+      <interface ip-addr="192.17.34.8" snmp-primary="P"/>
+      <category name="34"/>
+      <category name="NTP"/>
+      <category name="ToD"/>
+      <asset name="manufacturer" value="Symetricom"/>
+      <asset name="description" value="SyncServer S300"/>
+      <asset name="address1" value="34"/>
+   </node>
+   <node foreign-id="630878819443859" node-label="3401-0901">
+      <interface ip-addr="192.17.34.9" snmp-primary="P"/>
+      <category name="Power"/>
+      <category name="ATS"/>
+      <category name="34"/>
+      <asset name="description" value="ATS 7723"/>
+      <asset name="address1" value="34"/>
+      <asset name="manufacturer" value="APC"/>
+   </node>
+   <node foreign-id="630878819443860" node-label="3401-0902">
+      <interface ip-addr="192.17.34.10" snmp-primary="P"/>
+      <category name="Power"/>
+      <category name="34"/>
+      <category name="PDU"/>
+      <asset name="manufacturer" value="Emmerson"/>
+      <asset name="address1" value="34"/>
+   </node>
+   <node foreign-id="630878819443861" node-label="3401-0903">
+      <interface ip-addr="192.17.34.11" snmp-primary="P"/>
+      <category name="Power"/>
+      <category name="34"/>
+      <category name="PDU"/>
+      <asset name="manufacturer" value="Emmerson"/>
+      <asset name="address1" value="34"/>
+   </node>
+   <node foreign-id="630878819443862" node-label="3401-0904">
+      <interface ip-addr="192.17.34.12" snmp-primary="P"/>
+      <category name="Power"/>
+      <category name="34"/>
+      <category name="PDU"/>
+      <asset name="manufacturer" value="Emmerson"/>
+      <asset name="address1" value="34"/>
+   </node>
+   <node foreign-id="630878819443863" node-label="3401-0801-1">
+      <interface ip-addr="192.31.31.21" snmp-primary="P"/>
+      <category name="34"/>
+      <category name="Transmission"/>
+      <category name="6500"/>
+      <asset name="description" value="AF6500 7 Slot"/>
+      <asset name="address1" value="34"/>
+      <asset name="manufacturer" value="Ciena"/>
+   </node>
+   <node foreign-id="630878819443864" node-label="3501-0101">
+      <interface ip-addr="192.17.35.1" snmp-primary="P"/>
+      <category name="35"/>
+      <category name="Networking"/>
+      <category name="Router"/>
+      <asset name="address1" value="35"/>
+      <asset name="manufacturer" value="Cisco"/>
+      <asset name="description" value="1921"/>
+   </node>
+   <node foreign-id="630878819443865" node-label="3501-0301">
+      <interface ip-addr="192.17.35.2" snmp-primary="P"/>
+      <category name="35"/>
+      <category name="Switch"/>
+      <category name="Networking"/>
+      <asset name="description" value="2620-24"/>
+      <asset name="address1" value="35"/>
+      <asset name="manufacturer" value="HP"/>
+   </node>
+   <node foreign-id="630878819443866" node-label="3501-0601">
+      <interface ip-addr="192.17.35.3" snmp-primary="P"/>
+      <category name="35"/>
+      <category name="RMS"/>
+      <category name="Environmental"/>
+      <asset name="manufacturer" value="Emmerson"/>
+      <asset name="description" value="RMS II Compact"/>
+      <asset name="address1" value="35"/>
+   </node>
+   <node foreign-id="630878819443867" node-label="3501-0701">
+      <interface ip-addr="192.17.35.4" snmp-primary="P"/>
+      <category name="35"/>
+      <category name="NVR"/>
+      <category name="Environmental"/>
+      <asset name="description" value="NVR Compact"/>
+      <asset name="address1" value="35"/>
+      <asset name="manufacturer" value="IndigoVision"/>
+   </node>
+   <node foreign-id="630878819443868" node-label="3501-0702">
+      <interface ip-addr="192.17.35.5" snmp-primary="P"/>
+      <category name="Camera"/>
+      <category name="35"/>
+      <category name="Environmental"/>
+      <asset name="description" value="Transmitter"/>
+      <asset name="address1" value="35"/>
+      <asset name="manufacturer" value="IndigoVision"/>
+   </node>
+   <node foreign-id="630878819443869" node-label="3501-0703">
+      <interface ip-addr="192.17.35.6" snmp-primary="P"/>
+      <category name="Camera"/>
+      <category name="35"/>
+      <category name="Environmental"/>
+      <asset name="description" value="Transmitter"/>
+      <asset name="address1" value="35"/>
+      <asset name="manufacturer" value="IndigoVision"/>
+   </node>
+   <node foreign-id="630878819443870" node-label="3501-1601">
+      <interface ip-addr="192.17.35.7" snmp-primary="P"/>
+      <category name="35"/>
+      <category name="Transmission"/>
+      <category name="OCM"/>
+      <asset name="address1" value="35"/>
+   </node>
+   <node foreign-id="630878819443871" node-label="3501-1201">
+      <interface ip-addr="192.17.35.8" snmp-primary="P"/>
+      <category name="35"/>
+      <category name="NTP"/>
+      <category name="ToD"/>
+      <asset name="manufacturer" value="Symetricom"/>
+      <asset name="description" value="SyncServer S300"/>
+      <asset name="address1" value="35"/>
+   </node>
+   <node foreign-id="630878819443872" node-label="3501-0901">
+      <interface ip-addr="192.17.35.9" snmp-primary="P"/>
+      <category name="Power"/>
+      <category name="ATS"/>
+      <category name="35"/>
+      <asset name="description" value="ATS 7723"/>
+      <asset name="address1" value="35"/>
+      <asset name="manufacturer" value="APC"/>
+   </node>
+   <node foreign-id="630878819443873" node-label="3501-0902">
+      <interface ip-addr="192.17.35.10" snmp-primary="P"/>
+      <category name="Power"/>
+      <category name="PDU"/>
+      <category name="35"/>
+      <asset name="manufacturer" value="Emmerson"/>
+      <asset name="address1" value="35"/>
+   </node>
+   <node foreign-id="630878819443874" node-label="3501-0903">
+      <interface ip-addr="192.17.35.11" snmp-primary="P"/>
+      <category name="Power"/>
+      <category name="PDU"/>
+      <category name="35"/>
+      <asset name="manufacturer" value="Emmerson"/>
+      <asset name="address1" value="35"/>
+   </node>
+   <node foreign-id="630878819443875" node-label="3501-0904">
+      <interface ip-addr="192.17.35.12" snmp-primary="P"/>
+      <category name="Power"/>
+      <category name="PDU"/>
+      <category name="35"/>
+      <asset name="manufacturer" value="Emmerson"/>
+      <asset name="address1" value="35"/>
+   </node>
+   <node foreign-id="630878819443876" node-label="3501-0801-1">
+      <interface ip-addr="192.31.31.20" snmp-primary="P"/>
+      <category name="35"/>
+      <category name="Transmission"/>
+      <category name="6500"/>
+      <asset name="description" value="AF6500 7 Slot"/>
+      <asset name="address1" value="35"/>
+      <asset name="manufacturer" value="Ciena"/>
+   </node>
+   <node foreign-id="630878819443877" node-label="3601-0101">
+      <interface ip-addr="192.17.36.1" snmp-primary="P"/>
+      <category name="36"/>
+      <category name="Networking"/>
+      <category name="Router"/>
+      <asset name="address1" value="36"/>
+      <asset name="manufacturer" value="Cisco"/>
+      <asset name="description" value="1921"/>
+   </node>
+   <node foreign-id="630878819443878" node-label="3601-0301">
+      <interface ip-addr="192.17.36.2" snmp-primary="P"/>
+      <category name="36"/>
+      <category name="Switch"/>
+      <category name="Networking"/>
+      <asset name="description" value="2620-24"/>
+      <asset name="address1" value="36"/>
+      <asset name="manufacturer" value="HP"/>
+   </node>
+   <node foreign-id="630878819443879" node-label="3601-0601">
+      <interface ip-addr="192.17.36.3" snmp-primary="P"/>
+      <category name="36"/>
+      <category name="RMS"/>
+      <category name="Environmental"/>
+      <asset name="manufacturer" value="Emmerson"/>
+      <asset name="description" value="RMS II Compact"/>
+      <asset name="address1" value="36"/>
+   </node>
+   <node foreign-id="630878819443880" node-label="3601-0701">
+      <interface ip-addr="192.17.36.4" snmp-primary="P"/>
+      <category name="36"/>
+      <category name="NVR"/>
+      <category name="Environmental"/>
+      <asset name="description" value="NVR Compact"/>
+      <asset name="address1" value="36"/>
+      <asset name="manufacturer" value="IndigoVision"/>
+   </node>
+   <node foreign-id="630878819443881" node-label="3601-0702">
+      <interface ip-addr="192.17.36.5" snmp-primary="P"/>
+      <category name="Camera"/>
+      <category name="36"/>
+      <category name="Environmental"/>
+      <asset name="description" value="Transmitter"/>
+      <asset name="address1" value="36"/>
+      <asset name="manufacturer" value="IndigoVision"/>
+   </node>
+   <node foreign-id="630878819443882" node-label="3601-0703">
+      <interface ip-addr="192.17.36.6" snmp-primary="P"/>
+      <category name="Camera"/>
+      <category name="36"/>
+      <category name="Environmental"/>
+      <asset name="description" value="Transmitter"/>
+      <asset name="address1" value="36"/>
+      <asset name="manufacturer" value="IndigoVision"/>
+   </node>
+   <node foreign-id="630878819443883" node-label="3601-1601">
+      <interface ip-addr="192.17.36.7" snmp-primary="P"/>
+      <category name="36"/>
+      <category name="Transmission"/>
+      <category name="OCM"/>
+      <asset name="address1" value="36"/>
+   </node>
+   <node foreign-id="630878819443884" node-label="3601-1201">
+      <interface ip-addr="192.17.36.8" snmp-primary="P"/>
+      <category name="36"/>
+      <category name="NTP"/>
+      <category name="ToD"/>
+      <asset name="manufacturer" value="Symetricom"/>
+      <asset name="description" value="SyncServer S300"/>
+      <asset name="address1" value="36"/>
+   </node>
+   <node foreign-id="630878819443885" node-label="3601-0901">
+      <interface ip-addr="192.17.36.9" snmp-primary="P"/>
+      <category name="Power"/>
+      <category name="ATS"/>
+      <category name="36"/>
+      <asset name="description" value="ATS 7723"/>
+      <asset name="address1" value="36"/>
+      <asset name="manufacturer" value="APC"/>
+   </node>
+   <node foreign-id="630878819443886" node-label="3601-0902">
+      <interface ip-addr="192.17.36.10" snmp-primary="P"/>
+      <category name="Power"/>
+      <category name="PDU"/>
+      <category name="36"/>
+      <asset name="manufacturer" value="Emmerson"/>
+      <asset name="address1" value="36"/>
+   </node>
+   <node foreign-id="630878819443887" node-label="3601-0903">
+      <interface ip-addr="192.17.36.11" snmp-primary="P"/>
+      <category name="Power"/>
+      <category name="PDU"/>
+      <category name="36"/>
+      <asset name="manufacturer" value="Emmerson"/>
+      <asset name="address1" value="36"/>
+   </node>
+   <node foreign-id="630878819443888" node-label="3601-0904">
+      <interface ip-addr="192.17.36.12" snmp-primary="P"/>
+      <category name="Power"/>
+      <category name="PDU"/>
+      <category name="36"/>
+      <asset name="manufacturer" value="Emmerson"/>
+      <asset name="address1" value="36"/>
+   </node>
+   <node foreign-id="630878819443889" node-label="3601-0801-1">
+      <interface ip-addr="192.31.31.19" snmp-primary="P"/>
+      <category name="36"/>
+      <category name="Transmission"/>
+      <category name="6500"/>
+      <asset name="description" value="AF6500 7 Slot"/>
+      <asset name="address1" value="36"/>
+      <asset name="manufacturer" value="Ciena"/>
+   </node>
+   <node foreign-id="630878819443752" node-label="2101-0101">
+      <interface ip-addr="192.17.21.1" status="1" snmp-primary="P">
+         <monitored-service service-name="ICMP"/>
+      </interface>
+      <category name="21"/>
+      <category name="Networking"/>
+      <category name="Router"/>
+      <asset name="address2" value="suit1"/>
+      <asset name="room" value="555"/>
+      <asset name="building" value="TestAssetBuilding"/>
+      <asset name="serialNumber" value="SN1234"/>
+      <asset name="manufacturer" value="Cisco"/>
+      <asset name="rack" value="A"/>
+      <asset name="assetNumber" value="D1234"/>
+      <asset name="address1" value="21"/>
+      <asset name="slot" value="5"/>
+      <asset name="description" value="1921"/>
+      <asset name="floor" value="5"/>
+   </node>
+</model-import>

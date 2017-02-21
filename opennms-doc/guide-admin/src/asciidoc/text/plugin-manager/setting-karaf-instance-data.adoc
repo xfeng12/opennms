@@ -26,6 +26,10 @@ The _Karaf_ instances known to the _Plugin Manager_ are listed in the _Karaf_ In
 'Localhost' refers to the local _{opennms-product-name}_ server and is always an option in the panel.
 The _Karaf_ instance data is persisted locally and should be refreshed from remote sources using the reload _Karaf_ instance data button before changes are made.
 
+(Please note that the 'Localhost' configuration in the _Plugin Manager_  by default uses 'admin' as the username and the password. 
+This will not work in a production OpenNMS where you have changed the admin user password. 
+You should edit the 'Localhost' configuration to match your local configuration)
+
 Each _Karaf_ instance must have a unique system id which is used to update its configuration and also to validate its licences.
 The system id  it must be unique and included a checksum. A new random system id can be generated for a _Karaf_ instance using a button on the panel.
 
