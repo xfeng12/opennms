@@ -48,7 +48,7 @@
   <bean id="assetTopologyMapper" class="org.opennms.plugins.graphml.asset.AssetTopologyMapperImpl">
     <property name="preferredLayout" value="${preferredLayout}" />
     <property name="layerHierarchyFromProperty" value="${assetLayers}" />
-    <!-- you can set the hierarchy list directly or use the property which splits layer around comma ',' characters -->
+    <!-- you can set the hierarchy list directly or use the property which splits layers around comma ',' characters -->
     <!-- <property name="layerHierarchy"> -->
     <!-- <list> -->
     <!-- <value>asset-region</value> -->

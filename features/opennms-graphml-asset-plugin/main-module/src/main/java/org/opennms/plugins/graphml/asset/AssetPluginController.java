@@ -115,6 +115,7 @@ public class AssetPluginController  implements EventListener{
 
 		installMessageSelectors();
 
+		// create a new asset topology on startup
 		Event event = new Event();
 		event.setUei(CREATE_ASSET_TOPOLOGY);
 		onEvent(event);
@@ -155,7 +156,7 @@ public class AssetPluginController  implements EventListener{
 			LOG.info("CREATE_ASSET_TOPOLOGY event received. Creating topology file from Node Database");
 
 			nodeInfoRepository.initialiseNodeInfo();
-			LOG.info("Asset Topology Plugin loaded node info ");
+			LOG.info("Asset Topology Plugin has loaded node info ");
 
 			if(writeAssetListDebugFile){
 				Utils.writeFileToDisk(nodeInfoRepository.nodeInfoToString(), ASSET_LIST_FILE, ASSET_TOPOLOGY_FOLDER );
