@@ -13,7 +13,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -59,6 +59,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_B</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -68,6 +69,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>34</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -77,6 +79,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -139,7 +142,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -185,6 +188,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_B</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -194,6 +198,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>35</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -203,6 +208,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>B</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -265,7 +271,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -311,6 +317,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_B</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -320,6 +327,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>35</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -329,6 +337,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -391,7 +400,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -437,6 +446,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_B</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -446,6 +456,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>33</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -455,6 +466,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -516,7 +528,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -562,6 +574,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -571,6 +584,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>21</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -580,6 +594,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>B</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -642,7 +657,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -688,6 +703,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_B</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -697,6 +713,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>32</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -706,6 +723,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -767,7 +785,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -813,6 +831,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -822,6 +841,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>21</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -831,6 +851,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -892,7 +913,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -938,6 +959,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -947,6 +969,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>21</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -956,6 +979,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -1017,7 +1041,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -1063,6 +1087,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_B</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -1072,6 +1097,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>36</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -1081,6 +1107,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -1143,7 +1170,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -1189,6 +1216,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_B</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -1198,6 +1226,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>36</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -1207,6 +1236,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -1269,7 +1299,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -1315,6 +1345,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -1324,6 +1355,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>21</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -1333,6 +1365,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -1394,7 +1427,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -1440,6 +1473,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_B</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -1449,6 +1483,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>33</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -1458,6 +1493,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -1520,7 +1556,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -1566,6 +1602,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -1575,6 +1612,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>21</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -1584,6 +1622,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -1645,7 +1684,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -1691,6 +1730,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_B</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -1700,6 +1740,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>36</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -1709,6 +1750,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -1771,7 +1813,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -1817,6 +1859,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -1826,6 +1869,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>22</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -1835,6 +1879,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -1897,7 +1942,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -1943,6 +1988,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_B</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -1952,6 +1998,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>36</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -1961,6 +2008,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -2021,7 +2069,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -2067,6 +2115,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -2076,6 +2125,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>21</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -2085,6 +2135,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -2146,7 +2197,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -2192,6 +2243,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_B</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -2201,6 +2253,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>31</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -2210,6 +2263,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -2272,7 +2326,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -2318,6 +2372,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_B</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -2327,6 +2382,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>32</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -2336,6 +2392,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -2397,7 +2454,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -2443,6 +2500,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -2452,6 +2510,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>22</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -2461,6 +2520,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -2521,7 +2581,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -2567,6 +2627,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_B</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -2576,6 +2637,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>34</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -2585,6 +2647,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -2647,7 +2710,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -2693,6 +2756,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -2702,6 +2766,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>28</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -2711,6 +2776,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -2772,7 +2838,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -2818,6 +2884,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -2827,6 +2894,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>21</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -2836,6 +2904,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -2897,7 +2966,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -2943,6 +3012,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -2952,6 +3022,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>22</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -2961,6 +3032,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -3023,7 +3095,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -3069,6 +3141,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -3078,6 +3151,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>21</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -3087,6 +3161,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -3149,7 +3224,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -3195,6 +3270,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -3204,6 +3280,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>21</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -3213,6 +3290,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>B</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -3274,7 +3352,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -3320,6 +3398,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -3329,6 +3408,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>21</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -3338,6 +3418,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -3400,7 +3481,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -3446,6 +3527,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_B</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -3455,6 +3537,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>34</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -3464,6 +3547,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -3526,7 +3610,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -3572,6 +3656,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_B</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -3581,6 +3666,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>31</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -3590,6 +3676,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -3650,7 +3737,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -3696,6 +3783,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_B</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -3705,6 +3793,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>34</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -3714,6 +3803,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -3776,7 +3866,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -3822,6 +3912,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_B</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -3831,6 +3922,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>33</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -3840,6 +3932,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -3901,7 +3994,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -3947,6 +4040,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_B</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -3956,6 +4050,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>31</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -3965,6 +4060,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -4026,7 +4122,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -4073,6 +4169,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -4082,7 +4179,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
-                <paramValue>TestAssetBuilding</paramValue>
+                <paramValue>21</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -4158,7 +4255,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -4204,6 +4301,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_B</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -4213,6 +4311,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>31</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -4222,6 +4321,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -4284,7 +4384,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -4330,6 +4430,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -4339,6 +4440,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>22</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -4348,6 +4450,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -4409,7 +4512,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -4455,6 +4558,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -4464,6 +4568,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>22</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -4473,6 +4578,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -4534,7 +4640,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -4580,6 +4686,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_B</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -4589,6 +4696,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>32</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -4598,6 +4706,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -4659,7 +4768,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -4705,6 +4814,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -4714,6 +4824,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>21</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -4723,6 +4834,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -4785,7 +4897,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -4831,6 +4943,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_B</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -4840,6 +4953,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>35</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -4849,6 +4963,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -4911,7 +5026,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -4957,6 +5072,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_B</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -4966,6 +5082,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>31</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -4975,6 +5092,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -5037,7 +5155,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -5083,6 +5201,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_B</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -5092,6 +5211,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>32</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -5101,6 +5221,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -5163,7 +5284,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -5209,6 +5330,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -5218,6 +5340,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>28</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -5227,6 +5350,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -5288,7 +5412,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -5334,6 +5458,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -5343,6 +5468,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>22</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -5352,6 +5478,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>B</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -5414,7 +5541,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -5460,6 +5587,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_B</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -5469,6 +5597,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>36</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -5478,6 +5607,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -5540,7 +5670,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -5586,6 +5716,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -5595,6 +5726,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>21</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -5604,6 +5736,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -5666,7 +5799,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -5712,6 +5845,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_B</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -5721,6 +5855,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>33</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -5730,6 +5865,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -5792,7 +5928,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -5838,6 +5974,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -5847,6 +5984,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>21</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -5856,6 +5994,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -5918,7 +6057,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -5964,6 +6103,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -5973,6 +6113,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>21</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -5982,6 +6123,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -6044,7 +6186,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -6090,6 +6232,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_B</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -6099,6 +6242,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>35</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -6108,6 +6252,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -6170,7 +6315,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -6216,6 +6361,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_B</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -6225,6 +6371,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>33</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -6234,6 +6381,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -6296,7 +6444,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -6342,6 +6490,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_B</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -6351,6 +6500,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>34</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -6360,6 +6510,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -6422,7 +6573,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -6468,6 +6619,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_B</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -6477,6 +6629,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>34</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -6486,6 +6639,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -6548,7 +6702,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -6594,6 +6748,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -6603,6 +6758,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>21</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -6612,6 +6768,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -6674,7 +6831,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -6720,6 +6877,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_B</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -6729,6 +6887,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>31</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -6738,6 +6897,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -6800,7 +6960,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -6846,6 +7006,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -6855,6 +7016,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>28</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -6864,6 +7026,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -6926,7 +7089,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -6972,6 +7135,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -6981,6 +7145,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>22</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -6990,6 +7155,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -7051,7 +7217,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -7097,6 +7263,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_B</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -7106,6 +7273,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>33</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -7115,6 +7283,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -7177,7 +7346,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -7223,6 +7392,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -7232,6 +7402,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>22</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -7241,6 +7412,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -7303,7 +7475,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -7349,6 +7521,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_B</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -7358,6 +7531,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>32</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -7367,6 +7541,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -7429,7 +7604,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -7475,6 +7650,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_B</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -7484,6 +7660,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>36</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -7493,6 +7670,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -7554,7 +7732,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -7600,6 +7778,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_B</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -7609,6 +7788,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>34</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -7618,6 +7798,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>B</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -7680,7 +7861,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -7726,6 +7907,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_B</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -7735,6 +7917,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>34</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -7744,6 +7927,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -7805,7 +7989,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -7851,6 +8035,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -7860,6 +8045,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>21</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -7869,6 +8055,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -7929,7 +8116,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -7975,6 +8162,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -7984,6 +8172,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>28</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -7993,6 +8182,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -8055,7 +8245,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -8101,6 +8291,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_B</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -8110,6 +8301,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>31</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -8119,6 +8311,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -8181,7 +8374,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -8227,6 +8420,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_B</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -8236,6 +8430,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>36</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -8245,6 +8440,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -8307,7 +8503,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -8353,6 +8549,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -8362,6 +8559,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>22</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -8371,6 +8569,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -8433,7 +8632,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -8479,6 +8678,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_B</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -8488,6 +8688,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>36</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -8497,6 +8698,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -8559,7 +8761,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -8605,6 +8807,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -8614,6 +8817,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>21</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -8623,6 +8827,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -8685,7 +8890,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -8731,6 +8936,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_B</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -8740,6 +8946,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>32</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -8749,6 +8956,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>B</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -8811,7 +9019,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -8857,6 +9065,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_B</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -8866,6 +9075,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>35</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -8875,6 +9085,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>B</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -8937,7 +9148,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -8983,6 +9194,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_B</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -8992,6 +9204,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>34</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -9001,6 +9214,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -9063,7 +9277,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -9109,6 +9323,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -9118,6 +9333,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>22</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -9127,6 +9343,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -9189,7 +9406,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -9235,6 +9452,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -9244,6 +9462,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>22</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -9253,6 +9472,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -9315,7 +9535,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -9361,6 +9581,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_B</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -9370,6 +9591,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>33</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -9379,6 +9601,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -9441,7 +9664,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -9487,6 +9710,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -9496,6 +9720,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>21</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -9505,6 +9730,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>B</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -9567,7 +9793,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -9613,6 +9839,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_B</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -9622,6 +9849,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>33</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -9631,6 +9859,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -9692,7 +9921,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -9738,6 +9967,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_B</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -9747,6 +9977,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>35</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -9756,6 +9987,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -9818,7 +10050,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -9864,6 +10096,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_B</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -9873,6 +10106,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>31</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -9882,6 +10116,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -9944,7 +10179,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -9990,6 +10225,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_B</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -9999,6 +10235,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>35</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -10008,6 +10245,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -10069,7 +10307,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -10115,6 +10353,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_B</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -10124,6 +10363,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>35</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -10133,6 +10373,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -10195,7 +10436,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -10241,6 +10482,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_B</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -10250,6 +10492,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>34</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -10259,6 +10502,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -10321,7 +10565,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -10367,6 +10611,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_B</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -10376,6 +10621,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>34</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -10385,6 +10631,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -10446,7 +10693,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -10492,6 +10739,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_B</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -10501,6 +10749,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>35</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -10510,6 +10759,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -10571,7 +10821,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -10617,6 +10867,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_B</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -10626,6 +10877,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>36</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -10635,6 +10887,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -10697,7 +10950,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -10743,6 +10996,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_B</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -10752,6 +11006,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>31</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -10761,6 +11016,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -10823,7 +11079,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -10869,6 +11125,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -10878,6 +11135,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>28</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -10887,6 +11145,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>B</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -10947,7 +11206,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -10993,6 +11252,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -11002,6 +11262,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>28</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -11011,6 +11272,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -11073,7 +11335,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -11119,6 +11381,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_B</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -11128,6 +11391,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>32</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -11137,6 +11401,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -11199,7 +11464,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -11245,6 +11510,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_B</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -11254,6 +11520,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>31</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -11263,6 +11530,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -11324,7 +11592,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -11370,6 +11638,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_B</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -11379,6 +11648,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>32</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -11388,6 +11658,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -11450,7 +11721,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -11496,6 +11767,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_B</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -11505,6 +11777,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>32</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -11514,6 +11787,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -11576,7 +11850,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -11622,6 +11896,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -11631,6 +11906,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>22</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -11640,6 +11916,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -11701,7 +11978,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -11747,6 +12024,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_B</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -11756,6 +12034,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>32</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -11765,6 +12044,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>B</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -11827,7 +12107,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -11873,6 +12153,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_B</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -11882,6 +12163,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>36</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -11891,6 +12173,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -11952,7 +12235,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -11998,6 +12281,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -12007,6 +12291,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>28</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -12016,6 +12301,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -12078,7 +12364,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -12124,6 +12410,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_B</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -12133,6 +12420,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>35</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -12142,6 +12430,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -12204,7 +12493,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -12250,6 +12539,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_B</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -12259,6 +12549,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>32</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -12268,6 +12559,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -12328,7 +12620,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -12374,6 +12666,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_B</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -12383,6 +12676,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>32</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -12392,6 +12686,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -12454,7 +12749,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -12500,6 +12795,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -12509,6 +12805,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>21</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -12518,6 +12815,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -12580,7 +12878,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -12626,6 +12924,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -12635,6 +12934,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>21</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -12644,6 +12944,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -12705,7 +13006,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -12751,6 +13052,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -12760,6 +13062,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>22</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -12769,6 +13072,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -12831,7 +13135,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -12877,6 +13181,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_B</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -12886,6 +13191,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>36</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -12895,6 +13201,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -12956,7 +13263,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -13002,6 +13309,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -13011,6 +13319,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>21</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -13020,6 +13329,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -13082,7 +13392,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -13128,6 +13438,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -13137,6 +13448,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>28</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -13146,6 +13458,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -13208,7 +13521,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -13254,6 +13567,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_B</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -13263,6 +13577,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>33</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -13272,6 +13587,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -13334,7 +13650,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -13380,6 +13696,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_B</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -13389,6 +13706,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>34</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -13398,6 +13716,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -13459,7 +13778,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -13505,6 +13824,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -13514,6 +13834,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>22</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -13523,6 +13844,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -13585,7 +13907,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -13631,6 +13953,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -13640,6 +13963,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>21</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -13649,6 +13973,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -13711,7 +14036,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -13757,6 +14082,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -13766,6 +14092,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>22</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -13775,6 +14102,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -13837,7 +14165,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -13883,6 +14211,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_B</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -13892,6 +14221,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>33</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -13901,6 +14231,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -13961,7 +14292,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -14007,6 +14338,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -14016,6 +14348,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>21</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -14025,6 +14358,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -14086,7 +14420,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -14132,6 +14466,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -14141,6 +14476,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>22</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -14150,6 +14486,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -14212,7 +14549,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -14258,6 +14595,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -14267,6 +14605,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>28</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -14276,6 +14615,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -14337,7 +14677,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -14383,6 +14723,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -14392,6 +14733,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>21</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -14401,6 +14743,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -14463,7 +14806,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -14509,6 +14852,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_B</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -14518,6 +14862,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>35</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -14527,6 +14872,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -14589,7 +14935,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -14635,6 +14981,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_B</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -14644,6 +14991,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>33</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -14653,6 +15001,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -14715,7 +15064,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -14761,6 +15110,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -14770,6 +15120,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>28</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -14779,6 +15130,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -14841,7 +15193,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -14887,6 +15239,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -14896,6 +15249,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>21</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -14905,6 +15259,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -14966,7 +15321,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -15012,6 +15367,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_B</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -15021,6 +15377,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>31</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -15030,6 +15387,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>B</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -15091,7 +15449,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -15137,6 +15495,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -15146,6 +15505,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>22</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -15155,6 +15515,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -15216,7 +15577,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -15262,6 +15623,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -15271,6 +15633,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>28</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -15280,6 +15643,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>B</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -15342,7 +15706,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -15388,6 +15752,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_B</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -15397,6 +15762,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>34</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -15406,6 +15772,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -15466,7 +15833,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -15512,6 +15879,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_B</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -15521,6 +15889,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>32</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -15530,6 +15899,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -15592,7 +15962,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -15638,6 +16008,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_B</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -15647,6 +16018,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>36</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -15656,6 +16028,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -15718,7 +16091,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -15764,6 +16137,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -15773,6 +16147,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>22</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -15782,6 +16157,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -15843,7 +16219,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -15889,6 +16265,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -15898,6 +16275,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>21</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -15907,6 +16285,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -15969,7 +16348,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -16015,6 +16394,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_B</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -16024,6 +16404,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>31</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -16033,6 +16414,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -16095,7 +16477,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -16141,6 +16523,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_B</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -16150,6 +16533,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>33</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -16159,6 +16543,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -16221,7 +16606,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -16267,6 +16652,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -16276,6 +16662,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>21</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -16285,6 +16672,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -16347,7 +16735,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -16393,6 +16781,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_B</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -16402,6 +16791,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>35</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -16411,6 +16801,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -16472,7 +16863,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -16518,6 +16909,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -16527,6 +16919,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>22</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -16536,6 +16929,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -16598,7 +16992,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -16644,6 +17038,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_B</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -16653,6 +17048,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>31</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -16662,6 +17058,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -16724,7 +17121,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -16770,6 +17167,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -16779,6 +17177,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>21</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -16788,6 +17187,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -16850,7 +17250,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -16896,6 +17296,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_B</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -16905,6 +17306,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>35</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -16914,6 +17316,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -16974,7 +17377,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -17020,6 +17423,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_B</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -17029,6 +17433,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>33</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -17038,6 +17443,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -17100,7 +17506,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -17146,6 +17552,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_B</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -17155,6 +17562,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>36</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -17164,6 +17572,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>B</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>
@@ -17226,7 +17635,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignsource</paramKey>
-                <paramValue>TestAssetOpenNMSInventory</paramValue>
+                <paramValue>BTOpenNMSInventory</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>node-foreignid</paramKey>
@@ -17272,6 +17681,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-region</paramKey>
+                <paramValue>region_A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-division</paramKey>
@@ -17281,6 +17691,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-building</paramKey>
+                <paramValue>21</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-floor</paramKey>
@@ -17290,6 +17701,7 @@
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-rack</paramKey>
+                <paramValue>A</paramValue>
             </nodeParamList>
             <nodeParamList>
                 <paramKey>asset-slot</paramKey>

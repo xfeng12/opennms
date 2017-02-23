@@ -32,7 +32,7 @@ import org.graphdrawing.graphml.xmlns.GraphmlType;
 
 public interface AssetTopologyMapper {
 	
-	public GraphmlType nodeInfoToTopology(NodeInfoRepository nodeInfo);
+	public GraphmlType nodeInfoToTopology(NodeInfoRepository nodeInfoRepository);
 
 	public String getMenuLabelStr();
 
