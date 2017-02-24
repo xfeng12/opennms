@@ -16,6 +16,11 @@ import org.opennms.plugins.graphml.client.GraphMLRestJerseyClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * test-graph.xml is used  by this test to post a graphml topology to OpenNMS.
+ * Please note that this test can only be run manually against a running OpenNMS at localhost.
+ *
+ */
 public class GraphMLRestJerseyClientTest {
 	private static final Logger LOG = LoggerFactory.getLogger(GraphMLRestJerseyClientTest.class);
 

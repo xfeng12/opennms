@@ -45,7 +45,15 @@ import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.support.TransactionCallbackWithoutResult;
 import org.springframework.transaction.support.TransactionOperations;
 
-
+/**
+ * Class used to generate a nested map of nodes and node parameters from the OpenNMS Node and Asset tables
+ * 
+ * The stored data takes the form of
+ * nodeInfo  Map<nodeId, Map<nodeParamLabelKey, nodeParamValue>>
+ * nodeParamLabelKey a node asset parameter key (from those defined in org.opennms.plugins.graphml.asset.NodeParamLabels)
+ * nodeParamValue a node asset value ( e.g. key NodeParamLabels.ASSET_RACK ('asset-rack') value: rack1
+ *
+ */
 public class NodeInfoRepository {
 	private static final Logger LOG = LoggerFactory.getLogger(NodeInfoRepository.class);
 
@@ -117,7 +125,7 @@ public class NodeInfoRepository {
 	}
 
 	/**
-	 * initialises node info map from supplied opennms nodeList
+	 * Initialises node info map from supplied opennms node list 
 	 * @param nodeList
 	 */
 	public synchronized void initialiseNodeInfoFromNodeList(List<OnmsNode> nodeList) {
@@ -170,10 +178,12 @@ public class NodeInfoRepository {
 
 
 	/**
-	 * utility method to populate a Map with the most important node attributes
+	 * utility method to populate a Map with the most important node and asset attributes
+	 * The map keys are determined by keys in NodeParamLabels
+	 * The map attributes are populated from the supplied OpenNMS node
 	 *
-	 * @param nodeParameters the map
-	 * @param node the node object
+	 * @param nodeParameters the supplied map to populate
+	 * @param node the OpenNMS  node object to use
 	 */
 	private void populateNodeParametersWithNodeInfo(Map<String,String> nodeParameters, OnmsNode node) {
 		nodeParameters.put(NodeParamLabels.NODE_NODELABEL, node.getLabel());

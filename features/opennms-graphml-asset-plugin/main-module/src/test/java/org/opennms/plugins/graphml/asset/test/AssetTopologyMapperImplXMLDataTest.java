@@ -13,6 +13,12 @@ import org.opennms.plugins.graphml.asset.xml.NodeInfoRepositoryXML;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * Uses an xml file of test data to populate a nodeInfoRepository and then generates a graph from this data
+ * Tests thast the generated graph matches the expected graph
+ * @author admin
+ *
+ */
 public class AssetTopologyMapperImplXMLDataTest {
 	private static final Logger LOG = LoggerFactory.getLogger(AssetTopologyMapperImplXMLDataTest .class);
 	

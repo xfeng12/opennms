@@ -13,6 +13,11 @@ import org.opennms.plugins.graphml.asset.Utils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * loads data programatically into a NodeInfoRepository from a mock list of OpenNMS nodes and uses this to generate a graph file
+ * @author admin
+ *
+ */
 public class AssetTopologyMapperImplTest {
 	private static final Logger LOG = LoggerFactory.getLogger(AssetTopologyMapperImplTest.class);
 

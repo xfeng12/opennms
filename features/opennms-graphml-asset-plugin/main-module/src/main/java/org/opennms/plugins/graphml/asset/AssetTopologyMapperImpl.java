@@ -70,10 +70,22 @@ public class AssetTopologyMapperImpl implements AssetTopologyMapper {
 		return layerHierarchy;
 	}
 
+
+	/**
+	 * Sets a list layerHierarchy. Each entry will determine the name and odrer of heirarchical topology graphs
+	 * the list must only contain names corresponding to values in org.opennms.plugins.graphml.asset.NodeParamLabels which
+	 * are keys to access the OpenNMS assets
+	 * @param layerHierarchy
+	 */
 	public void setLayerHierarchy(List<String> layerHierarchy) {
 		this.layerHierarchy = layerHierarchy;
 	}
 
+	/**
+	 * Sets a list layerHierarchy from a comma separated String property. Ther must be no spaces in the string
+	 * and each value should be a key from org.opennms.plugins.graphml.asset.NodeParamLabels
+	 * @param layerHierarchyProperty
+	 */
 	public void setLayerHierarchyFromProperty(String layerHierarchyProperty){
 		String[] lh = layerHierarchyProperty.split(",");
 		layerHierarchy  = Arrays.asList(lh);
@@ -90,21 +102,35 @@ public class AssetTopologyMapperImpl implements AssetTopologyMapper {
 		return preferredLayout;
 	}
 
+	/**
+	 * determine the preferred layout of generated graphs 
+	 * defaults to "Grid Layout"
+	 * @param preferredLayout
+	 */
 	public void setPreferredLayout(String preferredLayout) {
 		this.preferredLayout = preferredLayout;
 	}
+
 
 	@Override
 	public String getMenuLabelStr() {
 		return menuLabelStr;
 	}
 
+	/**
+	 * Sets the the label which will appear in the OpenNMS topology menu
+	 * used to set the graphml <data key="label"></data>
+	 */
 	@Override
 	public void setMenuLabelStr(String menuLabelStr) {
 		this.menuLabelStr = menuLabelStr;
 	}
 
 
+	/**
+	 * This method generates the layer hierarchy graphml file from the
+	 * node asset information supplied in nodeInfoRepository
+	 */
 	@Override
 	public GraphmlType nodeInfoToTopology(NodeInfoRepository nodeInfoRepository) {
 
@@ -136,9 +162,9 @@ public class AssetTopologyMapperImpl implements AssetTopologyMapper {
 			addOpenNMSNodes(graph, nodeInfo);
 
 		} else {
-
+			// create graphs for all possible layers in hierarchy
 			msg = new StringBuffer("create graphs from asset and layerHierarchy: ");
-			// create graphs for all possible layers
+
 			List<GraphType> graphList = new ArrayList<GraphType>();
 			Integer semanticZoomLevel=0;
 
@@ -187,7 +213,22 @@ public class AssetTopologyMapperImpl implements AssetTopologyMapper {
 		return graphmlType;
 	}
 
-	// returns list of nodes added in the next layer for use in edges
+
+	/**
+	 * Recursive function to add OpenNMS nodes defined in nodeInfo into hierarchy of created in the given graphmlType
+	 * returns list of nodes added in the next layer for use in edges in this layer
+	 * @param layerHierarchy static list of layer names which correspond to asset table keys defined in NodeParamLabels
+	 * @param layerHierarchyIndex the current layer for which this function is called (initialise to 0) subsequent recursive calls will increment the number until layerHierarchy.size()
+	 * @param nodeInfo nodeInfo map with values Map<nodeId, Map<nodeParamLabelKey, nodeParamValue>>
+	 *        nodeParamLabelKey a node asset parameter key (from those defined in org.opennms.plugins.graphml.asset.NodeParamLabels)
+	 *        nodeParamValue a node asset value ( e.g. key NodeParamLabels.ASSET_RACK ('asset-rack') value: rack1
+	 * @param allocatedNodeInfo this contains all of the nodes which a recursive call to this method has added. i.e. once the function is finished,
+	 * all of the nodes placed in a graph are included in this list. The list can then be used to determine the unallocated nodes.
+	 * @param graphmlType the parent graphmltype into which all the created graphe muse be placed
+	 * @param graphList a list of pre created graphs which are in the same order and should  be pre-named with the names in the layerHierarchy
+	 * @param parentNodeId the nodeId of the parent node which the edges generated for the next layer must reference
+	 * @return addedNodes returns list of nodes which have been added by this recursive call. These nodes are used to create the edges in the previous layer
+	 */
 	private Map<String, Map<String, String>> recursivelyAddlayers(List<String> layerHierarchy, int layerHierarchyIndex,  Map<String, Map<String, String>> nodeInfo, Map<String, Map<String, String>> allocatedNodeInfo, GraphmlType graphmlType, List<GraphType> graphList, String parentNodeId){
 		if(layerHierarchy==null||layerHierarchy.size()==0 ) throw new RuntimeException("AssetTopologyMapperImpl layerHierarchy must not be null or empty");
 
@@ -252,7 +293,8 @@ public class AssetTopologyMapperImpl implements AssetTopologyMapper {
 				LOG.debug(msg.toString());
 			}
 
-			// create added nodes to return - with empty parameters if these are only layers and not OpenNMS nodes
+			// create added nodes to return. These are the nodes which have been added in this layer
+			// and are used to populate the edges in the previous layer
 			addedNodes = new LinkedHashMap<String, Map<String, String>>();
 
 			// iterate over values in this layer
@@ -271,6 +313,10 @@ public class AssetTopologyMapperImpl implements AssetTopologyMapper {
 				int nextLayerHierarchyIndex=layerHierarchyIndex+1;
 				Map<String, Map<String, String>> nextLayerNodesAdded = recursivelyAddlayers(layerHierarchy, nextLayerHierarchyIndex, nodeInfoSubList, allocatedNodeInfo, graphmlType, graphList, graphmlNodeId );
 
+				// we are now using data returned from a recursive call to recursivelyAddlayers
+				// nextLayerNodesAdded contains the nodes added in the lower layer
+				// and these can be used to populates edges in this layer
+
 				// create edge for each node in returned nextLayerNodesAdded
 				if (nextLayerHierarchyIndex<layerHierarchy.size()){
 					// if not lowest layer then add edges pointing next layers
@@ -278,7 +324,6 @@ public class AssetTopologyMapperImpl implements AssetTopologyMapper {
 					for (String targetNodeId:nextLayerNodesAdded.keySet()){
 						Map<String, String> nodeParamaters = nextLayerNodesAdded.get(targetNodeId);
 						String labelStr = nodeParamaters.get(layerHierarchy.get(nextLayerHierarchyIndex));
-						//String childNodeLabelStr= (parentNodeId==null) ? labelStr : graphmlNodeId+"."+labelStr;
 						String childNodeLabelStr= graphmlNodeId+"."+labelStr;
 						EdgeType edge = addEdgeToGraph(graph, graphmlNodeId, childNodeLabelStr);
 						msg.append(edge.getId()+",");
@@ -286,7 +331,7 @@ public class AssetTopologyMapperImpl implements AssetTopologyMapper {
 						addedNodes.put(targetNodeId, nodeParamaters);
 					}
 				} else {
-					// if lowest layer then add node ids (i.e. opennms node label)
+					// if lowest layer then add node ids (i.e. opennms node labels)
 					msg.append(" edges added for opennms nodes: " );
 					for (String targetNodeId:nextLayerNodesAdded.keySet()){
 						Map<String, String> nodeParamaters = nextLayerNodesAdded.get(targetNodeId);
@@ -294,8 +339,7 @@ public class AssetTopologyMapperImpl implements AssetTopologyMapper {
 						EdgeType edge = addEdgeToGraph(graph, graphmlNodeId, nodeLabelStr);
 						msg.append(edge.getId()+",");
 
-						// create node for added nodes with real params
-						addedNodes.put(targetNodeId, nextLayerNodesAdded.get(targetNodeId));
+						addedNodes.put(targetNodeId, nodeParamaters);
 					}
 				}
 
@@ -310,6 +354,14 @@ public class AssetTopologyMapperImpl implements AssetTopologyMapper {
 		return addedNodes;
 	}
 
+	/**
+	 * searches the supplied nodeInfo for nodes with matching paramaters for nodeParamLabelKey and nodeParamValue
+	 * returns a sub list of nodeInfo only for the nodes with the matching parameter
+	 * @param nodeParamLabelKey a node asset parameter key (from those defined in org.opennms.plugins.graphml.asset.NodeParamLabels)
+	 * @param nodeParamValue a node asset value ( e.g. key NodeParamLabels.ASSET_RACK ('asset-rack') value: rack1
+	 * @param nodeInfo Map<String, Map<String, String>> with values Map<nodeId, Map<nodeParamLabelKey, nodeParamValue>>
+	 * @return
+	 */
 	private Map<String, Map<String, String>> createNodeInfoSubList(String nodeParamLabelKey, String nodeParamValue, Map<String, Map<String, String>> nodeInfo){
 		if(nodeParamLabelKey==null) throw new RuntimeException("createNodeInfoSubList nodeParamLabel cannot be null");
 		if(nodeParamValue==null) throw new RuntimeException("createNodeInfoSubList nodeParamValue cannot be null");
@@ -328,6 +380,14 @@ public class AssetTopologyMapperImpl implements AssetTopologyMapper {
 		return nodeInfoSubList;
 	}
 
+	/**
+	 * Creates a new edge and adds it to a given graphml graph. The graph is first searched and the edge is only added if
+	 * its id is not already defined. The id is concatenated from the sourceIdStr and the targetIdStr
+	 * @param graph
+	 * @param sourceIdStr source nodeId for this edge (nodeId represents the graphml nodeId unique in the graph namespace)
+	 * @param targetIdStr target nodeId for this edge
+	 * @return
+	 */
 	private EdgeType addEdgeToGraph(GraphType graph, String sourceIdStr, String targetIdStr){
 		EdgeType edge = of.createEdgeType();
 		String id =sourceIdStr+"_"+targetIdStr;
@@ -348,6 +408,14 @@ public class AssetTopologyMapperImpl implements AssetTopologyMapper {
 		return edge;
 	}
 
+	/**
+	 * Creates a new graphml node with a nodeId and nodeLabel
+	 * note that the nodeId is the unique id in the graph name space. The nodelabel is the value which shows
+	 * up on the rendered graph
+	 * @param nodeId
+	 * @param nodeLabel
+	 * @return
+	 */
 	private NodeType createNodeType(String nodeId, String nodeLabel){
 		NodeType node = of.createNodeType();
 
@@ -360,6 +428,11 @@ public class AssetTopologyMapperImpl implements AssetTopologyMapper {
 		return node;
 	}
 
+	/**
+	 * Creates a new empty graphml graph with a predefined breadcrumb strategy for the OpenNMS use case
+	 * @param menuLabelStr
+	 * @return
+	 */
 	private GraphmlType createGraphML(String menuLabelStr){
 		GraphmlType graphmltype = new GraphmlType();
 
@@ -381,6 +454,11 @@ public class AssetTopologyMapperImpl implements AssetTopologyMapper {
 		return graphmltype;
 	}
 
+	/**
+	 * Adds default keys for the OpenNMS use case to the graphml object 
+	 * @param graphmlType
+	 * @return
+	 */
 	private GraphmlType addKeyTypes(GraphmlType graphmlType) {
 
 		// <key id="label" for="graphml" attr.name="label"
@@ -502,7 +580,15 @@ public class AssetTopologyMapperImpl implements AssetTopologyMapper {
 
 	}
 
-
+	/**
+	 * Creates a new graph in the graphml type with default data values for he opennms keys
+	 * @param graphmlType
+	 * @param graphId
+	 * @param descriptionStr
+	 * @param preferredLayout
+	 * @param semanticZoomLevelInt
+	 * @return
+	 */
 	private GraphType createGraphInGraphmlType(GraphmlType graphmlType, String graphId, String descriptionStr, String preferredLayout, Integer semanticZoomLevelInt) {
 
 		// <graph id="graph1">
@@ -551,6 +637,13 @@ public class AssetTopologyMapperImpl implements AssetTopologyMapper {
 	}
 
 
+	/**
+	 * Adds all of the OpenNMS nodes defined in the nodeInfo type to a graph. Adds nodeID and foreignsource / foreignid values if defined
+	 * @param graph
+	 * @param nodeInfo map with values Map<nodeId, Map<nodeParamLabelKey, nodeParamValue>>
+	 *        nodeParamLabelKey a node asset parameter key (from those defined in org.opennms.plugins.graphml.asset.NodeParamLabels)
+	 *        nodeParamValue a node asset value ( e.g. key NodeParamLabels.ASSET_RACK ('asset-rack') value: rack1
+	 */
 	private void addOpenNMSNodes(GraphType graph, Map<String, Map<String, String>> nodeInfo) {
 
 		for (String nodeId:nodeInfo.keySet()){

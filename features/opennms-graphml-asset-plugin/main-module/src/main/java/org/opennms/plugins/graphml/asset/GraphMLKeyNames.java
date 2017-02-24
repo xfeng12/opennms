@@ -28,6 +28,10 @@
 
 package org.opennms.plugins.graphml.asset;
 
+/**
+ * interface defining the list of graphml key names used in OpenNMS topology providers
+ *
+ */
 public interface GraphMLKeyNames {
 	public static final String LABEL = "label";
 	public static final String DESCRIPTION = "description";

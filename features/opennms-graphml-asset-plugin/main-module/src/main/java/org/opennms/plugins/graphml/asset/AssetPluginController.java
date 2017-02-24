@@ -42,6 +42,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.util.Assert;
 
+/**
+ * Parent controller class which listens for OpenNMS events and generates/installs and uninstalls topologies
+ * @author admin
+ *
+ */
 public class AssetPluginController  implements EventListener{
 
 	public static final String ASSET_TOPOLOGY_FOLDER = "etc/assettopology/"; // folder created in OpenNMS to store asset topology before installation

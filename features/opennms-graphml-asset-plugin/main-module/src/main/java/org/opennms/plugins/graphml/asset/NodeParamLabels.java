@@ -28,6 +28,16 @@
 
 package org.opennms.plugins.graphml.asset;
 
+/**
+ * list of constants which correspond to both OpenNMS node table entries 
+ * or OpenNMS asset table entries. 
+ * The selected keys reference entries which could be useful in creating a graph
+ * These keys are also used in the nodeInfo map as the nodeParamLabelKeys 
+ * 
+ * e.g. nodeInfo  Map<nodeId, Map<nodeParamLabelKey, nodeParamValue>>
+ * nodeParamLabelKey a node asset parameter key (from those defined in org.opennms.plugins.graphml.asset.NodeParamLabels)
+ * nodeParamValue a node asset value ( e.g. key NodeParamLabels.ASSET_RACK ('asset-rack') value: rack1
+ */
 public interface NodeParamLabels {
 	public static final String  NODE_NODELABEL ="node-nodelabel";
 	public static final String  NODE_NODEID ="node-nodeid";

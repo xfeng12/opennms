@@ -3,10 +3,10 @@ This folder contains test resources.
 
 Data for test AssetTopologyMapperImplXMLDataTest
 ------------------------------------------------
-nodeInfoMockTestData.xml is data to load into a nodeInforepository to simulate OpenNMS node 
+nodeInfoMockTestData2.xml is data to load into a nodeInforepository to simulate OpenNMS node 
 asset data when generating a topology
 
-graphmlTestTopology.xml is the graph which should be generated from nodeInfoMockTestData.xml
+graphmlTestTopology2.xml is the graph which should be generated from nodeInfoMockTestData2.xml
 by the test.
 
 The opennms inventory which matches nodeInfoMockTestData.xml is in the requisition file

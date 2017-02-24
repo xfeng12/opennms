@@ -16,6 +16,11 @@ import org.opennms.plugins.graphml.asset.NodeInfoRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * populates a list of opennms nodes with random data and populates a NodeInfoRepository
+ * @author admin
+ *
+ */
 public class NodeInfoRepositoryTest {
 	private static final Logger LOG = LoggerFactory.getLogger(NodeInfoRepositoryTest.class);
 

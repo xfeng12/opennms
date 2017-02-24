@@ -1,4 +1,4 @@
-<model-import xmlns="http://xmlns.opennms.org/xsd/config/model-import" date-stamp="2017-02-14T16:41:56.686Z" foreign-source="BTOpenNMSInventory" last-import="2017-02-14T19:21:59.164Z">
+<model-import xmlns="http://xmlns.opennms.org/xsd/config/model-import" date-stamp="2017-02-14T16:41:56.686Z" foreign-source="TestOpenNMSInventory" last-import="2017-02-14T19:21:59.164Z">
    <node foreign-id="630878819443753" node-label="2101-0301">
       <interface ip-addr="192.17.21.2" snmp-primary="P"/>
       <category name="21"/>

@@ -46,6 +46,15 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 
+/**
+ * jaxb definition of nodeInfoRepository. This is used for testing 
+ * This class also contains static methods for marshalling and unmarshalling XML representations
+ * of the nodeInfoRepository to a nodeInfo type. 
+ * nodeInfo is a map with values Map<nodeId, Map<nodeParamLabelKey, nodeParamValue>>
+ *     nodeParamLabelKey a node asset parameter key (from those defined in org.opennms.plugins.graphml.asset.NodeParamLabels)
+ *     nodeParamValue a node asset value ( e.g. key NodeParamLabels.ASSET_RACK ('asset-rack') value: rack1
+ *
+ */
 @XmlRootElement (name="nodeInfoRepository")
 @XmlAccessorType(XmlAccessType.NONE)
 public class NodeInfoRepositoryXML {
@@ -63,11 +72,15 @@ public class NodeInfoRepositoryXML {
 		this.nodeInfoList = nodeInfo;
 	}
 
-	//nodeid, paramkey, paramvalue
-	//Map<String, Map<String, String>>
+	/**
+	 * Marshalls nodeInfo object into an xml string
+	 * @param nodeInfo nodeInfo nodeInfo map with values Map<nodeId, Map<nodeParamLabelKey, nodeParamValue>>
+	 *        nodeParamLabelKey a node asset parameter key (from those defined in org.opennms.plugins.graphml.asset.NodeParamLabels)
+	 *        nodeParamValue a node asset value ( e.g. key NodeParamLabels.ASSET_RACK ('asset-rack') value: rack1
+	 */
 	public static String nodeInfoToXML(Map<String, Map<String, String>> nodeInfo){
 		try {
-			
+
 			NodeInfoRepositoryXML nodeInfoRepositoryxml= new NodeInfoRepositoryXML();
 
 			List<NodeInfoXML> nodeinfoListxml = nodeInfoRepositoryxml.getNodeInfoList();
@@ -101,8 +114,13 @@ public class NodeInfoRepositoryXML {
 
 	}
 
-	//nodeid, paramkey, paramvalue
-	//Map<String, Map<String, String>>
+	/**
+	 * Unmarshalls xmlStr string into a nodeInfo object
+	 * @param nodeInfo nodeInfo nodeInfo map with values Map<nodeId, Map<nodeParamLabelKey, nodeParamValue>>
+	 *        nodeParamLabelKey a node asset parameter key (from those defined in org.opennms.plugins.graphml.asset.NodeParamLabels)
+	 *        nodeParamValue a node asset value ( e.g. key NodeParamLabels.ASSET_RACK ('asset-rack') value: rack1
+	 * @param xmlStr xml string to marshall into nodeinfo
+	 */
 	public static void XMLtoNodeInfo(Map<String, Map<String, String>> nodeInfo, String xmlStr){
 		try{
 
