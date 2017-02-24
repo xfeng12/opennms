@@ -278,7 +278,8 @@ public class AssetTopologyMapperImpl implements AssetTopologyMapper {
 					for (String targetNodeId:nextLayerNodesAdded.keySet()){
 						Map<String, String> nodeParamaters = nextLayerNodesAdded.get(targetNodeId);
 						String labelStr = nodeParamaters.get(layerHierarchy.get(nextLayerHierarchyIndex));
-						String childNodeLabelStr= (parentNodeId==null) ? labelStr : graphmlNodeId+"."+labelStr;
+						//String childNodeLabelStr= (parentNodeId==null) ? labelStr : graphmlNodeId+"."+labelStr;
+						String childNodeLabelStr= graphmlNodeId+"."+labelStr;
 						EdgeType edge = addEdgeToGraph(graph, graphmlNodeId, childNodeLabelStr);
 						msg.append(edge.getId()+",");
 

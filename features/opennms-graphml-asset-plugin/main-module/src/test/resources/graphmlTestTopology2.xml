@@ -23,18 +23,18 @@
         <node id="region_A">
             <data key="label">region_A</data>
         </node>
-        <edge id="region_A_21" source="region_A" target="21"/>
-        <edge id="region_A_22" source="region_A" target="22"/>
-        <edge id="region_A_28" source="region_A" target="28"/>
+        <edge id="region_A_region_A.21" source="region_A" target="region_A.21"/>
+        <edge id="region_A_region_A.22" source="region_A" target="region_A.22"/>
+        <edge id="region_A_region_A.28" source="region_A" target="region_A.28"/>
         <node id="region_B">
             <data key="label">region_B</data>
         </node>
-        <edge id="region_B_31" source="region_B" target="31"/>
-        <edge id="region_B_32" source="region_B" target="32"/>
-        <edge id="region_B_33" source="region_B" target="33"/>
-        <edge id="region_B_34" source="region_B" target="34"/>
-        <edge id="region_B_35" source="region_B" target="35"/>
-        <edge id="region_B_36" source="region_B" target="36"/>
+        <edge id="region_B_region_B.31" source="region_B" target="region_B.31"/>
+        <edge id="region_B_region_B.32" source="region_B" target="region_B.32"/>
+        <edge id="region_B_region_B.33" source="region_B" target="region_B.33"/>
+        <edge id="region_B_region_B.34" source="region_B" target="region_B.34"/>
+        <edge id="region_B_region_B.35" source="region_B" target="region_B.35"/>
+        <edge id="region_B_region_B.36" source="region_B" target="region_B.36"/>
     </graph>
     <graph id="asset-building" edgedefault="undirected">
         <data key="namespace">asset-building_ns</data>
