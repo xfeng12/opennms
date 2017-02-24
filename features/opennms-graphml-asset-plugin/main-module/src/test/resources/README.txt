@@ -9,7 +9,8 @@ asset data when generating a topology
 graphmlTestTopology2.xml is the graph which should be generated from nodeInfoMockTestData2.xml
 by the test.
 
-The opennms inventory which matches nodeInfoMockTestData.xml is in the requisition file
+The opennms inventory which (nearly) matches nodeInfoMockTestData.xml is in the requisition file
+This can be used to generate a demonstration OpenNMS topology
 TestAssetOpenNMSInventory.xml
 
 Data for test GraphMLRestJerseyClientTest
