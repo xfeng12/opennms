@@ -13,6 +13,7 @@
     <key id="foreignSource" for="node" attr.name="foreignSource" attr.type="string"/>
     <key id="foreignID" for="node" attr.name="foreignID" attr.type="string"/>
     <key id="nodeID" for="node" attr.name="nodeID" attr.type="int"/>
+    <key id="vertex-status-provider" for="graph" attr.name="vertex-status-provider" attr.type="boolean"/>
     <data key="label">Asset Topology Mon 20.02.2017_11:34:03</data>
     <data key="breadcrumb-strategy">SHORTEST_PATH_TO_ROOT</data>
     <graph id="asset-region" edgedefault="undirected">
@@ -286,6 +287,7 @@
         <data key="focus-strategy">ALL</data>
         <data key="preferred-layout">Grid Layout</data>
         <data key="semantic-zoom-level">3</data>
+        <data key="vertex-status-provider">true</data>
         <node id="2102-0502">
             <data key="foreignSource">TestOpenNMSInventory</data>
             <data key="foreignID">630878819443779</data>
@@ -421,6 +423,7 @@
             <data key="foreignID">630878819443758</data>
             <data key="label">2101-1601</data>
         </node>
+        <data key="vertex-status-provider">true</data>
         <node id="2102-1201">
             <data key="foreignSource">TestOpenNMSInventory</data>
             <data key="foreignID">630878819443772</data>
@@ -436,6 +439,7 @@
             <data key="foreignID">630878819443777</data>
             <data key="label">2102-0704</data>
         </node>
+        <data key="vertex-status-provider">true</data>
         <node id="2202-0301">
             <data key="foreignSource">TestOpenNMSInventory</data>
             <data key="foreignID">630878819443793</data>
@@ -526,11 +530,13 @@
             <data key="foreignID">630878819443787</data>
             <data key="label">2201-0701</data>
         </node>
+        <data key="vertex-status-provider">true</data>
         <node id="2202-0601">
             <data key="foreignSource">TestOpenNMSInventory</data>
             <data key="foreignID">630878819443794</data>
             <data key="label">2202-0601</data>
         </node>
+        <data key="vertex-status-provider">true</data>
         <node id="2801-0906">
             <data key="foreignSource">TestOpenNMSInventory</data>
             <data key="foreignID">630878819443809</data>
@@ -576,6 +582,7 @@
             <data key="foreignID">630878819443803</data>
             <data key="label">2801-0601</data>
         </node>
+        <data key="vertex-status-provider">true</data>
         <node id="2801-1601">
             <data key="foreignSource">TestOpenNMSInventory</data>
             <data key="foreignID">630878819443804</data>
@@ -586,6 +593,7 @@
             <data key="foreignID">630878819443807</data>
             <data key="label">2801-0904</data>
         </node>
+        <data key="vertex-status-provider">true</data>
         <node id="3101-0301">
             <data key="foreignSource">TestOpenNMSInventory</data>
             <data key="foreignID">630878819443813</data>
@@ -646,11 +654,13 @@
             <data key="foreignID">630878819443817</data>
             <data key="label">3101-0703</data>
         </node>
+        <data key="vertex-status-provider">true</data>
         <node id="3101-0903">
             <data key="foreignSource">TestOpenNMSInventory</data>
             <data key="foreignID">630878819443822</data>
             <data key="label">3101-0903</data>
         </node>
+        <data key="vertex-status-provider">true</data>
         <node id="3201-0902">
             <data key="foreignSource">TestOpenNMSInventory</data>
             <data key="foreignID">630878819443834</data>
@@ -706,6 +716,7 @@
             <data key="foreignID">630878819443829</data>
             <data key="label">3201-0702</data>
         </node>
+        <data key="vertex-status-provider">true</data>
         <node id="3201-0901">
             <data key="foreignSource">TestOpenNMSInventory</data>
             <data key="foreignID">630878819443833</data>
@@ -716,6 +727,7 @@
             <data key="foreignID">630878819443837</data>
             <data key="label">3201-0801-1</data>
         </node>
+        <data key="vertex-status-provider">true</data>
         <node id="3301-0903">
             <data key="foreignSource">TestOpenNMSInventory</data>
             <data key="foreignID">630878819443848</data>
@@ -781,6 +793,7 @@
             <data key="foreignID">630878819443842</data>
             <data key="label">3301-0702</data>
         </node>
+        <data key="vertex-status-provider">true</data>
         <node id="3401-1201">
             <data key="foreignSource">TestOpenNMSInventory</data>
             <data key="foreignID">630878819443858</data>
@@ -841,11 +854,13 @@
             <data key="foreignID">630878819443857</data>
             <data key="label">3401-1601</data>
         </node>
+        <data key="vertex-status-provider">true</data>
         <node id="3401-0701">
             <data key="foreignSource">TestOpenNMSInventory</data>
             <data key="foreignID">630878819443854</data>
             <data key="label">3401-0701</data>
         </node>
+        <data key="vertex-status-provider">true</data>
         <node id="3501-1201">
             <data key="foreignSource">TestOpenNMSInventory</data>
             <data key="foreignID">630878819443871</data>
@@ -901,6 +916,7 @@
             <data key="foreignID">630878819443870</data>
             <data key="label">3501-1601</data>
         </node>
+        <data key="vertex-status-provider">true</data>
         <node id="3501-0701">
             <data key="foreignSource">TestOpenNMSInventory</data>
             <data key="foreignID">630878819443867</data>
@@ -911,6 +927,7 @@
             <data key="foreignID">630878819443864</data>
             <data key="label">3501-0101</data>
         </node>
+        <data key="vertex-status-provider">true</data>
         <node id="3601-0901">
             <data key="foreignSource">TestOpenNMSInventory</data>
             <data key="foreignID">630878819443885</data>
@@ -971,6 +988,7 @@
             <data key="foreignID">630878819443878</data>
             <data key="label">3601-0301</data>
         </node>
+        <data key="vertex-status-provider">true</data>
         <node id="3601-0703">
             <data key="foreignSource">TestOpenNMSInventory</data>
             <data key="foreignID">630878819443882</data>
@@ -983,5 +1001,6 @@
         <data key="preferred-layout">Grid Layout</data>
         <data key="description">A graph containing all nodes which cannot be placed in topology hierarchy</data>
         <data key="semantic-zoom-level">0</data>
+        <data key="vertex-status-provider">true</data>
     </graph>
 </graphml>

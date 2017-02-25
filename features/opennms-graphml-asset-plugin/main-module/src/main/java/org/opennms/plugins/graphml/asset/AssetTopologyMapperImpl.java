@@ -575,6 +575,14 @@ public class AssetTopologyMapperImpl implements AssetTopologyMapper {
 		nodeIdKey.setId(GraphMLKeyNames.NODE_ID);
 		nodeIdKey.setFor(KeyForType.NODE);
 		graphmlType.getKey().add(nodeIdKey);
+		
+		// <key id="vertex-status-provider" for="graph" attr.name="vertex-status-provider" attr.type="boolean"/>
+		KeyType vertexStatusProviderKey = new KeyType();
+		vertexStatusProviderKey.setAttrName(GraphMLKeyNames.VERTEX_STATUS_PROVIDER);
+		vertexStatusProviderKey.setAttrType(KeyTypeType.BOOLEAN);
+		vertexStatusProviderKey.setId(GraphMLKeyNames.VERTEX_STATUS_PROVIDER);
+		vertexStatusProviderKey.setFor(KeyForType.GRAPH);
+		graphmlType.getKey().add(vertexStatusProviderKey);
 
 		return graphmlType;
 
@@ -645,6 +653,13 @@ public class AssetTopologyMapperImpl implements AssetTopologyMapper {
 	 *        nodeParamValue a node asset value ( e.g. key NodeParamLabels.ASSET_RACK ('asset-rack') value: rack1
 	 */
 	private void addOpenNMSNodes(GraphType graph, Map<String, Map<String, String>> nodeInfo) {
+		
+		// set vertex-status-provider true for nodes graph
+		//<data key="vertex-status-provider">true</data>
+		DataType vertexStatusProvider = of.createDataType();
+		vertexStatusProvider.setKey(GraphMLKeyNames.VERTEX_STATUS_PROVIDER);
+		vertexStatusProvider.setContent("true");
+		graph.getDataOrNodeOrEdge().add(vertexStatusProvider);
 
 		for (String nodeId:nodeInfo.keySet()){
 
