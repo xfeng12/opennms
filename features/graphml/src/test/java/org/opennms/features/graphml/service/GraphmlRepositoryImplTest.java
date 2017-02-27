@@ -1,4 +1,4 @@
-package org.opennms.web.rest.support.graphml;
+package org.opennms.features.graphml.service;
 
 import java.io.ByteArrayOutputStream;
 import java.io.FileInputStream;
