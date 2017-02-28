@@ -30,7 +30,7 @@ public class GraphMLRestJerseyClientTest {
 	private String userName = "admin"; // If userName is null no basic authentication is generated
 	private String password = "admin";
 
-	private String graphname="testgraph1";
+	private String graphname="assetTopology";
 
 	GraphMLRestJerseyClient client = null;
 	
@@ -38,9 +38,9 @@ public class GraphMLRestJerseyClientTest {
 	public void testsInOrder(){
 		LOG.debug("testsInOrder() START");
 		// choose which tests you want to run by un-commenting below
-		readTestGraph();	
+		//readTestGraph();	
 		//testCreateGraph();
-		//testGetGraph(); 
+		testGetGraph(); 
 		//testDeleteGraph();
 		LOG.debug("testsInOrder() FINISH");
 	}
@@ -57,7 +57,11 @@ public class GraphMLRestJerseyClientTest {
 
 
 	private GraphmlType readTestGraph(){
-		File graphmlfile = new File("./src/test/resources/test-graph.xml");
+		//File graphmlfile = new File("./src/test/resources/test-graph.xml");
+		//File graphmlfile = new File("./src/test/resources/graphmlTestTopology2.xml");
+		File graphmlfile = new File("./src/test/resources/returnedAssetTopology.xml");
+		
+		
 		LOG.debug("reading graph file from"+graphmlfile.getAbsolutePath());
 
 		//GraphmlType graph = JAXB.unmarshal(graphmlfile, GraphmlType.class);
