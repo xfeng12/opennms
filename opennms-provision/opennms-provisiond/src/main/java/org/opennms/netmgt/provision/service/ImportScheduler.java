@@ -33,8 +33,6 @@ import java.util.Arrays;
 import java.util.Iterator;
 
 import org.opennms.core.spring.BeanUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.opennms.core.utils.url.GenericURLFactory;
 import org.opennms.netmgt.config.provisiond.RequisitionDef;
 import org.opennms.netmgt.dao.api.ProvisiondConfigurationDao;
@@ -44,6 +42,8 @@ import org.quartz.Scheduler;
 import org.quartz.SchedulerException;
 import org.quartz.Trigger;
 import org.quartz.spi.JobFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessResourceFailureException;
@@ -224,11 +224,11 @@ public class ImportScheduler implements InitializingBean {
                 Trigger trigger = null;
                 
                 try {
-                    detail = new JobDetail(def.getImportName(), JOB_GROUP, ImportJob.class, false, false, false);
+                    detail = new JobDetail(def.getImportName().orElse(null), JOB_GROUP, ImportJob.class, false, false, false);
                     detail.getJobDataMap().put(ImportJob.URL, def.getImportUrlResource());
                     detail.getJobDataMap().put(ImportJob.RESCAN_EXISTING, def.getRescanExisting());
                     
-                    trigger = new CronTrigger(def.getImportName(), JOB_GROUP, def.getCronSchedule());
+                    trigger = new CronTrigger(def.getImportName().orElse(null), JOB_GROUP, def.getCronSchedule().orElse(null));
                     trigger.setMisfireInstruction(CronTrigger.MISFIRE_INSTRUCTION_DO_NOTHING);
                     getScheduler().scheduleJob(detail, trigger);
                     
