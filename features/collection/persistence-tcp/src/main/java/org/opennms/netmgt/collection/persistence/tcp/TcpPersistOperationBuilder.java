@@ -30,12 +30,10 @@ package org.opennms.netmgt.collection.persistence.tcp;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.text.NumberFormat;
-import java.util.ArrayList;;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Locale;;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -46,8 +44,6 @@ import org.opennms.netmgt.collection.api.PersistOperationBuilder;
 import org.opennms.netmgt.collection.api.ResourceIdentifier;
 import org.opennms.netmgt.collection.api.TimeKeeper;
 import org.opennms.netmgt.collection.support.DefaultTimeKeeper;
-import org.opennms.netmgt.rrd.RrdException;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.util.Assert;

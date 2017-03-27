@@ -193,7 +193,7 @@ public class RrdPersistOperationBuilderTest {
 
         RrdPersistOperationBuilder builder = new RrdPersistOperationBuilder(m_rrdStrategy, repository, resource, "rrdName", false);
         builder.declareAttribute(attributeType);
-        builder.setAttributeValue(attributeType, 6.022E23d);
+        builder.setNumericAttributeValue(attributeType, 6.022E23d);
         builder.commit();
     }
 
@@ -228,7 +228,7 @@ public class RrdPersistOperationBuilderTest {
 
         RrdPersistOperationBuilder builder = new RrdPersistOperationBuilder(m_rrdStrategy, repository, resource, "rrdName", false);
         builder.declareAttribute(attributeType);
-        builder.setAttributeValue(attributeType, null);
+        builder.setNumericAttributeValue(attributeType, null);
         builder.commit();
     }
 
