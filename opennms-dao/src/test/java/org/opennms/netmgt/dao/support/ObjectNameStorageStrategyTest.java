@@ -35,6 +35,7 @@ import static org.junit.Assert.*;
 import org.opennms.netmgt.collection.api.CollectionResource;
 import org.opennms.netmgt.collection.support.ObjectNameStorageStrategy;
 import org.opennms.netmgt.config.datacollection.Parameter;
+import org.opennms.netmgt.model.ResourcePath;
 
 /**
  */
@@ -42,21 +43,21 @@ public class ObjectNameStorageStrategyTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void testSetNullParameters() {
-        List<Parameter> params = null;
+        List<org.opennms.netmgt.collection.api.Parameter> params = null;
         ObjectNameStorageStrategy instance = new ObjectNameStorageStrategy();
         instance.setParameters(params);
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void testSetEmptyParameters() {
-        List<Parameter> params = new ArrayList<>();
+        List<org.opennms.netmgt.collection.api.Parameter> params = new ArrayList<>();
         ObjectNameStorageStrategy instance = new ObjectNameStorageStrategy();
         instance.setParameters(params);
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void testSetInvalidParameters() {
-        List<Parameter> params = new ArrayList<>();
+        List<org.opennms.netmgt.collection.api.Parameter> params = new ArrayList<>();
         params.add(new Parameter("SERVICE", "svc"));
         ObjectNameStorageStrategy instance = new ObjectNameStorageStrategy();
         instance.setParameters(params);
@@ -64,7 +65,7 @@ public class ObjectNameStorageStrategyTest {
 
     @Test()
     public void testSetValidParameters() {
-        List<Parameter> params = new ArrayList<>();
+        List<org.opennms.netmgt.collection.api.Parameter> params = new ArrayList<>();
         params.add(new Parameter("index-format", "${ObjectName.toString()}"));
         ObjectNameStorageStrategy instance = new ObjectNameStorageStrategy();
         instance.setParameters(params);
@@ -72,8 +73,9 @@ public class ObjectNameStorageStrategyTest {
 
     @Test
     public void testGetResourceNameFromIndex() {
-        CollectionResource resource = new MockCollectionResource("node", "java.lang:type=MemoryPool,name=Survivor Space", "");
-        List<Parameter> params = new ArrayList<>();
+        ResourcePath parentResource = ResourcePath.get("1");
+        CollectionResource resource = new MockCollectionResource(parentResource, "java.lang:type=MemoryPool,name=Survivor Space", "");
+        List<org.opennms.netmgt.collection.api.Parameter> params = new ArrayList<>();
         params.add(new Parameter("index-format", "${ObjectName.toString()}"));
         ObjectNameStorageStrategy instance = new ObjectNameStorageStrategy();
         instance.setParameters(params);
@@ -85,8 +87,9 @@ public class ObjectNameStorageStrategyTest {
 
     @Test
     public void testGetResourceNameFromIndexCleanOutput() {
-        CollectionResource resource = new MockCollectionResource("node", "java.lang:type=MemoryPool,name=Survivor Space", "");
-        List<Parameter> params = new ArrayList<>();
+        ResourcePath parentResource = ResourcePath.get("1");
+        CollectionResource resource = new MockCollectionResource(parentResource, "java.lang:type=MemoryPool,name=Survivor Space", "");
+        List<org.opennms.netmgt.collection.api.Parameter> params = new ArrayList<>();
         params.add(new Parameter("index-format", "${ObjectName.toString()}"));
         params.add(new Parameter("clean-output", "true"));
         ObjectNameStorageStrategy instance = new ObjectNameStorageStrategy();
@@ -99,8 +102,9 @@ public class ObjectNameStorageStrategyTest {
 
     @Test
     public void testGetResourceNameFromIndex2() {
-        CollectionResource resource = new MockCollectionResource("node", "java.lang:type=MemoryPool,name=Survivor Space", "");
-        List<Parameter> params = new ArrayList<>();
+        ResourcePath parentResource = ResourcePath.get("1");
+        CollectionResource resource = new MockCollectionResource(parentResource, "java.lang:type=MemoryPool,name=Survivor Space", "");
+        List<org.opennms.netmgt.collection.api.Parameter> params = new ArrayList<>();
         Parameter p = new Parameter("index-format", "${domain}");
         params.add(p);
         ObjectNameStorageStrategy instance = new ObjectNameStorageStrategy();
@@ -137,8 +141,9 @@ public class ObjectNameStorageStrategyTest {
 
     @Test
     public void testQuotedKeyValues() {
-        CollectionResource resource = new MockCollectionResource("node", "d:k1=\"ab\",k2=\"cd\",k3=\"v3\"", "");
-        List<Parameter> params = new ArrayList<>();
+        ResourcePath parentResource = ResourcePath.get("1");
+        CollectionResource resource = new MockCollectionResource(parentResource, "d:k1=\"ab\",k2=\"cd\",k3=\"v3\"", "");
+        List<org.opennms.netmgt.collection.api.Parameter> params = new ArrayList<>();
         Parameter p = new Parameter("index-format", "${domain}-${k1}-${k2}-${k3}");
         params.add(p);
         ObjectNameStorageStrategy instance = new ObjectNameStorageStrategy();
