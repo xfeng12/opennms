@@ -25,3 +25,4 @@ nb-configuration.xml
 features/topology-map/org.opennms.features.topology.app/www-test/
 dependency-reduced-pom.xml
 npm-debug.log
+features/themes/onms-default-theme/src/main/java/VAADIN/themes/opennms/styles.css
