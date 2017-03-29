@@ -230,17 +230,11 @@
         </annotation>
       </attribute>
 
-      <attribute name="user-defined" use="optional">
+      <attribute type="boolean" name="user-defined" use="optional">
         <annotation>
           <documentation>Specifies if this is a user-defined service. Used
           specifically for UI purposes.</documentation>
         </annotation>
-
-        <simpleType>
-          <restriction base="string">
-            <pattern value="(true|false)"/>
-          </restriction>
-        </simpleType>
       </attribute>
 
       <attribute name="status" use="optional">
@@ -357,7 +351,7 @@
       </annotation>
     </attribute>
 
-    <attribute name="type" type="string" use="required">
+    <attribute name="type" use="required">
       <annotation>
         <documentation>
           Threshold type. "high" to trigger if the value exceeds the threshold,
@@ -366,6 +360,15 @@
           "absoluteChange" to trigger if the value changes by more than the threshold value
         </documentation>
       </annotation>
+      <simpleType>
+        <restriction base="string">
+          <enumeration value="high"/>
+          <enumeration value="low"/>
+          <enumeration value="relativeChange"/>
+          <enumeration value="absoluteChange"/>
+          <enumeration value="rearmingAbsoluteChange"/>
+        </restriction>
+      </simpleType>
     </attribute>
 
     <attribute name="ds-type" type="string" use="required">
