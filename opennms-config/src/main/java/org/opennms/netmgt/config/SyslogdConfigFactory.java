@@ -33,14 +33,15 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 import org.opennms.core.utils.ConfigFileConstants;
 import org.opennms.core.xml.JaxbUtils;
 import org.opennms.netmgt.config.syslogd.HideMatch;
-import org.opennms.netmgt.config.syslogd.HideMessage;
 import org.opennms.netmgt.config.syslogd.SyslogdConfiguration;
 import org.opennms.netmgt.config.syslogd.SyslogdConfigurationGroup;
-import org.opennms.netmgt.config.syslogd.UeiList;
 import org.opennms.netmgt.config.syslogd.UeiMatch;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -115,7 +116,7 @@ public final class SyslogdConfigFactory implements SyslogdConfig {
      * @since 1.8.1
      */
     @Override
-    public synchronized String getListenAddress() {
+    public synchronized Optional<String> getListenAddress() {
         return m_config.getConfiguration().getListenAddress();
     }
     
@@ -136,7 +137,7 @@ public final class SyslogdConfigFactory implements SyslogdConfig {
      * @return a {@link java.lang.String} object.
      */
     @Override
-    public synchronized String getForwardingRegexp() {
+    public synchronized Optional<String> getForwardingRegexp() {
         return m_config.getConfiguration().getForwardingRegexp();
     }
 
@@ -146,7 +147,7 @@ public final class SyslogdConfigFactory implements SyslogdConfig {
      * @return a int.
      */
     @Override
-    public synchronized int getMatchingGroupHost() {
+    public synchronized Optional<Integer> getMatchingGroupHost() {
         return m_config.getConfiguration().getMatchingGroupHost();
 
     }
@@ -157,7 +158,7 @@ public final class SyslogdConfigFactory implements SyslogdConfig {
      * @return a int.
      */
     @Override
-    public synchronized int getMatchingGroupMessage() {
+    public synchronized Optional<Integer> getMatchingGroupMessage() {
         return m_config.getConfiguration().getMatchingGroupMessage();
 
     }
@@ -172,24 +173,14 @@ public final class SyslogdConfigFactory implements SyslogdConfig {
         return m_config.getConfiguration().getParser();
     }
 
-    /**
-     * <p>getUeiList</p>
-     *
-     * @return a {@link org.opennms.netmgt.config.syslogd.UeiList} object.
-     */
     @Override
-    public synchronized UeiList getUeiList() {
-        return m_config.getUeiList();
+    public synchronized List<UeiMatch> getUeiList() {
+        return m_config.getUeiMatches();
     }
 
-    /**
-     * <p>getHideMessages</p>
-     *
-     * @return a {@link org.opennms.netmgt.config.syslogd.HideMessage} object.
-     */
     @Override
-    public synchronized HideMessage getHideMessages() {
-        return m_config.getHideMessage();
+    public synchronized List<HideMatch> getHideMessages() {
+        return m_config.getHideMatches();
     }
     
     /**
@@ -204,8 +195,8 @@ public final class SyslogdConfigFactory implements SyslogdConfig {
 
     @Override
     public int getNumThreads() {
-        if (m_config.getConfiguration().hasThreads()) {
-            return m_config.getConfiguration().getThreads();
+        if (m_config.getConfiguration().getThreads().isPresent()) {
+            return m_config.getConfiguration().getThreads().get();
         } else {
             return Runtime.getRuntime().availableProcessors() * 2;
         }
@@ -239,21 +230,23 @@ public final class SyslogdConfigFactory implements SyslogdConfig {
             LOG.warn("Error getting default syslogd configuration location. <import-file> directives will be ignored.  This should really only happen in unit tests.");
             return;
         }
-        for (final String fileName : m_config.getImportFileCollection()) {
+        for (final String fileName : m_config.getImportFiles()) {
             final File configFile = new File(configDir, fileName);
             final SyslogdConfigurationGroup includeCfg = JaxbUtils.unmarshal(SyslogdConfigurationGroup.class, new FileSystemResource(configFile));
-            if (includeCfg.getUeiList() != null) {
-                for (final UeiMatch ueiMatch : includeCfg.getUeiList().getUeiMatchCollection())  {
-                    if (m_config.getUeiList() == null)
-                        m_config.setUeiList(new UeiList());
-                    m_config.getUeiList().addUeiMatch(ueiMatch);
+            if (includeCfg.getUeiMatches() != null) {
+                for (final UeiMatch ueiMatch : includeCfg.getUeiMatches())  {
+                    if (m_config.getUeiMatches() == null) {
+                        m_config.setUeiMatches(new ArrayList<>());
+                    }
+                    m_config.addUeiMatch(ueiMatch);
                 }
             }
-            if (includeCfg.getHideMessage() != null) {
-                for (final HideMatch hideMatch : includeCfg.getHideMessage().getHideMatchCollection()) {
-                    if (m_config.getHideMessage() == null)
-                        m_config.setHideMessage(new HideMessage());
-                    m_config.getHideMessage().addHideMatch(hideMatch);
+            if (includeCfg.getHideMatches() != null) {
+                for (final HideMatch hideMatch : includeCfg.getHideMatches()) {
+                    if (m_config.getHideMatches() == null) {
+                        m_config.setHideMatches(new ArrayList<>());
+                    }
+                    m_config.addHideMatch(hideMatch);
                 }
             }
         }

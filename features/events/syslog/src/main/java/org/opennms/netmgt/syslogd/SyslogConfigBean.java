@@ -28,9 +28,13 @@
 
 package org.opennms.netmgt.syslogd;
 
+import java.util.Collections;
+import java.util.List;
+import java.util.Optional;
+
 import org.opennms.netmgt.config.SyslogdConfig;
-import org.opennms.netmgt.config.syslogd.HideMessage;
-import org.opennms.netmgt.config.syslogd.UeiList;
+import org.opennms.netmgt.config.syslogd.HideMatch;
+import org.opennms.netmgt.config.syslogd.UeiMatch;
 
 /**
  * This is a bean container that can be used as a {@link SyslogConfig}
@@ -38,11 +42,11 @@ import org.opennms.netmgt.config.syslogd.UeiList;
  */
 public final class SyslogConfigBean implements SyslogdConfig {
 
-	private int m_syslogPort;
+	private Integer m_syslogPort;
 	private String m_listenAddress;
 	private String m_forwardingRegexp;
-	private int m_matchingGroupHost;
-	private int m_matchingGroupMessage;
+	private Integer m_matchingGroupHost;
+	private Integer m_matchingGroupMessage;
 	private String m_parser;
 	private String m_discardUei;
 	private boolean m_newSuspectOnMessage;
@@ -61,8 +65,8 @@ public final class SyslogConfigBean implements SyslogdConfig {
 	}
 
 	@Override
-	public String getListenAddress() {
-		return m_listenAddress;
+	public Optional<String> getListenAddress() {
+		return Optional.ofNullable(m_listenAddress);
 	}
 
 	public void setListenAddress(String listenAddress) {
@@ -79,8 +83,8 @@ public final class SyslogConfigBean implements SyslogdConfig {
 	}
 
 	@Override
-	public String getForwardingRegexp() {
-		return m_forwardingRegexp;
+	public Optional<String> getForwardingRegexp() {
+		return Optional.ofNullable(m_forwardingRegexp);
 	}
 
 	public void setForwardingRegexp(String forwardingRegexp) {
@@ -88,8 +92,8 @@ public final class SyslogConfigBean implements SyslogdConfig {
 	}
 
 	@Override
-	public int getMatchingGroupHost() {
-		return m_matchingGroupHost;
+	public Optional<Integer> getMatchingGroupHost() {
+		return Optional.ofNullable(m_matchingGroupHost);
 	}
 
 	public void setMatchingGroupHost(int matchingGroupHost) {
@@ -97,8 +101,8 @@ public final class SyslogConfigBean implements SyslogdConfig {
 	}
 
 	@Override
-	public int getMatchingGroupMessage() {
-		return m_matchingGroupMessage;
+	public Optional<Integer> getMatchingGroupMessage() {
+		return Optional.ofNullable(m_matchingGroupMessage);
 	}
 
 	public void setMatchingGroupMessage(int matchingGroupMessage) {
@@ -115,13 +119,13 @@ public final class SyslogConfigBean implements SyslogdConfig {
 	}
 
 	@Override
-	public UeiList getUeiList() {
-		return null;
+	public List<UeiMatch> getUeiList() {
+		return Collections.emptyList();
 	}
 
 	@Override
-	public HideMessage getHideMessages() {
-		return null;
+	public List<HideMatch> getHideMessages() {
+		return Collections.emptyList();
 	}
 
 	@Override

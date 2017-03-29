@@ -84,7 +84,7 @@ public class SyslogReceiverJavaNetImpl extends SinkDispatchingSyslogReceiver {
 
     @Override
     public String getName() {
-        String listenAddress = (m_config.getListenAddress() != null && m_config.getListenAddress().length() > 0) ? m_config.getListenAddress() : "0.0.0.0";
+        String listenAddress = m_config.getListenAddress().orElse("0.0.0.0");
         return getClass().getSimpleName() + " [" + listenAddress + ":" + m_config.getSyslogPort() + "]";
     }
 
@@ -183,8 +183,8 @@ public class SyslogReceiverJavaNetImpl extends SinkDispatchingSyslogReceiver {
 
         try {
             LOG.debug("Opening datagram socket");
-            if (m_config.getListenAddress() != null && m_config.getListenAddress().length() != 0) {
-                m_dgSock.bind(new InetSocketAddress(InetAddressUtils.addr(m_config.getListenAddress()), m_config.getSyslogPort()));
+            if (m_config.getListenAddress().isPresent()) {
+                m_dgSock.bind(new InetSocketAddress(InetAddressUtils.addr(m_config.getListenAddress().get()), m_config.getSyslogPort()));
             } else {
                 m_dgSock.bind(new InetSocketAddress(m_config.getSyslogPort()));
             }

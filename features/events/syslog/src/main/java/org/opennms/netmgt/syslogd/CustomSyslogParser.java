@@ -52,13 +52,13 @@ public class CustomSyslogParser extends SyslogParser {
     public CustomSyslogParser(final SyslogdConfig config, final String text) throws SyslogParserException {
         super(config, text);
 
-        final String forwardingRegexp = config.getForwardingRegexp();
-        if (forwardingRegexp == null || forwardingRegexp.length() == 0) {
+        if (!config.getForwardingRegexp().isPresent()) {
             throw new SyslogParserException("no forwarding regular expression defined");
         }
+        final String forwardingRegexp = config.getForwardingRegexp().get();
         m_forwardingPattern = Pattern.compile(forwardingRegexp, Pattern.MULTILINE);
-        m_matchingGroupHost = config.getMatchingGroupHost();
-        m_matchingGroupMessage = config.getMatchingGroupMessage();
+        m_matchingGroupHost = config.getMatchingGroupHost().orElse(null);
+        m_matchingGroupMessage = config.getMatchingGroupMessage().orElse(null);
     }
 
     @Override

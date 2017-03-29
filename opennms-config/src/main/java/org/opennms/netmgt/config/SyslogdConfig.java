@@ -28,8 +28,11 @@
 
 package org.opennms.netmgt.config;
 
-import org.opennms.netmgt.config.syslogd.HideMessage;
-import org.opennms.netmgt.config.syslogd.UeiList;
+import java.util.List;
+import java.util.Optional;
+
+import org.opennms.netmgt.config.syslogd.HideMatch;
+import org.opennms.netmgt.config.syslogd.UeiMatch;
 
 /**
  * <p>SyslogdConfig interface.</p>
@@ -51,7 +54,7 @@ public interface SyslogdConfig {
      * @return a {@link java.lang.String} object.
      * @since 1.8.1
      */
-    String getListenAddress();
+    Optional<String> getListenAddress();
     
     /**
      * <p>getNewSuspectOnMessage</p>
@@ -65,21 +68,21 @@ public interface SyslogdConfig {
      *
      * @return a {@link java.lang.String} object.
      */
-    String getForwardingRegexp();
+    Optional<String> getForwardingRegexp();
 
     /**
      * <p>getMatchingGroupHost</p>
      *
      * @return a int.
      */
-    int getMatchingGroupHost();
+    Optional<Integer> getMatchingGroupHost();
 
     /**
      * <p>getMatchingGroupMessage</p>
      *
      * @return a int.
      */
-    int getMatchingGroupMessage();
+    Optional<Integer> getMatchingGroupMessage();
 
     /**
      * <p>getParser</p>
@@ -90,17 +93,13 @@ public interface SyslogdConfig {
 
     /**
      * A collection of Strings->UEI's
-     * 
-     * @return a {@link org.opennms.netmgt.config.syslogd.UeiList} object.
      */
-    UeiList getUeiList();
+    List<UeiMatch> getUeiList();
 
     /**
      * A collection of Strings we do not want to attach to the event.
-     *
-     * @return a {@link org.opennms.netmgt.config.syslogd.HideMessage} object.
      */
-    HideMessage getHideMessages();
+    List<HideMatch> getHideMessages();
     
     /**
      * <p>getDiscardUei</p>

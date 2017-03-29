@@ -28,6 +28,7 @@
 
 package org.opennms.netmgt.syslogd;
 
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
@@ -38,6 +39,7 @@ import java.net.InetAddress;
 import java.nio.ByteBuffer;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
@@ -191,7 +193,9 @@ public class ConvertToEventTest {
         syslogNgConfig.setDiscardUei("DISCARD-MATCHING-MESSAGES");
 
         final List<String> results = new ArrayList<>();
-        Files.lines(ConfigurationTestUtils.getFileForResource(this, "/syslogMessages.txt").toPath()).forEach(syslog -> {
+        final Path resource = ConfigurationTestUtils.getFileForResource(this, "/syslogMessages.txt").toPath();
+        assertNotNull(resource);
+        Files.lines(resource).forEach(syslog -> {
             // Ignore comments and blank lines
             if (syslog == null || syslog.trim().length() == 0 || syslog.trim().startsWith("#")) {
                 return;
